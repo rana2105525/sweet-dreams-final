@@ -5,7 +5,7 @@ class DBh{
 	private $servername;
 	private $username;
 	private $password;
-	private $DB;
+	private $dbname;
 
 	private $conn;
 	private $result;
@@ -15,12 +15,12 @@ class DBh{
 		$this->servername = DB_SERVER;
 		$this->username = DB_USER;
 		$this->password = DB_PASS;
-		$this->DB = DB_DATABASE;
+		$this->dbname = DB_DATABASE;
 		$this->connect();
 	}
 
 	public function connect(){
-		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->DB);
+		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 		if ($this->conn->connect_error) {
 			die("Connection failed: " . $this->conn->connect_error);
 		}
