@@ -1,9 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="css/User/reg.css">
+</head> -->
 <?php
 
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/Users.php");
 require_once(__ROOT__ . "controller/UsersController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
+
+// require_once("css/User/reg.css");
 
 $model = new Users();
 $controller = new UsersController($model);
@@ -27,7 +36,8 @@ if(isset($_POST['login']))	{
 	}
 }
 ?>
+<body>
 
 <?php echo $view->signupForm();?>
-	
-</table>
+</body>
+</html>

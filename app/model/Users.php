@@ -35,14 +35,21 @@ class Users extends Model {
 		}
 	}
 
-	function insertUser($name,$email,$phone, $password, $birth, $gender){
-		$sql = "INSERT INTO reg (name,email,phone, password, birth, gender) VALUES ('$name','$email','$phone',$password', '$birth', '$gender')";
-		if($this->db->query($sql) === true){
-			echo "Records inserted successfully.";
-			$this->fillArray();
-		} 
-		else{
-			echo "ERROR: Could not able to execute ";
-		}
-	}
+    function insertUser($name, $email, $phone, $password, $birth, $gender) {
+        $stmt = $this->db->prepare("INSERT INTO reg (name, email, phone, password, birth, gender) VALUES (?, ?, ?, ?, ?, ?)");
+    
+        $stmt->bind_param("ssssss", $name, $email, $phone, $password, $birth, $gender);
+    
+        if ($stmt->execute() === true) {
+            echo "Records inserted successfully.";
+            $this->fillArray();
+        } else {
+            echo "ERROR: Could not able to execute $stmt->error";
+        }
+    
+        $stmt->close();
+    }
+    
+
+    
 }

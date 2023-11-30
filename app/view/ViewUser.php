@@ -19,7 +19,7 @@ class ViewUser extends View{
 	function signupForm(){
 		$str='<section class="container">
         <a href="index.php"><img src="../../public/images/Sweet Dreams logo-01.png" alt="logo" ></a>
-          <form method="post" class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          <form action="index.php?action=insert" method="post"">
             <div class="input-box">
               <label>Full Name</label>
               <input type="text" name="name" placeholder="Enter your name" required>
@@ -67,7 +67,7 @@ class ViewUser extends View{
                
             </div>
           
-          <button input type="submit" name="submit" id="submit-button" value="submit">Submit</button>
+          <input type="submit"/>
           </form>
         </section>
         ';

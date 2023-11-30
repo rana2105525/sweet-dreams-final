@@ -26,6 +26,9 @@ class DBh{
 		}
 		return $this->conn;
 	}
+	public function prepare($sql) {
+        return $this->conn->prepare($sql);
+    }
 
 	public function getConn(){
 		return $this->conn;
