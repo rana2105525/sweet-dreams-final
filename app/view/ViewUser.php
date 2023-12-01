@@ -4,16 +4,16 @@ require_once(__ROOT__ . "view/View.php");
 
 class ViewUser extends View{	
 	public function output(){
-		// $str="";
-		// $str.="<h1>Welcome ".$this->model->getName()."</h1>";
-		// $str.="<h5>Age: ".$this->model->getAge()."</h5>";
-		// $str.="<h5>Phone: ".$this->model->getPhone()."</h5>";
-		// $str.="<br><br>";
-		// $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
-		// $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
-		// $str.="<a href='profile.php?action=signOut'>SignOut </a><br><br>";
-		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
-		// return $str;
+		$str="";
+		$str.="<h1>Welcome ".$this->model->getName()."</h1>";
+		$str.="<h5>Age: ".$this->model->getAge()."</h5>";
+		$str.="<h5>Phone: ".$this->model->getPhone()."</h5>";
+		$str.="<br><br>";
+		$str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
+		$str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
+		$str.="<a href='profile.php?action=signOut'>SignOut </a><br><br>";
+		$str.="<a href='profile.php?action=delete'>Delete Account </a>";
+		return $str;
 	}
 
 	function signupForm(){
@@ -74,6 +74,20 @@ class ViewUser extends View{
 		return $str;
 	}
 
+  public function loginForm() {
+    echo <<<HTML
+        <form action="" method="post">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <br>
 
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+
+            <button type="submit">Login</button>
+        </form>
+HTML;
+}
 }
 ?>

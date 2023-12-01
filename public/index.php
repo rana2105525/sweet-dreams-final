@@ -22,22 +22,23 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	$controller->{$_GET['action']}();
 }
 
-if(isset($_POST['login']))	{
-	$name=$_REQUEST["name"];
-	$password=$_REQUEST["password"];
-	$sql = "SELECT * FROM reg where name='$name' and password='$password'";
-	$dbh = new Dbh();
-	$result = $dbh->query($sql);
-	if ($result->num_rows == 1){
-		$row = $dbh->fetchRow();
-		$_SESSION["id"]=$row["id"];
-		$_SESSION["name"]=$row["name"];
-		header("Location:profile.php");
-	}
-}
+// if(isset($_POST['login']))	{
+// 	$name=$_REQUEST["name"];
+// 	$password=$_REQUEST["password"];
+// 	$sql = "SELECT * FROM reg where name='$name' and password='$password'";
+// 	$dbh = new Dbh();
+// 	$result = $dbh->query($sql);
+// 	if ($result->num_rows == 1){
+// 		$row = $dbh->fetchRow();
+// 		$_SESSION["id"]=$row["id"];
+// 		$_SESSION["name"]=$row["name"];
+// 		// header("Location:profile.php");
+// 		echo"you logged in successfuly";
+// 	}
+// }
 ?>
 <body>
-
-<?php echo $view->signupForm();?>
+    <h1>Registration</h1>
+    <?php echo $view->signupForm(); ?>
 </body>
 </html>
