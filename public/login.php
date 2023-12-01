@@ -11,8 +11,20 @@ $view = new ViewUser($controller, $model);
 if (isset($_POST['action']) && !empty($_POST['action'])) {
     $controller->{$_POST['action']}();
 }
+if(isset($_POST['login']))	{
+	$email=$_REQUEST["email"];
+	$password=$_REQUEST["password"];
+	$sql = "SELECT * FROM reg where email='$email' and password='$password'";
+	$dbh = new Dbh();
+	$result = $dbh->query($sql);
+	if ($result->num_rows == 1){
+		$row = $dbh->fetchRow();
+		$_SESSION["id"]=$row["id"];
+		$_SESSION["email"]=$row["email"];
+		header("Location:index.php");
+	}
+}
 ?>
-
 <body>
     <h1>Login</h1>
     <?php echo $view->loginForm(); ?>

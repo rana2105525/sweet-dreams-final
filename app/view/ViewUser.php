@@ -75,8 +75,8 @@ class ViewUser extends View{
 	}
 
   public function loginForm() {
-    echo <<<HTML
-        <form action="" method="post">
+    $str='
+        <form action="login.php" method="post">
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" required>
             <br>
@@ -85,9 +85,11 @@ class ViewUser extends View{
             <input type="password" name="password" id="password" required>
             <br>
 
-            <button type="submit">Login</button>
-        </form>
-HTML;
+            <button type="submit" name="login">Login</button>
+        </form>';
+        return $str;    
+
+
 }
 }
 ?>

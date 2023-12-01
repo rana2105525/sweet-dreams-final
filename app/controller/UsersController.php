@@ -13,12 +13,6 @@ class UsersController extends Controller{
 		$this->model->insertUser($name,$email,$phone,$password,$birth,$gender);
 	}
 
-	public function login() {
-        if (isset($_POST['email']) && isset($_POST['password'])) {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-        }
-		$this->model->verifyLogin($email,$password);
-    }
+	
 }
 ?>

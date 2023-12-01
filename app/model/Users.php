@@ -50,17 +50,8 @@ class Users extends Model {
         $stmt->close();
     }
     
-	public function verifyLogin($email, $password) {
-        $stmt = $this->db->prepare("SELECT * FROM reg WHERE email = $email AND password = ?");
-        $stmt->execute([$email, $password]);
-
-        if ($stmt->execute() === true) {
-            echo "Loged in successfully.";
-            $this->fillArray();
-        } else {
-            echo "ERROR: Could not able to login $stmt->error";
-        }
-    }
+  
+  
 
     
 }
