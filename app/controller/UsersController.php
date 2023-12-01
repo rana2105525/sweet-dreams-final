@@ -13,6 +13,10 @@ class UsersController extends Controller{
 		$this->model->insertUser($name,$email,$phone,$password,$birth,$gender);
 	}
 
-	
+	public function edit() {
+		$name = $_REQUEST['name'];
+    $email = $_REQUEST['email'];
+		$this->model->editUser($name,$email);
+	}
 }
 ?>

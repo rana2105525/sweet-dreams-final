@@ -2,6 +2,8 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
+
+
 class ViewUser extends View{	
 	public function output(){
 		$str="";
@@ -101,5 +103,29 @@ class ViewUser extends View{
 
 
 }
+public function editForm() {
+  $name = $this->model->getName();
+  $email = $this->model->getEmail();
+
+  $str = '
+    <link rel="stylesheet" type="text/css" href="../public/css/User/edit.css">
+    <form action="edit.php?action=edit" method="post">
+      <div class="input-box">
+        <label>Fullname</label>
+        <input type="text" value="' . $name . '" name="name"><br>
+        <span class="error"><?php echo $nameErr;?></span>
+      </div>
+      <div class="input-box">
+        <label>Email</label>
+        <input type="text" value="' . $email . '" name="email"><br>
+        <span class="error"><?php echo $emailErr;?></span>
+      </div>
+      <button type="submit" name="edit" value="submit" class="button">save</button>
+    </form>
+  ';
+
+  return $str;
+}
+
 }
 ?>
