@@ -12,7 +12,6 @@ class ViewUser extends View{
 		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		return $str;
 	}
-
 	function signupForm(){
 		$str='
     <link rel="stylesheet" type="text/css" href="../public/css/User/reg.css">
@@ -30,7 +29,7 @@ class ViewUser extends View{
     
             <div class="input-box">
               <label>Phone number</label>
-              <input type="text" name="phone" id="phone"  required />
+              <input type="text" name="phone" id="phone" placeholder="Enter your phone number" required />
     
             </div>
     
