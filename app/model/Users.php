@@ -41,7 +41,7 @@ class Users extends Model {
         $stmt->bind_param("ssssss", $name, $email, $phone, $password, $birth, $gender);
     
         if ($stmt->execute() === true) {
-            echo "Records inserted successfully.";
+            header("Location:login.php");
             $this->fillArray();
         } else {
             echo "ERROR: Could not able to execute $stmt->error";

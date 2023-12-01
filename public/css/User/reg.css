@@ -39,14 +39,26 @@ body {
 .container .form {
   margin-top: 10px;
 }
-.form .input-box {
+body .input-box{
   width: 100%;
   margin-top: 20px;
 }
 .input-box label {
   color: #3AB9C0;
 }
-.form :where(.input-box input, .select-box) {
+body .input-box input{
+  position: relative;
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0 15px;
+}
+body .input-box .select-box{
   position: relative;
   height: 40px;
   width: 100%;
@@ -65,37 +77,37 @@ body {
   display: flex;
   column-gap: 15px;
 }
-.form .gender-box {
+body form .gender-box {
   margin-top: 20px;
 }
-.gender-box h3 {
+body .gender-box h3 {
   color:#3AB9C0;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 8px;
 }
-.form :where(.gender-option, .gender) {
+body .form :where(.gender-option, .gender) {
   display: flex;
   align-items: center;
   column-gap: 50px;
   flex-wrap: wrap;
 }
-.form .gender {
+body .gender {
   column-gap: 5px;
 }
-.gender input {
+body input {
   accent-color:#707070;
 }
-.form :where(.gender input, .gender label) {
+body :where(.gender input, .gender label) {
   cursor: pointer;
 }
-.gender label {
+body .gender label {
   color:#3AB9C0;
 }
-.address :where(input, .select-box) {
+body .address :where(input, .select-box) {
   margin-top: 15px;
 }
-.select-box select {
+body .select-box select {
   height: 100%;
   width: 100%;
   outline: none;
@@ -103,7 +115,7 @@ body {
   color:#F27144;
   font-size: 1rem;
 }
-.form button {
+body button {
   height: 55px;
   width:100%;
   color: #fff;
@@ -116,7 +128,7 @@ body {
   background:#F27144;
   border-radius: 50px;
 }
-.form button:hover {
+body button:hover {
   background:#3AB9C0;
 }
 .error {color:#FF0000;}

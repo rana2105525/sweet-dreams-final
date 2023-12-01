@@ -25,7 +25,15 @@ if(isset($_POST['login']))	{
 	}
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
 <body>
-    <h1>Login</h1>
+    <section class="container">
+    <a href="index.php"><img src="images/sweet dreams logo-01.png" alt="logo"></a>
     <?php echo $view->loginForm(); ?>
+    </section>
 </body>
+</html>

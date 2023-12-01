@@ -1,7 +1,7 @@
+
 <?php
 
 require_once(__ROOT__ . "view/View.php");
-
 class ViewUser extends View{	
 	public function output(){
 		$str="";
@@ -17,9 +17,10 @@ class ViewUser extends View{
 	}
 
 	function signupForm(){
-		$str='<section class="container">
-        <a href="index.php"><img src="../../public/images/Sweet Dreams logo-01.png" alt="logo" ></a>
-          <form action="index.php?action=insert" method="post"">
+		$str='
+    <link rel="stylesheet" type="text/css" href="../public/css/User/reg.css">
+
+          <form action="reg.php?action=insert" method="post"">
             <div class="input-box">
               <label>Full Name</label>
               <input type="text" name="name" placeholder="Enter your name" required>
@@ -64,28 +65,37 @@ class ViewUser extends View{
                   <input type="radio" id="check-female" name="gender" value="female" />
                   <label for="check-female">Female</label>
                 </div>
-               <span>already have an account?<a href="login.php">Login here!</a></span>
+               <span>already have an account?<a href="login.php"> Login</a></span>
             </div>
           
-          <input type="submit"/>
+            <button type="submit"value="Submit">Submit</button>
           </form>
-        </section>
+      
         ';
 		return $str;
 	}
 
   public function loginForm() {
+    
     $str='
+    <link rel="stylesheet" type="text/css" href="../public/css/User/login.css">
+
         <form action="login.php" method="post">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-            <br>
+        <div class="input-box">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="username@email.com" required />
+         <span class="error" style="color:red"><?php echo $emailerr?></span> 
+        <br>
+        <span>If you do not have an account please <a href="reg.php">SignUp</a><span>
+    </div>
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-            <br>
+    <div class="input-box">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" required />
+        <a href="#">Forget password?</a>
+    </div>
 
-            <button type="submit" name="login">Login</button>
+            <button type="submit" name="login" value="Submit">Login</button>
         </form>';
         return $str;    
 
