@@ -105,12 +105,12 @@ public function editForm() {
     <link rel="stylesheet" type="text/css" href="../public/css/User/edit.css">
     <form action="edit.php?action=edit" method="post">
       <div class="input-box">
-        <label>Fullname</label>
+        <label><h6>Fullname<h6></label>
         <input type="text" value="' . $name . '" name="name"><br>
         <span class="error"><?php echo $nameErr;?></span>
       </div>
       <div class="input-box">
-        <label>Email</label>
+        <label><h6>Email<h6></label>
         <input type="text" value="' . $email . '" name="email"><br>
         <span class="error"><?php echo $emailErr;?></span>
       </div>

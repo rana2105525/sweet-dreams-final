@@ -18,13 +18,14 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>Edit form</title>
+    <title>Edit profile</title>
 	</head>
 <body>
-	
-<section class="container">
-        <a href="index.php"><img src="images/Sweet Dreams logo-01.png" alt="logo" ></a>
+    <h1>Edit profile<h1>
+    <section class="container">
     <?php echo $view->editForm(); ?>
-	</section>
+    </section>
+    <?php echo $view->footer();?>
+
 </body>
 </html>
