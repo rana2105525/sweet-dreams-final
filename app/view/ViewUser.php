@@ -64,7 +64,7 @@ class ViewUser extends View{
                   <input type="radio" id="check-female" name="gender" value="female" />
                   <label for="check-female">Female</label>
                 </div>
-               
+               <span>already have an account?<a href="login.php">Login here!</a></span>
             </div>
           
           <input type="submit"/>
