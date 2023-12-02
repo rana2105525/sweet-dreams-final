@@ -18,5 +18,9 @@ class UsersController extends Controller{
     $email = $_REQUEST['email'];
 		$this->model->editUser($name,$email);
 	}
+
+	public function delete(){
+		$this->model->deleteUser();
+	}
 }
 ?>
