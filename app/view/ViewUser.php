@@ -8,7 +8,7 @@ class ViewUser extends View{
 	public function output(){
 		// $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
 		// $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
-		$str="<a href='login.php?action=login'>Login </a><br><br>";
+		$str="<a href='login.php?action=login'>Login</a><br><br>";
 		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		return $str;
 	}
@@ -121,7 +121,30 @@ public function editForm() {
 
 public function nav()
 {
-  $profile=$this->model->getName();
+  if (isset($_SESSION["id"]))
+  {
+      $profile=$this->model->getName();
+      $str="
+      <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+      <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='profile.php'>$profile</a></li>
+    <li><a href='#'>Wishlist</a></li>
+    <li><a href='#'>Cart</a></li>
+    <li><a href='#'>Logout</a></li>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+  }
+  else{
   $str="
   <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
   <div class='wrapper1'>
@@ -136,10 +159,11 @@ public function nav()
    <i class='fa fa-search'></i>
      </button>
    </div>
-</div>
+  </div>
     </ul>
   </div>
     ";
+  }
     return $str;
 
 }
