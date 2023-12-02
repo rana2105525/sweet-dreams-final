@@ -154,8 +154,6 @@ public function nav1()
   <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='login.php'>Login</a></li>
-    <li><a href='#'>ggggg</a></li>
-    <li><a href='#'>tttt</a></li>
     <div class='wrap'>
     <div class='search'>
     <input type='text' class='searchTerm' placeholder='What are you looking for?'>
