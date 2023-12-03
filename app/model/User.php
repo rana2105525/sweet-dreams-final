@@ -103,4 +103,12 @@ class User extends Model {
           echo "ERROR: Could not able to execute";
       }
 }
+function deleteUser(){
+  $sql="delete from reg where id=$this->id;";
+  if($this->db->query($sql) === true){
+          return true;
+      } else{
+          echo "ERROR: Could not able to execute $sql. ";
+      }
+}
 }

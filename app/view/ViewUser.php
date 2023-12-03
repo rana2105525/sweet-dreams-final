@@ -1,6 +1,8 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "controller/Controller.php");
+require_once(__ROOT__ . "controller/UsersController.php");
 
 
 class ViewUser extends View{	
@@ -120,17 +122,16 @@ public function editForm() {
 
 public function nav()
 {
-  if (isset($_SESSION["id"]))
-  {
-      $profile=$this->model->getName();
-      $str="
+    $profile= $this->model->getName();
+
+      echo "
       <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
       <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='profile.php'>$profile</a></li>
     <li><a href='#'>Wishlist</a></li>
     <li><a href='#'>Cart</a></li>
-    <li><a href='#'>Logout</a></li>
+		<a href='nav.php?action=logout'>Logout </a><br><br>
     <div class='wrap'>
     <div class='search'>
     <input type='text' class='searchTerm' placeholder='What are you looking for?'>
@@ -142,15 +143,16 @@ public function nav()
     </ul>
   </div>
     ";
-  }
-  else{
-  $str="
+  
+  
+}
+public function nav1()
+{
+ echo"
   <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
   <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='login.php'>Login</a></li>
-    <li><a href='#'>ggggg</a></li>
-    <li><a href='#'>tttt</a></li>
     <div class='wrap'>
     <div class='search'>
     <input type='text' class='searchTerm' placeholder='What are you looking for?'>
@@ -162,10 +164,9 @@ public function nav()
     </ul>
   </div>
     ";
+   
   }
-    return $str;
 
-}
 
 public function side()
 {
@@ -337,7 +338,7 @@ public function profile()
       '.$email.'
     </div>
     <button><a href="edit.php" class="button">Update info</a></button>
-    <button type="submit" name="deleteButton" class="button">Delete account</button>
+		<button><a href="nav.php?action=delete">Delete account</a></button>
 
   </form>
   ';
