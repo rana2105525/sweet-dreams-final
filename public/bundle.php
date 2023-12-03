@@ -19,7 +19,7 @@ $view = new ViewCollections($controller, $model);
 <body>
 <div class=title>
     <?php
-echo "<h1>Bundle</h1>";
+echo "<h1>Bundle and save</h1>";
 ?>
 </div>
 

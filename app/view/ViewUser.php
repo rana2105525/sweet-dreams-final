@@ -185,7 +185,7 @@ public function side()
                 <!-- <li><a href="#">Gifts</a></li> -->
                 <li><a href="review.php">Reviews</a></li>
                 <li><a href="about.php">About us</a></li>
-                <li><a href="../../contact.php">Contact us</a></li>
+                <li><a href="contact.php">Contact us</a></li>
             </ul>
         </div>
         ';
@@ -344,6 +344,27 @@ public function profile()
   ';
   return $str;
 }
+public function contact()
+{
+  $str='        
+  <link rel="stylesheet" type="text/css" href="../public/css/User/contact.css">
+
+  <form method="post" action="send.php">
+  <div class="send">
+  <label for="name">Name: </label>
+  <input type="text" name="name" id="name">
+
+  <label for="message">Message: </label>
+  <textarea name="message" id="message"></textarea>
+<div class="send_btn">
+  <button>send</button>
+</div>
+</div>
+</form>';
+
+return $str;
+}
+
 }
 
 ?>

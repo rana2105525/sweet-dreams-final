@@ -49,9 +49,10 @@ else{
 	<head>
     <meta charset="UTF-8">
     <title>Home | sweet dreams</title>
+    <link rel="stylesheet" href="../css/User/chatbot.css">
 	</head>
   <body>
-  <?php include 'C:\xampp\htdocs\sweet-dreams-final\app\api\chatbot.php'; ?>
+  <?php include '../app/api/chatbot.php'; ?>
   </body>
 
 </html>

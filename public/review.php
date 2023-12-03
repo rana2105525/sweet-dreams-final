@@ -6,7 +6,7 @@ require_once(__ROOT__ . "controller/ReviewsController.php");
 require_once(__ROOT__ . "view/ViewReview.php");
 
 
-$model = new Review($_SESSION["id"]);
+$model = new Review();
 $controller = new ReviewsController($model);
 $view = new ViewReview($controller, $model);
 
@@ -28,6 +28,7 @@ echo "<h1>Customers reviews</h1>";
 </div>
 
 <?php echo $view->review(); ?>
+<?php echo $view->footer();?>
 
 
 
