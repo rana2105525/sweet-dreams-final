@@ -5,7 +5,7 @@ require_once(__ROOT__ . "model/Collection.php");
 require_once(__ROOT__ . "controller/CollectionController.php");
 require_once(__ROOT__ . "view/ViewCollections.php");
 
-$model = new Collection($_SESSION["id"]);
+$model = new Collection();
 $controller = new CollectionController($model);
 $view = new ViewCollections($controller, $model);
 
