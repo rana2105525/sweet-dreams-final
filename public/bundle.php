@@ -14,7 +14,7 @@ $view = new ViewCollections($controller, $model);
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>Bundle</title>
+    <title>Bundle and save collection</title>
 	</head>
 <body>
 <div class=title>
@@ -24,5 +24,7 @@ echo "<h1>Bundle and save</h1>";
 </div>
 
 <?php echo $view->collectionsBundleAndSave(); ?>
+<?php echo $view->footer()?>
+
 </body>
 </html>
