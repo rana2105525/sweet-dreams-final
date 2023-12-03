@@ -183,7 +183,7 @@ public function side()
                 <li><a href="bundle.php">Bundle and save</a></li>
                 <li><a href="blog.php">Blog</a></li>
                 <!-- <li><a href="#">Gifts</a></li> -->
-                <li><a href="reviews.php">Reviews</a></li>
+                <li><a href="review.php">Reviews</a></li>
                 <li><a href="about.php">About us</a></li>
                 <li><a href="../../contact.php">Contact us</a></li>
             </ul>
