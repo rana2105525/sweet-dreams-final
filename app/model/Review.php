@@ -2,8 +2,7 @@
   require_once(__ROOT__ . "model/Model.php");
 ?>
 <?php
-class Review extends Model
-{
+class Review extends Model{
     private $id;
     private $fullname;
     private $review;

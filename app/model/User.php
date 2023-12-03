@@ -8,13 +8,13 @@ class User extends Model {
     private $name;
     private $email;
     private $phone;
-	private $password;
+	  private $password;
     private $birth;
     private $gender;
 
   function __construct($id,$name="",$email="",$phone="",$password="",$birth="",$gender="") {
     $this->id = $id;
-	    $this->db = $this->connect();
+	  $this->db = $this->connect();
 
     if(""===$name){
       $this->readUser($id);
@@ -22,7 +22,7 @@ class User extends Model {
       $this->name = $name;
       $this->email=$email;
       $this->phone=$phone;
-	  $this->password=$password;
+	    $this->password=$password;
       $this->birth = $birth;
       $this->gender = $gender;
     }
@@ -76,22 +76,22 @@ class User extends Model {
     $db = $this->connect();
     $result = $db->query($sql);
     if ($result->num_rows == 1){
-        $row = $db->fetchRow();
-        $this->name = $row["name"];
-		$_SESSION["name"]=$row["name"];
-        $this->email=$row["email"];
-        $this->phone=$row["phone"];
-		$this->password=$row["password"];
-        $this->birth = $row["birth"];
-		$this->gender = $row["gender"];
+      $row = $db->fetchRow();
+      $this->name = $row["name"];
+		  $_SESSION["name"]=$row["name"];
+      $this->email=$row["email"];
+      $this->phone=$row["phone"];
+		  $this->password=$row["password"];
+      $this->birth = $row["birth"];
+		  $this->gender = $row["gender"];
     }
     else {
-        $this->name = "";
-        $this->email="";
-        $this->phone="";
-		$this->password="";
-        $this->birth = "";
-		$this->gender = "";
+      $this->name = "";
+      $this->email="";
+      $this->phone="";
+		  $this->password="";
+      $this->birth = "";
+		  $this->gender = "";
     }
   }
   function editUser($name, $email){
@@ -102,6 +102,5 @@ class User extends Model {
       } else{
           echo "ERROR: Could not able to execute";
       }
-
 }
 }

@@ -15,7 +15,7 @@ class UsersController extends Controller{
 
 	public function edit() {
 		$name = $_REQUEST['name'];
-    $email = $_REQUEST['email'];
+    	$email = $_REQUEST['email'];
 		$this->model->editUser($name,$email);
 	}
 }

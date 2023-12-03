@@ -1,8 +1,8 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
-require_once(__ROOT__ ."db/config.php");
-require_once(__ROOT__ ."db/Dbh.php");
+require_once(__ROOT__ . "db/config.php");
+require_once(__ROOT__ . "db/Dbh.php");
 
 class Users extends Model {
 	private $users;

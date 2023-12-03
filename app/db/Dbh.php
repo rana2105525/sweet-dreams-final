@@ -6,7 +6,6 @@ class DBh{
 	private $username;
 	private $password;
 	private $dbname;
-
 	private $conn;
 	private $result;
 	public $sql;
