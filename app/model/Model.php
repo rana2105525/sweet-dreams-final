@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 
 require_once("../app/db/Dbh.php");
 abstract class Model{

@@ -37,8 +37,8 @@ class Users extends Model {
 
     function insertUser($name, $email, $phone, $password, $birth, $gender) {
         $stmt = $this->db->prepare("INSERT INTO reg (name, email, phone, password, birth, gender) VALUES (?, ?, ?, ?, ?, ?)");
-    
-        $stmt->bind_param("ssssss", $name, $email, $phone, $password, $birth, $gender);
+        $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $stmt->bind_param("ssssss", $name, $email, $phone, $hashed_password, $birth, $gender);
     
         if ($stmt->execute() === true) {
             header("Location:login.php");
