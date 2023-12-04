@@ -1,8 +1,8 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
-require_once(__ROOT__ . "db/config.php");
-require_once(__ROOT__ . "db/Dbh.php");
+require_once(__ROOT__ ."db/config.php");
+require_once(__ROOT__ ."db/Dbh.php");
 
 class Users extends Model {
 	private $users;
@@ -14,7 +14,7 @@ class Users extends Model {
 		$this->users = array();
 		$this->db = $this->connect();
 		$result = $this->readUsers();
-		while ($row = $result->fetch_assoc()) {
+		while ($row = $this->db->fetchRow($result)) {
 			array_push($this->users, new User($row["id"],$row["name"],$row["email"],$row["phone"],$row["password"],$row["birth"],$row["gender"]));
 		}
 	}

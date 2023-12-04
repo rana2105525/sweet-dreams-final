@@ -255,4 +255,11 @@ word-spacing: 2px;
   #banner a {
     font-size: 14px;
   }
+  
+.copyright{
+  width:100%;
+  text-align: center;
+  color:#878f88;
+  }
+  
 }

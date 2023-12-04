@@ -5,7 +5,7 @@ require_once(__ROOT__ . "model/Collection.php");
 require_once(__ROOT__ . "controller/CollectionController.php");
 require_once(__ROOT__ . "view/ViewCollections.php");
 
-$model = new Collection($_SESSION["id"]);
+$model = new Collection();
 $controller = new CollectionController($model);
 $view = new ViewCollections($controller, $model);
 
@@ -14,15 +14,16 @@ $view = new ViewCollections($controller, $model);
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>Summer</title>
+    <title>Summer collection</title>
 	</head>
 <body>
 <div class=title>
     <?php
-echo "<h1>Summer</h1>";
+echo "<h1>Summer collection</h1>";
 ?>
 </div>
 
 <?php echo $view->collectionsSummer(); ?>
+<?php echo $view->footer()?>
 </body>
 </html>

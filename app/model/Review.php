@@ -7,18 +7,11 @@ class Review extends Model{
     private $fullname;
     private $review;
 
-    public function __construct($id, $fullname="", $review="")
+    public function __construct()
     {
-        $this->id = $id;
-	    $this->db = $this->connect();
-
-    if(""===$fullname){
-      $this->readReview($id);
-     } else{
-        $this->id = $id;
-        $this->fullname = $fullname;
-        $this->review = $review;
-      }
+   
+      $this->readReview();
+    
         
     }
 
@@ -42,8 +35,8 @@ class Review extends Model{
       function setReview($review) {
         return $this->review = $review;
       }
-      function readReview($id){
-        $sql = "SELECT * FROM reviews where id=".$id;
+      function readReview(){
+        $sql = "SELECT * FROM reviews";
         $db = $this->connect();
         $result = $db->query($sql);
         if ($result->num_rows == 1){

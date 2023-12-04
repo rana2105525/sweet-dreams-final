@@ -12,20 +12,11 @@ class Collection extends Model
     private $description;
     private $image;
 
-    public function __construct($id, $title="", $price="",$description="",$image="")
+    public function __construct()
     {
-        $this->id = $id;
-	    $this->db = $this->connect();
-
-    if(""===$title){
-      $this->readCollection($id);
-     } else{
-        $this->id = $id;
-        $this->title = $title;
-        $this->price = $price;
-        $this->description = $description;
-        $this->image = $image;
-      }
+      
+      $this->readCollection();
+    
         
     }
     public function getId()
@@ -60,8 +51,8 @@ class Collection extends Model
     function setImage($image) {
       return $this->image = $image;
     }
-    function readCollection($id){
-      $sql= "SELECT * FROM products where id=".$id;
+    function readCollection(){
+      $sql= "SELECT * FROM products";
       $db = $this->connect();
       $result = $db->query($sql);
       if ($result->num_rows == 1){
