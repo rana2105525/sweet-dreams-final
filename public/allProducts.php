@@ -1,14 +1,13 @@
 <?php
 
-define('__ROOT__', "../../app/");
+define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/Products.php");
 require_once(__ROOT__ . "controller/ProductsController.php");
-require_once(__ROOT__ . "view/ViewProducts.php");
+require_once(__ROOT__ . "view/ViewProduct.php");
 
-
-// $model = new Products();
+$model = new Product();
 $controller = new ProductsController($model);
-$view = new ViewProducts($controller, $model);
+$view = new ViewProduct($controller, $model);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
 	$controller->{$_GET['action']}();
