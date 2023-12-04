@@ -11,17 +11,21 @@ class Collection extends Model
     private $price;
     private $description;
     private $image;
+    private $name;
 
     public function __construct()
     {
       
       $this->readCollection();
     
-        
     }
     public function getId()
     {
         return $this->id;
+    }
+    public function getName()
+    {
+        return $this->name;
     }
     public function getTitle()
     {
@@ -50,6 +54,9 @@ class Collection extends Model
     }
     function setImage($image) {
       return $this->image = $image;
+    }
+    function setName($name) {
+      return $this->name = $name;
     }
     function readCollection(){
       $sql= "SELECT * FROM products";

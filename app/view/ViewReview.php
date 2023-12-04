@@ -37,6 +37,8 @@ public function footer()
 {
   $str='
   <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 
   <footer class="pageFooter">
     <div class="col">
@@ -68,8 +70,8 @@ public function footer()
     <div class="col">
       <h4>My Account</h4>
       <a href="login.php">Sign in</a>
-      <a href="#">View cart</a>
-      <a href="#">My wishlist</a>
+      <a href="blog.php">Blog</a>
+      <a href="review.php">Reviews</a>
     </div>
 
     <div class="col install">

@@ -1,6 +1,8 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "controller/Controller.php");
+require_once(__ROOT__ . "controller/UsersController.php");
 
 class ViewCollections extends View{
   public function output(){
@@ -169,8 +171,8 @@ public function footer(){
     <div class="col">
       <h4>My Account</h4>
       <a href="login.php">Sign in</a>
-      <a href="#">View cart</a>
-      <a href="#">My wishlist</a>
+      <a href="blog.php">Blog</a>
+      <a href="review.php">Reviews</a>
     </div>
 
     <div class="col install">
@@ -191,5 +193,75 @@ public function footer(){
   </div>
   ';
   return $str;
+}
+public function nav()
+{
+
+  $profile = $_SESSION['name'];
+
+      echo "
+      <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+      <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='profile.php'>$profile</a></li>
+    <li><a href='#'>Wishlist</a></li>
+    <li><a href='#'>Cart</a></li>
+		<a href='nav.php?action=logout'>Logout </a><br><br>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+  
+  
+}
+public function nav1()
+{
+ echo"
+  <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+  <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='login.php'>Login</a></li>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+   
+  }
+  public function side()
+{
+  $str='
+  <link rel="stylesheet type="text/css" href="../public/css/User/nav.css">
+
+  <input type="checkbox" id="active">
+        <label for="active" class="menu-btn"><span></span></label>
+        <label for="active" class="close"></label>
+        <div class="wrapper">
+            <ul>
+                <li><a href="summer.php">Summer collection</a></li>
+                <li><a href="winter.php">Winter collection</a></li>
+                <li><a href="bundle.php">Bundle and save</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <!-- <li><a href="#">Gifts</a></li> -->
+                <li><a href="review.php">Reviews</a></li>
+                <li><a href="about.php">About us</a></li>
+                <li><a href="contact.php">Contact us</a></li>
+            </ul>
+        </div>
+        ';
+        return $str;
 }
 }

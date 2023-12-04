@@ -8,6 +8,29 @@ require_once(__ROOT__ . "view/ViewCollections.php");
 $model = new Collection();
 $controller = new CollectionController($model);
 $view = new ViewCollections($controller, $model);
+$isLogged=isset($_SESSION["id"]);
+if($isLogged)
+{
+    ?>
+    <div class=title>
+<?php
+    echo $view->nav();
+    echo "<h1>Winter collection</h1>";
+    echo $view->side();
+    echo $view->collectionsWinter();
+    echo $view->footer();
+}
+else
+{
+    ?>
+    <div class=title>
+<?php
+    echo $view->nav1();
+    echo "<h1>Winter collection</h1>";
+    echo $view->side();
+    echo $view->collectionsWinter(); 
+    echo $view->footer();
+}
 
 ?>
 <!DOCTYPE html>
@@ -17,14 +40,8 @@ $view = new ViewCollections($controller, $model);
     <title>Winter collection</title>
 	</head>
 <body>
-<div class=title>
-    <?php
-echo "<h1>Winter collection</h1>";
-?>
-</div>
 
-<?php echo $view->collectionsWinter(); ?>
-<?php echo $view->footer()?>
+</div>
 
 </body>
 </html>
