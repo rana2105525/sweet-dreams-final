@@ -14,15 +14,17 @@ $view = new ViewCollections($controller, $model);
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>Winter</title>
+    <title>Winter collection</title>
 	</head>
 <body>
 <div class=title>
     <?php
-echo "<h1>Winter</h1>";
+echo "<h1>Winter collection</h1>";
 ?>
 </div>
 
 <?php echo $view->collectionsWinter(); ?>
+<?php echo $view->footer()?>
+
 </body>
 </html>

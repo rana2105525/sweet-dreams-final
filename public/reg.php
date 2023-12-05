@@ -1,5 +1,3 @@
-
-
 <?php
 
 define('__ROOT__', "../app/");

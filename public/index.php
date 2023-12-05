@@ -17,10 +17,12 @@ if($isLogged)
     $view = new ViewUser($controller, $model);
     ?>
     <body>
+    
    <?php echo $view->nav();?>
    <?php echo $view->side();?>
    <?php echo $view->home();?>
    <?php echo $view->footer();?>
+  
 </body>
 <?php
 }
@@ -32,10 +34,12 @@ else{
         $view = new ViewUser($controller, $model);
         ?>
         <body>
+        
        <?php echo $view->nav1();?>
        <?php echo $view->side();?>
        <?php echo $view->home();?>
        <?php echo $view->footer();?>
+       
     </body>
     <?php
     }
@@ -45,6 +49,10 @@ else{
 	<head>
     <meta charset="UTF-8">
     <title>Home | sweet dreams</title>
+    <link rel="stylesheet" href="../css/User/chatbot.css">
 	</head>
+  <body>
+  <?php include '../app/api/chatbot.php'; ?>
+  </body>
 
 </html>

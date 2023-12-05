@@ -1,16 +1,28 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
+require_once(__ROOT__ . "model/Product.php");
+
 class Products extends Model{
-    private $id;
-    private $title;
-    private $description;
-    private $prod_image;
-    private $added_at;
-    private $category;
-    private $price;
+    private $products;
+    function __construct() {
+        $this->fillArray();
+    }
+
+    function fillArray() {
+        $this->products = array();
+        $this->db = $this->connect();
+        $result = $this->readProducts();
+        while ($row = $result->fetch_assoc()) {
+            array_push($this->products, new Product($row["id"],$row["title"],$row["price"],$row["description"],$row["prod_image"],$row["added_at"],$row["category"]));
+        }
+    }
+
+    function getProducts() {
+		return $this->products;
+	}
 
 
-    public function getProducts() {
+    public function readProducts() {
         $sql = "SELECT * FROM products";
         $result = $this->db->query($sql);
 		if ($result->num_rows > 0){
@@ -18,7 +30,7 @@ class Products extends Model{
 		}
 		else {
 			return false;
-		}        
+		}   
     }
 
     public function insertProduct($title,$price,$description,$prod_image,$category){
@@ -27,79 +39,5 @@ class Products extends Model{
         if($this->db->query($sql) === true)
             return true;
         else return false;
-    }
-
-
-    
-    // Getters
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function getProdImage()
-    {
-        return $this->prod_image;
-    }
-
-    public function getAddedAt()
-    {
-        return $this->added_at;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    // Setters
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    public function setProdImage($prod_image)
-    {
-        $this->prod_image = $prod_image;
-    }
-
-    public function setAddedAt($added_at)
-    {
-        $this->added_at = $added_at;
-    }
-
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    public function setPrice($price)
-    {
-        $this->price = $price;
     }
 }
