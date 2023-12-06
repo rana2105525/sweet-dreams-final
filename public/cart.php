@@ -1,13 +1,13 @@
 <?php
 
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/Collection.php");
-require_once(__ROOT__ . "controller/CollectionController.php");
-require_once(__ROOT__ . "view/ViewCollections.php");
+require_once(__ROOT__ . "model/cartModel.php");
+require_once(__ROOT__ . "controller/cartController.php");
+require_once(__ROOT__ . "view/cartView.php");
 
-$model = new Collection();
-$controller = new CollectionController($model);
-$view = new ViewCollections($controller, $model);
+$model = new cartModel();
+$controller = new cartController($model);
+$view = new cartView($controller, $model);
 $isLogged=isset($_SESSION["id"]);
 if($isLogged)
 {
