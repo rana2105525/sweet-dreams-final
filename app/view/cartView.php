@@ -33,6 +33,7 @@ class cartView extends View{
                         <div class="product-details">
                            
                             <h4>' . $cartProducts['name'] . '</h4>
+                            <h4>'  .$this->model->getquantity(). '</h4>
                             <div class="product-bottom-details">
                                 <div class="product-price">' . $cartProducts['price'] . 'LE</div>
                                
