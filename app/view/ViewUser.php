@@ -13,64 +13,71 @@ class ViewUser extends View{
 		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		return $str;
 	}
-	function signupForm(){
-		$str='
+	function signupForm($errors = []) {
+
+    $str = '
     <link rel="stylesheet" type="text/css" href="../public/css/User/reg.css">
 
-          <form action="reg.php?action=insert" method="post"">
+    <form action="reg.php?action=insert" method="post">
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="Enter your name" >
+            <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
+        </div>
+
+        <div class="input-box">
+            <label>Email Address</label>
+            <input type="text" name="email" id="email" placeholder="username@email.com" required />
+            <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
+        </div>
+
+        <div class="input-box">
+            <label>Phone number</label>
+            <input type="text" name="phone" id="phone" placeholder="Enter your phone number" required />
+            <span class="error">' . ($errors['phoneErr'] ?? '') . '</span>
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" name="password" method="post" placeholder="Enter your password" required />
+            <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
+        </div>
+
+        <div class="input-box">
+            <label>Confirm password</label>
+            <input type="password" name="confirm" placeholder="Confirm your password" required />
+            <span class="error">' . ($errors['confirmErr'] ?? '') . '</span>
+        </div>
+
+        <div class="column">
             <div class="input-box">
-              <label>Full Name</label>
-              <input type="text" name="name" placeholder="Enter your name" required>
-            </div>
-    
-            <div class="input-box">
-              <label>Email Address</label>
-              <input type="text" name="email" id="email" placeholder="username@email.com" required />
-            </div>
-    
-            <div class="input-box">
-              <label>Phone number</label>
-              <input type="text" name="phone" id="phone" placeholder="Enter your phone number" required />
-    
-            </div>
-    
-            <div class="input-box">
-                <label>Password</label>
-                <input type="password" name="password" method="post" placeholder="Enter your password" required />
-              </div>
-              
-    
-            <div class="input-box">
-                <label>Confirm password</label>
-                <input type="password" name="confirm" placeholder="Confirm your password" required />
-            </div>
-    
-            <div class="column">
-              <div class="input-box">
                 <label>Birth Date</label>
                 <input type="date" name="birth" placeholder="Enter birth date" required />
-              </div>
+                <span class="error">' . ($errors['birthErr'] ?? '') . '</span>
             </div>
-            <div class="gender-box">
-              <h3>Gender</h3>
-              <div class="gender-option">
+        </div>
+
+        <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
                 <div class="gender">
-                  <input type="radio" id="check-male" name="gender" value="male"/>
-                  <label for="check-male">Male</label>
+                    <input type="radio" id="check-male" name="gender" value="male" />
+                    <label for="check-male">Male</label>
                 </div>
                 <div class="gender">
-                  <input type="radio" id="check-female" name="gender" value="female" />
-                  <label for="check-female">Female</label>
+                    <input type="radio" id="check-female" name="gender" value="female" />
+                    <label for="check-female">Female</label>
                 </div>
-               <span>already have an account?<a href="login.php"> Login</a></span>
             </div>
-          
-            <button type="submit"value="Submit">Submit</button>
-          </form>
-      
-        ';
-		return $str;
-	}
+            <span>already have an account?<a href="login.php"> Login</a></span>
+        </div>
+
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+    ';
+
+    return $str;
+}
 
   public function loginForm() {
     

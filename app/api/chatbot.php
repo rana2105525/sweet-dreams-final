@@ -35,6 +35,75 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
-
+<style>
+.open-button-chat {
+    background-color: #F27144;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    border-radius: 35px 35px;
+    max-width: 150px;
+    max-height: 100px;
+    z-index: 4;
+  }
+  
+  .open-button-chat:hover {
+    color:white;
+    background-color: #3AB9C0;
+  }
+  
+  .closbtn-chat {
+    position: absolute;
+    font-size: 20px;
+    right: 25px;
+    color: rgb(255, 255, 255);
+    border-bottom: 0px;
+  }
+  
+  .chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    border: none;
+    z-index: 9;
+  }
+  
+  .form-container {
+    max-width: 400px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .open-button-chat {
+        bottom: 10px;
+        right: 10px;
+        max-width: 100px;
+        max-height: 80px;
+        font-size: 12px;
+        padding: 10px;
+    }
+  
+    .closbtn-chat {
+        font-size: 24px;
+        right: 10px;
+    }
+  
+    .chat-popup {
+        right: 10px;
+    }
+  
+    .form-container {
+        max-width: 300px;
+        padding: 5px;
+    }
+  }
+  </style>
 </body>
 </html>
