@@ -13,7 +13,17 @@ class CollectionController extends Controller
         $this->model->collectionsWinter($title,$price,$desc,$image);
         $this->model->collectionsBundleAndSave($title,$price,$desc,$image);
     }
+    public function getProductById() {
+        if (isset($_GET['id'])) {
+            $itemId = $_GET['id'];
+            $description = $this->model->getProductById($itemId);
+            echo $description;
+          } else {
+            // Handle missing ID case
+          }
+               
 
+}
 }
 
 ?>

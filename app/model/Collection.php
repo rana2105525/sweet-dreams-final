@@ -108,5 +108,22 @@ class Collection extends Model
       }
     }
 
+    function readDesc() {
+      if (isset($_POST['add_to_description'])) {
+        $product_id = $_POST['product_id'];
+        // Retrieve the product attributes from the database based on the product ID
+        $sql = "SELECT * FROM products WHERE id = $product_id";
+        $result = $this->db->query($sql); 
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['product_description'] = $row;
+    }
+
+    if (isset($_SESSION['product_description'])) {
+      $product = $_SESSION['product_description'];
+  }
+
+  return $product;
 }
+}
+
 ?>
