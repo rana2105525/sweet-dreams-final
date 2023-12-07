@@ -1,8 +1,14 @@
 <?php
 require_once(__ROOT__ . "controller/Controller.php");
 
-
+ 
 class UsersController extends Controller{
+public $nameErr ="";
+  public $emailErr = "";
+  public $phoneErr = "";
+ public $passwordErr = "";
+public  $birthErr = '';
+
   public function insert()
   {
     $name = $_REQUEST['name'];
@@ -13,7 +19,7 @@ class UsersController extends Controller{
     $gender = $_REQUEST["gender"];
   
     // Validate inputs
-    $nameErr = $emailErr = $phoneErr = $passwordErr = $birthErr = '';
+    
     function isValidPhoneNumber($phoneNumber, $desiredLength) {
       
       $pattern = '/^\+?[0-9]+$/'; 
@@ -47,68 +53,69 @@ function isDateValid($date)
 }
   
     if (empty($name)) {
-      $nameErr = "Name is required";
+      $this->nameErr = "Name is required";
     } else {
       if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-        $nameErr = "Only letters and white space allowed";
+        $this->nameErr = "Only letters and white space allowed";
       }
     }
   
   
     if (empty($email)) {
-      $emailErr = "Email is required";
+      $this->emailErr = "Email is required";
     } else {
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Invalid email format";
+        $this->emailErr = "Invalid email format";
       }
     }
   
   
     if (empty($phone)) {
-      $phoneErr = "Phone number is required";
+      $this->phoneErr = "Phone number is required";
     } else {
       $desiredLength = 11; 
 
       if (!isValidPhoneNumber($phone, $desiredLength)) {
-          $phoneErr = "Invalid phone number format or length"; 
+          $this->phoneErr = "Invalid phone number format or length"; 
       }
     }
     
   
   
     if (empty($password)) {
-      $passwordErr = "Password is required";
+      $this->passwordErr = "Password is required";
     } elseif (!isStrongPassword($_POST["password"])) {
-      $passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
+      $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
     }
     
     if (empty($birth)) {
-      $birthErr = "Enter your birth date";
+      $this->birthErr = "Enter your birth date";
     } else {
       if (!isDateValid($birth)) {
-        $birthErr = "Birth date cannot be in the future";
+        $this->birthErr = "Birth date cannot be in the future";
       }
     }
   
   
-    if (empty($nameErr) && empty($emailErr) && empty($phoneErr) && empty($passwordErr) && empty($birthErr)) {
+    if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr) && empty($this->birthErr)) {
       
       $this->model->insertUser($name, $email, $phone, $password, $birth, $gender);
       
-    } else {
+    }
+    } 
+    public function getErrors() {
       
       $errors = [
-        'nameErr' => $nameErr,
-        'emailErr' => $emailErr,
-        'phoneErr' => $phoneErr,
-        'passwordErr' => $passwordErr,
-        'birthErr' => $birthErr
+        'nameErr' => $this->nameErr,
+        'emailErr' => $this->emailErr,
+        'phoneErr' => $this->phoneErr,
+        'passwordErr' => $this->passwordErr,
+        'birthErr' => $this->birthErr
       ];
-      $view = new ViewUser($this, $this->model); 
-      echo $view->signupForm($errors);
+      return $errors;
     }
   
-}
+
 
 	public function edit() {
 		$name = $_REQUEST['name'];
