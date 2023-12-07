@@ -10,6 +10,7 @@ $model = new Users();
 $controller = new UsersController($model);
 $view = new ViewUser($controller, $model);
 
+
 if (isset($_GET['action']) && !empty($_GET['action'])) {
 	$controller->{$_GET['action']}();
 }
@@ -24,7 +25,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	
 <section class="container">
         <a href="index.php"><img src="images/Sweet Dreams logo-01.png" alt="logo" ></a>
-    <?php echo $view->signupForm(); ?>
+    <?php echo $view->signupForm($controller->getErrors()); ?>
 	</section>
 </body>
 </html>

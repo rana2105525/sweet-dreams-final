@@ -49,7 +49,7 @@ else{
 	<head>
     <meta charset="UTF-8">
     <title>Home | sweet dreams</title>
-    <link rel="stylesheet" href="../css/User/chatbot.css">
+    
 	</head>
   <body>
   <?php include '../app/api/chatbot.php'; ?>
