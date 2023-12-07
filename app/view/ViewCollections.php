@@ -1,6 +1,8 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "controller/Controller.php");
+require_once(__ROOT__ . "controller/UsersController.php");
 
 class ViewCollections extends View{
   public function output(){
@@ -22,6 +24,7 @@ class ViewCollections extends View{
 		
 		<div class="product-tumb">
         <form method="post" action="prod.php">
+        
                             <input type="hidden" name="product_id" value="' . $summerCollection['id'] . '">
                             <button type="submit" name="add_to_description">
                             <img src="../public/images' . $summerCollection['prod_image'] . '">
@@ -169,8 +172,8 @@ public function footer(){
     <div class="col">
       <h4>My Account</h4>
       <a href="login.php">Sign in</a>
-      <a href="#">View cart</a>
-      <a href="#">My wishlist</a>
+      <a href="blog.php">Blog</a>
+      <a href="review.php">Reviews</a>
     </div>
 
     <div class="col install">
@@ -192,4 +195,179 @@ public function footer(){
   ';
   return $str;
 }
+public function nav()
+{
+
+  $profile = $_SESSION['name'];
+
+      echo "
+      <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+      <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='profile.php'>$profile</a></li>
+    <li><a href='#'>Wishlist</a></li>
+    <li><a href='#'>Cart</a></li>
+		<a href='nav.php?action=logout'>Logout </a><br><br>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+  
+  
 }
+public function nav1()
+{
+ echo"
+  <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+  <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='login.php'>Login</a></li>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+   
+  }
+  public function side()
+{
+  $str='
+  <link rel="stylesheet type="text/css" href="../public/css/User/nav.css">
+
+  <input type="checkbox" id="active">
+        <label for="active" class="menu-btn"><span></span></label>
+        <label for="active" class="close"></label>
+        <div class="wrapper">
+            <ul>
+                <li><a href="summer.php">Summer collection</a></li>
+                <li><a href="winter.php">Winter collection</a></li>
+                <li><a href="bundle.php">Bundle and save</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <!-- <li><a href="#">Gifts</a></li> -->
+                <li><a href="review.php">Reviews</a></li>
+                <li><a href="about.php">About us</a></li>
+                <li><a href="contact.php">Contact us</a></li>
+            </ul>
+        </div>
+        ';
+        return $str;
+}
+
+public function getDesc()
+{
+
+  $prodDesc=$this->model->readDesc();
+        $str='
+        <link rel="stylesheet" href="../public/css/User/prod.css">
+     <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
+        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+        <h1>'. $prodDesc['title'] . '</h1>
+        <div class="container">
+            <div class="single-product">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="product-image">
+                            <div class="product-image-main">
+                                <img src="../../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
+                            </div>
+                            <div class="product-image-slider">
+                                <img src="../../public/images/1.jpg" alt="" class="image-list">
+                                <img src="../../public/images/2.jpg" alt="" class="image-list">
+                                <img src="../../public/images/3.jpg" alt="" class="image-list">
+                                <img src="../../public/images/4.jpg" alt="" class="image-list">
+                                <img src="../../public/images/5.jpg" alt="" class="image-list">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="breadcrumb">
+                            <span><a href="index.php">Home</a></span>
+                            <span class="active">'. $prodDesc['title'] . '</span>
+                        </div>
+    
+                        <div class="product">
+                            <div class="product-title">
+                                <h2>'. $prodDesc['title'] .'</h2>
+                            </div>
+    
+                            <div class="product-price">
+                                <span class="offer-price">'. $prodDesc['price'] .'</span>
+                            </div>
+    
+                            <div class="product-details">
+                                <h3>Description</h3>
+                                <p>'.$prodDesc['description'] .'</p>
+                            </div>
+                            <div class="product-size">
+                                <h4>Size</h4>
+                                <div class="size-layout">
+                                    <input type="radio" name="size" value="S" id="1" class="size-input">
+                                    <label for="1" class="size">0-3</label>
+    
+                                    <input type="radio" name="size" value="M" id="2" class="size-input">
+                                    <label for="2" class="size">3-6</label>
+    
+                                    <input type="radio" name="size" value="L" id="3" class="size-input">
+                                    <label for="3" class="size">6-12</label>
+    
+                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label>
+                            
+                            <a href="../public/images/size-chart.jpg">Size chart</a>
+                        
+                        </div>
+                    </div>
+                    <div class="product-color">
+                        <h4>Color</h4>
+                        <div class="color-layout">
+                            <input type="radio" name="color"  value="black" class="color-input">
+                            <label for="black" class="black"></label>
+                            <input type="radio" name="color"  value="red" class="color-input">
+                            <label for="red" class="red"></label>
+
+                            <input type="radio" name="color"  value="blue" class="color-input">
+                            <label for="blue" class="blue"></label>
+                        </div>
+                    </div>
+                    <span class="divider"></span>
+
+                    <div class="product-btn-group">
+                        <!-- <div class="button buy-now"><i class="bx bxs-zap" ></i> Buy Now</div> -->
+                        <div class="button heart"><i class="bx bxs-zap" ></i><a href="cart.php"> Buy now</a></div>
+                        <div class="button heart"><i class="bx bxs-heart" ></i> Add to Wishlist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rev">
+<h2>Customer Reviews</h2>
+<form action="" class="form" method="post">
+    <div class="text-field">
+        <label for="name">Write your review</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Write your name">
+        <input type="text" id="review" name="review" placeholder="Write your review">
+        <button type="submit" class="btn" name="submit">Submit</button>
+    </div>
+</form>
+</div>';
+return $str;
+
+}
+
+    }
+

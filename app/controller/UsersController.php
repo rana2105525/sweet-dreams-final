@@ -9,6 +9,7 @@ class UsersController extends Controller{
 		$password = $_REQUEST['password'];
         $birth=$_REQUEST["birth"];
         $gender=$_REQUEST["gender"];
+//validation
 
 		$this->model->insertUser($name,$email,$phone,$password,$birth,$gender);
 	}

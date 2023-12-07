@@ -14,10 +14,11 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     {
 		case 'logout':
 			session_destroy();
-            echo $view->nav1();
-            echo $view->side();
-            echo $view->home();
-            echo $view->footer();
+            // echo $view->nav1();
+            // echo $view->side();
+            // echo $view->home();
+            // echo $view->footer();
+            header("location:index.php");
 			break;
         case 'delete':
             $controller->delete();

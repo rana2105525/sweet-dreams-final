@@ -11,17 +11,21 @@ class Collection extends Model
     private $price;
     private $description;
     private $image;
+    private $name;
 
     public function __construct()
     {
       
       $this->readCollection();
     
-        
     }
     public function getId()
     {
         return $this->id;
+    }
+    public function getName()
+    {
+        return $this->name;
     }
     public function getTitle()
     {
@@ -50,6 +54,9 @@ class Collection extends Model
     }
     function setImage($image) {
       return $this->image = $image;
+    }
+    function setName($name) {
+      return $this->name = $name;
     }
     function readCollection(){
       $sql= "SELECT * FROM products";
@@ -101,5 +108,22 @@ class Collection extends Model
       }
     }
 
+    function readDesc() {
+      if (isset($_POST['add_to_description'])) {
+        $product_id = $_POST['product_id'];
+        // Retrieve the product attributes from the database based on the product ID
+        $sql = "SELECT * FROM products WHERE id = $product_id";
+        $result = $this->db->query($sql); 
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['product_description'] = $row;
+    }
+
+    if (isset($_SESSION['product_description'])) {
+      $product = $_SESSION['product_description'];
+  }
+
+  return $product;
 }
+}
+
 ?>
