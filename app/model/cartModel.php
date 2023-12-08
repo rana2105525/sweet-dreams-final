@@ -1,98 +1,76 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
-
+require_once(__ROOT__ . "model/User.php");
+require_once(__ROOT__ ."db/config.php");
+require_once(__ROOT__ ."db/Dbh.php");
 class CartModel extends Model
 {
     private $id;
-    private $quantity;
+    private $name;
+    private $price;
     private $user_id;
-    private $prod_id;
+    public function __construct() {
+        $this->db = new Dbh();
 
-    function getquantity()
-    {
-        return $this->quantity;
+        // Retrieve user ID from session
+        $this->user_id = $_SESSION['id'];
     }
-
-    function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    function getuser_id()
-    {
-        return $this->user_id;
-    }
-
-    function setUserId($user_id)
-    {
-       return $this->user_id = $_SESSION["user_id"];
-    }
-
-    function getProdId()
-    {
-        return $this->prod_id;
-    }
-
-    function setProdId($prod_id)
-    {
-        return $this->prod_id = $_SESSION["prod_id"];
-    }
-
-    function getId()
+    
+    public function getId()
     {
         return $this->id;
     }
 
-    public function showInCart($user_id, $prod_id, $quantity) {
-        $sql = "SELECT products.Name, products.price, cart.Quantity,products.prod_image,cart.id
-                FROM cart
-                INNER JOIN product ON products.ID = cart.product_id
-                INNER JOIN reg ON reg.id = cart.user_id
-                WHERE cart.product_id = $prod_id AND cart.user_id = $user_id";
-    
-        $result = $this->db->query($sql);
-    
-        if ($result !== false) {
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } else {
-            return [];
-        }
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getUserId()
+    {
+        return $_SESSION['id'];
+    }
+
+    public function setUserId($user_id)
+    {
+        $this->user_id = $_SESSION['id'];
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    function setPrice($price)
+    {
+        $this->price = $price;
     }
     // Add product to cart
-    function addToCart($user_id, $prod_id, $quantity)
-    {
-        // Assuming you have a cart table with user_id, prod_id, and quantity columns
-        $sql = "INSERT INTO cart (user_id, prod_id, quantity) VALUES ('$user_id', '$prod_id', '$quantity')";
-
-        if ($this->db->query($sql) === true) {
-            echo "Product added to the cart successfully.";
+    function addToCart($user_id, $name, $price) {
+        // Prepare and execute SQL statement
+        $stmt = $this->db->prepare("INSERT INTO cart (user_id, prod_name, prod_price) VALUES ($user_id, $name,$price)");
+        $stmt->bind_param("isi", $user_id, $name, $price);
+    
+        if ($stmt->execute() === true) {
+          // Handle successful addition
+          echo "Product added to cart!";
         } else {
-            echo "ERROR: Could not execute $sql. " . $this->db->error;
+          // Handle error
+          echo "Error adding product to cart.";
+        }
+    
+        $stmt->close();
         }
     }
 
-    // Edit product quantity in the cart
-    // function editCart($cart_id, $quantity)
-    // {
-    //     $sql = "UPDATE cart SET quantity='$quantity' WHERE id='$cart_id'";
+      
+      
+    
 
-    //     if ($this->db->query($sql) === true) {
-    //         echo "Cart item updated successfully.";
-    //     } else {
-    //         echo "ERROR: Could not execute $sql. " . $this->db->error;
-    //     }
-    // }
 
-    // Delete product from cart
-    function deleteFromCart($cart_id)
-    {
-        $sql = "DELETE FROM cart WHERE id='$cart_id'";
-
-        if ($this->db->query($sql) === true) {
-            echo "Product removed from the cart successfully.";
-        } else {
-            echo "ERROR: Could not execute $sql. " . $this->db->error;
-        }
-    }
-}
 ?>

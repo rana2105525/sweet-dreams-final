@@ -15,7 +15,6 @@ class ViewCollections extends View{
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
     $summerProducts = $this->model->collectionsSummer(); // Assuming this retrieves products
-
     foreach ($summerProducts as $summerCollection) {
         $str .= '       
         <div class="prod">
@@ -40,7 +39,14 @@ class ViewCollections extends View{
                             <div class="product-price">' . $summerCollection['price'] . 'LE</div>
                             <div class="product-links">
                                 <a href=""><i class="fa fa-heart"></i></a>
-                                <a href=""><i class="fa fa-shopping-cart"></i></a>
+                                <form method="post" action="cart.php">
+                                
+                                <input type="hidden" name="user_id" value="' . $_SESSION['id']. '">
+                                <input type="hidden" name="prod_name" value="' . $summerCollection['title'] . '">
+                                <input type="hidden" name="prod_price value="' . $summerCollection['price'].'">
+                                <button type="submit" name="add_to_cart">Buy</button>
+
+                              </form>
                                 </div>
                                 </div>
                             </div>
@@ -206,7 +212,7 @@ public function nav()
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='profile.php'>$profile</a></li>
     <li><a href='#'>Wishlist</a></li>
-    <li><a href='#'>Cart</a></li>
+    <li><a href='cart.php'>Cart</a></li>
 		<a href='nav.php?action=logout'>Logout </a><br><br>
     <div class='wrap'>
     <div class='search'>

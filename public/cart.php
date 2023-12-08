@@ -17,7 +17,6 @@ if($isLogged)
     echo $view->nav();
     echo "<h1>cart</h1>";
     echo $view->side();
-    echo $view->showcart();
     echo $view->footer();
 }
 else
@@ -28,7 +27,6 @@ else
     echo $view->nav1();
     echo "<h1>cart</h1>";
     echo $view->side();
-    echo $view->showcart(); 
     echo $view->footer();
 }
 

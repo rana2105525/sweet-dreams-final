@@ -1,16 +1,15 @@
 <?php
-session_start();
 require_once(__ROOT__ . "controller/Controller.php");
 
-class CartController extends controller {
+class CartController extends Controller {
 
-        public function addToCart($user_id, $product_id, $quantity) {
-            $this->model->addToCart($user_id, $product_id, $quantity);
-            // Add any additional logic or redirection after adding to the cart
-        }
-    
-        public function deleteCart($cart_id) {
-            $this->model->deleteFromCart($cart_id);
-            // Add any additional logic or redirection after adding to the cart
-        }
+  public function addToCart() {
+    if (isset($_POST['add_to_cart'])) {
+      $user_id = $_SESSION['id'];
+      $name = $_POST['prod_name'];
+      $price = $_POST['prod_price'];
+
+      $this->model->addToCart($user_id, $name, $price);
     }
+  }
+}

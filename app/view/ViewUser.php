@@ -139,7 +139,7 @@ public function nav()
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='profile.php'>$profile</a></li>
     <li><a href='#'>Wishlist</a></li>
-    <li><a href='#'>Cart</a></li>
+    <li><a href='cart.php'>Cart</a></li>
 		<a href='nav.php?action=logout'>Logout </a><br><br>
     <div class='wrap'>
     <div class='search'>
