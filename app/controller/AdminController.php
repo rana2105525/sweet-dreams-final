@@ -1,6 +1,11 @@
 <?php
 require_once(__ROOT__ . "controller/Controller.php");
 class AdminController extends Controller{
+
+	public function login($email, $password) {
+        return $this->model->adminLogin($email, $password);
+    }
+
 	public function insert() {
 		$name = $_REQUEST['UserName'];
 		$email = $_REQUEST['Email'];
