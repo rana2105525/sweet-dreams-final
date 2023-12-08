@@ -1,4 +1,5 @@
 <?php
+use GuzzleHttp\Psr7\Request;
 require_once(__ROOT__ . "controller/Controller.php");
 
  
@@ -9,6 +10,8 @@ public $nameErr ="";
  public $passwordErr = "";
 public  $birthErr = '';
 
+public $confirmErr="";
+
   public function insert()
   {
     $name = $_REQUEST['name'];
@@ -17,7 +20,7 @@ public  $birthErr = '';
     $password = $_REQUEST['password'];
     $birth = $_REQUEST["birth"];
     $gender = $_REQUEST["gender"];
-  
+    $confirm = $_REQUEST["confirm"];
     // Validate inputs
     
     function isValidPhoneNumber($phoneNumber, $desiredLength) {
@@ -80,13 +83,20 @@ function isDateValid($date)
       }
     }
     
-  
+    if (empty(["confirm"])) {
+      $this->confirmErr = "Confirm is required";
+    } else {
+      if ($_POST["password"] !== $_POST["confirm"]) {
+        $this->confirmErr = "Passwords don't match";
+      }
+    }
   
     if (empty($password)) {
       $this->passwordErr = "Password is required";
-    } elseif (!isStrongPassword($_POST["password"])) {
-      $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
     }
+    // } elseif (!isStrongPassword($_POST["password"])) {
+    //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
+    // }
     
     if (empty($birth)) {
       $this->birthErr = "Enter your birth date";
@@ -97,7 +107,7 @@ function isDateValid($date)
     }
   
   
-    if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr) && empty($this->birthErr)) {
+    if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr) && empty($this->birthErr)&&empty($this->confirmErr)) {
       
       $this->model->insertUser($name, $email, $phone, $password, $birth, $gender);
       
@@ -110,12 +120,17 @@ function isDateValid($date)
         'emailErr' => $this->emailErr,
         'phoneErr' => $this->phoneErr,
         'passwordErr' => $this->passwordErr,
-        'birthErr' => $this->birthErr
+        'birthErr' => $this->birthErr,
+        'confirmErr'=>$this->confirmErr
       ];
       return $errors;
     }
   
-
+    public function login(){
+      $email=$_REQUEST['email'];
+    $password=$_REQUEST['password'];
+    $this->model->loginUser($email,$password);
+    }
 
 	public function edit() {
 		$name = $_REQUEST['name'];

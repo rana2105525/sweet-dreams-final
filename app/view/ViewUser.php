@@ -84,7 +84,7 @@ class ViewUser extends View{
     $str='
     <link rel="stylesheet" type="text/css" href="../public/css/User/login.css">
 
-        <form action="login.php" method="post">
+        <form action="login.php?action=login" method="post">
         <div class="input-box">
         <label>Email</label>
         <input type="text" name="email" placeholder="username@email.com" required />

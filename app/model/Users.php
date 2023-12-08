@@ -51,7 +51,22 @@ class Users extends Model {
     }
     
   
-  
+    function loginUser($email,$password){
+      $sql = "SELECT * FROM reg where email='$email'";
+      $dbh = new Dbh();
+      $result = $dbh->query($sql);
+      if ($result->num_rows == 1){
+          $row = $dbh->fetchRow();
+          if(password_verify($password, $row["password"])){
+              $_SESSION["id"]=$row["id"];
+              $_SESSION["email"]=$row["email"];
+              header("Location:index.php");
+          }
+      }
+      else{
+        echo "error";
+      }
+    }
 
     
 }

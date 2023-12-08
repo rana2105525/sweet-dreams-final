@@ -8,22 +8,10 @@ $model = new Users();
 $controller = new UsersController($model);
 $view = new ViewUser($controller, $model);
 
-
-if(isset($_POST['login']))	{
-    $email=$_REQUEST["email"];
-    $password=$_REQUEST["password"];
-    $sql = "SELECT * FROM reg where email='$email'";
-    $dbh = new Dbh();
-    $result = $dbh->query($sql);
-    if ($result->num_rows == 1){
-        $row = $dbh->fetchRow();
-        if(password_verify($password, $row["password"])){
-            $_SESSION["id"]=$row["id"];
-            $_SESSION["email"]=$row["email"];
-            header("Location:index.php");
-        }
-    }
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+	$controller->{$_GET['action']}();
 }
+
 ?>
 <!DOCTYPE html>
 <html>
