@@ -91,5 +91,6 @@ body .form-container{
   body button:hover {
     background:#3AB9C0;
   }
+  .error {color:#FF0000;}
  
 

@@ -23,7 +23,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <body>
     <h1>Edit profile<h1>
     <section class="container">
-    <?php echo $view->editForm(); ?>
+    <?php echo $view->editForm($controller->getErrors()); ?>
     </section>
     <?php echo $view->footer();?>
 

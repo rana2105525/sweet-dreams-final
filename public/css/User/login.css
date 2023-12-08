@@ -98,3 +98,4 @@ body .input-box span{
 body .input-box .error span{
   color:red;
 }
+.error {color:#FF0000;}

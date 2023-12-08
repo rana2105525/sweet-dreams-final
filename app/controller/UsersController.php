@@ -1,5 +1,5 @@
 <?php
-use GuzzleHttp\Psr7\Request;
+
 require_once(__ROOT__ . "controller/Controller.php");
 
  
@@ -9,8 +9,9 @@ public $nameErr ="";
   public $phoneErr = "";
  public $passwordErr = "";
 public  $birthErr = '';
-
 public $confirmErr="";
+
+
 
   public function insert()
   {
@@ -127,17 +128,51 @@ function isDateValid($date)
     }
   
     public function login(){
+      
       $email=$_REQUEST['email'];
     $password=$_REQUEST['password'];
+
+    if (empty($email)) {
+      $this->emailErr = "Email is required";
+    } else {
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $this->emailErr = "Invalid email format";
+      }
+    }
+  
+    if (empty($password)) {
+      $this->passwordErr = "Password is required";
+    }
+    if (empty($this->emailErr)&&empty($this->passwordErr) ) {
     $this->model->loginUser($email,$password);
+    }
     }
 
 	public function edit() {
 		$name = $_REQUEST['name'];
     	$email = $_REQUEST['email'];
+
+      if (empty($name)) {
+        $this->nameErr = "Name is required";
+      } else {
+        if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+          $this->nameErr = "Only letters and white space allowed";
+        }
+      }
+
+  if (empty($email)) {
+      $this->emailErr = "Email is required";
+    } else {
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $this->emailErr = "Invalid email format";
+      }
+    }
+
+  if (empty($this->emailErr)&&empty($this->nameErr) ) {
 		$this->model->editUser($name,$email);
 	}
-
+  }
+  
 	public function delete(){
 		$this->model->deleteUser();
 	}

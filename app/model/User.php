@@ -97,7 +97,6 @@ class User extends Model {
   function editUser($name, $email){
     $sql = "update reg set name='$name',email='$email' where id=$this->id;";
       if($this->db->query($sql) === true){
-          echo "updated successfully.";
           $this->readUser($this->id);
       } else{
           echo "ERROR: Could not able to execute";

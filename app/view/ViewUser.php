@@ -79,7 +79,7 @@ class ViewUser extends View{
     return $str;
 }
 
-  public function loginForm() {
+  public function loginForm($errors = []) {
     
     $str='
     <link rel="stylesheet" type="text/css" href="../public/css/User/login.css">
@@ -88,7 +88,7 @@ class ViewUser extends View{
         <div class="input-box">
         <label>Email</label>
         <input type="text" name="email" placeholder="username@email.com" required />
-         <span class="error" style="color:red"><?php echo $emailerr?></span> 
+        <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
         <br>
         <span>If you do not have an account please <a href="reg.php">SignUp</a><span>
     </div>
@@ -96,6 +96,7 @@ class ViewUser extends View{
     <div class="input-box">
         <label>Password</label>
         <input type="password" name="password" placeholder="Enter your password" required />
+        <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
         <a href="#">Forget password?</a>
     </div>
 
@@ -105,7 +106,7 @@ class ViewUser extends View{
 
 
 }
-public function editForm() {
+public function editForm($errors = []) {
   $name = $this->model->getName();
   $email = $this->model->getEmail();
   $str = '
@@ -114,12 +115,13 @@ public function editForm() {
       <div class="input-box">
         <label><h6>Fullname<h6></label>
         <input type="text" value="' . $name . '" name="name"><br>
-        <span class="error"><?php echo $nameErr;?></span>
+        <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
+        
       </div>
       <div class="input-box">
         <label><h6>Email<h6></label>
         <input type="text" value="' . $email . '" name="email"><br>
-        <span class="error"><?php echo $emailErr;?></span>
+        <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
       </div>
       <button type="submit" name="edit" value="submit" class="button">save</button>
     </form>

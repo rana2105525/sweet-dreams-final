@@ -21,7 +21,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <body>
     <section class="container">
     <a href="index.php"><img src="images/sweet dreams logo-01.png" alt="logo"></a>
-    <?php echo $view->loginForm(); ?>
+    <?php echo $view->loginForm($controller->getErrors()); ?>
     </section>
 </body>
 </html>
