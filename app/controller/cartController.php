@@ -10,7 +10,7 @@ class CartController extends Controller {
         $price = $_REQUEST['prod_price'];
 
         $this->model->addToCart($user_id, $name, $price);
-        echo "Product added to cart!";
+      
     } else {
         echo "Error: Missing or invalid data.";
         // You might also want to log this error for further investigation
