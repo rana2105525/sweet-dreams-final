@@ -6,11 +6,11 @@ require_once(__ROOT__ . "controller/AdminController.php");
 class ViewAdmin extends View
 {
     public function output(){
-		// $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
-		// $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
-		$str="<a href='login.php?action=login'>Login</a><br><br>";
-		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
-		return $str;
+		// // $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
+		// // $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
+		// $str="<a href='login.php?action=login'>Login</a><br><br>";
+		// // $str.="<a href='profile.php?action=delete'>Delete Account </a>";
+		// return $str;
 	}
     function addAdminForm()
     {
@@ -110,7 +110,7 @@ class ViewAdmin extends View
     
       return $str;
     } 
-function displayAdmin()
+function displayAdmin($admin)
 {
 $str='<!DOCTYPE html>
 <html lang="en">
@@ -119,7 +119,7 @@ $str='<!DOCTYPE html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../../../public/css/admin/viewAdmin.css" />
+    <link rel="stylesheet" href="../../../public/css/Admin/viewAdmin.css" />
     <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png" type="image/icon type" />
 </head>
 
@@ -131,9 +131,10 @@ $str='<!DOCTYPE html>
       
         <div id="title"><h2>Admin Profile</h2></div>
         <div class="admin-details">
+        '.$this->model->displayAdminInfo($admin).'
 
-        <button id ="edit"><a href="editAdmin.php">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.php">Delete Account</button>
+        <button id ="edit"><a href="editAdmin.php?edit_id='.$this->model->getID().'">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.php?delete_id='.$this->model->getID().'">Delete Account</button>
 
 </div>
     </section>
@@ -144,7 +145,17 @@ $str='<!DOCTYPE html>
 </html>';
     return $str;
 }
-    
+public function displayAllAdmins()
+{
+$str='<tr>
+<td class ="cell"> #'.$this->model->getID().'</td>
+<td class ="cell">'.$this->model->getUserName().'</td>
+<td class ="cell">'.$this->model->getEmail().'</td>
+<td class ="cell">'.$this->model->getPhone().'</td>
+<td class ="cell">'.$this->model->getGender().'</td>
+ </tr>';
+     return $str;
+}     
 public function Adminsidebar() // partials edited soon
 {
       $str = '
