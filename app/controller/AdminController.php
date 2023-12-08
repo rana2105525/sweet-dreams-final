@@ -29,6 +29,14 @@ class AdminController extends Controller{
 	public function delete(){
 		$this->model->deleteAdmin();
 	}
+
+	public function getAllAdmins() {
+        return $this->model->getAllAdmins();
+    }
+
+    public function displayAdminInfo($admin) {
+        return $this->model->displayAdminInfo($admin);
+    }
 }
 
 
