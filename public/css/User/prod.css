@@ -513,6 +513,7 @@ h1{
 .product-btn-group{
     display: flex;
     gap: 15px;
+    border: none;
 }
 .size-layout a{
   text-decoration: none;
@@ -524,32 +525,96 @@ h1{
   color:#F27144;
   cursor: pointer;
 }
-.product-btn-group .button{
+
+.product-btn-group .form  .button{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 4px;
     padding: 10px 24px;
     font-size: 16px;
+    border:none;
+    background-color: none;
+    background-image: none;
+    background:none;
     font-weight: 500;
 }
+.product-btn-group .form {
+  display:flex;
+  flex-direction:row;
+}
 
-.product-btn-group .heart{
-    color: var(--grey);
-    cursor: pointer;
+.product-btn-group .button {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
 }
-.product-btn-group .heart i{
-    font-size: 20px;
+
+.product-btn-group .button i {
+  margin-right: 5px;
 }
-.product-btn-group .heart a{
-    text-decoration:none;
-    color:var(--grey);
+
+.product-btn-group .button:hover {
+  color:#F27144;
+}
+
+.product-btn-group .button:hover i {
+  color:#F27144;
+}
+
+.product-btn-group .button:hover .no-style button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+
+  color: #000;
+}
+
+.product-btn-group .button:hover .no-style button:hover {
+  color:#F27144;
+  font-size: 16px;
+
+}
+
+.product-btn-group .button:hover .no-style button:hover i {
+  color: #000;
+  font-size: 16px;
+
+}
+
+.product-btn-group .button.no-style button {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  padding: 0;
+  font-size: 16px;
+
+}
+
+.product-btn-group .button.no-style button:hover {
+  color:#F27144;
+  font-size: 16px;
+
+}
+
+.product-btn-group .button.no-style button:hover i {
+  color: #000;
+  font-size: 16px;
+
 }
 .product-btn-group .heart a:hover{
   color:#F27144;
+  font-size: 16px;
+
 }
 .product-btn-group .heart:hover{
     color: #F27144;
+    font-size: 16px;
+
 }
 
 
@@ -601,7 +666,7 @@ h1{
     }
     .product-btn-group{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
     }
 }

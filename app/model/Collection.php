@@ -134,7 +134,7 @@ function addToCart($user_id, $name, $price) {
   // Execute the statement
   if ($stmt->execute() === true) {
       // Handle successful addition
-      echo "Product added to cart!";
+return true;
   } else {
       // Handle error
       echo "Error adding product to cart.";
