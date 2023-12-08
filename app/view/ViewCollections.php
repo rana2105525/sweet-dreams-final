@@ -10,56 +10,42 @@ class ViewCollections extends View{
   }
   public function collectionsSummer() {
     $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
-            
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
     $summerProducts = $this->model->collectionsSummer(); // Assuming this retrieves products
+
     foreach ($summerProducts as $summerCollection) {
-        $str .= '       
+        $str .= '
         <div class="prod">
-        <div class="product-card">
-
-		
-		<div class="product-tumb">
-        <form method="post" action="prod.php">
-        
-                            <input type="hidden" name="product_id" value="' . $summerCollection['id'] . '">
-                            <button type="submit" name="add_to_description">
-                            <img src="../public/images' . $summerCollection['prod_image'] . '">
-
-                            </button>
-                        </form>
-                    </div>
-                    <div class="product-details">
-                        <span class="product-catagory">' . $summerCollection['category'] . '</span>
-                        <h4>' . $summerCollection['title'] . '</h4>
-                        <p>' . $summerCollection['description'] . '</p>
-                        <div class="product-bottom-details">
-                            <div class="product-price">' . $summerCollection['price'] . 'LE</div>
-                            <div class="product-links">
-                                <a href=""><i class="fa fa-heart"></i></a>
-                                <form method="post" action="cart.php">
-                                
-                                <input type="hidden" name="user_id" value="' . $_SESSION['id']. '">
-                                <input type="hidden" name="prod_name" value="' . $summerCollection['title'] . '">
-                                <input type="hidden" name="prod_price value="' . $summerCollection['price'].'">
-                                <button type="submit" name="add_to_cart">Buy</button>
-
-                              </form>
-                                </div>
-                                </div>
-                            </div>
+            <div class="product-card">
+                <div class="product-tumb">
+                    <form method="post" action="prod.php">
+                        <input type="hidden" name="product_id" value="' . $summerCollection['id'] . '">
+                        <button type="submit" name="add_to_description">
+                            <img src="../public/images/' . $summerCollection['prod_image'] . '">
+                        </button>
+                    </form>
+                </div>
+                <div class="product-details">
+                    <span class="product-catagory">' . $summerCollection['category'] . '</span>
+                    <h4>' . $summerCollection['title'] . '</h4>
+                    <p>' . $summerCollection['description'] . '</p>
+                    <div class="product-bottom-details">
+                        <div class="product-price">' . $summerCollection['price'] . 'LE</div>
                     
+
                             
                         </div>
-                                </div>   ';
+                    </div>
+                </div>
+            </div>
+        </div>';
     }
-
-    // $str .= '</div>';
 
     return $str;
 }
+
 public function collectionsWinter() {
   $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
                
@@ -352,7 +338,9 @@ public function getDesc()
 
                     <div class="product-btn-group">
                         <!-- <div class="button buy-now"><i class="bx bxs-zap" ></i> Buy Now</div> -->
-                        <div class="button heart"><i class="bx bxs-zap" ></i><a href="cart.php"> Buy now</a></div>
+                        <form method="post">
+                        <button type="submit" value="'.$this->model->addToCart($_SESSION['id'],$prodDesc['title'],$prodDesc['price']).'">Buy</button>
+                        <!-- <div class="button heart"><i class="bx bxs-zap" ></i><a href="cart.php"> Buy now</a></div>-->
                         <div class="button heart"><i class="bx bxs-heart" ></i> Add to Wishlist</div>
                     </div>
                 </div>

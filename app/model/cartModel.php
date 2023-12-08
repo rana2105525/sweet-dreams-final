@@ -50,27 +50,31 @@ class CartModel extends Model
     {
         $this->price = $price;
     }
+
     // Add product to cart
     function addToCart($user_id, $name, $price) {
-        // Prepare and execute SQL statement
-        $stmt = $this->db->prepare("INSERT INTO cart (user_id, prod_name, prod_price) VALUES ($user_id, $name,$price)");
-        $stmt->bind_param("isi", $user_id, $name, $price);
-    
-        if ($stmt->execute() === true) {
+      // Prepare and execute SQL statement with placeholders
+      $stmt = $this->db->prepare("INSERT INTO cart (user_id, prod_name, prod_price) VALUES (?, ?, ?)");
+      
+      // Bind parameters to the prepared statement
+      $stmt->bind_param("isd", $user_id, $name, $price);
+  
+      // Execute the statement
+      if ($stmt->execute() === true) {
           // Handle successful addition
           echo "Product added to cart!";
-        } else {
+      } else {
           // Handle error
           echo "Error adding product to cart.";
-        }
-    
-        $stmt->close();
-        }
-    }
-
-      
-      
-    
-
-
+      }
+  
+      $stmt->close();
+  }
+}
 ?>
+      
+      
+    
+
+
+
