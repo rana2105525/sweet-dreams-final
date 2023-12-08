@@ -110,10 +110,43 @@ class ViewAdmin extends View
     
       return $str;
     } 
+function displayAdmin()
+{
+$str='<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sweet Dreams</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../../../public/css/admin/viewAdmin.css" />
+    <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png" type="image/icon type" />
+</head>
 
+<body>
+<div class="component">
+<div class="content">
+  <section class="container rows">
+    <div class="form">
+      
+        <div id="title"><h2>Admin Profile</h2></div>
+        <div class="admin-details">
+
+        <button id ="edit"><a href="editAdmin.php">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.php">Delete Account</button>
+
+</div>
+    </section>
+</div>
+</div>
+
+</body>
+</html>';
+    return $str;
+}
     
-    public function Adminsidebar()
-    {
+public function Adminsidebar() // partials edited soon
+{
       $str = '
         <a href="../index.php"><img class="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo"></a>
         <a href="../index.php">Home</a>
@@ -127,7 +160,7 @@ class ViewAdmin extends View
         <a href="../admin/users.php">Users</a>';
       
       return $str;
-    }
+}
 
 
        
