@@ -44,7 +44,7 @@ $view=new ViewAdmin($controller,$model);
         <div class="admin-details">
           <?php
             
-            echo $view->displayAdminInfo($model);
+            //echo $view->displayAdminInfo($model);
           ?>
         </div>
         <button id ="edit"><a href="editAdmin.php">Edit Profile</a></button>
