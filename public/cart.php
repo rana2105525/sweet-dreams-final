@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/cartModel.php");
 require_once(__ROOT__ . "controller/cartController.php");
@@ -17,6 +21,7 @@ if($isLogged)
     echo $view->nav();
     echo "<h1>cart</h1>";
     echo $view->side();
+    echo $view->showcart();
     echo $view->footer();
 }
 else
@@ -27,6 +32,7 @@ else
     echo $view->nav1();
     echo "<h1>cart</h1>";
     echo $view->side();
+     echo $view->showcart();
     echo $view->footer();
 }
 

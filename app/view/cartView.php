@@ -2,51 +2,50 @@
 
 require_once(__ROOT__ . "view/View.php");
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 class cartView extends View{
     public function output(){
 
     }
 
-    public function showcart() {
-        $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
-                
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
-    
-        $cartProducts = $this->model->showInCart(); // Assuming this retrieves products
-    
-        foreach ($cartProducts as $cartProducts) {
-            $str .= '       
-            <div class="prod">
+    public function showCart()
+{
+    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
+
+    // Assuming the user ID is stored in a session variable
+    $user_id = $_SESSION['id'];
+
+    $cartProducts = $this->model->showInCart($user_id);
+
+    foreach ($cartProducts as $cartProduct) {
+        $str .= '
+        <div class="prod">
             <div class="product-card">
-    
-            
-            <div class="product-tumb">
-            
-                                <input type="hidden" name="cart_id" value="' . $cartProducts['id'] . '">
-                                
-                                <img src="../public/images' . $cartProducts['prod_image'] . '">
-    
-            
-                        </div>
-                        <div class="product-details">
-                           
-                            <h4>' . $cartProducts['name'] . '</h4>
-                            <h4>'  .$this->model->getquantity(). '</h4>
-                            <div class="product-bottom-details">
-                                <div class="product-price">' . $cartProducts['price'] . 'LE</div>
-                               
-                        
-                                
-                            </div>
-                                    </div>   ';
-        }
-    
-        // $str .= '</div>';
-    
-        return $str;
+                <div class="product-tumb">
+                    <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
+                    <img src="../public/images' . $cartProduct['image'] . '">
+                </div>
+                <div class="product-details">
+                    <h4>' . $cartProduct['name'] . '</h4>
+                    <h4>' . $cartProduct['quantity'] . '</h4>
+                    <div class="product-bottom-details">
+                        <div class="product-price">' . $cartProduct['price'] . 'LE</div>
+                    </div>
+                </div>
+            </div>
+        </div>';
     }
+
+    return $str;
+}
+
+
+    
     public function footer(){
         $str='
       <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">

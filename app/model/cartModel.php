@@ -6,8 +6,8 @@ require_once(__ROOT__ ."db/Dbh.php");
 class CartModel extends Model
 {
     private $id;
-    private $name;
-    private $price;
+    private $prod_id;
+    private $quantity;
     private $user_id;
     public function __construct() {
         $this->db = new Dbh();
@@ -50,31 +50,35 @@ class CartModel extends Model
     {
         $this->price = $price;
     }
+    public function showInCart($user_id) {
+        $sql = "SELECT products.title AS name, products.price as price, cart2.quantity as quantity, products.prod_image as image, cart2.id as id
+                FROM cart2
+                INNER JOIN products ON products.id = cart2.prod_id
+                INNER JOIN reg ON reg.id = cart2.user_id
+                WHERE cart2.user_id = ?";
 
-    // Add product to cart
-    function addToCart($user_id, $name, $price) {
-      // Prepare and execute SQL statement with placeholders
-      $stmt = $this->db->prepare("INSERT INTO cart (user_id, prod_name, prod_price) VALUES (?, ?, ?)");
-      
-      // Bind parameters to the prepared statement
-      $stmt->bind_param("isd", $user_id, $name, $price);
-  
-      // Execute the statement
-      if ($stmt->execute() === true) {
-          // Handle successful addition
-          echo "Product added to cart!";
-      } else {
-          // Handle error
-          echo "Error adding product to cart.";
-      }
-  
-      $stmt->close();
-  }
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $cartItems = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+
+        return $cartItems;
+    }
+
+    public function addToCart($user_id, $prod_id, $quantity)
+    {
+        $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id, quantity) VALUES (?, ?, ?)");
+        $stmt->bind_param("iii", $user_id, $prod_id, $quantity);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result;
+    }
+
+   
 }
 ?>
-      
-      
-    
-
-
-

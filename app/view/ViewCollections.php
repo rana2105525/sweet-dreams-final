@@ -337,11 +337,14 @@ public function getDesc()
                     <span class="divider"></span>
 
                     <div class="product-btn-group">
-    <form method="post">
-        <div class="button heart no-style">
-            <i class="bx bxs-zap"></i>
-            <button type="submit" value="'.$this->model->addToCart($_SESSION['id'],$prodDesc['title'],$prodDesc['price']).'"> Buy now</button>
-        </div> </form>
+                    <form method="post" action="cart.php">
+                    <div class="button heart no-style">
+                        <i class="bx bxs-zap"></i>
+                        <button type="submit" value="'.$this->model->addToCart($_SESSION['id'],$prodDesc['id'],1).'"> Buy now</button>
+                        </div> </form>
+                
+                    </div>
+                </form>
         <div class="button heart">
             <i class="bx bxs-heart"></i> 
             Add to Wishlist
