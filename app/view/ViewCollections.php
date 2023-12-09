@@ -74,10 +74,7 @@ public function collectionsWinter() {
                       <p>' . $WinterCollection['description'] . '</p>
                       <div class="product-bottom-details">
                           <div class="product-price">' . $WinterCollection['price'] . 'LE</div>
-                          <div class="product-links">
-                              <a href=""><i class="fa fa-heart"></i></a>
-                              <a href=""><i class="fa fa-shopping-cart"></i></a>
-                              </div>
+                          
                               </div>
                           </div>
                   
@@ -115,10 +112,7 @@ public function collectionsBundleAndSave() {
                       <p>' . $BundleCollection['description'] . '</p>
                       <div class="product-bottom-details">
                           <div class="product-price">' . $BundleCollection['price'] . 'LE</div>
-                          <div class="product-links">
-                              <a href=""><i class="fa fa-heart"></i></a>
-                              <a href=""><i class="fa fa-shopping-cart"></i></a>
-                              </div>
+                          
                               </div>
                           </div>
                   
@@ -342,13 +336,14 @@ public function getDesc()
                         <i class="bx bxs-zap"></i>
                         <button type="submit" value="'.$this->model->addToCart($_SESSION['id'],$prodDesc['id'],1).'"> Buy now</button>
                         </div> </form>
-                
-                    </div>
-                </form>
-        <div class="button heart">
+                      <div class="button heart no-style">
             <i class="bx bxs-heart"></i> 
-            Add to Wishlist
-        </div>
+            <button type="submit"> Add to Wishlist</button>
+               </div>
+                    </div>
+              
+                </form>
+        
    
 </div>
                 </div>

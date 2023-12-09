@@ -38,10 +38,11 @@ class cartView extends View{
                     </div>
                 </div>
             </div>
-        </div>';
+        </div>
+       '
+        ;
     }
 
-    return $str;
 }
 
 
