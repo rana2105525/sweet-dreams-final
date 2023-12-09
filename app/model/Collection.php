@@ -131,7 +131,7 @@ public function addToCart($user_id, $prod_id, $quantity)
         $stmt->bind_param("iii", $user_id, $prod_id, $quantity);
 
         if ($stmt->execute() === true) {
-            echo "Product added to cart!";
+          
         } else {
             echo "Error adding product to cart: " . $stmt->error;
         }

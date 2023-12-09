@@ -52,12 +52,12 @@ class Blog extends Model{
       }
       function blog(){
         $sql = "SELECT * FROM blog";
-        $result = $this->db->query($sql); // Assuming $this->db is your database connection object
+        $result = $this->db->query($sql); 
         
         if($result !== false){
-            return $result->fetch_all(MYSQLI_ASSOC); // Returning all reviews as an associative array
+            return $result->fetch_all(MYSQLI_ASSOC); 
         } else {
-            return []; // Return an empty array if query fails or no reviews found
+            return []; 
         }
     }
     

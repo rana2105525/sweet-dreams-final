@@ -3,9 +3,33 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
-
+?>
+<script src="public/scripts/search.js"></script>
+<?php
 
 class ViewUser extends View{	
+  public function nav1()
+{
+  
+ echo"
+  <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
+  <div class='wrapper1'>
+    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
+    <li><a href='login.php'>Login</a></li>
+    <div class='wrap'>
+    <div class='search'>
+    <input type='text' class='searchTerm'id='search_input' placeholder='What are you looking for?'></br>
+    <div id='search_results'></div>
+     <button type='submit' class='searchButton'>
+   <i class='fa fa-search'></i>
+     </button>
+   </div>
+  </div>
+    </ul>
+  </div>
+    ";
+   
+  }
 	public function output(){
 		// $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
 		// $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
@@ -155,26 +179,8 @@ public function nav()
   
   
 }
-public function nav1()
-{
- echo"
-  <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
-  <div class='wrapper1'>
-    <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
-    <li><a href='login.php'>Login</a></li>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
-  </div>
-    ";
-   
-  }
+
+
 
 
 public function side()
