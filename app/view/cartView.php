@@ -31,19 +31,36 @@ class cartView extends View{
                     <img src="../public/images' . $cartProduct['image'] . '">
                 </div>
                 <div class="product-details">
-                    <h4>' . $cartProduct['name'] . '</h4>
-                    <h4>' . $cartProduct['quantity'] . '</h4>
+                    <h4>Title : ' . $cartProduct['name'] . '</h4>
+                    <h4>quantity : ' . $cartProduct['quantity'] . '</h4>
                     <div class="product-bottom-details">
-                        <div class="product-price">' . $cartProduct['price'] . 'LE</div>
+                        <div class="product-price">Price : ' . $cartProduct['price'] . 'LE</div>
                     </div>
                 </div>
             </div>
-        </div>
-       '
-        ;
+        </div>';
     }
 
+    return $str;
 }
+
+    public function check_btn()
+    {
+      // $user_id=$_SESSION['id'];
+      // $address=$this->model->getAddress();
+      // $card_num=$this->model->getCard_num();
+      // $cvc=$this->model->getCVC();
+      // $exp_date=$this->model->getExpiry_date();
+      $str='
+      <form method="post" action="checkout.php">
+          <div class="button heart no-style">
+              <i class="bx bxs-zap"></i>
+                  <a href="checkout.php"><button type="submit">Proceed to checkout</button></a>
+          </div> 
+      </form>
+      ';
+      return $str;
+    }
 
 
     

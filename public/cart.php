@@ -22,18 +22,12 @@ if($isLogged)
     echo "<h1>cart</h1>";
     echo $view->side();
     echo $view->showcart();
+    echo $view->check_btn();
     echo $view->footer();
 }
 else
 {
-    ?>
-    <div class=title>
-<?php
-    echo $view->nav1();
-    echo "<h1>cart</h1>";
-    echo $view->side();
-     echo $view->showcart();
-    echo $view->footer();
+echo "sorry you can't access this page please login";
 }
 
 ?>
