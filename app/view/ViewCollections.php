@@ -256,6 +256,12 @@ public function getDesc()
 {
 
   $prodDesc=$this->model->readDesc();
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    // Placeholder: Add your code to process form submission and add to the database
+    // Replace the following line with your actual logic
+    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
+}
         $str='
         <link rel="stylesheet" href="../public/css/User/prod.css">
      <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
@@ -331,14 +337,14 @@ public function getDesc()
                     <span class="divider"></span>
 
                     <div class="product-btn-group">
-                    <form method="post" action="cart.php">
+                    <form method="post" >
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
-                        <button type="submit" value="'.$this->model->addToCart($_SESSION['id'],$prodDesc['id'],1).'"> Buy now</button>
+                        <button type="submit" name="submit"> Buy now</button>
                         </div> </form>
                       <div class="button heart no-style">
             <i class="bx bxs-heart"></i> 
-            <button type="submit"> Add to Wishlist</button>
+            <button type="submit" > Add to Wishlist</button>
                </div>
                     </div>
               
