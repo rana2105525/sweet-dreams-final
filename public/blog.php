@@ -19,6 +19,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	<head>
     <meta charset="UTF-8">
     <title>Blog</title>
+    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 	</head>
 <body>
 <div class=title>
