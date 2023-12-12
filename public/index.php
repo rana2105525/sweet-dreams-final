@@ -49,7 +49,6 @@ else{
 	<head>
     <meta charset="UTF-8">
     <title>Home | sweet dreams</title>
-    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
     
 	</head>
   <body>
