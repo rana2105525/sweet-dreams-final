@@ -29,7 +29,7 @@ echo "<h1>Customers reviews</h1>";
 </div>
 
 <?php echo $view->review(); ?>
-<?php echo $view->footer();?>
+ <?php echo $view->footer();?>
 
 
 
