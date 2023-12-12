@@ -1,6 +1,6 @@
 <?php 
 require_once(__ROOT__ . "model/Model.php");
-class admins extends Model
+class Admin extends Model
 {
 private $ID;
 private $UserName;
@@ -68,57 +68,64 @@ public function getGender() {
     return $this->Gender;
 }
 
-function readAdmin($id){
-    $sql = "SELECT * FROM admins where id=".$id;
-    $db = $this->connect();
-    $result = $db->query($sql);
-    if ($result->num_rows == 1){
-      $row = $db->fetchRow();
-      $this->UserName = $row["UserName"];
-		  $_SESSION["UserName"]=$row["UserName"];
-      $this->Email=$row["Email"];
-      $this->Phone=$row["Phone"];
-	  $this->Password=$row["Password"];
-	  $this->Gender = $row["Gender"];
+function readAdmin($id) {
+    $sql = "SELECT * FROM admins WHERE id = $id";
+    $result = $this->db->query($sql);
+
+    if ($result === false) {
+        // Handle the SQL error, for example:
+        die("Error executing the query: " . $this->db->error);
     }
-    else {
-      $this->UserName = "";
-      $this->Email="";
-      $this->Phone="";
-	  $this->Password="";
-	  $this->Gender = "";
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $this->UserName = $row["UserName"];
+        $_SESSION["UserName"] = $row["UserName"];
+        $this->Email = $row["Email"];
+        $this->Phone = $row["Phone"];
+        $this->Password = $row["Password"];
+        $this->Gender = $row["Gender"];
+    } else {
+        $this->UserName = "";
+        $this->Email = "";
+        $this->Phone = "";
+        $this->Password = "";
+        $this->Gender = "";
     }
-  }
-  function adminLogin($email, $password)
-  {
-      $sql = "SELECT * FROM admins WHERE Email='$email'";
-      $result = $this->db->query($sql);
-      
-      if ($result && $result->num_rows === 1) {
-          $row = $result->fetch_assoc();
-          $storedPassword = $row['Password'];
-          
-          if (password_verify($password, $storedPassword)) {
-              
-              $_SESSION["UserName"] = $row['UserName'];
-              return new admins($row['ID']);
-          } else {
-              return null; 
-          }
-      } else {
-          return null; 
-      }
-  }
+}
+
+// function adminLogin($email, $password)
+// {
+//     $sql = "SELECT * FROM admins WHERE Email='$email'";
+//     $result = $this->db->query($sql);
+
+//     if ($result && $result->num_rows === 1) {
+//         $row = $result->fetch_assoc();
+//         $storedPassword = $row['Password'];
+
+//         if (password_verify($password, $storedPassword)) {
+//             $_SESSION["UserName"] = $row['UserName'];
+//             $_SESSION["ID"] = $row['ID']; // Set the ID in session
+//             header("Location: sweet-dreams-final/public/allAdmins.admins.php"); // Redirect to allAdmins.admins.php
+//             exit();
+//         } else {
+//             return null;
+//         }
+//     } else {
+//         return null;
+//     }
+// }
+
   
 
-function addAdmin($Username,$Phone,$Email,$Password,$Gender)
-{
-    $sql = "INSERT INTO admins (Username, Phone, Email, Password, Gender) VALUES ('$Username', '$Phone', '$Email', '$Password', '$Gender')";
-    if(mysqli_query($GLOBALS['conn'],$sql))
-    return true;
-    else
-    return false;
-}
+// function addAdmin($Username,$Phone,$Email,$Password,$Gender)
+// {
+//     $sql = "INSERT INTO admins (Username, Phone, Email, Password, Gender) VALUES ('$Username', '$Phone', '$Email', '$Password', '$Gender')";
+//     if(mysqli_query($GLOBALS['conn'],$sql))
+//     return true;
+//     else
+//     return false;
+// }
 
 function editAdmin($name, $phoneNumber, $email, $password, $gender)
 {
@@ -161,7 +168,7 @@ function getAllAdmins() {
     return $admins;
 }
 
-function displayAdminInfo($admin) {
+function displayAdmin($admin) {
     echo "<div class='admin-info'>";
     echo "<div class='input-box'>
               <label for='name'>Name: &nbsp;</label>

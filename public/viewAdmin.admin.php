@@ -1,12 +1,25 @@
 <?php
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/admin.php");
+require_once(__ROOT__ . "model/Admin.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
-$model=new admins($_SESSION['ID']);
-$controller=new AdminController($model);
-$view=new ViewAdmin($controller,$model);
+session_start();
+
+// Check if the session ID is set before creating an admins object
+$adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
+
+if ($adminId !== null) {
+    $model = new admin($adminId);
+    $controller = new AdminController($model);
+    $view = new ViewAdmin($controller, $model);
+} else {
+    // Handle the situation when $_SESSION["ID"] is not set or null
+    // Redirect or handle it as required
+    // For instance:
+    header("Location: /path/to/login.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +42,7 @@ $view=new ViewAdmin($controller,$model);
     //       header("Location: /sweet-dreams/views/pages/");
     //       exit();
     //   }
-      ?>
+    echo $view->Adminsidebar(); ?>
 
 <div class="component">
 <div class="sidebar rows">
@@ -44,11 +57,11 @@ $view=new ViewAdmin($controller,$model);
         <div class="admin-details">
           <?php
             
-            //echo $view->displayAdminInfo($model);
+            echo $view->displayAdmin($model);
           ?>
         </div>
-        <button id ="edit"><a href="editAdmin.php">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.php">Delete Account</button>
+        <!-- <button id ="edit"><a href="editAdmin.php">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.php">Delete Account</button> -->
 
 </div>
     </section>
