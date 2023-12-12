@@ -3,7 +3,7 @@
     <head>
         <title>Sent successfully</title>
         <meta charset="UTF-8"/>
-        <link rel="icon" href="../../public/images/sweet dreams logo-01.png" type="image/icon type" />
+        <link rel="icon" href="images/sweet dreams logo-01.png" type="image/icon type" />
     <link rel="stylesheet" href="public/css/send.css" />
     </head>
     

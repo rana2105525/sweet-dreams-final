@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -10,12 +11,13 @@ body{
 
 }
 nav{
-  position:fixed;
+  position: fixed;
   z-index: 99;
   width: 100%;
+  top:0%;
   
 }
-body .wrapper1{
+nav .wrapper1{
   position: relative;
   max-width: 1350px;
   padding: 0px 30px;
@@ -27,23 +29,23 @@ body .wrapper1{
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
 }
-body .wrapper1 .nav-items{
+nav .wrapper1 .nav-items{
     justify-content: space-between;
     display: flex;
     flex-direction: row;
 }
-body .wrapper1 .logo img {
+.wrapper1 .logo img {
     width: 110px;
     height: 80px;
 }
-body .wrapper1 .nav-links{
+.wrapper1 .nav-links{
   display: inline-flex;
 }
-body li{
+.nav-links li{
   list-style: none;
   font-size:14px;
 }
-body  a{
+.nav-links li a{
   color:#F27144;
   text-decoration: none;
   font-size: 14px;
@@ -52,12 +54,51 @@ body  a{
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-body  a:hover{
+.nav-links li a:hover{
   background:none;
   color:#3AB9C0;
 }
+  
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
 
- body .wrapper{
+.searchTerm {
+  border: none;
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  margin-left: 80%;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color:#3AB9C0;
+}
+
+.searchButton {
+  height: 36px;
+ border: none;     
+ background: #F27144;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  .wrapper{
     position: fixed;
     top: 0;
     right: -100%;
@@ -69,7 +110,7 @@ body  a:hover{
   #active:checked ~ .wrapper{
     right:0;
   }
-  body .menu-btn{
+  .menu-btn{
     position: absolute;
     z-index: 2;
     right: 20px;
@@ -100,7 +141,7 @@ body  a:hover{
     transform: translateY(8px);
   }
   
-  body .close {
+  .close {
       z-index: 1;
       width: 100%;
       height: 100%;
@@ -120,25 +161,26 @@ body  a:hover{
       transform: rotate(-45deg);
     border-color: #F27144;
   }
-  body .wrapper ul{
+  .wrapper ul{
     position: relative;
     top: 25%;
     left: 50%;
     height: 90%;
     list-style: none;
   }
- body .wrapper ul li{
+  .wrapper ul li{
     height: 10%;
     
   }
- body .wrapper ul li a{
+  .wrapper ul li a{
     text-decoration: none;
     font-size: 20px;
     font-weight: 500;
-    color:#3AB9C0;    position: absolute;
+    color:#3AB9C0;    
+    position: absolute;
 
   }
- body .wrapper ul li a:after{
+  .wrapper ul li a:after{
     position: absolute;
     content: "";
     background:none;
@@ -151,20 +193,20 @@ body  a:hover{
     z-index: -1;
     transition: transform 0.3s ease;
   }
- body .wrapper ul li a:hover:after{
+  .wrapper ul li a:hover:after{
     transform: scaleY(1);
   }
-body .wrapper ul li a:hover{
+  .wrapper ul li a:hover{
     color: #F27144;
   }
-body input[type="checkbox"]{
+  input[type="checkbox"]{
     display: none;
   }
 
   #active:checked ~ .wrapper ul li a{
     opacity: 1;
   }
- body .wrapper ul li a{
+  .wrapper ul li a{
     transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     transform: translateX(100px);
   }
@@ -216,42 +258,94 @@ body input[type="checkbox"]{
       
 }
 
-   body .search {
-     width: 100%;
-     position: relative;
-     display: flex;
-   }
-   
-   body .searchTerm {
-     border: none;
-     padding: 5px;
-     height: 30px;
-     border-radius: 5px 0 0 5px;
-     outline: none;
-     margin-left: 80%;
-     color: #9DBFAF;
-   }
-   
-   body .searchTerm:focus{
-     color:#3AB9C0;
-   }
-   
-   body .searchButton {
-     height: 36px;
-    border: none;     
-    background: #F27144;
-     text-align: center;
-     color: #fff;
-     border-radius: 0 5px 5px 0;
-     cursor: pointer;
-     font-size: 20px;
-   }
-   
-   /*Resize the wrap to see the search bar change!*/
-    body .wrap{
-     width: 30%;
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-   }
+
+#Terms_cond{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+    padding:30px;
+    margin-top:110px;
+}
+#Terms_cond h1{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size:30;
+    color:#F27144;
+}
+
+
+footer{
+  display:flex;
+  padding-top:80px;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.pageFooter{
+  color:#878f88;
+}
+
+footer .col{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  
+}
+
+footer .Logo{
+  margin-bottom:30px;
+
+}
+
+footer h4{
+  font-size:14px;
+  padding-bottom:20px;
+}
+
+footer p{
+  font-size:13px;
+  margin:0 0 8px 0;
+}
+
+footer a{
+  font-size:13px;
+  text-decoration: none;
+  color:#878f88;
+  margin-bottom: 10px;
+}
+
+footer .follow{
+  margin-top:20px;
+ 
+}
+
+footer .follow i{
+padding-right:4px;
+cursor:pointer;
+ 
+}
+
+footer .install .row img{
+border:1px solid black;
+border-radius:6px;
+}
+
+footer .install img{
+ margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover, 
+footer a:hover{
+  color:#F27144;
+
+}
+
+.copyright{
+width:100%;
+text-align: center;
+color:#878f88;
+} 

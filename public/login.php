@@ -17,6 +17,8 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <html>
 <head>
 <title>Login</title>
+<link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
+
 </head>
 <body>
     <section class="container">

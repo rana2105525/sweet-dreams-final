@@ -38,6 +38,8 @@ else
 	<head>
     <meta charset="UTF-8">
     <title>Summer collection</title>
+    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
+
 	</head>
 <body>
 
