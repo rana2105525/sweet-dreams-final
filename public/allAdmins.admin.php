@@ -1,12 +1,35 @@
 <?php
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/admin.php");
+require_once(__ROOT__ . "model/Admin.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
-$model=new admins($_SESSION['ID']);
-$controller=new AdminController($model);
-$view=new ViewAdmin($controller,$model);
+// Check if the session ID is set before creating an admins object
+// $adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
+
+// if ($adminId !== null) {
+//     $model = new admins($adminId);
+//     $controller = new AdminController($model);
+//     $view = new ViewAdmin($controller, $model);
+// } else {
+//     header("Location: login.php");
+//     exit();
+// }
+// or  ↓ ↓ ↓ ↓ ↓
+
+$isLogged = isset($_SESSION["ID"]);
+// if (!$isLogged) {
+
+//     header("Location: login.php");
+//     exit();
+//     //echo"lol";
+// } else {
+  
+//  $_SESSION['ID'] = $adminDetails['ID'];
+
+$model = new admin($_SESSION["ID"]);
+$controller = new AdminController($model);
+$view = new ViewAdmin($controller, $model);//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,14 +38,12 @@ $view=new ViewAdmin($controller,$model);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../../../public/css/admin/allAdmins.css" />
     <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png"type="image/icon type" />
   </head> 
 
   <body>
   <div class="component">
-      <div class="sidebar rows">
-      <?php // include '../../partials/adminSidebar.php';?>
+    
       <?php 
       //session_start();
 
@@ -32,10 +53,11 @@ $view=new ViewAdmin($controller,$model);
       //     header("Location: /sweet-dreams/views/pages/login.php");
       //     exit();
       // }
+     
       ?>
-      </div>
+      
 
-      <div class="content">
+      <!-- <div class="content">
       <div id="header"><h2>Admins</h2></div>
         <div class="tablecont">
             <table>
@@ -49,11 +71,14 @@ $view=new ViewAdmin($controller,$model);
                 </tr>
               </thead>
               <tbody>
-              <?php echo $view->displayAllAdmins();?>  
+              <?php 
+                        echo $view->Adminsidebar();
+                        echo $view->displayAllAdmins();
+                    ?>  
               </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
   </div>
   </body>
 </html>

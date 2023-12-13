@@ -110,8 +110,12 @@ class ViewAdmin extends View
     
       return $str;
     } 
-function displayAdmin($admin)
+function displayAdmin()
 {
+    $username = $this->model->getUserName();
+    $phone = $this->model->getPhone();
+    $email = $this->model->getEmail();
+    $gender = $this->model->getGender();
 $str='<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,10 +135,10 @@ $str='<!DOCTYPE html>
       
         <div id="title"><h2>Admin Profile</h2></div>
         <div class="admin-details">
-        '.$this->model->displayAdminInfo($admin).'
+        '.$username.' '.$phone.' '.$email.''.$gender.'
 
-        <button id ="edit"><a href="editAdmin.php?edit_id='.$this->model->getID().'">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.php?delete_id='.$this->model->getID().'">Delete Account</button>
+        <button id ="edit"><a href="editAdmin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.php?delete='.$this->model->getID().'">Delete Account</button>
 
 </div>
     </section>
@@ -147,23 +151,49 @@ $str='<!DOCTYPE html>
 }
 public function displayAllAdmins()
 {
-$str='<tr>
-<td class ="cell"> #'.$this->model->getID().'</td>
-<td class ="cell">'.$this->model->getUserName().'</td>
-<td class ="cell">'.$this->model->getEmail().'</td>
-<td class ="cell">'.$this->model->getPhone().'</td>
-<td class ="cell">'.$this->model->getGender().'</td>
- </tr>';
-     return $str;
-}     
+    $admins = $this->model->getAllAdmins();
+        
+    $str = '  <link rel="stylesheet" href="../../../public/css/Admin/allAdmins.css" />
+    <div class="content">
+                <div id="header"><h2>Admins</h2></div>
+                    <div class="tablecont">
+                        <table>
+                            <thead class="tablehead">
+                                <tr>
+                                    <th class="tableHeader">#ID</th>
+                                    <th class="tableHeader">Name</th>
+                                    <th class="tableHeader">Email</th>
+                                    <th class="tableHeader">Phone &nbsp; Number</th>
+                                    <th class="tableHeader">Gender</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+
+    foreach ($admins as $admin) {
+        if (isset($admin['ID'])){
+            $str .= '<tr>';
+            $str .= '<td class="cell">' . $admin['ID'] . '</td>';
+            $str .= '<td class="cell">' . $admin['Username'] . '</td>';
+            $str .= '<td class="cell">' . $admin['Email'] . '</td>';
+            $str .= '<td class="cell">' . $admin['Phone'] . '</td>';
+            $str .= '<td class="cell">' . $admin['Gender'] . '</td>';
+            $str .= '</tr>';
+        }
+    }
+
+    $str .= '</tbody></table></div></div>';
+    return $str;
+}
+    
 public function Adminsidebar() // partials edited soon
 {
       $str = '
+      <link rel="stylesheet" href="../../../public/css/Admin/sidebar.css" />
         <a href="../index.php"><img class="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo"></a>
         <a href="../index.php">Home</a>
-        <a href="../admin/viewAdmin.php">My Profile</a>
+        <a href="../viewAdmin.admin.php">My Profile</a>
         <a href="../admin/addAdmin.php">Add Admin</a>
-        <a href="../admin/allAdmins.php">Admins</a>
+        <a href="../allAdmins.admin.php">Admins</a>
         <a href="../admin/allProducts.php">Products</a>
         <a href="../admin/addProduct.php">Add Product</a>
         <a href="../admin/addToBlog.php">Add blog</a>

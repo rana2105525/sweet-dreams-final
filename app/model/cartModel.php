@@ -21,10 +21,10 @@ class CartModel extends Model
         return $this->id;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
+    // public function getName()
+    // {
+    //     return $this->name;
+    // }
 
     public function getUserId()
     {
@@ -36,10 +36,10 @@ class CartModel extends Model
         $this->user_id = $_SESSION['id'];
     }
 
-    public function getPrice()
-    {
-        return $this->price;
-    }
+    // public function getPrice()
+    // {
+    //     return $this->price;
+    // }
 
     function setTitle($title)
     {
