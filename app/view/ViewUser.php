@@ -4,7 +4,7 @@ require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
 ?>
-<script src="public/scripts/search.js"></script>
+
 <?php
 
 class ViewUser extends View{	
@@ -41,7 +41,8 @@ class ViewUser extends View{
 
     $str = '
     <link rel="stylesheet" type="text/css" href="../public/css/User/reg.css">
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../public/script/email.js"></script>
     <form action="reg.php?action=insert" method="post">
         <div class="input-box">
             <label>Full Name</label>
@@ -53,6 +54,7 @@ class ViewUser extends View{
             <label>Email Address</label>
             <input type="text" name="email" id="email" placeholder="username@email.com" required />
             <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
+            <span class="error" id="result"></span>
         </div>
 
         <div class="input-box">

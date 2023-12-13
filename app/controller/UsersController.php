@@ -1,6 +1,7 @@
 <?php
 
 require_once(__ROOT__ . "controller/Controller.php");
+require_once(__ROOT__ . "model/Model.php");
 
  
 class UsersController extends Controller{
@@ -56,6 +57,7 @@ function isDateValid($date)
   return true; 
 }
   
+
     if (empty($name)) {
       $this->nameErr = "Name is required";
     } else {
@@ -63,6 +65,12 @@ function isDateValid($date)
         $this->nameErr = "Only letters and white space allowed";
       }
     }
+    $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+    $sql = "SELECT * FROM reg WHERE email = '$email'";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    $this->emailErr = "Email exists in the database";
+  }
   
   
     if (empty($email)) {
