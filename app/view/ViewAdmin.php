@@ -237,7 +237,7 @@ class ViewAdmin extends View
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="../allAdmins.admin.php">
                 <i class="bx bxs-user" ></i>
                 <span class="text">Admins</span>
             </a>

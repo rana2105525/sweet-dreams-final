@@ -148,25 +148,6 @@ function deleteAdmin()
           echo "ERROR: Could not able to execute $sql. ";
       }
 }
-function getAllAdmins() {
-    $sql = "SELECT * FROM admins";
-    $result = $this->db->query($sql);
-    $admins = [];
-
-    if ($result) {
-        while ($row = $result->fetch_assoc()) {
-            $admins[] = [
-                'ID' => $row['ID'],
-                'Username' => $row['Username'],
-                'Email' => $row['Email'],
-                'Phone' => $row['Phone'],
-                'Gender' => $row['Gender']
-            ];
-        }
-    }
-
-    return $admins;
-}
 
 function displayAdmin($admin) {
     echo "<div class='admin-info'>";

@@ -50,7 +50,25 @@ class Admins extends Model {
         $stmt->close();
     }
     
-  
+    function getAllAdmins() {
+        $sql = "SELECT * FROM admins";
+        $result = $this->db->query($sql);
+        $admins = [];
+    
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $admins[] = [
+                    'ID' => $row['ID'],
+                    'Username' => $row['Username'],
+                    'Email' => $row['Email'],
+                    'Phone' => $row['Phone'],
+                    'Gender' => $row['Gender']
+                ];
+            }
+        }
+    
+        return $admins;
+    }
     function loginAdmin($email,$password){
       $sql = "SELECT * FROM admins where Email='$email'";
       $dbh = new Dbh();
