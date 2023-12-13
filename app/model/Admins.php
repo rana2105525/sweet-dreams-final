@@ -15,7 +15,7 @@ class Admins extends Model {
 		$this->db = $this->connect();
 		$result = $this->readAdmins();
 		while ($row = $this->db->fetchRow($result)) {
-			array_push($this->admins, new Admin($row["ID"],$row["UserName"],$row["Phone"],$row["Email"],$row["Password"],$row["Gender"]));
+			array_push($this->admins, new Admin($row["ID"],$row["Username"],$row["Phone"],$row["Email"],$row["Password"],$row["Gender"]));
 		}
 	}
 
@@ -36,7 +36,7 @@ class Admins extends Model {
 	}
 
     function insertAdmin($name, $email, $phone, $password, $gender) {
-        $stmt = $this->db->prepare("INSERT INTO admins (UserName, Email, Phone, Password, Gender) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO admins (Username, Email, Phone, Password, Gender) VALUES (?, ?, ?, ?, ?, ?)");
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $stmt->bind_param("ssssss", $name, $email, $phone, $hashed_password, $gender);
     

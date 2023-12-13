@@ -12,6 +12,281 @@ class ViewAdmin extends View
 		// // $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		// return $str;
 	}
+    public function dashboard(){
+
+  $str='
+	<!-- Boxicons -->
+	<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
+    <!-- Sidebar -->
+	<section id="sidebar">
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="#">
+                    <i class="bx bxs-dashboard"></i>
+                    <span class="text">Sweet Dreams</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-shopping-bag-alt" ></i>
+                    <span class="text">Add product</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-doughnut-chart" ></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+              <li>
+                <a href="#">
+                    <i class="bx bxs-user" ></i>
+                    <span class="text">Add Admin</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-user" ></i>
+                    <span class="text">Admins</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bxs-message-dots" ></i>
+                    <span class="text">Messages</span>
+                </a>
+            </li>
+            <li>
+            <a href="#">
+                <i class="bx bxs-message-dots" ></i>
+                <span class="text">Orders</span>
+            </a>
+        </li>
+          
+            <li>
+                <a href="#">
+                    <i class="bx bx-store-alt" ></i>
+                    <span class="text">Add blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-store-alt"></i>
+                    <span class="text">Reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-store-alt"></i>
+                    <span class="text">Users</span>
+                </a>
+            </li>
+        </ul>
+            <ul class="side-menu">
+                <li>
+                    <a href="#" class="logout">
+                        <i class="bx bxs-exit" ></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            
+            </ul>
+    </section>
+    <!-- Sidebar -->
+
+    <!-- CONTENT -->
+    <section id="content">
+   
+
+        <!-- MAIN -->
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class="bx bxs-chevron-right" ></i></li>
+                        <li>
+                            <a class="active" href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+              
+            </div>
+            <ul class="box-info">
+                <li>
+                    <i class="bx bxs-calendar-check" ></i>
+                    <span class="text">
+                        <h3>1020</h3>
+                        <p>New Orders</p>
+                    </span>
+                </li>
+                <li>
+                    <i class="bx bxs-group" ></i>
+                    <span class="text">
+                        <h3>2834</h3>
+                        <p>Approved</p>
+                    </span>
+                </li>
+                <li>
+                    <i class="bx bxs-dollar-circle" ></i>
+                    <span class="text">
+                        <h3>25000</h3>
+                        <p>Shipped</p>
+                    </span>
+                </li>
+            </ul>
+
+
+            <div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									
+									<p>mmmmm</p>
+								</td>
+								<td>mmm</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>dtfygu</p>
+								</td>
+								<td>tguy</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>tfugyhikr</p>
+								</td>
+								<td>30-9-2023</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>tuyhi</p>
+								</td>
+								<td>10-4-2023</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<p>sedtrfytu</p>
+								</td>
+								<td>15-2-2023</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				</div>
+			</div>
+        </main>
+        <!-- MAIN -->
+    </section>
+ ';
+ return $str;
+  }
+  function sideBar()
+  {
+    
+    $str='
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
+    <section id="sidebar">
+    <ul class="side-menu top">
+        <li class="active">
+            <a href="#">
+                <i class="bx bxs-dashboard"></i>
+                <span class="text">Sweet Dreams</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-shopping-bag-alt" ></i>
+                <span class="text">Add product</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-doughnut-chart" ></i>
+                <span class="text">Products</span>
+            </a>
+        </li>
+          <li>
+            <a href="#">
+                <i class="bx bxs-user" ></i>
+                <span class="text">Add Admin</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-user" ></i>
+                <span class="text">Admins</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-message-dots" ></i>
+                <span class="text">Messages</span>
+            </a>
+        </li>
+        <li>
+        <a href="#">
+            <i class="bx bxs-message-dots" ></i>
+            <span class="text">Orders</span>
+        </a>
+    </li>
+      
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt" ></i>
+                <span class="text">Add blog</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt"></i>
+                <span class="text">Reviews</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt"></i>
+                <span class="text">Users</span>
+            </a>
+        </li>
+    </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class="bx bxs-exit" ></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        
+        </ul>
+</section>
+    ';
+    return $str;
+  }
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
@@ -153,7 +428,7 @@ public function displayAllAdmins()
 {
     $admins = $this->model->getAllAdmins();
         
-    $str = '  <link rel="stylesheet" href="../../../public/css/Admin/allAdmins.css" />
+    $str = '  <link rel="stylesheet" href="../public/css/Admin/allAdmins.css" />
     <div class="content">
                 <div id="header"><h2>Admins</h2></div>
                     <div class="tablecont">
@@ -185,23 +460,23 @@ public function displayAllAdmins()
     return $str;
 }
     
-public function Adminsidebar() // partials edited soon
-{
-      $str = '
-      <link rel="stylesheet" href="../../../public/css/Admin/sidebar.css" />
-        <a href="../index.php"><img class="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo"></a>
-        <a href="../index.php">Home</a>
-        <a href="../viewAdmin.admin.php">My Profile</a>
-        <a href="../admin/addAdmin.php">Add Admin</a>
-        <a href="../allAdmins.admin.php">Admins</a>
-        <a href="../admin/allProducts.php">Products</a>
-        <a href="../admin/addProduct.php">Add Product</a>
-        <a href="../admin/addToBlog.php">Add blog</a>
-        <a href="../admin/reviews.php">Reviews</a>
-        <a href="../admin/users.php">Users</a>';
+// public function Adminsidebar() // partials edited soon
+// {
+//       $str = '
+//       <link rel="stylesheet" href="../../../public/css/Admin/sidebar.css" />
+//         <a href="../index.php"><img class="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo"></a>
+//         <a href="../index.php">Home</a>
+//         <a href="../viewAdmin.admin.php">My Profile</a>
+//         <a href="../admin/addAdmin.php">Add Admin</a>
+//         <a href="../allAdmins.admin.php">Admins</a>
+//         <a href="../admin/allProducts.php">Products</a>
+//         <a href="../admin/addProduct.php">Add Product</a>
+//         <a href="../admin/addToBlog.php">Add blog</a>
+//         <a href="../admin/reviews.php">Reviews</a>
+//         <a href="../admin/users.php">Users</a>';
       
-      return $str;
-}
+//       return $str;
+// }
 
 
        

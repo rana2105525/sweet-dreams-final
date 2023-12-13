@@ -1,6 +1,7 @@
 <?php
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/Admin.php");
+require_once(__ROOT__ . "model/admin.php");
+require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
@@ -27,7 +28,7 @@ $isLogged = isset($_SESSION["ID"]);
   
 //  $_SESSION['ID'] = $adminDetails['ID'];
 
-$model = new admin($_SESSION["ID"]);
+$model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);//}
 ?>
@@ -72,7 +73,7 @@ $view = new ViewAdmin($controller, $model);//}
               </thead>
               <tbody>
               <?php 
-                        echo $view->Adminsidebar();
+                        echo $view->sideBar();
                         echo $view->displayAllAdmins();
                     ?>  
               </tbody>

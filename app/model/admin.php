@@ -74,13 +74,13 @@ function readAdmin($id) {
 
     if ($result === false) {
         // Handle the SQL error, for example:
-        die("Error executing the query: " . $this->db->error);
+        die("Error executing the query: ");
     }
 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
-        $this->UserName = $row["UserName"];
-        $_SESSION["UserName"] = $row["UserName"];
+        $this->UserName = $row["Username"];
+        $_SESSION["Username"] = $row["Username"];
         $this->Email = $row["Email"];
         $this->Phone = $row["Phone"];
         $this->Password = $row["Password"];
