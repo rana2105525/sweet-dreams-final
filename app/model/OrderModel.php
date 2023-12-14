@@ -24,7 +24,8 @@ class OrderModel extends Model
       
       if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
-            echo "User: " . $row["name"] . ",    Email: " . $row["email"] .",    phone: " . $row["phone"] .",    Address: " . $row["address"] .",    Total Price: " . $row["total_price"] .",    orderd_at: " . $row["orderd_at"] .",    Order ID: " . $row["id"] . "<br>";
+            echo "User: " . $row["name"] . ",    Email: " . $row["email"] .",    phone: " . $row["phone"] .",    Address: " . $row["address"] .",    Total Price: " . $row["total_price"] .",    orderd_at: " . $row["orderd_at"] ."<br>";
+            echo "<a href='orderdProducts.php?id=".$row['id']."'> Order ID: " . $row["id"] ."</a><br>";
            
           }
         }
