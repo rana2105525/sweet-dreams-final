@@ -3,10 +3,8 @@ require_once(__ROOT__ . "view/View.php");
 
 class ViewProducts extends View{
     public function output(){
-		$str="<div class='component'>
-		<div class='sidebar rows'>";
-	 	//include '../../partials/adminSidebar.php';
-		$str.= "</div>";
+		$str="<div class='component'>";
+	 	include 'partials/sidebar.admin.php';
 		$str.= "<div class='content'>
 		<div id='header'><h2>All Products</h2></div>";
 		$str.="<div class='tablecont'>";
@@ -39,9 +37,12 @@ class ViewProducts extends View{
 			//  <button class = 'buttons' id ='edit'><a href='editProduct.php?update_id='".$Product->getId()."'>Edit</a></button>
 			//  <button class = 'buttons' id ='delete'><a href=".$Product->deleteProduct()."?delete_id='".$Product->getId()."'>Delete</a></button>
 			// </td> ";
-			// $str.="</tr>";
+			$str.="</tr>";
 		}
+        $str.="</tbody>";
 		$str.="</table>";
+        $str.="</div>";
+        $str.="</div>";
         $str.="</div>";
 
 		//$str.="<a href='profile.php'>Back to Profile </a>";
