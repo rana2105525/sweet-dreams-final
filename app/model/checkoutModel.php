@@ -8,9 +8,11 @@ class checkoutModel extends Model
     private $id;
     private $user_id;
     private $address;
-    private $card_num;
-    private $cvc;
-    private $exp_date;
+    private $name;
+    private $email;
+    private $phone;
+    private $total_price;
+    private $orderd_at;
     public function __construct() {
         $this->db = new Dbh();
 
@@ -22,19 +24,27 @@ class checkoutModel extends Model
     {
         return $this->id;
     }
+    public function getOrdered_at()
+    {
+        return $this->orderd_at;
+    }
 
     public function getAddress()
     {
         return $this->address;
     }
-    public function getACvc()
+    public function getName()
     {
-        return $this->cvc;
+        return $this->name;
     }
 
-    public function getExp_date()
+    public function getEmail()
     {
-        return $this->exp_date;
+        return $this->email;
+    }
+    public function getTotal_price()
+    {
+        return $this->total_price;
     }
 
 
@@ -48,9 +58,9 @@ class checkoutModel extends Model
         $this->user_id = $_SESSION['id'];
     }
 
-    public function getCard()
+    public function getPhone()
     {
-        return $this->card_num;
+        return $this->phone;
     }
 
     function setAddress($address)
@@ -58,41 +68,37 @@ class checkoutModel extends Model
         $this->address = $address;
     }
 
-    function setCard($card_num)
+    function setName($name)
     {
-        $this->card_num = $card_num;
+        $this->name = $name;
     }
-    function setCvc($cvc)
+    function setEmail($email)
     {
-        $this->cvc = $cvc;
+        $this->email = $email;
     }
-    function setExp_date($exp_date)
+    function setPhone($phone)
     {
-        $this->exp_date = $exp_date;
+        $this->phone = $phone;
     }
-    // public function showInCart($user_id) {
-    //     $sql = "SELECT products.title AS name, products.price as price, cart2.quantity as quantity, products.prod_image as image, cart2.id as id
-    //             FROM cart2
-    //             INNER JOIN products ON products.id = cart2.prod_id
-    //             INNER JOIN reg ON reg.id = cart2.user_id
-    //             WHERE cart2.user_id = ?";
-
-    //     $stmt = $this->db->prepare($sql);
-    //     $stmt->bind_param("i", $user_id);
-    //     $stmt->execute();
-
-    //     $result = $stmt->get_result();
-    //     $cartItems = $result->fetch_all(MYSQLI_ASSOC);
-
-    //     $stmt->close();
-
-    //     return $cartItems;
-    // }
-
-    public function checkout($user_id, $address, $card_num, $cvc, $exp_date)
+    function setOrderd_at($orderd_at)
     {
-        $stmt = $this->db->prepare("INSERT INTO checkout (user_id, address, card_num, cvc, exp_date) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("issss", $user_id, $address, $card_num, $cvc, $exp_date);
+        $this->orderd_at= getTodayDate(); 
+    }
+    function setTotal_price($total_price)
+    {
+        $this->total_price= $total_price; 
+    }
+
+    public function order($user_id, $name, $email, $phone, $address,$total_price)
+    {
+      // Get today's date
+      $orderd_at = date('Y-m-d');
+    
+      // Prepare the statement
+      $stmt = $this->db->prepare("INSERT INTO orders (user_id, name,email,phone,address,total_price,orderd_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    
+      // Bind parameters including $orderd_at
+      $stmt->bind_param("issssss", $user_id, $name,$email,$phone,$address,$total_price,$orderd_at);
         $result = $stmt->execute();
         $stmt->close();
     
