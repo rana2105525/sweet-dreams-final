@@ -12,7 +12,7 @@
             {
                 $output .= '
                 <div style="padding: 20px; border: 1px solid #ccc; margin-bottom: 15px; width: 100%;">
-                    <h3><a href="#">'.$row["title"].'</a></h3>
+                    <h3><a href="searchedProd.php?id='.$row["id"].'">'.$row["title"].'</a></h3>
                     <p>'.$row["category"].'</p>
                     <p>'.$row["price"].'</p>
 

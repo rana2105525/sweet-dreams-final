@@ -36,8 +36,17 @@ class OrderModel extends Model
               echo "User: " . $row["name"] . ",    Phone: " . $row["phone"] .",    Address: " . $row["address"] .",    Order ID: " . $row["id"] . "<br>";
               ?>
               </strong></label> 
-              <button>Approved</button>
-              <button>Shipped</button> </div> 
+              <div class="send_btn">
+                <form method="POST" action="approved.php">
+                <button>Approved</button>
+                </form>
+              </div>  
+                <form method="POST" action="shipped.php">
+            
+<button>Shipped</button>
+            </form>
+
+ </div> 
             </div>
               <?php
             }

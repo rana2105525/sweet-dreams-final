@@ -124,6 +124,22 @@ class Collection extends Model
 
   return $product;
 }
+function readSearchDesc($id) {
+  
+    $product_id = $id;
+    // Retrieve the product attributes from the database based on the product ID
+    $sql = "SELECT * FROM products WHERE id = $product_id";
+    $result = $this->db->query($sql); 
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['product_description'] = $row;
+
+
+if (isset($_SESSION['product_description'])) {
+  $product = $_SESSION['product_description'];
+}
+
+return $product;
+}
 public function addToCart($user_id, $prod_id, $quantity)
     {
         $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id, quantity) VALUES (?, ?, ?)");

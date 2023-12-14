@@ -371,6 +371,125 @@ public function getDesc()
 return $str;
 
 }
+public function getSearchDesc($id)
+{
+
+  $prodDesc=$this->model->readSearchDesc($id);
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+    // Placeholder: Add your code to process form submission and add to the database
+    // Replace the following line with your actual logic
+    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
+}
+        $str='
+        <link rel="stylesheet" href="../public/css/User/prod.css">
+     <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
+        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+        <h1>'. $prodDesc['title'] . '</h1>
+        <div class="container">
+            <div class="single-product">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="product-image">
+                            <div class="product-image-main">
+                                <img src="../../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
+                            </div>
+                            <div class="product-image-slider">
+                                <img src="../../public/images/1.jpg" alt="" class="image-list">
+                                <img src="../../public/images/2.jpg" alt="" class="image-list">
+                                <img src="../../public/images/3.jpg" alt="" class="image-list">
+                                <img src="../../public/images/4.jpg" alt="" class="image-list">
+                                <img src="../../public/images/5.jpg" alt="" class="image-list">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="breadcrumb">
+                            <span><a href="index.php">Home</a></span>
+                            <span class="active">'. $prodDesc['title'] . '</span>
+                        </div>
+    
+                        <div class="product">
+                            <div class="product-title">
+                                <h2>'. $prodDesc['title'] .'</h2>
+                            </div>
+    
+                            <div class="product-price">
+                                <span class="offer-price">'. $prodDesc['price'] .'</span>
+                            </div>
+    
+                            <div class="product-details">
+                                <h3>Description</h3>
+                                <p>'.$prodDesc['description'] .'</p>
+                            </div>
+                            <div class="product-size">
+                                <h4>Size</h4>
+                                <div class="size-layout">
+                                    <input type="radio" name="size" value="S" id="1" class="size-input">
+                                    <label for="1" class="size">0-3</label>
+    
+                                    <input type="radio" name="size" value="M" id="2" class="size-input">
+                                    <label for="2" class="size">3-6</label>
+    
+                                    <input type="radio" name="size" value="L" id="3" class="size-input">
+                                    <label for="3" class="size">6-12</label>
+    
+                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label>
+                            
+                            <a href="../public/images/size-chart.jpg">Size chart</a>
+                        
+                        </div>
+                    </div>
+                    <div class="product-color">
+                        <h4>Color</h4>
+                        <div class="color-layout">
+                            <input type="radio" name="color"  value="black" class="color-input">
+                            <label for="black" class="black"></label>
+                            <input type="radio" name="color"  value="red" class="color-input">
+                            <label for="red" class="red"></label>
+
+                            <input type="radio" name="color"  value="blue" class="color-input">
+                            <label for="blue" class="blue"></label>
+                        </div>
+                    </div>
+                    <span class="divider"></span>
+
+                    <div class="product-btn-group">
+                    <form method="post" >
+                    <div class="button heart no-style">
+                        <i class="bx bxs-zap"></i>
+                        <button type="submit" name="submit"> Buy now</button>
+                        </div> </form>
+                      <div class="button heart no-style">
+            <i class="bx bxs-heart"></i> 
+            <button type="submit" > Add to Wishlist</button>
+               </div>
+                    </div>
+              
+                </form>
+        
+   
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="rev">
+<h2>Customer Reviews</h2>
+<form action="" class="form" method="post">
+    <div class="text-field">
+        <label for="name">Write your review</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Write your name">
+        <input type="text" id="review" name="review" placeholder="Write your review">
+        <button type="submit" class="btn" name="submit">Submit</button>
+    </div>
+</form>
+</div>';
+return $str;
+
+}
 
     }
 
