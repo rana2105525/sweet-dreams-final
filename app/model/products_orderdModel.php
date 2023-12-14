@@ -3,6 +3,8 @@ require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
 require_once(__ROOT__ ."db/config.php");
 require_once(__ROOT__ ."db/Dbh.php");
+require_once(__ROOT__ ."model/Collection.php");
+
 class Product_orderedModel extends Model
 {
     private $id;
@@ -16,20 +18,36 @@ class Product_orderedModel extends Model
 
      
     }
-    // public function order_item()
-    // {
-    //    $prod_id=" SELECT * FROM order_items
-    //     INNER JOIN products ON order_items.prod_id = products.id";
-    //     $order_id=" SELECT * FROM order_items
-    //     INNER JOIN orders ON order_items.order_id = orders.id";
-    //     $added_at = date('Y-m-d');
-    //     $stmt=$this->db->prepare("INSERT INTO order_items(user_id,prod_id,order_id,added_at)VALUES(?,?,?,?)");
-    //     $stmt->bind_param("iiiii", $user_id,$prod_id,$order_id,$added_at);
-    //     $result = $stmt->execute();
-    //     $stmt->close();
+  
+      public function order_item()
+    {
+        $user_id=$_SESSION['id'];
+        $added_at = date('Y-m-d');
+    
+        // Fetching product details from the products table
+        // $prod_id="SELECT products.id
+        // FROM products
+        // INNER JOIN order_items ON products.id = order_items.prod_id";
+    
+        // Fetching order details from the orders table
+        // $order_id="SELECT orders.id
+        // From orders
+        // Inner join order_items ON orders.id=Order_items.order_id;";
+        $order_id=1;
+        $prod_id=99;
+    
+        // Inserting order details into the order_items table
+      // Inserting order details into the order_items table
+// Inserting order details into the order_items table
+$stmt = $this->db->prepare("INSERT INTO order_items(user_id,prod_id,order_id,added_at)VALUES(?,?,?,?)");
+$stmt->bind_param("iiis", $user_id, $prod_id, $order_id, $added_at);
+$result = $stmt->execute();
+$stmt->close();
+        return $result;
+    }
 
-    //     return $result;
-    // }
+    
+
     public function showUserProducts($user_id)
     {
         $sql = "SELECT products.id
