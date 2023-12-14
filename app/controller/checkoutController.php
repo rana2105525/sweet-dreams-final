@@ -7,7 +7,7 @@ class checkoutController extends Controller {
         
             // Sample data from a hypothetical form or request
 
-             $user_id = $_SESSION['id'];
+            $user_id = $_SESSION['id'];
             $name=$_POST['name'];
             $email=$_POST['email'];
             $phone=$_POST['phone'];
