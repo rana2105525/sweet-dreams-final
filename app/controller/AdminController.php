@@ -180,9 +180,9 @@ function isStrongPassword($password) {
         return $this->model->getAllAdmins();
     }
 
-    public function displayA($admin) {
-        return $this->model->displayAdmin($admin);
-    }
+    // public function displayA() {
+    //     return $this->model->displayAdmin();
+    // }
 }
 
 

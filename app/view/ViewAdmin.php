@@ -219,6 +219,12 @@ class ViewAdmin extends View
             </a>
         </li>
         <li>
+        <a href="../public/viewAdmin.admin.php">
+             <i class="bx bxs-user" ></i>
+            <span class="text">Profile</span>
+        </a>
+    </li>
+        <li>
             <a href="#">
                 <i class="bx bxs-shopping-bag-alt" ></i>
                 <span class="text">Add product</span>
@@ -231,13 +237,13 @@ class ViewAdmin extends View
             </a>
         </li>
           <li>
-            <a href="#">
+            <a href="../public/addAdmin.admin.php">
                 <i class="bx bxs-user" ></i>
                 <span class="text">Add Admin</span>
             </a>
         </li>
         <li>
-            <a href="../allAdmins.admin.php">
+            <a href="../public/allAdmins.admin.php">
                 <i class="bx bxs-user" ></i>
                 <span class="text">Admins</span>
             </a>
@@ -391,6 +397,7 @@ function displayAdmin()
     $phone = $this->model->getPhone();
     $email = $this->model->getEmail();
     $gender = $this->model->getGender();
+    
 $str='<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -410,10 +417,16 @@ $str='<!DOCTYPE html>
       
         <div id="title"><h2>Admin Profile</h2></div>
         <div class="admin-details">
-        '.$username.' '.$phone.' '.$email.''.$gender.'
+        <label for="name">Name: &nbsp;</label>'.$username.' </div>
+        <div class="admin-details">
+        <label for="number">Phone Number: &nbsp;</label>'.$phone.' </div>
+        <div class="admin-details">
+        <label for="email">Email: &nbsp;</label>'.$email.'</div>
+        <div class="admin-details">
+        <label for="gender">Gender: &nbsp;</label>'.$gender.'</div>
 
-        <button id ="edit"><a href="editAdmin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.php?delete='.$this->model->getID().'">Delete Account</button>
+        <button id ="edit"><a href="editAdmin.admin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.admin.php?delete='.$this->model->getID().'">Delete Account</button>
 
 </div>
     </section>

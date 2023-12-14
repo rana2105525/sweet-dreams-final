@@ -9,13 +9,14 @@ private $Email;
 private $Password;
 private $Gender;
 
-function __construct($id,$name="",$email="",$phone="",$password="",$gender="") {
-    $this->ID = $id;
+function __construct($id= null,$name="",$email="",$phone="",$password="",$gender="") {
+
 	$this->db = $this->connect();
 
-    if(""===$name){
-      $this->readAdmin($id);
-    }else{
+    if ($id !== null) {
+        $this->ID = $id;
+        $this->readAdmin($id);}
+    else{
       $this->UserName = $name;
       $this->Email=$email;
       $this->Phone=$phone;
@@ -149,30 +150,30 @@ function deleteAdmin()
       }
 }
 
-function displayAdmin($admin) {
-    echo "<div class='admin-info'>";
-    echo "<div class='input-box'>
-              <label for='name'>Name: &nbsp;</label>
-              <span>" . htmlspecialchars($admin->getUserName()) . "</span>
-          </div>";
+// function displayAdmin() {
+//     echo "<div class='admin-info'>";
+//     echo "<div class='input-box'>
+//               <label for='name'>Name: &nbsp;</label>
+//               <span>" . htmlspecialchars($this->getUserName()) . "</span>
+//           </div>";
   
-    echo "<div class='input-box'>
-              <label for='number'>Phone Number: &nbsp;</label>
-              <span>" . htmlspecialchars($admin->getPhone()) . "</span>
-          </div>";
+//     echo "<div class='input-box'>
+//               <label for='number'>Phone Number: &nbsp;</label>
+//               <span>" . htmlspecialchars($this->getPhone()) . "</span>
+//           </div>";
   
-    echo "<div class='input-box'>
-              <label for='email'>Email: &nbsp;</label>
-              <span>" . htmlspecialchars($admin->getEmail()) . "</span>
-          </div>";
+//     echo "<div class='input-box'>
+//               <label for='email'>Email: &nbsp;</label>
+//               <span>" . htmlspecialchars($this->getEmail()) . "</span>
+//           </div>";
   
-    echo "<div class='input-box'>
-              <label for='gender'>Gender: &nbsp;</label>
-              <span>" . htmlspecialchars($admin->getGender()) . "</span>
-          </div>";
+//     echo "<div class='input-box'>
+//               <label for='gender'>Gender: &nbsp;</label>
+//               <span>" . htmlspecialchars($this->getGender()) . "</span>
+//           </div>";
     
-    echo "</div>"; 
-}
+//     echo "</div>"; 
+// }
 
 
 }
