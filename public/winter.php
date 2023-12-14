@@ -16,7 +16,6 @@ if($isLogged)
 <?php
     echo $view->nav();
     echo "<h1>Winter collection</h1>";
-    echo $view->side();
     echo $view->collectionsWinter();
     echo $view->footer();
 }
@@ -27,7 +26,6 @@ else
 <?php
     echo $view->nav1();
     echo "<h1>Winter collection</h1>";
-    echo $view->side();
     echo $view->collectionsWinter(); 
     echo $view->footer();
 }

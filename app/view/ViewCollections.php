@@ -16,6 +16,7 @@ class ViewCollections extends View{
     $summerProducts = $this->model->collectionsSummer(); // Assuming this retrieves products
 
     foreach ($summerProducts as $summerCollection) {
+        
         $str .= '
         <div class="prod">
             <div class="product-card">
@@ -23,7 +24,7 @@ class ViewCollections extends View{
                     <form method="post" action="prod.php">
                         <input type="hidden" name="product_id" value="' . $summerCollection['id'] . '">
                         <button type="submit" name="add_to_description">
-                            <img src="../public/images/' . $summerCollection['prod_image'] . '">
+                            <img src="../public/' . $summerCollection['prod_image'] . '">
                         </button>
                     </form>
                 </div>
@@ -63,7 +64,7 @@ public function collectionsWinter() {
       <form method="post" action="prod.php">
                           <input type="hidden" name="product_id" value="' . $WinterCollection['id'] . '">
                           <button type="submit" name="add_to_description">
-                          <img src="../public/images' . $WinterCollection['prod_image'] . '">
+                          <img src="../public/' . $WinterCollection['prod_image'] . '">
 
                           </button>
                       </form>
@@ -101,7 +102,7 @@ public function collectionsBundleAndSave() {
       <form method="post" action="prod.php">
                           <input type="hidden" name="product_id" value="' . $BundleCollection['id'] . '">
                           <button type="submit" name="add_to_description">
-                          <img src="../public/images' . $BundleCollection['prod_image'] . '">
+                          <img src="../public/' . $BundleCollection['prod_image'] . '">
 
                           </button>
                       </form>
@@ -273,15 +274,9 @@ public function getDesc()
                     <div class="col-6">
                         <div class="product-image">
                             <div class="product-image-main">
-                                <img src="../../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
+                                <img src="../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
                             </div>
-                            <div class="product-image-slider">
-                                <img src="../../public/images/1.jpg" alt="" class="image-list">
-                                <img src="../../public/images/2.jpg" alt="" class="image-list">
-                                <img src="../../public/images/3.jpg" alt="" class="image-list">
-                                <img src="../../public/images/4.jpg" alt="" class="image-list">
-                                <img src="../../public/images/5.jpg" alt="" class="image-list">
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="col-6">
@@ -392,7 +387,7 @@ public function getSearchDesc($id)
                     <div class="col-6">
                         <div class="product-image">
                             <div class="product-image-main">
-                                <img src="../../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
+                                <img src="../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
                             </div>
                             <div class="product-image-slider">
                                 <img src="../../public/images/1.jpg" alt="" class="image-list">
