@@ -1,6 +1,5 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
-
 class Product extends Model {
     private $id;
     private $title;
@@ -26,6 +25,33 @@ class Product extends Model {
 			$this->price = $price;
 		}
 	}
+
+	public function readProduct($id){
+        $result = $this->db->query('SELECT * FROM products where id='.$id);
+        if (!$result) {
+            die("Error in query: " . $this->db->error);
+        }
+
+		if ($result->num_rows == 1){
+			$row = $this->db->fetchRow();
+            $this->title = $row["title"];
+            $this->price = $row["price"];
+            $this->description = $row["description"];
+            $this->prod_image = $row["prod_image"];
+            $this->added_at = $row["added_at"];
+            $this->category = $row["category"];
+		}
+		else {
+			$this->title = "";
+			$this->price="";
+			$this->description = "";
+			$this->prod_image = "";
+			$this->added_at = "";
+			$this->category = "";
+		}
+	}
+
+
     // Getters
     public function getId(){
         return $this->id;
@@ -69,31 +95,5 @@ class Product extends Model {
         $this->price = $price;
     }
 
-	public function readProduct($id){
-        $result = $this->db->query('SELECT * FROM products where id='.$id);
-        if (!$result) {
-            die("Error in query: " . $this->db->error);
-        }
-
-		if ($result->num_rows == 1){
-			$row = $this->db->fetchRow();
-            $this->title = $row["title"];
-            $this->price = $row["price"];
-            $this->description = $row["description"];
-            $this->prod_image = $row["prod_image"];
-            $this->added_at = $row["added_at"];
-            $this->category = $row["category"];
-		}
-		else {
-			$this->title = "";
-			$this->price="";
-			$this->description = "";
-			$this->prod_image = "";
-			$this->added_at = "";
-			$this->category = "";
-		}
-	}
-
-
-
 }
+ 

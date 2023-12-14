@@ -10,7 +10,7 @@ class ProductsController extends Controller{
         $price=$_REQUEST["price"];
         $prod_image=$_REQUEST["prod_image"];
         $added_at=$_REQUEST["added_at"];
-
+ 
 		$this->model->insertProduct($title,$description,$category,$price,$prod_image,$added_at);
 	}
 }

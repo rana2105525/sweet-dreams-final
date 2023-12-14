@@ -3,7 +3,13 @@ require_once(__ROOT__ . "view/View.php");
 
 class ViewProducts extends View{
     public function output(){
-		$str = "";
+		$str="<div class='component'>
+		<div class='sidebar rows'>";
+	 	//include '../../partials/adminSidebar.php';
+		$str.= "</div>";
+		$str.= "<div class='content'>
+		<div id='header'><h2>All Products</h2></div>";
+		$str.="<div class='tablecont'>";
 		$str.="<table>";
         $str.="<thead class='tablehead'>";
 		$str.="<tr>";
@@ -36,6 +42,8 @@ class ViewProducts extends View{
 			// $str.="</tr>";
 		}
 		$str.="</table>";
+        $str.="</div>";
+
 		//$str.="<a href='profile.php'>Back to Profile </a>";
 
 		return $str;

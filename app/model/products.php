@@ -1,13 +1,13 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
-require_once(__ROOT__ . "model/product.admin.php");
+require_once(__ROOT__ . "model/product.php");
 
 class Products extends Model{
 	private $products;
 	function __construct() {
 		$this->fillArray();
 	}
-
+ 
 	function fillArray() {
 		$this->products = array();
 		$this->db = $this->connect();
