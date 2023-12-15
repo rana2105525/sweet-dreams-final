@@ -15,9 +15,15 @@ class checkoutController extends Controller {
             $total_price=$_SESSION['total_price'];
             $orderd_at=date('Y-m-d');
             // Assuming $this->model is an instance of a model class handling database interactions
-            $this->model->order($user_id, $name, $email,$phone,$address,$total_price,$orderd_at);
-          
-            
+            $orderID = $this->model->order($user_id, $name, $email,$phone,$address,$total_price,$orderd_at);
+            $user_id = $_SESSION['id'];
+
+    $cartProducts = $this->model->showInCart($user_id);
+    foreach ($cartProducts as $cartProduct) {
+      $prod_id=$cartProduct['prod_id'];
+      $this->model->order_item($user_id,$orderID,$prod_id);
+    }
+    
       
     }
     

@@ -92,7 +92,24 @@ class checkoutModel extends Model
     {
         $this->id=$id;
     }
+    public function showInCart($user_id) {
+      $sql = "SELECT products.id AS prod_id ,products.title AS name, products.price as price, cart2.quantity as quantity, products.prod_image as image, cart2.id as id
+              FROM cart2
+              INNER JOIN products ON products.id = cart2.prod_id
+              INNER JOIN reg ON reg.id = cart2.user_id
+              WHERE cart2.user_id = ?";
 
+      $stmt = $this->db->prepare($sql);
+      $stmt->bind_param("i", $user_id);
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+      $cartItems = $result->fetch_all(MYSQLI_ASSOC);
+
+      $stmt->close();
+
+      return $cartItems;
+  }
     public function order($user_id, $name, $email, $phone, $address,$total_price)
     {
       // Get today's date
@@ -105,10 +122,24 @@ class checkoutModel extends Model
       $stmt->bind_param("issssss", $user_id, $name,$email,$phone,$address,$total_price,$orderd_at);
         $result = $stmt->execute();
         $stmt->close();
-    
+        $sql = "SELECT ID FROM orders
+        ORDER BY ID DESC
+        LIMIT 1;";
+        $result = $this->db->query($sql);
+        $row = $result->fetch_assoc()["ID"];
+        return $row;
+    }
+    public function order_item( $user_id,$order_id, $prod_id)
+    {
+        
+        $stmt = $this->db->prepare("INSERT INTO order_items(user_id,order_id,prod_id) VALUES (?,?,?)");
+        $stmt->bind_param("iii",$user_id, $order_id, $prod_id);
+        $result = $stmt->execute();
+        $stmt->close();
         return $result;
     }
-    
+  
+
     public function deleteALL()
     {
         $sql="delete from cart2 where user_id=$this->user_id;";
