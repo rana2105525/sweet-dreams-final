@@ -262,9 +262,18 @@ public function getDesc()
     // Placeholder: Add your code to process form submission and add to the database
     // Replace the following line with your actual logic
     $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
-    $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
+  }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
+      // Placeholder: Add your code to process form submission and add to the database
+      // Replace the following line with your actual logic
+      
+      
+      $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
+  
+  }
+    
 
-}
+
         $str='
         <link rel="stylesheet" href="../public/css/User/prod.css">
      <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
@@ -342,7 +351,7 @@ public function getDesc()
                         <form method="post">
                         <div class="button heart no-style">
                            <i class="bx bxs-heart"></i> 
-                           <button type="submit" name="submit">Add to wishlist</button>
+                           <button type="submit" name="submitadd">Add to wishlist</button>
                            <input type="hidden" name="prod_id" value="prod_id">
                         </div>
                        </form>
