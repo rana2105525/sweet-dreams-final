@@ -10,47 +10,37 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-class CartView extends View {
+class WishlistView extends View {
 
   public  function output(){
 
   }
   
-  public function showCart() {
+  public function showWishlist() {
   $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
-    // Assuming the user ID is stored in a session variable
     $user_id = $_SESSION['id'];
+    $WishlistProducts = $this->model->showInWishlist($user_id);
 
-    $cartProducts = $this->model->showInCart($user_id);
-
-    foreach ($cartProducts as $cartProduct) {
+    foreach ($WishlistProducts as $WishProduct) {
         $str .= '
         <div class="prod">
             <div class="product-card">
                 <div class="product-tumb">
-                    <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                    <img src="../public/' . $cartProduct['image'] . '">
+                    <input type="hidden" name="cart_id" value="' . $WishProduct['id'] . '">
+                    <img src="../public/' . $WishProduct['image'] . '">
                 </div>
                 <div class="product-details">
-                    <h4>Title : ' . $cartProduct['name'] . '</h4>
-                    <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
+                    <h4>Title : ' . $WishProduct['name'] . '</h4>
                     <div class="product-bottom-details">
-                        <div class="product-price">Price : ' . $cartProduct['price'] . 'LE</div>
-                        
-                        <!-- Edit form -->
-                        <form method="post" action="cart.php">
-                        <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
-                        <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
-                            <button type="submit" name="edit_quantity">Edit Quantity</button>
-                        </form>
+                        <div class="product-price">Price : ' . $WishProduct['price'] . 'LE</div>
 
                         <!-- Delete form -->
-                        <form method="post" action="cart.php">
-                            <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                            <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
+                        <form method="post" action="#">
+                            <input type="hidden" name="wish_id" value="' . $WishProduct['id'] . '">
+                            <button><a href="cart_options.php?action=delete&id=' . $WishProduct['id'] . '">Delete item</a></button>
                             </form>
                     </div>
                 </div>
@@ -62,31 +52,6 @@ class CartView extends View {
 }
 
 
-    
-
-
-
-
-    public function check_btn()
-    {
-      // $user_id=$_SESSION['id'];
-      // $address=$this->model->getAddress();
-      // $card_num=$this->model->getCard_num();
-      // $cvc=$this->model->getCVC();
-      // $exp_date=$this->model->getExpiry_date();
-      $str='
-      <form method="post" action="checkout.php">
-          <div class="button heart no-style">
-              <i class="bx bxs-zap"></i>
-                  <a href="checkout.php"><button type="submit">Proceed to checkout</button></a>
-          </div> 
-      </form>
-      ';
-      return $str;
-    }
-
-
-    
     public function footer(){
         $str='
       <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">
@@ -111,10 +76,10 @@ class CartView extends View {
         </div>
         <div class="col">
           <h4>About</h4>
-          <a href="#">About us</a>
+          <a href="about.php">About us</a>
           <a href="index.php">Home</a>
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms & conditions</a>
+          <a href="privacy.php">Privacy policy</a>
+          <a href="t&cond.php">Terms & conditions</a>
     
         </div>
     
@@ -214,9 +179,6 @@ class CartView extends View {
             ';
             return $str;
     }
-    // public function order_item()
-    // {
-    //   $this->model->order_item();
-    // }
+ 
     
 }
