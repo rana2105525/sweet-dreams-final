@@ -21,19 +21,14 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <meta charset="UTF-8">
     <title>Reviews</title>
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
-
 	</head>
 <body>
 <div class=title>
     <?php
-echo "<h1>Customers reviews</h1>";
-?>
+echo "<h1>Customers reviews</h1>";?>
 </div>
 
 <?php echo $view->review(); ?>
- <?php echo $view->footer();?>
-
-
-
+<?php echo $view->footer();?>
 </body>
 </html>

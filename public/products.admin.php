@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/admin/allProducts.css" />
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
-  </head> 
+  </head>  
 
   <body>
     <?php

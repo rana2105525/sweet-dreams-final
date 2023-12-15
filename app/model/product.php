@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once(__ROOT__ . "model/Model.php");
 class Product extends Model {
     private $id;

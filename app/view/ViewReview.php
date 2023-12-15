@@ -1,7 +1,7 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
-
+require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 class ViewReview extends View{
     public function output(){
@@ -33,8 +33,6 @@ class ViewReview extends View{
     
     return $str;
 }
-
-
 public function footer()
 {
   $str='
@@ -96,5 +94,36 @@ public function footer()
   return $str;
 }
 
-    
+public function displayReviews() {
+  echo sidebar();
+  $str = '<div class="content">';
+  $str .= '<div id="header"><h2>Customers &nbsp; Reviews</h2></div>';
+  $str .= '<div class="tablecont">';
+  $str .= '<table>';
+  $str .= '<thead class="tablehead">';
+  $str .= ' <tr>
+            <td>Name</td>
+            <td>Review</td>
+            <td>
+              <form action="" method="post">
+                <button><a href="deleteReview.php?delete_id=199">Delete</button>
+              </form>
+            </td>
+          </tr>';
+
+  $str .= '</thead>';
+  $str .= '<tbody>';
+  foreach($this->model->getReviews() as $Review){
+    $str.="<tr>";
+    $str.="<td class = 'cell'>" . $Review->getFullname() ."</td> ";
+    $str.="<td class = 'cell'>" . $Review->getReview() ."</td> ";
+    $str.="</tr>";
+  }
+
+  $str.='</tbody>';
+  $str.='</table>';
+  $str.='</div>';
+  $str.='</div>';
+  return $str; 
+}
 }

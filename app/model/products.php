@@ -2,7 +2,7 @@
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/product.php");
 
-class Products extends Model{
+class Products extends Model{ 
 	private $products;
 	function __construct() {
 		$this->fillArray();

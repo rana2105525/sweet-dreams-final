@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png"type="image/icon type" />
-    <link rel="stylesheet" href="../public/css/Admin/allUsers.css" />
+    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
+    <link rel="stylesheet" href="css/Admin/allUsers.css" />
   </head> 
 
   <body>

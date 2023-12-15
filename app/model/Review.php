@@ -1,4 +1,4 @@
-<?php
+<?php 
   require_once(__ROOT__ . "model/Model.php");
 ?>
 <?php
@@ -9,10 +9,9 @@ class Review extends Model{
 
     public function __construct()
     {
-   
+
       $this->readReview();
-    
-        
+  
     }
 
     public function getId()
@@ -41,7 +40,7 @@ class Review extends Model{
         $result = $db->query($sql);
         if ($result->num_rows == 1){
             $row = $db->fetchRow();
-            $this->fullanme = $row["fullname"];
+            $this->fullname = $row["fullname"];
             $_SESSION["fullname"]=$row["fullname"];
             $this->review=$row["review"];
         }
