@@ -42,16 +42,16 @@ class CartView extends View {
                         
                         <!-- Edit form -->
                         <form method="post" action="cart.php">
-                            <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                            <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
+                        <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
+                        <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
                             <button type="submit" name="edit_quantity">Edit Quantity</button>
                         </form>
 
                         <!-- Delete form -->
                         <form method="post" action="cart.php">
                             <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                            <button type="submit" name="delete_cart">Delete</button>
-                        </form>
+                            <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
+                            </form>
                     </div>
                 </div>
             </div>

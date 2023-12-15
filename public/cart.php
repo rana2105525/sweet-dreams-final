@@ -13,6 +13,7 @@ $model = new cartModel();
 $controller = new cartController($model);
 $view = new cartView($controller, $model);
 $isLogged=isset($_SESSION["id"]);
+
 if($isLogged)
 {
     ?>

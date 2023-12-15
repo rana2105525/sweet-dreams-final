@@ -274,7 +274,7 @@ public function getDesc()
                     <div class="col-6">
                         <div class="product-image">
                             <div class="product-image-main">
-                                <img src="../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
+                            <img src="../public/' . $prodDesc['prod_image'] . '">
                             </div>
                            
                         </div>
