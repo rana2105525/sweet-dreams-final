@@ -180,30 +180,119 @@ class ViewAdmin extends View
 // 							<tr>
 // 								<td>
 									
-// 									<p>tuyhi</p>
-// 								</td>
-// 								<td>10-4-2023</td>
-// 							</tr>
-// 							<tr>
-// 								<td>
+									<p>tuyhi</p>
+								</td>
+								<td>10-4-2023</td>
+							</tr>
+							<tr>
+								<td>
 									
-// 									<p>sedtrfytu</p>
-// 								</td>
-// 								<td>15-2-2023</td>
-// 							</tr>
-// 						</tbody>
-// 					</table>
-// 				</div>
+									<p>sedtrfytu</p>
+								</td>
+								<td>15-2-2023</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				
-// 				</div>
-// 			</div>
-//         </main>
-//         <!-- MAIN -->
-//     </section>
-//  ';
-//  return $str;
-//   } 
-    }
+				</div>
+			</div>
+        </main>
+        <!-- MAIN -->
+    </section>
+ ';
+ return $str;
+  }
+  function sideBar()
+  {
+    
+    $str='
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
+    <section id="sidebar">
+    <ul class="side-menu top">
+        <li class="active">
+            <a href="#">
+                <i class="bx bxs-dashboard"></i>
+                <span class="text">Sweet Dreams</span>
+            </a>
+        </li>
+        <li>
+        <a href="../public/viewAdmin.admin.php">
+             <i class="bx bxs-user" ></i>
+            <span class="text">Profile</span>
+        </a>
+    </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-shopping-bag-alt" ></i>
+                <span class="text">Add product</span>
+            </a>
+        </li>
+        <li>
+            <a href="../public/allProducts.admin.php">
+                <i class="bx bxs-doughnut-chart" ></i>
+                <span class="text">Products</span>
+            </a>
+        </li>
+          <li>
+            <a href="../public/addAdmin.admin.php">
+                <i class="bx bxs-user" ></i>
+                <span class="text">Add Admin</span>
+            </a>
+        </li>
+        <li>
+            <a href="../public/allAdmins.admin.php">
+                <i class="bx bxs-user" ></i>
+                <span class="text">Admins</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bxs-message-dots" ></i>
+                <span class="text">Messages</span>
+            </a>
+        </li>
+        <li>
+        <a href="#">
+            <i class="bx bxs-message-dots" ></i>
+            <span class="text">Orders</span>
+        </a>
+    </li>
+      
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt" ></i>
+                <span class="text">Add blog</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt"></i>
+                <span class="text">Reviews</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-store-alt"></i>
+                <span class="text">Users</span>
+            </a>
+        </li>
+    </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class="bx bxs-exit" ></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        
+        </ul>
+</section>
+    ';
+    return $str;
+  }
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">

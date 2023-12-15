@@ -34,8 +34,8 @@ echo "sorry you can't access this page please login";
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 	</head>
 <body>
+</body>
 
-</div>
 
 </body>
 </html>

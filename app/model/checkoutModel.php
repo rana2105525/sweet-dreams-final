@@ -5,14 +5,14 @@ require_once(__ROOT__ ."db/config.php");
 require_once(__ROOT__ ."db/Dbh.php");
 class checkoutModel extends Model
 {
-    private $id;
-    private $user_id;
-    private $address;
-    private $name;
-    private $email;
-    private $phone;
-    private $total_price;
-    private $orderd_at;
+    public $id;
+    public $user_id;
+    public $address;
+    public $name;
+    public $email;
+    public $phone;
+    public $total_price;
+    public $orderd_at;
     public function __construct() {
         $this->db = new Dbh();
 
@@ -88,6 +88,10 @@ class checkoutModel extends Model
     {
         $this->total_price= $total_price; 
     }
+    function setID($id)
+    {
+        $this->id=$id;
+    }
 
     public function order($user_id, $name, $email, $phone, $address,$total_price)
     {
@@ -105,7 +109,16 @@ class checkoutModel extends Model
         return $result;
     }
     
+    public function deleteALL()
+    {
+        $sql="delete from cart2 where user_id=$this->user_id;";
+        if($this->db->query($sql) === true){
+            return true;
+        } else{
+            echo "ERROR: Could not able to execute $sql. ";
+        }
 
+    }
    
 }
 ?>

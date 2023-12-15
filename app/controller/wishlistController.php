@@ -10,5 +10,24 @@ class wishlistController extends Controller {
             $this->model->addToWishlist($user_id, $prod_id);
             echo"added";
     }
+    public function deleteWishlistItem() {
+        $this->model->id = $_GET['id'];
+        if($this->model->deleteWishlistItem() === true){
+            header("Location:wishlist.php");
+        } else{
+            echo "ERROR: Could not able to delete the item. ";
+        }
+    }
+    public function deleteALL()
+    {
+        $this->model->id = $_GET['id'];
+        if($this->model->deleteALL() === true){
+            header("Location:wishlist.php");
+            echo"Your wishlist is empty";
+        } else{
+            echo "ERROR: Could not able to delete the item. ";
+        }
+
+    }
         }
     ?>
