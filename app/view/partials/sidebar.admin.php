@@ -10,7 +10,8 @@ $str ='<div class="sidebar rows">
   <a href="../public/addProduct.admin.php">Add Product</a>
   <a href="../public/addToBlog.php">Add blog</a>
   <a href="../public/reviews.admin.php">Reviews</a>
-  <a href="../public/users.admin.php">Users</a>
+  <a href="../public/viewUsers.admin.php">Users</a>
+  <a href="/">Logout</a>
 </div>';
 return $str;
 }

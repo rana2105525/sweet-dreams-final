@@ -3,6 +3,8 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
+require_once(__ROOT__ . "view/partials/sidebar.admin.php");
+
 ?>
 
 <?php
@@ -383,8 +385,9 @@ return $str;
 public function displayAllUsers()
 {
     $users = $this->model->getAllUsers();
-        
-    $str = '  <link rel="stylesheet" href="../public/css/Admin/allUsers.css" />
+    
+    echo sidebar();
+    $str = ' 
     <div class="content">
                 <div id="header"><h2>Users</h2></div>
                     <div class="tablecont">
@@ -409,9 +412,8 @@ public function displayAllUsers()
             $str .= '<td class="cell">' . $user['email'] . '</td>';
             $str .= '<td class="cell">' . $user['birth'] . '</td>';
             $str .= '<td class="cell">' . $user['gender'] . '</td>';
-            $str.=' <button class="buttons" id="delete">
-            <a href="deleteUser.admin.php?delete_id=' . $user['id'] . '">Delete</a>
-        </button>';
+            $str.=' <td><button class="buttons" id="delete"> <a href="deleteUser.admin.php?delete_id=' . $user['id'] . '">Delete</a>
+        </button></td>';
             $str .= '</tr>';
         }
     }
