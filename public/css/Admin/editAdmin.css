@@ -97,6 +97,7 @@ div.content {
   width: 50%;
   margin-top: 5px;
 }
+.error {color:#FF0000;}
 
 /* Hide arrows of number */
 input[type=number]::-webkit-inner-spin-button,
