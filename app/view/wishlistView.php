@@ -1,89 +1,60 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
-require_once(__ROOT__ . "controller/Controller.php");
-require_once(__ROOT__ . "controller/cartController.php");
-
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-class CartView extends View {
-
-  public  function output(){
-
-  }
+class wishlistView extends View{
   
-  public function showCart() {
-  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    public function output(){
+
+    }
+
+    public function showwishlist()
+{
+  
+    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
     // Assuming the user ID is stored in a session variable
     $user_id = $_SESSION['id'];
 
-    $cartProducts = $this->model->showInCart($user_id);
+    $wishlistProducts = $this->model->showInwishlist($user_id);
 
-    foreach ($cartProducts as $cartProduct) {
+    foreach ($wishlistProducts as $wishlistProduct) {
         $str .= '
         <div class="prod">
             <div class="product-card">
                 <div class="product-tumb">
-                    <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                    <img src="../public/' . $cartProduct['image'] . '">
+                    <input type="hidden" name="cart_id" value="' . $wishlistProduct['id'] . '">
+                    <img src="../public/images' . $wishlistProduct['image'] . '">
                 </div>
                 <div class="product-details">
-                    <h4>Title : ' . $cartProduct['name'] . '</h4>
-                    <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
+                    <h4>Title : ' . $wishlistProduct['name'] . '</h4>
+                    <h4>quantity : ' . $wishlistProduct['quantity'] . '</h4>
                     <div class="product-bottom-details">
-                        <div class="product-price">Price : ' . $cartProduct['price'] . 'LE</div>
+                        <div class="product-price">Price : ' . $wishlistProduct['price'] . 'LE</div>
                         
-                        <!-- Edit form -->
-                        <form method="post" action="cart.php">
-                        <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
-                        <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
-                            <button type="submit" name="edit_quantity">Edit Quantity</button>
-                        </form>
-
-                        <!-- Delete form -->
-                        <form method="post" action="cart.php">
-                            <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                            <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
+                            <form method="post" action="cart.php">
+                            <input type="hidden" name="cart_id" value="' . $wishlistProduct['id'] . '">
+                            <button type="submit" name="delete_cart">Delete</button>
                             </form>
                     </div>
                 </div>
             </div>
         </div>';
     }
-
-    return $str;
-}
-
-
     
 
+    return $str;
 
+}
 
-
-    public function check_btn()
-    {
-      // $user_id=$_SESSION['id'];
-      // $address=$this->model->getAddress();
-      // $card_num=$this->model->getCard_num();
-      // $cvc=$this->model->getCVC();
-      // $exp_date=$this->model->getExpiry_date();
-      $str='
-      <form method="post" action="checkout.php">
-          <div class="button heart no-style">
-              <i class="bx bxs-zap"></i>
-                  <a href="checkout.php"><button type="submit">Proceed to checkout</button></a>
-          </div> 
-      </form>
-      ';
-      return $str;
-    }
+    
 
 
     
@@ -214,9 +185,5 @@ class CartView extends View {
             ';
             return $str;
     }
-    // public function order_item()
-    // {
-    //   $this->model->order_item();
-    // }
     
 }

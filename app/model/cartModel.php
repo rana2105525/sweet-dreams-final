@@ -5,10 +5,10 @@ require_once(__ROOT__ ."db/config.php");
 require_once(__ROOT__ ."db/Dbh.php");
 class CartModel extends Model
 {
-    private $id;
-    private $prod_id;
-    private $quantity;
-    private $user_id;
+    public $id;
+    public $prod_id;
+    public $quantity;
+    public $user_id;
     public function __construct() {
         $this->db = new Dbh();
 
@@ -21,11 +21,6 @@ class CartModel extends Model
         return $this->id;
     }
 
-    // public function getName()
-    // {
-    //     return $this->name;
-    // }
-
     public function getUserId()
     {
         return $_SESSION['id'];
@@ -36,20 +31,29 @@ class CartModel extends Model
         $this->user_id = $_SESSION['id'];
     }
 
-    // public function getPrice()
-    // {
-    //     return $this->price;
-    // }
-
-    function setTitle($title)
+    public function setTitle($title)
     {
         $this->title = $title;
     }
 
-    function setPrice($price)
+    public function setPrice($price)
     {
         $this->price = $price;
     }
+    public function getprodId()
+    {
+        return $this->prod_id;
+    }
+    public function setProd_id($prod_id)
+    {
+        $this->prod_id = $prod_id;
+
+    }
+    public function setID($id)
+    {
+        $this->id=$id;
+    }
+
     public function showInCart($user_id) {
         $sql = "SELECT products.title AS name, products.price as price, cart2.quantity as quantity, products.prod_image as image, cart2.id as id
                 FROM cart2
@@ -79,6 +83,35 @@ class CartModel extends Model
         return $result;
     }
 
+    public function order_item( $user_id, $prod_id, $added_at)
+    {
+        $added_at = date('Y-m-d H:i:s');
+        $stmt = $this->db->prepare("INSERT INTO order_items(user_id,prod_id,added_at) VALUES (?, ?, ?)");
+        $stmt->bind_param("iii", $user_id, $prod_id, $added_at);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
    
+
+    public function editCartItemQuantity($product_id,$new_quantity) {
+        $sql = "UPDATE cart2 SET quantity = $new_quantity WHERE id = $product_id";
+        if($this->db->query($sql) === true){
+            echo "updated quantity successfuly";
+        } else{
+            echo "ERROR: Could not able to execute $sql.";
+        }
+    }
+
+    public function deleteCartItem() {
+            
+        $sql="delete from cart2 where id=$this->id;";
+        if($this->db->query($sql) === true){
+            return true;
+        } else{
+            echo "ERROR: Could not able to execute $sql. ";
+        }
+    }
+ 
 }
 ?>

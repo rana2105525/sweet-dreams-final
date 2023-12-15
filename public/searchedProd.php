@@ -12,21 +12,19 @@ $isLogged=isset($_SESSION["id"]);
 if($isLogged)
 {
     ?>
-    <div class=title>
 <?php
     echo $view->nav();
-    echo "<h1>Winter collection</h1>";
-    echo $view->collectionsWinter();
+    echo $view->side();
+    echo $view->getSearchDesc($_GET['id']);
     echo $view->footer();
 }
 else
 {
     ?>
-    <div class=title>
 <?php
     echo $view->nav1();
-    echo "<h1>Winter collection</h1>";
-    echo $view->collectionsWinter(); 
+    echo $view->side();
+    echo $view->getSearchDesc($_GET['id']);
     echo $view->footer();
 }
 
@@ -35,13 +33,10 @@ else
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>Winter collection</title>
+    <title>Product description </title>
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
 	</head>
 <body>
-
-</div>
-
 </body>
 </html>

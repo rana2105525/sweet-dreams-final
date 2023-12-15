@@ -19,9 +19,6 @@ class Admins extends Model {
 		}
 	}
 
-	function getAdmins() {
-		return $this->admins;
-	}
 
 	function readAdmins(){
 		$sql = "SELECT * FROM admins";
@@ -41,7 +38,7 @@ class Admins extends Model {
         $stmt->bind_param("ssssss", $name, $email, $phone, $hashed_password, $gender);
     
         if ($stmt->execute() === true) {
-            header("Location:login.php");
+            header("Location: login.php");
             $this->fillArray();
         } else {
             echo "ERROR: Could not able to execute $stmt->error";
