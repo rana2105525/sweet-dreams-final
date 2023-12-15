@@ -11,7 +11,13 @@ $controller = new checkoutController($model);
 $view = new CheckoutView($controller, $model);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
-	$controller->{$_GET['action']}();
+	switch($_GET['action'])
+    {
+        case'checkout':
+            $controller->deleteALL();
+            echo"Your wishlist is empty";
+            break;
+	}
 }
 ?>
 <!DOCTYPE html>

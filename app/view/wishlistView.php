@@ -16,14 +16,15 @@ class WishlistView extends View {
 
   }
   
-  public function showWishlist() {
+  public function showWishlist() { 
+     $user_id = $_SESSION['id'];
+    $WishlistProducts = $this->model->showInWishlist($user_id);
   $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+            <button><a href="wish_options.php?action=deleteALL&id=' . $user_id. '">delete all</a></button>';
 
-    $user_id = $_SESSION['id'];
-    $WishlistProducts = $this->model->showInWishlist($user_id);
-
+    
     foreach ($WishlistProducts as $WishProduct) {
         $str .= '
         <div class="prod">
@@ -38,9 +39,9 @@ class WishlistView extends View {
                         <div class="product-price">Price : ' . $WishProduct['price'] . 'LE</div>
 
                         <!-- Delete form -->
-                        <form method="post" action="#">
+                        <form method="post" action="wishlist.php">
                             <input type="hidden" name="wish_id" value="' . $WishProduct['id'] . '">
-                            <button><a href="cart_options.php?action=delete&id=' . $WishProduct['id'] . '">Delete item</a></button>
+                            <button><a href="wish_options.php?action=delete&id=' . $WishProduct['id'] . '">Delete item</a></button>
                             </form>
                     </div>
                 </div>

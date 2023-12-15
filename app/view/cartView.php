@@ -41,13 +41,6 @@ class CartView extends View {
                     <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
                     <div class="product-bottom-details">
                         <div class="product-price">Price : ' . $cartProduct['price'] . 'LE</div>
-                        
-                        <!-- Edit form -->
-                        <form method="post" action="cart.php">
-                            <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
-                            <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
-                            <button type="submit" name="edit_quantity">Edit Quantity</button>
-                        </form>
 
                         <!-- Delete form -->
                         <form method="post" action="cart.php">
@@ -87,8 +80,8 @@ class CartView extends View {
       <form method="post" action="checkout.php">
           <div class="button heart no-style">
               <i class="bx bxs-zap"></i>
-                  <a href="checkout.php"><button type="submit">Proceed to checkout</button></a>
-          </div> 
+              <button type=submit ><a href="checkout.php?action=checkout">Proceed to checkout</a></button>
+              </div> 
       </form>
       ';
       return $str;

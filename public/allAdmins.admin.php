@@ -58,7 +58,7 @@ $view = new ViewAdmin($controller, $model);
       ?>
   
               <?php 
-                        echo $view->sideBar();
+                       // echo $view->sideBar();
                         echo $view->displayAllAdmins();
                     ?>  
   </div>
