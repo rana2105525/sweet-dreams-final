@@ -7,7 +7,7 @@ class AdminController extends Controller{
    public $passwordErr = "";
   public  $birthErr = '';
   public $genderErr="";
-  public $confirmErr="";
+  //public $confirmErr="";
 
   function isValidPhoneNumber($phoneNumber, $desiredLength) {
 	$pattern = '/^\+?[0-9]+$/'; 
@@ -45,11 +45,11 @@ function isStrongPassword($password) {
     }
 
 	public function insertA() {
-		$name = $_REQUEST['UserName'];
-		$email = $_REQUEST['Email'];
-		$phone = $_REQUEST['Phone'];
-		$password = $_REQUEST['Password'];
-        $gender=$_REQUEST["Gender"];
+		$name = $_REQUEST['name'];
+		$phone = $_REQUEST['number'];
+		$email = $_REQUEST['email'];
+		$password = $_REQUEST['password'];
+        $gender=$_REQUEST["gender"];
 
 		
 		  if (empty($name)) {
@@ -87,20 +87,21 @@ function isStrongPassword($password) {
 			$this->genderErr = "Gender must be one of the following";
 		  }
 		    
-		  if (empty(["confirm"])) {
-			$this->confirmErr = "Confirm is required";
-		  } 
+		//   if (empty(["confirm"])) {
+		// 	$this->confirmErr = "Confirm is required";
+		//   } 
 		//   else {
 		// 	if ($_POST["password"] !== $_POST["confirm"]) {
 		// 	  $this->confirmErr = "Passwords don't match";
 		// 	}
 		//   }
 		
-		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->genderErr)) {
-			
-			$this->model->insertAdmin($name,$email,$phone,$password,$gender);
-			
-		  }
+		if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr) && empty($this->genderErr)) {
+            
+            $this->model->insertAdmin($name, $phone,$email ,$password, $gender);
+            
+            
+        }
 		
 	}
 	public function getErrors() {
@@ -116,11 +117,11 @@ function isStrongPassword($password) {
 	  }
 
 	public function editA() {
-        $name = $_REQUEST['UserName'];
-		$email = $_REQUEST['Email'];
-		$phoneNumber = $_REQUEST['Phone'];
-		$password = $_REQUEST['Password'];
-        $gender=$_REQUEST["Gender"];
+        $name = $_REQUEST['name'];
+		$phone = $_REQUEST['number'];
+		$email = $_REQUEST['email'];
+		$password = $_REQUEST['password'];
+        $gender=$_REQUEST["gender"];
         
 		
 		  if (empty($name)) {
@@ -160,9 +161,9 @@ function isStrongPassword($password) {
 			$this->genderErr = "Gender must be one of the following";
 		  }
 		    
-		  if (empty(["confirm"])) {
-			$this->confirmErr = "Confirm is required";
-		  } 
+		//   if (empty(["confirm"])) {
+		// 	$this->confirmErr = "Confirm is required";
+		//   } 
 		//   else {
 		// 	if ($_POST["password"] !== $_POST["confirm"]) {
 		// 	  $this->confirmErr = "Passwords don't match";
@@ -173,7 +174,7 @@ function isStrongPassword($password) {
 		
 		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->genderErr)) {
 			
-			$this->model->editAdmin($name, $phoneNumber, $email, $password, $gender);
+			$this->model->editAdmin($name, $phone, $email, $password, $gender);
 			
 		  }
 		

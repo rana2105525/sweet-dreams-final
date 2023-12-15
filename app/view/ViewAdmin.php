@@ -296,7 +296,7 @@ class ViewAdmin extends View
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
-        <form action="addAdmin.php?action=insert" method="post" class="form">
+        <form action="login.php?action=insert" method="post" class="form">
             <div id="title">
                 <h2>Add a new admin</h2>
             </div>
@@ -314,7 +314,7 @@ class ViewAdmin extends View
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter admin\'s email" />
-                <span class="error" id="email-error"></span>
+                
             </div>
     
             <div class="input-box">
@@ -349,7 +349,7 @@ class ViewAdmin extends View
       $gender = $this->model->getGender();
       
       $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
-        <form action="editAdmin.php?action=edit" method="post" class="form">
+        <form action="allAdmins.admins.php?action=edit" method="post" class="form">
             <div id="title"><h2>Edit admin</h2></div>
     
             <div class="input-box">

@@ -32,20 +32,19 @@ class Admins extends Model {
 		}
 	}
 
-    function insertAdmin($name, $email, $phone, $password, $gender) {
-        $stmt = $this->db->prepare("INSERT INTO admins (Username, Email, Phone, Password, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-        $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $stmt->bind_param("ssssss", $name, $email, $phone, $hashed_password, $gender);
+    function insertAdmin($name, $phone, $email, $password, $gender) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
-        if ($stmt->execute() === true) {
-            header("Location: login.php");
+        $sql = "INSERT INTO admins (UserName, Phone, Email, Password, Gender) VALUES ('$name', '$phone', '$email', '$hashedPassword', '$gender')";
+        
+        if ($this->db->query($sql) === true) {
+            echo "Records inserted successfully.";
             $this->fillArray();
         } else {
-            echo "ERROR: Could not able to execute $stmt->error";
+            echo "ERROR: Could not able to execute $sql. ";
         }
-    
-        $stmt->close();
     }
+    
     
     function getAllAdmins() {
         $sql = "SELECT * FROM admins";
