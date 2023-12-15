@@ -33,12 +33,31 @@ class CartController extends Controller {
             // exit();
         } else {
             echo "Error: Missing or invalid data.";
-            
         }
     }
+
+    public function deleteCartItem() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_cart'])) {
+            $cart_id = $_POST['cart_id'];
+            echo "Delete function called.";
+            // Assuming $this->model is an instance of a model class handling database interactions
+            $this->model->deleteCartItem($cart_id);
+
+            // Optionally, you might want to redirect the user to the cart page or update the UI
+            // header("Location: cart.php");
+            // exit();
+        } else {
+            echo "Error: Missing or invalid data.";
+        }
+    }
+    public function order_item(){
+        if(isset($_POST['id'])){
+            $prod_id=$_GET['id'];
+            $user_id = $_SESSION['id'];
+            $added_at = date('Y-m-d H:i:s');
+            $this->model->order_item( $user_id, $prod_id, $added_at);
+        } 
+    }
+        }
+    ?>
    
-
-
-}
-?>
-
