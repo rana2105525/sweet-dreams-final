@@ -12,6 +12,8 @@ class ViewAdmin extends View
 		// // $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		// return $str;
 	}
+
+
     public function dashboard(){
 
   $str='

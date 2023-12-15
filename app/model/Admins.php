@@ -66,22 +66,22 @@ class Admins extends Model {
     
         return $admins;
     }
-    function loginAdmin($email,$password){
-      $sql = "SELECT * FROM admins where Email='$email'";
-      $dbh = new Dbh();
-      $result = $dbh->query($sql);
-      if ($result->num_rows == 1){
-          $row = $dbh->fetchRow();
-          if(password_verify($password, $row["password"])){
-              $_SESSION["ID"]=$row["ID"];
-              $_SESSION["Email"]=$row["Email"];
-              header("Location: allAdmins.admins.php");
-          }
-      }
-      else{
-        echo "error";
-      }
+    public function adminLogin($email, $password) {
+        $sql = "SELECT * FROM admins WHERE Email='$email'";
+        $dbh = new Dbh();
+        $result = $dbh->query($sql);
+    
+        if ($result->num_rows == 1) {
+            $row = $dbh->fetchRow();
+            if (password_verify($password, $row["Password"])) {
+                $_SESSION["ID"] = $row["ID"];
+                $_SESSION["Email"] = $row["Email"];
+                header("Location: allAdmins.admins.php");
+            }
+        } else {
+            echo "error";
+        }
     }
-
+    
     
 }
