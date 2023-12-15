@@ -32,7 +32,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <a href="index.php"><img src="images/sweet dreams logo-01.png" alt="logo"></a>
     <?php
      echo $view->loginForm($controller->getErrors());
-     echo $view->adminlogin($controllerA->getErrors()); 
+    //  echo $view->adminlogin($controllerA->getErrors()); 
     ?>
     </section>
 </body>
