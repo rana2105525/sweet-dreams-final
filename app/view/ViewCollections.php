@@ -259,15 +259,11 @@ public function getDesc()
   $prodDesc=$this->model->readDesc();
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    // Placeholder: Add your code to process form submission and add to the database
-    // Replace the following line with your actual logic
+
     $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
   }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
-      // Placeholder: Add your code to process form submission and add to the database
-      // Replace the following line with your actual logic
-      
-      
+
       $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
   
   }
@@ -384,13 +380,17 @@ public function getSearchDesc($id)
 {
 
   $prodDesc=$this->model->readSearchDesc($id);
-
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-    // Placeholder: Add your code to process form submission and add to the database
-    // Replace the following line with your actual logic
+
     $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
-}
-        $str='
+  }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
+
+      $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
+  
+  }
+
+      $str='
         <link rel="stylesheet" href="../public/css/User/prod.css">
      <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
@@ -401,14 +401,7 @@ public function getSearchDesc($id)
                     <div class="col-6">
                         <div class="product-image">
                             <div class="product-image-main">
-                                <img src="../public/'. $prodDesc['prod_image'] . ' alt="" id="product-main-image">
-                            </div>
-                            <div class="product-image-slider">
-                                <img src="../../public/images/1.jpg" alt="" class="image-list">
-                                <img src="../../public/images/2.jpg" alt="" class="image-list">
-                                <img src="../../public/images/3.jpg" alt="" class="image-list">
-                                <img src="../../public/images/4.jpg" alt="" class="image-list">
-                                <img src="../../public/images/5.jpg" alt="" class="image-list">
+                            <img src="../public/' . $prodDesc['prod_image'] . '">
                             </div>
                         </div>
                     </div>
@@ -465,19 +458,19 @@ public function getSearchDesc($id)
                     <span class="divider"></span>
 
                     <div class="product-btn-group">
-                    <form method="post" >
+                           <form method="post" >
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
                         </div> </form>
-                      <div class="button heart no-style">
-            <i class="bx bxs-heart"></i> 
-            <button type="submit" > Add to Wishlist</button>
-               </div>
-                    </div>
-              
-                </form>
-        
+                        <form method="post">
+                        <div class="button heart no-style">
+                           <i class="bx bxs-heart"></i> 
+                           <button type="submit" name="submitadd">Add to wishlist</button>
+                           <input type="hidden" name="prod_id" value="prod_id">
+                        </div>
+                       </form>
+                    
    
 </div>
                 </div>
