@@ -34,14 +34,7 @@ class CartController extends Controller {
             echo "ERROR: Could not able to delete the item. ";
         }
     }
-    public function order_item(){
-        if(isset($_POST['id'])){
-            $prod_id=$_GET['id'];
-            $user_id = $_SESSION['id'];
-            $added_at = date('Y-m-d H:i:s');
-            $this->model->order_item( $user_id, $prod_id, $added_at);
-        } 
-    }
+
         }
     ?>
    
