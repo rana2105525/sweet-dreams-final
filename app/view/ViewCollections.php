@@ -262,6 +262,8 @@ public function getDesc()
     // Placeholder: Add your code to process form submission and add to the database
     // Replace the following line with your actual logic
     $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
+    $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
+
 }
         $str='
         <link rel="stylesheet" href="../public/css/User/prod.css">
@@ -337,13 +339,16 @@ public function getDesc()
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
                         </div> </form>
-                      <div class="button heart no-style">
-            <i class="bx bxs-heart"></i> 
-            <button type="submit" > Add to Wishlist</button>
-               </div>
+                        <form method="post">
+                        <div class="button heart no-style">
+                           <i class="bx bxs-heart"></i> 
+                           <button type="submit" name="submit">Add to wishlist</button>
+                           <input type="hidden" name="prod_id" value="prod_id">
+                        </div>
+                       </form>
                     </div>
               
-                </form>
+                
         
    
 </div>
