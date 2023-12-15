@@ -1,7 +1,7 @@
 <?php 
 require_once(__ROOT__ . "view/View.php");
-require_once(__ROOT__ . "controller/Controller.php");
-require_once(__ROOT__ . "controller/AdminController.php");
+require_once(__ROOT__ . "view/partials/sidebar.admin.php");
+
 
 class ViewAdmin extends View
 {
@@ -12,8 +12,6 @@ class ViewAdmin extends View
 		// // $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		// return $str;
 	}
-
-
     public function dashboard(){
 
   $str='
@@ -98,203 +96,113 @@ class ViewAdmin extends View
     </section>
     <!-- Sidebar -->
 
-    <!-- CONTENT -->
-    <section id="content">
+//     <!-- CONTENT -->
+//     <section id="content">
    
 
-        <!-- MAIN -->
-        <main>
-            <div class="head-title">
-                <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li><i class="bx bxs-chevron-right" ></i></li>
-                        <li>
-                            <a class="active" href="#">Home</a>
-                        </li>
-                    </ul>
-                </div>
+//         <!-- MAIN -->
+//         <main>
+//             <div class="head-title">
+//                 <div class="left">
+//                     <h1>Dashboard</h1>
+//                     <ul class="breadcrumb">
+//                         <li>
+//                             <a href="#">Dashboard</a>
+//                         </li>
+//                         <li><i class="bx bxs-chevron-right" ></i></li>
+//                         <li>
+//                             <a class="active" href="#">Home</a>
+//                         </li>
+//                     </ul>
+//                 </div>
               
-            </div>
-            <ul class="box-info">
-                <li>
-                    <i class="bx bxs-calendar-check" ></i>
-                    <span class="text">
-                        <h3>1020</h3>
-                        <p>New Orders</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-group" ></i>
-                    <span class="text">
-                        <h3>2834</h3>
-                        <p>Approved</p>
-                    </span>
-                </li>
-                <li>
-                    <i class="bx bxs-dollar-circle" ></i>
-                    <span class="text">
-                        <h3>25000</h3>
-                        <p>Shipped</p>
-                    </span>
-                </li>
-            </ul>
+//             </div>
+//             <ul class="box-info">
+//                 <li>
+//                     <i class="bx bxs-calendar-check" ></i>
+//                     <span class="text">
+//                         <h3>1020</h3>
+//                         <p>New Orders</p>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <i class="bx bxs-group" ></i>
+//                     <span class="text">
+//                         <h3>2834</h3>
+//                         <p>Approved</p>
+//                     </span>
+//                 </li>
+//                 <li>
+//                     <i class="bx bxs-dollar-circle" ></i>
+//                     <span class="text">
+//                         <h3>25000</h3>
+//                         <p>Shipped</p>
+//                     </span>
+//                 </li>
+//             </ul>
 
 
-            <div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Recent Orders</h3>
+//             <div class="table-data">
+// 				<div class="order">
+// 					<div class="head">
+// 						<h3>Recent Orders</h3>
 						
-					</div>
-					<table>
-						<thead>
-							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
+// 					</div>
+// 					<table>
+// 						<thead>
+// 							<tr>
+// 								<th>User</th>
+// 								<th>Date Order</th>
+// 							</tr>
+// 						</thead>
+// 						<tbody>
+// 							<tr>
+// 								<td>
 									
-									<p>mmmmm</p>
-								</td>
-								<td>mmm</td>
-							</tr>
-							<tr>
-								<td>
+// 									<p>mmmmm</p>
+// 								</td>
+// 								<td>mmm</td>
+// 							</tr>
+// 							<tr>
+// 								<td>
 									
-									<p>dtfygu</p>
-								</td>
-								<td>tguy</td>
-							</tr>
-							<tr>
-								<td>
+// 									<p>dtfygu</p>
+// 								</td>
+// 								<td>tguy</td>
+// 							</tr>
+// 							<tr>
+// 								<td>
 									
-									<p>tfugyhikr</p>
-								</td>
-								<td>30-9-2023</td>
-							</tr>
-							<tr>
-								<td>
+// 									<p>tfugyhikr</p>
+// 								</td>
+// 								<td>30-9-2023</td>
+// 							</tr>
+// 							<tr>
+// 								<td>
 									
-									<p>tuyhi</p>
-								</td>
-								<td>10-4-2023</td>
-							</tr>
-							<tr>
-								<td>
+// 									<p>tuyhi</p>
+// 								</td>
+// 								<td>10-4-2023</td>
+// 							</tr>
+// 							<tr>
+// 								<td>
 									
-									<p>sedtrfytu</p>
-								</td>
-								<td>15-2-2023</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+// 									<p>sedtrfytu</p>
+// 								</td>
+// 								<td>15-2-2023</td>
+// 							</tr>
+// 						</tbody>
+// 					</table>
+// 				</div>
 				
-				</div>
-			</div>
-        </main>
-        <!-- MAIN -->
-    </section>
- ';
- return $str;
-  }
-  function sideBar()
-  {
-    
-    $str='
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
-    <section id="sidebar">
-    <ul class="side-menu top">
-        <li class="active">
-            <a href="#">
-                <i class="bx bxs-dashboard"></i>
-                <span class="text">Sweet Dreams</span>
-            </a>
-        </li>
-        <li>
-        <a href="../public/viewAdmin.admin.php">
-             <i class="bx bxs-user" ></i>
-            <span class="text">Profile</span>
-        </a>
-    </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-shopping-bag-alt" ></i>
-                <span class="text">Add product</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allProducts.admin.php">
-                <i class="bx bxs-doughnut-chart" ></i>
-                <span class="text">Products</span>
-            </a>
-        </li>
-          <li>
-            <a href="../public/addAdmin.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Add Admin</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allAdmins.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Admins</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-message-dots" ></i>
-                <span class="text">Messages</span>
-            </a>
-        </li>
-        <li>
-        <a href="#">
-            <i class="bx bxs-message-dots" ></i>
-            <span class="text">Orders</span>
-        </a>
-    </li>
-      
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt" ></i>
-                <span class="text">Add blog</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Reviews</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Users</span>
-            </a>
-        </li>
-    </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#" class="logout">
-                    <i class="bx bxs-exit" ></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        
-        </ul>
-</section>
-    ';
-    return $str;
-  }
+// 				</div>
+// 			</div>
+//         </main>
+//         <!-- MAIN -->
+//     </section>
+//  ';
+//  return $str;
+//   }
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
@@ -393,52 +301,7 @@ class ViewAdmin extends View
     
       return $str;
     } 
-function displayAdmin()
-{
-    $username = $this->model->getUserName();
-    $phone = $this->model->getPhone();
-    $email = $this->model->getEmail();
-    $gender = $this->model->getGender();
 
-$str='<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Sweet Dreams</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="../../../public/css/Admin/viewAdmin.css" />
-    <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png" type="image/icon type" />
-</head>
-
-<body>
-<div class="component">
-<div class="content">
-  <section class="container rows">
-    <div class="form">
-      
-        <div id="title"><h2>Admin Profile</h2></div>
-        <div class="admin-details">
-        <label for="name">Name: &nbsp;</label>'.$username.' </div>
-        <div class="admin-details">
-        <label for="number">Phone Number: &nbsp;</label>'.$phone.' </div>
-        <div class="admin-details">
-        <label for="email">Email: &nbsp;</label>'.$email.'</div>
-        <div class="admin-details">
-        <label for="gender">Gender: &nbsp;</label>'.$gender.'</div>
-
-        <button id ="edit"><a href="editAdmin.admin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.admin.php?delete='.$this->model->getID().'">Delete Account</button>
-
-</div>
-    </section>
-</div>
-</div>
-
-</body>
-</html>';
-    return $str;
-}
 public function displayAllAdmins()
 {
     $admins = $this->model->getAllAdmins();
