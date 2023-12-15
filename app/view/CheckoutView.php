@@ -15,7 +15,7 @@ class CheckoutView extends View
                 <div class="input-box">
                 <label>Name</label>
                 <input type="text" name="name"  required />  
-                <span class="error"><?php echo $addressErr; ?></span>
+                
 
             </div>
 
@@ -28,13 +28,13 @@ class CheckoutView extends View
             <div class="input-box">
             <label>Phone</label>
             <input type="text" name="phone"  required />  
-            <span class="error"><?php echo $addressErr; ?></span>
+            
 
             </div>
             <div class="input-box">
                 <label>Address</label>
                 <input type="text" name="address"  required />  
-                <span class="error"><?php echo $addressErr; ?></span>
+      
 
             </div>
 
@@ -42,7 +42,7 @@ class CheckoutView extends View
             </div>
 
 
-            <button input type="submit" name="check" value="Submit">Checkout</button>
+            <button input type="submit" name="submit" value="Submit">Checkout</button>
         </form>
     </section>
 

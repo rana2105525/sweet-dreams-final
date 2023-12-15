@@ -77,10 +77,10 @@ class CartView extends View {
       // $cvc=$this->model->getCVC();
       // $exp_date=$this->model->getExpiry_date();
       $str='
-      <form method="post" action="checkout.php">
+      <form method="post" >
           <div class="button heart no-style">
               <i class="bx bxs-zap"></i>
-              <button type=submit ><a href="checkout.php?action=checkout">Proceed to checkout</a></button>
+              <button type=submit ><a href="checkout.php">Proceed to checkout</a></button>
               </div> 
       </form>
       ';
