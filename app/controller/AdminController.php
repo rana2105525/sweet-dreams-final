@@ -87,14 +87,6 @@ function isStrongPassword($password) {
 			$this->genderErr = "Gender must be one of the following";
 		  }
 		    
-		//   if (empty(["confirm"])) {
-		// 	$this->confirmErr = "Confirm is required";
-		//   } 
-		//   else {
-		// 	if ($_POST["password"] !== $_POST["confirm"]) {
-		// 	  $this->confirmErr = "Passwords don't match";
-		// 	}
-		//   }
 		
 		if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr) && empty($this->genderErr)) {
             
@@ -160,15 +152,7 @@ function isStrongPassword($password) {
 		  if (empty($gender)) {
 			$this->genderErr = "Gender must be one of the following";
 		  }
-		    
-		//   if (empty(["confirm"])) {
-		// 	$this->confirmErr = "Confirm is required";
-		//   } 
-		//   else {
-		// 	if ($_POST["password"] !== $_POST["confirm"]) {
-		// 	  $this->confirmErr = "Passwords don't match";
-		// 	}
-		//   }
+		
 		
 		
 		

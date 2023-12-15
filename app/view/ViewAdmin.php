@@ -339,6 +339,7 @@ class ViewAdmin extends View
                     <input type="radio" name="gender" id="female" value="Female">
                     <label for="female">Female</label>
                 </div>
+                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
             </div>
     
             <button type="submit" name="submit" id="submit-button" value="submit">Add Admin</button>
@@ -393,6 +394,7 @@ class ViewAdmin extends View
                     <input type="radio" name="gender" id="female" value="'. $gender .'">
                     <label for="female">Female</label>
                 </span>
+                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
             </div>
     
             <button type="submit" name="submit">Edit Admin</button>
