@@ -109,5 +109,5 @@ function deleteUser(){
       } else{
           echo "ERROR: Could not able to execute $sql. ";
       }
-}
+} 
 }

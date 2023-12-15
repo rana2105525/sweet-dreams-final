@@ -51,6 +51,16 @@ class Product extends Model {
 		}
 	}
 
+    public function deleteProduct(){
+        $sql="delete from products where id=$this->id;";
+		if($this->db->query($sql) === true){
+            header('Location:products.admin.php');
+			
+		} else{
+			echo "ERROR: " . $this->db->error;
+		}
+    }
+
 
     // Getters
     public function getId(){

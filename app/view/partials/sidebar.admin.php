@@ -1,5 +1,5 @@
 <div class='sidebar rows'>
-<a href="../index.php"><img class ="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo" ></a>
+<a href="../index.php"><img class ="logo" src="../public/images/Sweet Dreams logo-01.png" alt="logo" ></a>
   <a href="../index.php">Home</a>
   <a href="../admin/viewAdmin.php">My Profile</a>
   <a href="../admin/addAdmin.php">Add Admin</a>

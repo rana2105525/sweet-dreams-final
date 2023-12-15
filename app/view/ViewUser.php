@@ -22,11 +22,7 @@ class ViewUser extends View{
     <input type='text' name='search_text' id='search_text' placeholder='Search...' />
     </div>
     </div>
-    <div id='result'></div>
-  
-  
-   
-    ";
+    <div id='result'></div>";
    
   }
   

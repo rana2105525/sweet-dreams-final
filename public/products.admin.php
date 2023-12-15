@@ -22,8 +22,11 @@
       if (isset($_GET['action']) && !empty($_GET['action'])) {
         switch($_GET['action']){
             case 'insert':
-                $controller->insert();
-                break;
+              $controller->insert();
+              break;
+            case 'delete':
+              $controller->delete($_GET['id']);
+              break;
         }
     }
     else

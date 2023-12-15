@@ -30,13 +30,13 @@ class ViewProducts extends View{
 			$str.="<td class = 'cell'>" . $Product->getTitle() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getPrice() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getDescription() ."</td> ";
-			$str.="<td class = 'cell'> <img class='table_img' src='../../../public/".$Product->getProdImage()."' alt='".$Product->getTitle()."'/></td> ";
+			$str.="<td class = 'cell'> <img class='table_img' src='../public/".$Product->getProdImage()."' alt='".$Product->getTitle()."'/></td> ";
 			$str.="<td class = 'cell'>" . $Product->getCategory() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getAddedAt() ."</td> ";
-			// $str.="<td>
-			//  <button class = 'buttons' id ='edit'><a href='editProduct.php?update_id='".$Product->getId()."'>Edit</a></button>
-			//  <button class = 'buttons' id ='delete'><a href=".$Product->deleteProduct()."?delete_id='".$Product->getId()."'>Delete</a></button>
-			// </td> ";
+			$str.="<td>
+			  <button class = 'buttons' id ='edit'><a href='product.php?update_id='".$Product->getId()."'>Edit</a></button>
+			  <button class = 'buttons' id ='delete'><a href='products.admin.php?action=delete&id=".$Product->getId()."'>Delete</a></button>
+			</td> "; 
 			$str.="</tr>";
 		}
         $str.="</tbody>";
