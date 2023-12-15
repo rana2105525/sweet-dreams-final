@@ -28,7 +28,7 @@ class cartView extends View{
             <div class="product-card">
                 <div class="product-tumb">
                     <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                    <img src="../public/images' . $cartProduct['image'] . '">
+                    <img src="../public/' . $cartProduct['image'] . '">
                 </div>
                 <div class="product-details">
                     <h4>Title : ' . $cartProduct['name'] . '</h4>
@@ -191,5 +191,9 @@ class cartView extends View{
             ';
             return $str;
     }
+    // public function order_item()
+    // {
+    //   $this->model->order_item();
+    // }
     
 }

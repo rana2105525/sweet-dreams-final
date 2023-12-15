@@ -1,18 +1,16 @@
 <?php
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/products_orderdModel.php");
-require_once(__ROOT__ . "controller/products_orderdController.php");
-require_once(__ROOT__ . "view/ViewOrderedProducts.php");
+require_once(__ROOT__ . "model/cartModel.php");
+require_once(__ROOT__ . "controller/cartController.php");
 
 
 
-$model = new Product_orderedModel();
-$controller = new products_orderdController($model);
-$view = new ViewOrderedProducts($controller, $model);
+$model = new CartModel();
+$controller = new CartController($model);
 
+$controller->order_item();
 
-echo $view->insertOrderedItems();
 
 
 ?>
-<head><title>Orders</title></head>
+<head><title>Mine</title></head>

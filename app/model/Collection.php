@@ -6,9 +6,10 @@
 
 class Collection extends Model
 {
-  private $id;
+    public $id;
     private $title;
     private $price;
+    private $prod_id;
     private $description;
     private $image;
     private $name;
@@ -22,6 +23,14 @@ class Collection extends Model
     public function getId()
     {
         return $this->id;
+    }
+    public function getProd_id()
+    {
+      return $this->prod_id;
+    }
+    public function setProd_id($prod_id)
+    {
+     return $this->prod_id=$prod_id;
     }
     public function getName()
     {
@@ -154,6 +163,7 @@ public function addToCart($user_id, $prod_id, $quantity)
 
         $stmt->close();
     }
+
 
 }
 

@@ -21,11 +21,6 @@ class CartModel extends Model
         return $this->id;
     }
 
-    // public function getName()
-    // {
-    //     return $this->name;
-    // }
-
     public function getUserId()
     {
         return $_SESSION['id'];
@@ -36,11 +31,6 @@ class CartModel extends Model
         $this->user_id = $_SESSION['id'];
     }
 
-    // public function getPrice()
-    // {
-    //     return $this->price;
-    // }
-
     function setTitle($title)
     {
         $this->title = $title;
@@ -50,6 +40,16 @@ class CartModel extends Model
     {
         $this->price = $price;
     }
+    function getprodId()
+    {
+        return $this->prod_id;
+    }
+    function setProd_id($prod_id)
+    {
+        $this->prod_id = $prod_id;
+
+    }
+
     public function showInCart($user_id) {
         $sql = "SELECT products.title AS name, products.price as price, cart2.quantity as quantity, products.prod_image as image, cart2.id as id
                 FROM cart2
@@ -78,8 +78,15 @@ class CartModel extends Model
 
         return $result;
     }
-   
-
+    public function order_item( $user_id, $prod_id, $added_at)
+    {
+        $added_at = date('Y-m-d H:i:s');
+        $stmt = $this->db->prepare("INSERT INTO order_items(user_id,prod_id,added_at) VALUES (?, ?, ?)");
+        $stmt->bind_param("iii", $user_id, $prod_id, $added_at);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
    
 }
 ?>

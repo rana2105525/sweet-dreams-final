@@ -10,10 +10,10 @@ class ViewOrderedProducts extends View
     {
 
     }
-    public function insertOrderedItems()
-    {
-      $this->model->order_item();
-    }
+    // public function insertOrderedItems()
+    // {
+    //   $this->model->order_item($user_id,$prod_id,$added_at);
+    // }
     public function showProducts()
     {
       $user_id=$_SESSION['id'];
