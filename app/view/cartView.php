@@ -55,7 +55,7 @@ class CartView extends View {
         // Update total price for each item
         $totalPrice += ($cartProduct['price'] * $cartProduct['quantity']);
     }
-
+    $_SESSION['total_price'] = $totalPrice;
     // Display total price
     $str .= '<div>Total Price: ' . $totalPrice . 'LE</div>';
 
