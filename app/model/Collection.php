@@ -163,6 +163,20 @@ public function addToCart($user_id, $prod_id, $quantity)
 
         $stmt->close();
     }
+    public function addToWishlist($user_id, $prod_id)
+    {
+        $stmt = $this->db->prepare("INSERT INTO Wishlist (user_id, prod_id) VALUES (?, ?)");
+
+        $stmt->bind_param("ii", $user_id, $prod_id);
+
+        if ($stmt->execute() === true) {
+          
+        } else {
+            echo "Error adding product to wishlist: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
 
 
 }

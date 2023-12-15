@@ -1,63 +1,57 @@
 <?php
 
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "controller/Controller.php");
+require_once(__ROOT__ . "controller/cartController.php");
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-class wishlistView extends View{
-  
-    public function output(){
+class WishlistView extends View {
 
-    }
+  public  function output(){
 
-    public function showwishlist()
-{
+  }
   
-    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+  public function showWishlist() {
+  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
-    // Assuming the user ID is stored in a session variable
     $user_id = $_SESSION['id'];
+    $WishlistProducts = $this->model->showInWishlist($user_id);
 
-    $wishlistProducts = $this->model->showInwishlist($user_id);
-
-    foreach ($wishlistProducts as $wishlistProduct) {
+    foreach ($WishlistProducts as $WishProduct) {
         $str .= '
         <div class="prod">
             <div class="product-card">
                 <div class="product-tumb">
-                    <input type="hidden" name="cart_id" value="' . $wishlistProduct['id'] . '">
-                    <img src="../public/images' . $wishlistProduct['image'] . '">
+                    <input type="hidden" name="cart_id" value="' . $WishProduct['id'] . '">
+                    <img src="../public/' . $WishProduct['image'] . '">
                 </div>
                 <div class="product-details">
-                    <h4>Title : ' . $wishlistProduct['name'] . '</h4>
-                    <h4>quantity : ' . $wishlistProduct['quantity'] . '</h4>
+                    <h4>Title : ' . $WishProduct['name'] . '</h4>
                     <div class="product-bottom-details">
-                        <div class="product-price">Price : ' . $wishlistProduct['price'] . 'LE</div>
-                        
-                            <form method="post" action="cart.php">
-                            <input type="hidden" name="cart_id" value="' . $wishlistProduct['id'] . '">
-                            <button type="submit" name="delete_cart">Delete</button>
+                        <div class="product-price">Price : ' . $WishProduct['price'] . 'LE</div>
+
+                        <!-- Delete form -->
+                        <form method="post" action="#">
+                            <input type="hidden" name="wish_id" value="' . $WishProduct['id'] . '">
+                            <button><a href="cart_options.php?action=delete&id=' . $WishProduct['id'] . '">Delete item</a></button>
                             </form>
                     </div>
                 </div>
             </div>
         </div>';
     }
-    
 
     return $str;
-
 }
 
-    
 
-
-    
     public function footer(){
         $str='
       <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">
@@ -82,10 +76,10 @@ class wishlistView extends View{
         </div>
         <div class="col">
           <h4>About</h4>
-          <a href="#">About us</a>
+          <a href="about.php">About us</a>
           <a href="index.php">Home</a>
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms & conditions</a>
+          <a href="privacy.php">Privacy policy</a>
+          <a href="t&cond.php">Terms & conditions</a>
     
         </div>
     
@@ -125,8 +119,8 @@ class wishlistView extends View{
           <div class='wrapper1'>
         <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
         <li><a href='profile.php'>$profile</a></li>
-        <li><a href='#'>Wishlist</a></li>
-        <li><a href='#'>Cart</a></li>
+        <li><a href='wishlist.php'>Wishlist</a></li>
+        <li><a href='cart.php'>Cart</a></li>
             <a href='nav.php?action=logout'>Logout </a><br><br>
         <div class='wrap'>
         <div class='search'>
@@ -185,5 +179,6 @@ class wishlistView extends View{
             ';
             return $str;
     }
+ 
     
 }

@@ -184,5 +184,8 @@ function isDateValid($date)
 	public function delete(){
 		$this->model->deleteUser();
 	}
+  public function getAllU() {
+    return $this->model->getAllUsers();
+}
 }
 ?>
