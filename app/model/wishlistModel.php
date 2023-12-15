@@ -62,7 +62,24 @@ class wishlistModel extends Model
 
         return $result;
     }
+    public function showInWishlist($user_id) {
+        $sql = "SELECT products.title AS name, products.price as price, products.prod_image as image, Wishlist.id as id
+                FROM Wishlist
+                INNER JOIN products ON products.id = Wishlist.prod_id
+                INNER JOIN reg ON reg.id = Wishlist.user_id
+                WHERE Wishlist.user_id = ?";
 
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $WishlistItems = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+
+        return $WishlistItems;
+    }
  
 }
 ?>
