@@ -380,46 +380,8 @@ public function contact()
 return $str;
 }
 
-public function displayAllUsers()
-{
-    $users = $this->model->getAllUsers();
-        
-    $str = '  <link rel="stylesheet" href="../public/css/Admin/allUsers.css" />
-    <div class="content">
-                <div id="header"><h2>Users</h2></div>
-                    <div class="tablecont">
-                        <table>
-                            <thead class="tablehead">
-                                <tr>
-                                    <th class="tableHeader">#ID</th>
-                                    <th class="tableHeader">Full Name</th>
-                                    <th class="tableHeader">Email</th>
-                                    <th class="tableHeader">Date of Birthr</th>
-                                    <th class="tableHeader">Gender</th>
-                                    <th class="tableHeader">Operation</th>
-                                </tr>
-                            </thead>
-                            <tbody>';
-
-    foreach ($users as $user) {
-        if (isset($user['id'])){
-            $str .= '<tr>';
-            $str .= '<td class="cell">' . $user['id'] . '</td>';
-            $str .= '<td class="cell">' . $user['name'] . '</td>';
-            $str .= '<td class="cell">' . $user['email'] . '</td>';
-            $str .= '<td class="cell">' . $user['birth'] . '</td>';
-            $str .= '<td class="cell">' . $user['gender'] . '</td>';
-            $str.=' <button class="buttons" id="delete">
-            <a href="deleteUser.admin.php?delete_id=' . $user['id'] . '">Delete</a>
-        </button>';
-            $str .= '</tr>';
-        }
-    }
-
-    $str .= '</tbody></table></div></div>';
-    return $str;
 }
-}
+
 ?>
 
 

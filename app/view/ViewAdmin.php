@@ -472,6 +472,7 @@ public function displayAllAdmins()
     $str .= '</tbody></table></div></div>';
     return $str;
 }
+
     
 // public function Adminsidebar() // partials edited soon
 // {
