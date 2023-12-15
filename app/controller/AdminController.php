@@ -74,14 +74,6 @@ function isStrongPassword($password) {
 			}
 		  }
 		  
-		  if (empty(["confirm"])) {
-			$this->confirmErr = "Confirm is required";
-		  } else {
-			if ($_POST["password"] !== $_POST["confirm"]) {
-			  $this->confirmErr = "Passwords don't match";
-			}
-		  }
-		
 		  if (empty($password)) {
 			$this->passwordErr = "Password is required";
 		  }
@@ -105,7 +97,7 @@ function isStrongPassword($password) {
 		  'emailErr' => $this->emailErr,
 		  'phoneErr' => $this->phoneErr,
 		  'passwordErr' => $this->passwordErr,
-		  'confirmErr'=>$this->confirmErr
+		  'genderErr'=>$this->genderErr
 		];
 		return $errors;
 	  }

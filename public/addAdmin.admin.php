@@ -17,7 +17,7 @@ $isLogged = isset($_SESSION["ID"]);
 
 $model = new Admins();
 $controller = new AdminController($model);
-$view = new ViewAdmin($controller, $model);//}
+$view = new ViewAdmin($controller, $model);
 
 ?>
 
@@ -51,6 +51,7 @@ $view = new ViewAdmin($controller, $model);//}
               <?php 
                         echo $view->sideBar();
                         echo $view->addAdminForm();
+                        //}
                     ?>  
   </div>
   </body>

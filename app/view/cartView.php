@@ -17,7 +17,7 @@ class CartView extends View {
   }
   
   public function showCart() {
-  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
@@ -25,6 +25,8 @@ class CartView extends View {
     $user_id = $_SESSION['id'];
 
     $cartProducts = $this->model->showInCart($user_id);
+
+    $totalPrice = 0; // Initialize total price
 
     foreach ($cartProducts as $cartProduct) {
         $str .= '
@@ -42,8 +44,8 @@ class CartView extends View {
                         
                         <!-- Edit form -->
                         <form method="post" action="cart.php">
-                        <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
-                        <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
+                            <input type="hidden" name="id" value="' . $cartProduct['id'] . '">
+                            <input type="number" name="quantity" value="' . $cartProduct['quantity'] . '" min="1">
                             <button type="submit" name="edit_quantity">Edit Quantity</button>
                         </form>
 
@@ -51,15 +53,22 @@ class CartView extends View {
                         <form method="post" action="cart.php">
                             <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
                             <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
-                            </form>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>';
+
+        // Update total price for each item
+        $totalPrice += ($cartProduct['price'] * $cartProduct['quantity']);
     }
+
+    // Display total price
+    $str .= '<div>Total Price: ' . $totalPrice . 'LE</div>';
 
     return $str;
 }
+
 
 
     

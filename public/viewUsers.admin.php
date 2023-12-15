@@ -1,8 +1,8 @@
 <?php
 define('__ROOT__', "../app/");
-require_once(__ROOT__ . "model/Admins.php");
-require_once(__ROOT__ . "controller/AdminController.php");
-require_once(__ROOT__ . "view/ViewAdmin.php");
+require_once(__ROOT__ . "model/Users.php");
+require_once(__ROOT__ . "controller/UsersController.php");
+require_once(__ROOT__ . "view/ViewUser.php");
 
 // Check if the session ID is set before creating an admins object
 // $adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
@@ -17,7 +17,7 @@ require_once(__ROOT__ . "view/ViewAdmin.php");
 // }
 // or  ↓ ↓ ↓ ↓ ↓
 
-$isLogged = isset($_SESSION["ID"]);
+$isLogged = isset($_SESSION["id"]);
 // if (!$isLogged) {
 
 //     header("Location: login.php");
@@ -27,9 +27,9 @@ $isLogged = isset($_SESSION["ID"]);
   
 //  $_SESSION['ID'] = $adminDetails['ID'];
 
-$model = new Admins();
-$controller = new AdminController($model);
-$view = new ViewAdmin($controller, $model);
+$model = new Users();
+$controller = new UsersController($model);
+$view = new ViewUser($controller, $model);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,11 +56,13 @@ $view = new ViewAdmin($controller, $model);
       // }
      
       ?>
-  
+      
               <?php 
-                        echo $view->sideBar();
-                        echo $view->displayAllAdmins();
+
+                        echo $view->displayAllUsers();
+                        //}
                     ?>  
+          
   </div>
   </body>
 </html>

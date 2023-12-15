@@ -68,5 +68,23 @@ class Users extends Model {
       }
     }
 
+    function getAllUsers() {
+        $sql = "SELECT * FROM reg";
+        $result = $this->db->query($sql);
+        $users = [];
     
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $users[] = [
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'email' => $row['email'],
+                    'birth' => $row['birth'],
+                    'gender' => $row['gender']
+                ];
+            }
+        }
+    
+        return $users;
+    }
 }
