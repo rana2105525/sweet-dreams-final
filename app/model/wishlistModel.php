@@ -80,6 +80,25 @@ class wishlistModel extends Model
 
         return $WishlistItems;
     }
+    public function deleteWishlistItem() {
+            
+        $sql="delete from Wishlist where id=$this->id;";
+        if($this->db->query($sql) === true){
+            return true;
+        } else{
+            echo "ERROR: Could not able to execute $sql. ";
+        }
+    }
  
+    public function deleteALL()
+    {
+        $sql="delete from Wishlist where user_id=$this->user_id;";
+        if($this->db->query($sql) === true){
+            return true;
+        } else{
+            echo "ERROR: Could not able to execute $sql. ";
+        }
+
+    }
 }
 ?>

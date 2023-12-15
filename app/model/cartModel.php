@@ -112,6 +112,7 @@ class CartModel extends Model
             echo "ERROR: Could not able to execute $sql. ";
         }
     }
+
  
 }
 ?>
