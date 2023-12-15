@@ -6,6 +6,7 @@ class AdminController extends Controller{
 	public $phoneErr = "";
    public $passwordErr = "";
   public  $birthErr = '';
+  public  $genderErr = '';
   public $confirmErr="";
 
   function isValidPhoneNumber($phoneNumber, $desiredLength) {
@@ -74,24 +75,27 @@ function isStrongPassword($password) {
 			}
 		  }
 		  
-		  if (empty(["confirm"])) {
-			$this->confirmErr = "Confirm is required";
-		  } else {
-			if ($_POST["password"] !== $_POST["confirm"]) {
-			  $this->confirmErr = "Passwords don't match";
-			}
-		  }
-		
 		  if (empty($password)) {
 			$this->passwordErr = "Password is required";
 		  }
 		  // } elseif (!isStrongPassword($_POST["password"])) {
 		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
 		  // }
+		  if(empty($gender)){
+			$this->genderErr = "Gender is required";
+		  }
+		  if (empty(["confirm"])) {
+			$this->confirmErr = "Confirm is required";
+		  } 
+		//   else {
+		// 	if ($_POST["password"] !== $_POST["confirm"]) {
+		// 	  $this->confirmErr = "Passwords don't match";
+		// 	}
+		//   }
 		  
 		
 		
-		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->confirmErr)) {
+		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->genderErr)) {
 			
 			$this->model->insertAdmin($name,$email,$phone,$password,$gender);
 			
@@ -105,7 +109,7 @@ function isStrongPassword($password) {
 		  'emailErr' => $this->emailErr,
 		  'phoneErr' => $this->phoneErr,
 		  'passwordErr' => $this->passwordErr,
-		  'confirmErr'=>$this->confirmErr
+		  'genderErr'=>$this->genderErr
 		];
 		return $errors;
 	  }
@@ -146,25 +150,26 @@ function isStrongPassword($password) {
 			}
 		  }
 		  
-		  if (empty(["confirm"])) {
-			$this->confirmErr = "Confirm is required";
-		  } else {
-			if ($_POST["password"] !== $_POST["confirm"]) {
-			  $this->confirmErr = "Passwords don't match";
-			}
-		  }
-		
 		  if (empty($password)) {
 			$this->passwordErr = "Password is required";
 		  }
 		  // } elseif (!isStrongPassword($_POST["password"])) {
 		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
 		  // }
-		  
-	
+		  if(empty($gender)){
+			$this->genderErr = "Gender is required";
+		  }
+		  if (empty(["confirm"])) {
+			$this->confirmErr = "Confirm is required";
+		  } 
+		//   else {
+		// 	if ($_POST["password"] !== $_POST["confirm"]) {
+		// 	  $this->confirmErr = "Passwords don't match";
+		// 	}
+		//   }
 		
 		
-		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->confirmErr)) {
+		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->genderErr)) {
 			
 			$this->model->editAdmin($name, $phoneNumber, $email, $password, $gender);
 			
