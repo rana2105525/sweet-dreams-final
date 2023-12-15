@@ -231,7 +231,7 @@ class ViewAdmin extends View
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="../public/allProducts.admin.php">
                 <i class="bx bxs-doughnut-chart" ></i>
                 <span class="text">Products</span>
             </a>
@@ -397,7 +397,7 @@ function displayAdmin()
     $phone = $this->model->getPhone();
     $email = $this->model->getEmail();
     $gender = $this->model->getGender();
-    
+
 $str='<!DOCTYPE html>
 <html lang="en">
 <head>
