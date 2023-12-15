@@ -202,7 +202,8 @@ class ViewAdmin extends View
 //     </section>
 //  ';
 //  return $str;
-//   }
+//   } 
+    }
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
@@ -335,7 +336,9 @@ public function displayAllAdmins()
     }
 
     $str .= '</tbody></table></div></div>';
-    return $str;
+    return $str;}
+
+    
 }
 
     
@@ -358,8 +361,8 @@ public function displayAllAdmins()
 // }
 
 
+  
        
-       
-}
+
 
 ?>
