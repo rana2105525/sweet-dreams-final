@@ -1,10 +1,11 @@
 <?php
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 class ViewProducts extends View{
     public function output(){
 		$str="<div class='component'>";
-	 	include 'partials/sidebar.admin.php';
+		echo sidebar();
 		$str.= "<div class='content'>
 		<div id='header'><h2>All Products</h2></div>";
 		$str.="<div class='tablecont'>";
