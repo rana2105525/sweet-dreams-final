@@ -18,49 +18,6 @@ class Product_orderedModel extends Model
 
      
     }
-  
-//       public function order_item()
-//     {
-//         $user_id=$_SESSION['id'];
-//         $added_at = date('Y-m-d');
-//         $order_id=1;
-//         $prod_id=99;
-    
-//         // Inserting order details into the order_items table
-//       // Inserting order details into the order_items table
-// // Inserting order details into the order_items table
-// $stmt = $this->db->prepare("INSERT INTO order_items(user_id,prod_id,order_id,added_at)VALUES(?,?,?,?)");
-// $stmt->bind_param("iiis", $user_id, $prod_id, $order_id, $added_at);
-// $result = $stmt->execute();
-// $stmt->close();
-//         return $result;
-//     }
-
-    
-
-    // public function showUserHistory()
-    // {
-    //     $sql = "SELECT products.id FROM products
-    //     INNER JOIN order_items ON products.id = order_items.prod_id
-    //     INNER JOIN reg ON reg.id = order_items.user_id
-    //     WHERE order_items.user_id = ?;"; // Use placeholder for parameter
-    
-    //     $stmt = $this->db->prepare($sql);
-    //     $stmt->bind_param("s", $user_id); // Bind user ID to the query
-    
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    
-    //     if ($result->num_rows > 0) {
-    //         while ($row = $result->fetch_assoc()) {
-    //             echo "Product ID: " . $row["id"] . "<br>";
-    //         }
-    //     } else {
-    //         echo "No products found for user.";
-    //     }
-    
-    //     $stmt->close();
-    // }
 
       public function showOrders()
     {
@@ -93,6 +50,8 @@ class Product_orderedModel extends Model
             }
           }
     }
+    
+
 
 }
 

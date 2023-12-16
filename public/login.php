@@ -15,10 +15,6 @@ $modelA = new Admins();
 $controllerA = new AdminController($modelA);
 $viewA = new ViewUser($controllerA, $modelA);
 
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-	$controller->{$_GET['action']}();
-}
-
 ?>
 <!DOCTYPE html>
 <html>

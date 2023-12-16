@@ -188,6 +188,8 @@ public function nav()
   $profile = $_SESSION['name'];
 
       echo "
+      <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+      <script src='../public/script/search.js'></script>
       <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
       <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
@@ -195,15 +197,11 @@ public function nav()
     <li><a href='wishlist.php'>Wishlist</a></li>
     <li><a href='cart.php'>Cart</a></li>
 		<a href='nav.php?action=logout'>Logout </a><br><br>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
+    <div>
+    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+    </div>
+    </div>
+    <div id='result'></div>
   </div>
     ";
   
@@ -212,19 +210,17 @@ public function nav()
 public function nav1()
 {
  echo"
+ <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+ <script src='../public/script/search.js'></script>
   <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
   <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='login.php'>Login</a></li>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
+    <div>
+    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+    </div>
+    </div>
+    <div id='result'></div>
   </div>
     ";
    

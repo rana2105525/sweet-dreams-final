@@ -187,5 +187,10 @@ function isDateValid($date)
   public function getAllU() {
     return $this->model->getAllUsers();
 }
+public function readMyOrders()
+{
+    $user_id=$_SESSION['id'];
+    $this->model->showUserHistory($user_id);
+}
 }
 ?>

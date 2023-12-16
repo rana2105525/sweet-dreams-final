@@ -110,4 +110,23 @@ function deleteUser(){
           echo "ERROR: Could not able to execute $sql. ";
       }
 } 
+public function showUserHistory($user_id)
+{
+    $sql = "SELECT products.id,products.title,products.prod_image FROM products
+    INNER JOIN order_items ON products.id = order_items.prod_id
+    INNER JOIN reg ON reg.id = order_items.user_id
+    WHERE order_items.user_id = ?;"; // Use placeholder for parameter
+
+$stmt = $this->db->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$user_items = $result->fetch_all(MYSQLI_ASSOC);
+
+$stmt->close();
+
+return $user_items;
+
+}
 }

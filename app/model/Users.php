@@ -87,4 +87,5 @@ class Users extends Model {
     
         return $users;
     }
+
 }
