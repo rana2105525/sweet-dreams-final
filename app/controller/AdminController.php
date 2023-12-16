@@ -49,7 +49,7 @@ function isStrongPassword($password) {
 		$phone = $_REQUEST['number'];
 		$email = $_REQUEST['email'];
 		$password = $_REQUEST['password'];
-        $gender=$_REQUEST["gender"];
+        $gender = isset($_REQUEST["gender"]) ? $_REQUEST["gender"] : '';
 
 		
 		  if (empty($name)) {
