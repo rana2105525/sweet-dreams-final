@@ -11,6 +11,7 @@ class Review extends Model{
     {
 
       $this->readReview();
+      $this->user_id = $_SESSION['id'];
   
     }
 
@@ -58,6 +59,16 @@ class Review extends Model{
         } else {
             return []; 
         }
+    }
+
+    public function addToreview($user_id, $prod_id, $review)
+    {
+        $stmt = $this->db->prepare("INSERT INTO reviews (user_id, prod_id, review) VALUES (?, ?, ?)");
+        $stmt->bind_param("iii", $user_id, $prod_id, $review);
+        $result = $stmt->execute();
+        $stmt->close();
+    
+        return $result;
     }
     
       }

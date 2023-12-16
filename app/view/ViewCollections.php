@@ -3,6 +3,7 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
+require_once(__ROOT__ . "controller/ReviewsController.php");
 
 class ViewCollections extends View{
   public function output(){
@@ -263,6 +264,11 @@ public function getDesc()
       $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
   
   }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitreview'])) {
+
+    $this->model->addToreview($_SESSION['id'], $prodDesc['id'],$_POST['review']);
+
+}
     
 
 
@@ -357,12 +363,11 @@ public function getDesc()
 </div>
 <div class="rev">
 <h2>Customer Reviews</h2>
-<form action="" class="form" method="post">
+<form action="prod.php?review" class="form" method="post">
     <div class="text-field">
         <label for="name">Write your review</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Write your name">
         <input type="text" id="review" name="review" placeholder="Write your review">
-        <button type="submit" class="btn" name="submit">Submit</button>
+        <button type="submit" class="btn" name="submitreview">Submit</button>
     </div>
 </form>
 </div>';
