@@ -33,17 +33,23 @@ class Admins extends Model {
 	}
 
     function insertAdmin($name, $phone, $email, $password, $gender) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO admins (Username, Phone, Email, Password, Gender) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $phone, $email, $hashed_password, $gender);
     
-        $sql = "INSERT INTO admins (UserName, Phone, Email, Password, Gender) VALUES ('$name', '$phone', '$email', '$hashedPassword', '$gender')";
-        
-        if ($this->db->query($sql) === true) {
-            echo "Records inserted successfully.";
+        if ($stmt->execute() === true) {
+            // Successful insertion
             $this->fillArray();
+            return true;
         } else {
-            echo "ERROR: Could not able to execute $sql. ";
+            // Error occurred
+            echo "ERROR: Could not able to execute $stmt->error";
+            return false;
         }
+        $stmt->close();
     }
+    
+    
     
     
     function getAllAdmins() {

@@ -296,7 +296,9 @@ class ViewAdmin extends View
     function addAdminForm($errors = [])
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
-        <form action="login.php?action=insert" method="post" class="form">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../public/script/email.js"></script>
+        <form action="addAdmin.admin.php?action=insert" method="post" class="form">
             <div id="title">
                 <h2>Add a new admin</h2>
             </div>

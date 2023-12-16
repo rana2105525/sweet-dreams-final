@@ -7,7 +7,7 @@ class AdminController extends Controller{
    public $passwordErr = "";
   public  $birthErr = '';
   public $genderErr="";
-  //public $confirmErr="";
+
 
   function isValidPhoneNumber($phoneNumber, $desiredLength) {
 	$pattern = '/^\+?[0-9]+$/'; 
@@ -59,6 +59,12 @@ function isStrongPassword($password) {
 			  $this->nameErr = "Only letters and white space allowed";
 			}
 		  }
+		  $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+    $sql = "SELECT * FROM admins WHERE Email = '$email'";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    $this->emailErr = "Email exists in the database";
+  }
 		
 		  if (empty($email)) {
 			$this->emailErr = "Email is required";
@@ -72,14 +78,14 @@ function isStrongPassword($password) {
 		  } else {
 			$desiredLength = 11; 
 	  
-			if (!isValidPhoneNumber($phone, $desiredLength)) {
+			if (!$this->isValidPhoneNumber($phone, $desiredLength)) {
 				$this->phoneErr = "Invalid phone number format or length"; 
 			}
 		  }
 		  if (empty($password)) {
 			$this->passwordErr = "Password is required";
 		  }
-		  // } elseif (!isStrongPassword($_POST["password"])) {
+		  // } elseif (!$this->isStrongPassword($_POST["password"])) {
 		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
 		  // }
 		
@@ -96,19 +102,9 @@ function isStrongPassword($password) {
         }
 		
 	}
-	public function getErrors() {
-      
-		$errors = [
-		  'nameErr' => $this->nameErr,
-		  'emailErr' => $this->emailErr,
-		  'phoneErr' => $this->phoneErr,
-		  'passwordErr' => $this->passwordErr,
-		  'genderErr'=>$this->genderErr
-		];
-		return $errors;
-	  }
 
 	public function editA() {
+		if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $name = $_REQUEST['name'];
 		$phone = $_REQUEST['number'];
 		$email = $_REQUEST['email'];
@@ -138,14 +134,14 @@ function isStrongPassword($password) {
 		  } else {
 			$desiredLength = 11; 
 	  
-			if (!isValidPhoneNumber($phone, $desiredLength)) {
+			if (!$this->isValidPhoneNumber($phone, $desiredLength)) {
 				$this->phoneErr = "Invalid phone number format or length"; 
 			}
 		  }
 		  if (empty($password)) {
 			$this->passwordErr = "Password is required";
 		  }
-		  // } elseif (!isStrongPassword($_POST["password"])) {
+		  // } elseif (!$this->isStrongPassword($_POST["password"])) {
 		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
 		  // }
 		
@@ -162,8 +158,18 @@ function isStrongPassword($password) {
 			
 		  }
 		
-	}
-
+	}}
+	public function getErrors() {
+      
+		$errors = [
+		  'nameErr' => $this->nameErr,
+		  'emailErr' => $this->emailErr,
+		  'phoneErr' => $this->phoneErr,
+		  'passwordErr' => $this->passwordErr,
+		  'genderErr'=>$this->genderErr
+		];
+		return $errors;
+	  }
 	public function deleteA(){
 		$this->model->deleteAdmin();
 	}

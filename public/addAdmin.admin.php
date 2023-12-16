@@ -18,17 +18,22 @@ $isLogged = isset($_SESSION["ID"]);
 $model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $controller->insertA(); // Handle the form submission for adding a new admin
+}
+// if (isset($_GET['action']) && !empty($_GET['action'])) {
+// 	$controller->{$_GET['action']}();
+// }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sweet Dreams</title>
+    <title>Add Admin</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png"type="image/icon type" />
+    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
   </head> 
 
@@ -50,7 +55,7 @@ $view = new ViewAdmin($controller, $model);
 
               <?php 
                         echo $view->sideBar();
-                        echo $view->addAdminForm();
+                        echo $view->addAdminForm($controller->getErrors());
                         //}
                     ?>  
   </div>
