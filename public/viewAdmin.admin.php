@@ -21,7 +21,7 @@
     // if (!$isLogged) {
 
     //     // header("Location: login.php");
-    //     // exit();
+    //     // exit(); 
     //     echo"lol";
     // } else {
       
@@ -30,6 +30,9 @@
     $model = new Admin();
     $controller = new AdminController($model);
     $view = new ViewAdmin($controller, $model);
+    if (isset($_GET['action']) && !empty($_GET['action'])) {
+      $controller->{$_GET['action']}();
+    }
     ?>
 
 <body>
