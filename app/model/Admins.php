@@ -81,7 +81,7 @@ class Admins extends Model {
             if (password_verify($password, $row["Password"])) {
                 $_SESSION["ID"] = $row["ID"];
                 $_SESSION["Email"] = $row["Email"];
-                header("Location: allAdmins.admins.php");
+                header("Location: viewAdmin.admin.php");
             }
         } else {
             echo "error";
