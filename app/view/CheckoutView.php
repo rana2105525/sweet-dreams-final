@@ -50,6 +50,7 @@ class CheckoutView extends View
         return $str;
 
     }
+    
 }
 
 

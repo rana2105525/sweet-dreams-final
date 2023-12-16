@@ -16,9 +16,7 @@ class ViewOrderedProducts extends View
     // }
     public function showProducts()
     {
-      $user_id=$_SESSION['id'];
-      $prod_id=$this->model->showUserProducts($user_id);
-   
+      $this->model->showOrders();
     }
 
 // public function getOrderedProducts($id)
