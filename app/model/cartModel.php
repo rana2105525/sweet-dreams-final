@@ -8,6 +8,8 @@ class CartModel extends Model
     public $id;
     public $prod_id;
     public $quantity;
+    public $color;
+    public $size;
     public $user_id;
     public function __construct() {
         $this->db = new Dbh();
@@ -20,7 +22,22 @@ class CartModel extends Model
     {
         return $this->id;
     }
-
+    public function get_color()
+    {
+      return $this->color;
+    }
+    public function get_size()
+    {
+      return $this->size;
+    }
+    public function set_color($color)
+    {
+      return $this->color=$color;
+    }
+    public function set_size($size)
+    {
+      return $this->size=$size;
+    }
     public function getUserId()
     {
         return $_SESSION['id'];
@@ -73,10 +90,10 @@ class CartModel extends Model
         return $cartItems;
     }
 
-    public function addToCart($user_id, $prod_id, $quantity)
+    public function addToCart($user_id, $prod_id,$color,$size, $quantity)
     {
-        $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id, quantity) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $user_id, $prod_id, $quantity);
+        $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id,color,size, quantity) VALUES (?, ?, ?,?,?)");
+        $stmt->bind_param("iissi", $user_id, $prod_id,$color,$size, $quantity);
         $result = $stmt->execute();
         $stmt->close();
 

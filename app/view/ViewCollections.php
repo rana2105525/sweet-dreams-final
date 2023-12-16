@@ -260,7 +260,7 @@ public function getDesc()
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
-    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
+    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], $_POST['color'], $_POST['size'], $_POST['quantity']);
   }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
 
@@ -305,41 +305,38 @@ public function getDesc()
                                 <h3>Description</h3>
                                 <p>'.$prodDesc['description'] .'</p>
                             </div>
+                            <form method="post" >
                             <div class="product-size">
-                                <h4>Size</h4>
-                                <div class="size-layout">
-                                    <input type="radio" name="size" value="S" id="1" class="size-input">
-                                    <label for="1" class="size">0-3</label>
-    
-                                    <input type="radio" name="size" value="M" id="2" class="size-input">
-                                    <label for="2" class="size">3-6</label>
-    
-                                    <input type="radio" name="size" value="L" id="3" class="size-input">
-                                    <label for="3" class="size">6-12</label>
-    
-                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
-                            <label for="4" class="size">12-24</label>
-                            
+                            <h4>Size</h4>
+                            <div class="size-layout">
+                            <input type="radio" name="size" value="0-3" id="1" class="size-input">
+                            <label for="1" class="size">0-3</label><br>
+                            <input type="radio" name="size" value="3-6" id="2" class="size-input">
+                            <label for="2" class="size">3-6</label><br>
+                            <input type="radio" name="size" value="6-12" id="3" class="size-input">
+                            <label for="3" class="size">6-12</label><br>
+                            <input type="radio" name="size" value="12-24" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label><br>
                             <a href="../public/images/size-chart.jpg">Size chart</a>
                         
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-color">
+                        <div class="product-color">
                         <h4>Color</h4>
-                        <div class="color-layout">
-                            <input type="radio" name="color"  value="black" class="color-input">
-                            <label for="black" class="black"></label>
-                            <input type="radio" name="color"  value="red" class="color-input">
-                            <label for="red" class="red"></label>
+                
+                        <input type="radio" id="orane" name="color" value="orange">
+                        <label for="orange">Orange</label><br>
 
-                            <input type="radio" name="color"  value="blue" class="color-input">
-                            <label for="blue" class="blue"></label>
+                        <input type="radio" id="blue" name="color" value="blue">
+                        <label for="blue">Blue</label><br>
                         </div>
                     </div>
+                    <h4>Quantity</h4>
+                    <input type="number" name="quantity" value="1" min="1">
                     <span class="divider"></span>
 
                     <div class="product-btn-group">
-                    <form method="post" >
+                    
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
@@ -382,7 +379,7 @@ public function getSearchDesc($id)
   $prodDesc=$this->model->readSearchDesc($id);
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
-    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
+    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], $_POST['color'], $_POST['size'], $_POST['quantity']);
   }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
 
@@ -424,45 +421,43 @@ public function getSearchDesc($id)
                                 <h3>Description</h3>
                                 <p>'.$prodDesc['description'] .'</p>
                             </div>
+                            <form method="post" >
                             <div class="product-size">
-                                <h4>Size</h4>
-                                <div class="size-layout">
-                                    <input type="radio" name="size" value="S" id="1" class="size-input">
-                                    <label for="1" class="size">0-3</label>
-    
-                                    <input type="radio" name="size" value="M" id="2" class="size-input">
-                                    <label for="2" class="size">3-6</label>
-    
-                                    <input type="radio" name="size" value="L" id="3" class="size-input">
-                                    <label for="3" class="size">6-12</label>
-    
-                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
-                            <label for="4" class="size">12-24</label>
-                            
+                            <h4>Size</h4>
+                            <div class="size-layout">
+                            <input type="radio" name="size" value="0-3" id="1" class="size-input">
+                            <label for="1" class="size">0-3</label><br>
+                            <input type="radio" name="size" value="3-6" id="2" class="size-input">
+                            <label for="2" class="size">3-6</label><br>
+                            <input type="radio" name="size" value="6-12" id="3" class="size-input">
+                            <label for="3" class="size">6-12</label><br>
+                            <input type="radio" name="size" value="12-24" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label><br>
                             <a href="../public/images/size-chart.jpg">Size chart</a>
                         
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-color">
+                        <div class="product-color">
                         <h4>Color</h4>
-                        <div class="color-layout">
-                            <input type="radio" name="color"  value="black" class="color-input">
-                            <label for="black" class="black"></label>
-                            <input type="radio" name="color"  value="red" class="color-input">
-                            <label for="red" class="red"></label>
+                
+                        <input type="radio" id="orane" name="color" value="orange">
+                        <label for="orange">Orange</label><br>
 
-                            <input type="radio" name="color"  value="blue" class="color-input">
-                            <label for="blue" class="blue"></label>
+                        <input type="radio" id="blue" name="color" value="blue">
+                        <label for="blue">Blue</label><br>
                         </div>
                     </div>
-                    <span class="divider"></span>
+                    <h4>Quantity</h4>
+                    <input type="number" name="quantity" value="1" min="1">
+                           
 
                     <div class="product-btn-group">
-                           <form method="post" >
+                          
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
-                        </div> </form>
+                        </div> 
+                        </form>
                         <form method="post">
                         <div class="button heart no-style">
                            <i class="bx bxs-heart"></i> 

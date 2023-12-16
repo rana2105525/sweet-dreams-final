@@ -40,7 +40,7 @@ class CartView extends View {
                     <h4>Title : ' . $cartProduct['name'] . '</h4>
                     <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
                     <div class="product-bottom-details">
-                        <div class="product-price">Price : ' . $cartProduct['price'] . 'LE</div>
+                        <div class="product-price">Price : ' .( $cartProduct['price'] * $cartProduct['quantity'] ). 'LE</div>
 
                         <!-- Delete form -->
                         <form method="post" action="cart.php">
@@ -63,19 +63,8 @@ class CartView extends View {
 }
 
 
-
-    
-
-
-
-
     public function check_btn()
     {
-      // $user_id=$_SESSION['id'];
-      // $address=$this->model->getAddress();
-      // $card_num=$this->model->getCard_num();
-      // $cvc=$this->model->getCVC();
-      // $exp_date=$this->model->getExpiry_date();
       $str='
       <form method="post" >
           <div class="button heart no-style">

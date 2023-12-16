@@ -8,6 +8,8 @@ class CollectionController extends Controller
         $title= $_REQUEST['title'];
         $price = $_REQUEST['price'];
         $desc = $_REQUEST['description'];
+        $color=$_REQUEST['color'];
+        $size=$_REQUEST['size'];
         $image = $_REQUEST['prod_image'];
         $this->model->collectionsSummer($title,$price,$desc,$image);
         $this->model->collectionsWinter($title,$price,$desc,$image);
