@@ -10,6 +10,10 @@ $model = new checkoutModel();
 $controller = new checkoutController($model);
 $view = new CheckoutView($controller, $model);
 
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+	$controller->{$_GET['action']}();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
