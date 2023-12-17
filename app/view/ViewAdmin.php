@@ -6,12 +6,36 @@ require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 class ViewAdmin extends View
 {
     public function output(){
-		// // $str.="<a href='profile.php?action=edit'>Edit Profile </a><br><br>";
-		// // $str.="<a href='profile.php?action=movie'>My Movies </a><br><br>";
-		// $str="<a href='login.php?action=login'>Login</a><br><br>";
-		// // $str.="<a href='profile.php?action=delete'>Delete Account </a>";
-		// return $str;
-	}
+        $username = $this->model->getUserName();
+        $phone = $this->model->getPhone();
+        $email = $this->model->getEmail();
+        $gender = $this->model->getGender();
+
+	echo sidebar();
+
+    $str='<div class="content">
+      <section class="container rows">
+        <div class="form">
+        <div id="title"><h2>Admin Profile</h2></div>
+        <div class="admin-details">
+        <label for="name">Name: &nbsp;</label>'.$username.' </div>
+        <div class="admin-details">
+        <label for="number">Phone Number: &nbsp;</label>'.$phone.' </div>
+        <div class="admin-details">
+        <label for="email">Email: &nbsp;</label>'.$email.'</div>
+        <div class="admin-details">
+        <label for="gender">Gender: &nbsp;</label>'.$gender.'</div>
+
+        <button id ="edit"><a href="editAdmin.admin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
+        <button id ="delete"><a href="deleteAdmin.admin.php?delete='.$this->model->getID().'">Delete Account</button>
+
+</div>
+    </section>
+</div>';
+    return $str;
+}
+	
+    
     public function dashboard(){
 
   $str='
@@ -34,7 +58,7 @@ class ViewAdmin extends View
                     <span class="text">Add product</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <a href="#">
                     <i class="bx bxs-doughnut-chart" ></i>
                     <span class="text">Products</span>
@@ -203,96 +227,6 @@ class ViewAdmin extends View
  ';
  return $str;
   }
-  function sideBar()
-  {
-    
-    $str='
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
-    <section id="sidebar">
-    <ul class="side-menu top">
-        <li class="active">
-            <a href="#">
-                <i class="bx bxs-dashboard"></i>
-                <span class="text">Sweet Dreams</span>
-            </a>
-        </li>
-        <li>
-        <a href="../public/viewAdmin.admin.php">
-             <i class="bx bxs-user" ></i>
-            <span class="text">Profile</span>
-        </a>
-    </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-shopping-bag-alt" ></i>
-                <span class="text">Add product</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allProducts.admin.php">
-                <i class="bx bxs-doughnut-chart" ></i>
-                <span class="text">Products</span>
-            </a>
-        </li>
-          <li>
-            <a href="../public/addAdmin.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Add Admin</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allAdmins.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Admins</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-message-dots" ></i>
-                <span class="text">Messages</span>
-            </a>
-        </li>
-        <li>
-        <a href="#">
-            <i class="bx bxs-message-dots" ></i>
-            <span class="text">Orders</span>
-        </a>
-    </li>
-      
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt" ></i>
-                <span class="text">Add blog</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Reviews</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Users</span>
-            </a>
-        </li>
-    </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#" class="logout">
-                    <i class="bx bxs-exit" ></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        
-        </ul>
-</section>
-    ';
-    return $str;
-  }
     function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
@@ -395,8 +329,9 @@ class ViewAdmin extends View
 public function displayAllAdmins()
 {
     $admins = $this->model->getAllAdmins();
+	echo sidebar();
         
-    $str = '  <link rel="stylesheet" href="../public/css/Admin/allAdmins.css" />
+    $str = '  
     <div class="content">
                 <div id="header"><h2>Admins</h2></div>
                     <div class="tablecont">
@@ -429,29 +364,4 @@ public function displayAllAdmins()
 
     
 }
-
-    
-// public function Adminsidebar() 
-// {
-//       $str = '
-//       <link rel="stylesheet" href="../../../public/css/Admin/sidebar.css" />
-//         <a href="../index.php"><img class="logo" src="../../../public/images/Sweet Dreams logo-01.png" alt="logo"></a>
-//         <a href="../index.php">Home</a>
-//         <a href="../viewAdmin.admin.php">My Profile</a>
-//         <a href="../admin/addAdmin.php">Add Admin</a>
-//         <a href="../allAdmins.admin.php">Admins</a>
-//         <a href="../admin/allProducts.php">Products</a>
-//         <a href="../admin/addProduct.php">Add Product</a>
-//         <a href="../admin/addToBlog.php">Add blog</a>
-//         <a href="../admin/reviews.php">Reviews</a>
-//         <a href="../admin/users.php">Users</a>';
-      
-//       return $str;
-// }
-
-
-  
-       
-
-
 ?>

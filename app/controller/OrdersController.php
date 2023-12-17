@@ -3,15 +3,15 @@ require_once(__ROOT__ . "controller/Controller.php");
 
 class OrdersController extends Controller
 {
-    public function ReadOrders()
-    {
-        $id = $_REQUEST['id'];
-        $user_id=$_SESSION['id'];
-        $prod_id=$_REQUEST['prod_id'];
-        $added_at=date('Y-m-d');
+    // public function ReadOrders()
+    // {
+    //     $id = $_REQUEST['id'];
+    //     $user_id=$_SESSION['id'];
+    //     $prod_id=$_REQUEST['prod_id'];
+    //     $added_at=date('Y-m-d'); 
 
-        $this->model->showOrders();
-        }
+    //     $this->model->showOrders();
+    //     }
 }
 
 ?>

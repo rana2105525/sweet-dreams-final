@@ -38,7 +38,8 @@ $view = new ViewAdmin($controller, $model);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="../../../public/images/Sweet Dreams logo-01.png"type="image/icon type" />
+    <link rel="stylesheet" href="css/Admin/allAdmins.css" />
+    <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
   </head> 
 
@@ -53,14 +54,9 @@ $view = new ViewAdmin($controller, $model);
       //     // Redirect the user to the login page if not logged in as an admin
       //     header("Location: /sweet-dreams/views/pages/login.php");
       //     exit();
-      // }
-     
-      ?>
-  
-              <?php 
-                       // echo $view->sideBar();
-                        echo $view->displayAllAdmins();
-                    ?>  
+      // } 
+      echo $view->displayAllAdmins();
+      ?> 
   </div>
   </body>
 </html>

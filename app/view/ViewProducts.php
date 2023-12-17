@@ -45,9 +45,6 @@ class ViewProducts extends View{
         $str.="</div>";
         $str.="</div>";
         $str.="</div>";
-
-		//$str.="<a href='profile.php'>Back to Profile </a>";
-
 		return $str;
 	}
 }
