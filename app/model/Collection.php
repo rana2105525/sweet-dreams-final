@@ -195,6 +195,15 @@ public function addToCart($user_id, $prod_id,$color,$size, $quantity)
 
         $stmt->close();
     }
+    public function addToreview($user_id, $prod_id, $review)
+    {
+        $stmt = $this->db->prepare("INSERT INTO reviews (user_id, prod_id, review) VALUES (?, ?, ?)");
+        $stmt->bind_param("iis", $user_id, $prod_id, $review);
+        $result = $stmt->execute();
+        $stmt->close();
+    
+        return $result;
+    }
 
 
 }
