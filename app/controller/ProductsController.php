@@ -16,4 +16,7 @@ class ProductsController extends Controller{
 	public function delete($id){
 		$this->model->getProduct($id)->deleteProduct();
 	}
+  public function products(){
+    $this->model->ShowProducts();
+  }
 } 
