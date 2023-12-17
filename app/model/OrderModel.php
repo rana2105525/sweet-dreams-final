@@ -1,69 +1,109 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
-require_once(__ROOT__ ."db/config.php");
-require_once(__ROOT__ ."db/Dbh.php");
+
 class OrderModel extends Model
 {
     private $id;
     private $user_id;
     private $prod_id;
-    private $order_id;
+    private $order_id; 
     private $added_at;
- 
-    public function __construct() {
-        $this->db = new Dbh();
+    private $email;
+    private $number;
+    private $name;
+    private $address;
+    private $ordered_at;
+    private $total_price;
 
-     
-    }
-    public function showOrders() {
-      $sql = "SELECT * FROM orders";
-      
-      $result = $this->db->query($sql); 
-
-      if ($result->num_rows > 0) {
-        ?>
-        <link rel="stylesheet" href="../public/css/User/reviews.css">               
-        <h1 style="color:#F27144;
-        text-align:center;
-        margin-top:30px;">Orders</h1>
-        <?php
-          while ($row = $result->fetch_assoc()) {
-            ?>
-          <div class="review">
-            <div class="container">
-
-                <label><strong><?php
-            echo "User: " . $row["name"] . "
-            "?></strong></label>
-           <p><?php echo"    Email: " . $row["email"] .",    phone: " . $row["phone"] .",    Address: " . $row["address"] .",    Total Price: " . $row["total_price"] .",    orderd_at: " . $row["orderd_at"] .""?> <label><strong> <?php echo "Order ID: " . $row["id"] .""?></strong></label><br>
-           </p>
-           </div>
-          </div>
-           <?php
-          }
-        }?>
-        <button style="height: 60px;
-    width:90%;
-    margin-top: 30px;
-    justify-content: center;
-    margin-left:60px;
-    margin-bottom:30px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 400;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background:#F27144;
-    border-radius: 50px">
-    <a style="text-decoration:none;
-    color:white;"
-    href='orderdProducts.php'>Show all orders </a></button>   
-         
-      <?php
-
+    public function __construct($id,$name="",$email="",$number="",$address="",$ordered_at="",$total_price="") {
+      $this->id = $id;
+      $this->db = $this->connect();
+      if(""===$name){
+        $this->readOrder($id);
       }
+      else{
+        $this->name = $name;
+        $this->email = $email;
+        $this->number = $number;
+        $this->address = $address;
+        $this->ordered_at = $ordered_at;
+        $this->total_price = $total_price;
+      }
+  }
+
+
+  public function readOrder($id){
+    echo $this->getName();
+    $result = $this->db->query('SELECT * FROM orders where id='.$id);
+    if (!$result) {
+        die("Error in query: " . $this->db->error);
+    }
+ 
+    if ($result->num_rows == 1){
+      $row = $this->db->fetchRow();
+      $this->name=$row["name"];
+      $this->email=$row["email"];
+      $this->number=$row["phone"];
+      $this->address=$row["address"];
+      $this->ordered_at=$row["orderd_at"];
+      $this->total_price=$row["total_price"];
+    }
+    else {
+      $this->name = "";
+      $this->email = "";
+      $this->number = "";
+      $this->address = "";
+      $this->ordered_at = "";
+      $this->total_price = "";
+    }
+  }
+
+
+// **Getters**
+
+    public function getId(){
+      return $this->id;
+    }
+
+    public function getName(){
+      return $this->name;
+    }
+
+    public function getNumber(){
+      return $this->number;
+    }
+
+    public function getAddress(){
+      return $this->address;
+    }
+
+    public function getEmail(){
+      return $this->email;
+    }
+    public function getTotalPrice(){
+      return $this->total_price;
+    }
+    public function getOrderedAt(){
+      return $this->ordered_at;
+    }
+
+    // **Setters**
+    public function setAddress(int $address){
+      $this->address = $address;
+    }
+
+    public function setName(int $name){
+      $this->name = $name;
+    }
+
+    public function setNumber(int $number){
+      $this->number = $number;
+    }
+
+    public function setEmal($email){
+      $this->email = $email;
+    }
 }
 
 

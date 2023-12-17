@@ -15,7 +15,7 @@ class CheckoutView extends View
             margin-top:20px;">Checkout</h1>
         <section class="container">
        
-    <form   action="checkout.php?action=checkout" method="POST" >
+    <form   action="checkout.php?action=checkout" method="post" >
 
                 <div class="input-box">
                 <label>Name</label>

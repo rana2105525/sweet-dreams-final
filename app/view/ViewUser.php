@@ -92,7 +92,7 @@ class ViewUser extends View{
                     <label for="check-female">Female</label>
                 </div>
             </div>
-            <span>already have an account?<a href="login.php"> Login</a></span>
+            
         </div>
 
         <button type="submit" value="Submit">Submit</button>
@@ -120,7 +120,7 @@ class ViewUser extends View{
         <label>Password</label>
         <input type="password" name="password" placeholder="Enter your password" required />
         <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
-        <a href="#">Forget password?</a>
+        
     </div>
 
             <button type="submit" name="login" value="Submit">Login</button>
@@ -449,6 +449,7 @@ public function showUserProducts()
 return $str;
 
 }
+
 }
 
 ?>

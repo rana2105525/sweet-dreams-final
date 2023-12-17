@@ -129,4 +129,14 @@ $stmt->close();
 return $user_items;
 
 }
+public function ShowProducts(){
+  $sql = "SELECT id, title, price, prod_image FROM products ORDER BY id DESC LIMIT 3;";
+  $result = $this->db->query($sql); 
+        
+  if($result !== false){
+      return $result->fetch_all(MYSQLI_ASSOC); 
+  } else {
+      return []; 
+  }
+}
 }

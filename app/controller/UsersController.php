@@ -69,7 +69,8 @@ function isDateValid($date)
     $sql = "SELECT * FROM reg WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
-    $this->emailErr = "Email exists in the database";
+    // $this->emailErr = "Email exists in the database";
+    return false;
   }
   
   

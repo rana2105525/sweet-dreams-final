@@ -6,14 +6,14 @@ class Product extends Model {
     private $description;
     private $prod_image;
     private $added_at;
-    private $category;
+    private $category; 
     private $price;
 
     function __construct($id,$title="",$description="",$prod_image="",$added_at="",$category="",$price="") {
 		$this->id = $id;
 		$this->db = $this->connect();
-
 		if(""===$title){
+            echo"wwwww";
 			$this->readProduct($id);
 		}
 		else{
@@ -101,7 +101,7 @@ class Product extends Model {
     public function setCategory($category){
         $this->category = $category;
     }
-    public function setPrice(float $price){
+    public function setPrice($price){
         $this->price = $price;
     }
 
