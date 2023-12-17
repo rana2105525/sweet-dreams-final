@@ -19,7 +19,7 @@
       $controller = new ReviewsController($model);
       $view = new ViewReview($controller, $model);
 
-      echo $view->displayReviews();
+      echo $view->output();
 
   ?>
   </body>

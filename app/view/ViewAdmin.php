@@ -83,7 +83,7 @@ class ViewAdmin extends View
                 </a>
             </li>
             <li>
-            <a href="orders.php">
+            <a href="#">
                 <i class="bx bxs-message-dots" ></i>
                 <span class="text">Orders</span>
             </a>
@@ -227,102 +227,10 @@ class ViewAdmin extends View
  ';
  return $str;
   }
-  function sideBar()
-  {
-    
-    $str='
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-	<!-- My CSS -->
-	<link rel="stylesheet" href="../public/css/Admin/dashboard.css">
-    <section id="sidebar">
-    <ul class="side-menu top">
-        <li class="active">
-            <a href="#">
-                <i class="bx bxs-dashboard"></i>
-                <span class="text">Sweet Dreams</span>
-            </a>
-        </li>
-        <li>
-        <a href="../public/viewAdmin.admin.php">
-             <i class="bx bxs-user" ></i>
-            <span class="text">Profile</span>
-        </a>
-    </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-shopping-bag-alt" ></i>
-                <span class="text">Add product</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allProducts.admin.php">
-                <i class="bx bxs-doughnut-chart" ></i>
-                <span class="text">Products</span>
-            </a>
-        </li>
-          <li>
-            <a href="../public/addAdmin.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Add Admin</span>
-            </a>
-        </li>
-        <li>
-            <a href="../public/allAdmins.admin.php">
-                <i class="bx bxs-user" ></i>
-                <span class="text">Admins</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bxs-message-dots" ></i>
-                <span class="text">Messages</span>
-            </a>
-        </li>
-        <li>
-        <a href="#">
-            <i class="bx bxs-message-dots" ></i>
-            <span class="text">Orders</span>
-        </a>
-    </li>
-      
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt" ></i>
-                <span class="text">Add blog</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Reviews</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="bx bx-store-alt"></i>
-                <span class="text">Users</span>
-            </a>
-        </li>
-    </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#" class="logout">
-                    <i class="bx bxs-exit" ></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        
-        </ul>
-</section>
-    ';
-    return $str;
-  }
-    function addAdminForm($errors = [])
+    function addAdminForm()
     {
         $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="../public/script/email.js"></script>
-        <form action="addAdmin.admin.php?action=insert" method="post" class="form">
+        <form action="addAdmin.php?action=insert" method="post" class="form">
             <div id="title">
                 <h2>Add a new admin</h2>
             </div>
@@ -330,27 +238,22 @@ class ViewAdmin extends View
             <div class="input-box">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter admin\'s name"/>
-                <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="number">Phone Number</label>
                 <input type="number" id="number" name="number" placeholder="Enter admin\'s number" />
-                <span class="error">' . ($errors['phoneErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter admin\'s email" />
-                <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
-            <span class="error" id="result"></span>
-                
+                <span class="error" id="email-error"></span>
             </div>
     
             <div class="input-box">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" />
-                <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
@@ -365,14 +268,13 @@ class ViewAdmin extends View
                     <input type="radio" name="gender" id="female" value="Female">
                     <label for="female">Female</label>
                 </div>
-                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
             </div>
     
             <button type="submit" name="submit" id="submit-button" value="submit">Add Admin</button>
         </form>';
         return $str;
     }
-    function editAdminform($errors = [])
+    function editAdminform()
     {
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
@@ -381,31 +283,27 @@ class ViewAdmin extends View
       $gender = $this->model->getGender();
       
       $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
-        <form action="allAdmins.admins.php?action=edit" method="post" class="form">
+        <form action="editAdmin.php?action=edit" method="post" class="form">
             <div id="title"><h2>Edit admin</h2></div>
     
             <div class="input-box">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="' . $username . '" placeholder="Enter admin\'s name" />
-                <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="number">Phone Number</label>
                 <input type="number" id="number" name="number" value="' . $phone . '" placeholder="Enter admin\'s number" />
-                <span class="error">' . ($errors['phoneErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="' . $email . '" placeholder="Enter admin\'s email" />
-                <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
             </div> 
     
             <div class="input-box">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" value="' . $password . '" placeholder="Enter your password" />
-                <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
             </div>
             
             <div class="input-box">
@@ -420,7 +318,6 @@ class ViewAdmin extends View
                     <input type="radio" name="gender" id="female" value="'. $gender .'">
                     <label for="female">Female</label>
                 </span>
-                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
             </div>
     
             <button type="submit" name="submit">Edit Admin</button>

@@ -1,28 +1,28 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/Review.php");
-
-class Reviews extends Model{
-	private $reviews;
+ 
+class Reviews extends Model{ 
+	private $reviews; 
 	function __construct() {
 		$this->fillArray();
 	}
- 
+  
 	function fillArray() {
 		$this->reviews = array();
 		$this->db = $this->connect();
 		$result = $this->readReviews();
 		while ($row = $result->fetch_assoc()) {
-			array_push($this->reviews, new Review($row["id"]));
+			array_push($this->reviews, new Review());
 		}
-	}
- 
-	public function getReviews() {
+	} 
+
+	function getReviews() {
 		$this->fillArray();  
 		return $this->reviews;
 	}
 
-    function getReview($id) {
+	function getReview($id) {
 		foreach($this->reviews as $review) {
 			if ($id == $review->getID()) {
 				return $review;
@@ -30,7 +30,7 @@ class Reviews extends Model{
 		}
 	}
 
-    function readReviews(){
+	function readReviews(){
 		$sql = "SELECT * FROM reviews";
 		$result = $this->db->query($sql);
 		if ($result->num_rows > 0){

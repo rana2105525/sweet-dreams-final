@@ -1,41 +1,16 @@
-<?php 
-  require_once(__ROOT__ . "model/Model.php");
-?>
 <?php
-class Review extends Model{
+  require_once(__ROOT__ . "model/Model.php");
+
+	class Review extends Model{
     private $id;
     private $fullname;
-    private $review;
+    private $review; 
 
-    public function __construct()
-    {
-
+    public function __construct(){
       $this->readReview();
-      $this->user_id = $_SESSION['id'];
-  
     }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    public function getFullname()
-    {
-        return $this->fullname;
-    }
-
-    public function getReview()
-    {
-        return $this->review;
-    }
-    function setName($fullname) {
-        return $this->fullname = $fullname;
-      }
-      function setReview($review) {
-        return $this->review = $review;
-      }
-      function readReview(){
+      
+	    function readReview(){
         $sql = "SELECT * FROM reviews";
         $db = $this->connect();
         $result = $db->query($sql);
@@ -60,17 +35,26 @@ class Review extends Model{
             return []; 
         }
     }
-
-    public function addToreview($user_id, $prod_id, $review)
-    {
-        $stmt = $this->db->prepare("INSERT INTO reviews (user_id, prod_id, review) VALUES (?, ?, ?)");
-        $stmt->bind_param("iii", $user_id, $prod_id, $review);
-        $result = $stmt->execute();
-        $stmt->close();
     
-        return $result;
+    public function getId(){
+      return $this->id;
+    }
+    public function getFullname()
+    {
+        return $this->fullname;
+    }
+    public function getReview()
+    {
+        return $this->review;
     }
     
+    function setName($fullname) {
+        return $this->fullname = $fullname;
+      }
+      function setReview($review) {
+        return $this->review = $review;
       }
 
+
+  }
 ?>

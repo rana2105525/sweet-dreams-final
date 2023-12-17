@@ -3,6 +3,7 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
+require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 ?>
 

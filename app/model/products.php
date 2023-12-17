@@ -15,7 +15,7 @@ class Products extends Model{
 		while ($row = $result->fetch_assoc()) {
 			array_push($this->products, new Product($row["id"]));
 		}
-	}
+	} 
 
 	function getProducts() {
 		$this->fillArray();  

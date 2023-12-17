@@ -13,7 +13,6 @@ class Product extends Model {
 		$this->id = $id;
 		$this->db = $this->connect();
 		if(""===$title){
-            echo"wwwww";
 			$this->readProduct($id);
 		}
 		else{
