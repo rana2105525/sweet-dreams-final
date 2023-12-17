@@ -45,7 +45,7 @@ nav .wrapper1 .nav-items{
 .nav-links li a{
   color:#F27144;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   padding: 9px 15px;
   border-radius: 5px;
@@ -214,8 +214,7 @@ nav .wrapper1 .nav-items{
 
       
 }
-
-    
+  
 .search {
   width: 100%;
   position: relative;
@@ -255,106 +254,179 @@ nav .wrapper1 .nav-items{
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.title h1{
-    color: #F27144;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top:20px;
-}
-.container {
+
+   .container img{
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
     position: relative;
-    margin-top:30px;
-    margin-left:60px;
-    max-width: 90%;
-    width: 100%;
-    background: #fff;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    border-radius: 50px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
+   
 
-
-footer {
-    display: flex;
-    
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 80px;
-    
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    
-    .pageFooter{
-      color:#878f88;
-    }
-    
-    footer .col{
-      display:flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 20px;
-      
-    }
-    
-    footer .Logo{
-      margin-bottom:30px;
-    
-    }
-    
-    footer h4{
-      font-size:14px;
-      padding-bottom:20px;
-    }
-    
-    footer p{
-      font-size:13px;
-      margin:0 0 8px 0;
-    }
-    
-    footer a{
-      font-size:13px;
-      text-decoration: none;
-      color:#878f88;
-      margin-bottom: 10px;
-    }
-    
-    footer .follow{
-      margin-top:20px;
-     
-    }
-    
-    footer .follow i{
-    padding-right:4px;
-    cursor:pointer;
-     
-    }
-    
-    footer .install .row img{
-    border:1px solid black;
-    border-radius:6px;
-    }
-    
-    footer .install img{
-     margin: 10px 0 15px 0;
-    }
-    
-    footer .follow i:hover, 
-    footer a:hover{
-      color:#F27144;
-    
-    }
-    
-    .copyright{
-    width:100%;
+}
+body .h1{
+    color: #F27144;
     text-align: center;
-    color:#878f88;
-    }
+    margin-top:40px;
+}
+body .container {
+  position: relative;
+  margin-top:30px;
+  margin-left:60px;
+  max-width: 90%;
+  width: 100%;
+  background: #fff;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+body .form-container{
+    width:90%;
+    margin-top:30px;
+    margin-left:20px;
+    display:flex;
+    justify-content:flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+body .h2{
+    font-size:30px;
+    padding-top:10px;
+    letter-spacing: 1;
+    text-align: center;
+
+}
+
+  
+body .form {
+  margin-top: 10px;
+}
+body .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+body .input-box label {
+  color: #3AB9C0;
+}
+ body :where(.input-box input, .select-box) {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+body button {
+  height: 55px;
+  width:100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background:#F27144;
+  border-radius: 50px;
+}
+body button:hover {
+  background:#3AB9C0;
+}
+body a{
+    text-decoration: none;
+    color:#3AB9C0
+}
+body span{
+    text-decoration: none;
+    color:#F27144
+}
+.input-box .error span{
+  color:red;
+}
+footer{
+  display:flex;
+  padding-top:60px;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  
+}
+.pageFooter{
+  color:#878f88;
+}
+
+footer .col{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  
+}
+
+footer .Logo{
+  margin-bottom:30px;
+
+}
+
+footer h4{
+  font-size:14px;
+  padding-bottom:20px;
+}
+
+footer p{
+  font-size:13px;
+  margin:0 0 8px 0;
+}
+
+footer a{
+  font-size:13px;
+  text-decoration: none;
+  color:#878f88;
+  margin-bottom: 10px;
+}
+
+footer .follow{
+  margin-top:20px;
+ 
+}
+
+footer .follow i{
+padding-right:4px;
+cursor:pointer;
+ 
+}
+
+footer .install .row img{
+border:1px solid black;
+border-radius:6px;
+}
+
+footer .install img{
+ margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover, 
+footer a:hover{
+  color:#F27144;
+
+}
+
+.copyright{
+width:100%;
+text-align: center;
+color:#878f88;
+}

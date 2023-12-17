@@ -31,7 +31,7 @@ else
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
-    <title>get orders </title>
+    <title>Products Ordered </title>
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
 	</head>

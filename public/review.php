@@ -30,5 +30,6 @@ echo "<h1>Customers reviews</h1>";?>
 
 <?php echo $view->review(); ?>
 <?php echo $view->footer();?>
+  <?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

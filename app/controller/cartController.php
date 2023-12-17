@@ -8,11 +8,13 @@ class CartController extends Controller {
         if (isset($_POST['buy_now'])) {
             // Sample data from a hypothetical form or request
             $user_id = $_SESSION['id'];
-            $prod_id = $_POST['prod_id'];  // Assuming you have a way to determine the product ID
+            $prod_id = $_POST['prod_id'];
+            $color = $_POST['color'];
+            $size = $_POST['size'];
             $quantity = $_POST['quantity'];  // Assuming a default quantity of 1
         
             // Assuming $this->model is an instance of a model class handling database interactions
-            $this->model->addToCart($user_id, $prod_id, $quantity);
+            $this->model->addToCart($user_id, $prod_id,$color,$size, $quantity);
         } else {
             echo "Error: Missing or invalid data.";
         }

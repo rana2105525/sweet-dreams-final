@@ -28,6 +28,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <?php echo $view->editForm($controller->getErrors()); ?>
     </section>
     <?php echo $view->footer();?>
+    <?php include '../app/api/chatbot.php'; ?>
 
 </body>
 </html>

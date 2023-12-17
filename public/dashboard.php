@@ -17,6 +17,7 @@ $model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
 echo $view->dashboard();
+echo $view->sideBar();
 
 
 ?>

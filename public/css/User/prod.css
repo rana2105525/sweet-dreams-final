@@ -478,16 +478,13 @@ h1{
     display: inline-block;
 }
 
-.product-color .color-layout .black{
-    
-    background-color: black;
-}
 
-.product-color .color-layout .red{
-    background-color: red;
+
+.product-color .color-layout .orange{
+    background-color: #F27144;
 }
 .product-color .color-layout .blue{
-    background-color: blue;
+    background-color: #3AB9C0;
 }
 
 .product-color .color-layout input[type="radio"]:checked + label{

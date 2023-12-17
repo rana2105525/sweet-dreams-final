@@ -14,7 +14,6 @@ if($isLogged)
     ?>
 <?php
     echo $view->nav();
-    echo $view->side();
     echo $view->getDesc();
     echo $view->footer();
 }
@@ -23,7 +22,6 @@ else
     ?>
 <?php
     echo $view->nav1();
-    echo $view->side();
     echo $view->getDesc(); 
     echo $view->footer();
 }

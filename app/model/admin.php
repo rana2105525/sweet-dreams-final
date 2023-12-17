@@ -130,6 +130,7 @@ function readAdmin($id) {
 
 function editAdmin($name, $phoneNumber, $email, $password, $gender)
 {
+    
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $sql = "UPDATE admins SET Username='$name', Phone='$phoneNumber', Email='$email', Password='$hashedPassword', Gender='$gender' WHERE ID='$this->ID'";
     if($this->db->query($sql) === true){

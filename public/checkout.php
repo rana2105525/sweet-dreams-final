@@ -10,28 +10,20 @@ $model = new checkoutModel();
 $controller = new checkoutController($model);
 $view = new CheckoutView($controller, $model);
 
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-	switch($_GET['action'])
-    {
-        case'checkout':
-            $controller->deleteALL();
-            echo"Your wishlist is empty";
-            break;
-	}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
     <meta charset="UTF-8">
+    <title>Checkout</title>
   
 	</head>
 <body>
-  
-    <section class="container">
+
     <?php echo $view->output(); ?>
-    </section>
+    <?php echo $view->footer();?>
     
+    <?php include '../app/api/chatbot.php'; ?>
 
 </body>
 </html>

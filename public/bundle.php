@@ -42,7 +42,6 @@ else
 <body>
 
 </div>
-
-
+<?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>Sweet Dreams</title>
+  <title>Profile</title>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -21,7 +21,7 @@
     // if (!$isLogged) {
 
     //     // header("Location: login.php");
-    //     // exit();
+    //     // exit(); 
     //     echo"lol";
     // } else {
       
@@ -30,6 +30,9 @@
     $model = new Admin();
     $controller = new AdminController($model);
     $view = new ViewAdmin($controller, $model);
+    if (isset($_GET['action']) && !empty($_GET['action'])) {
+      $controller->{$_GET['action']}();
+    }
     ?>
 
 <body>

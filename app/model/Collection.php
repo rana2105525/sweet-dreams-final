@@ -11,6 +11,8 @@ class Collection extends Model
     private $price;
     private $prod_id;
     private $description;
+    public $color;
+    public $size;
     private $image;
     private $name;
 
@@ -23,6 +25,22 @@ class Collection extends Model
     public function getId()
     {
         return $this->id;
+    }
+    public function get_color()
+    {
+      return $this->color;
+    }
+    public function get_size()
+    {
+      return $this->size;
+    }
+    public function set_color($color)
+    {
+      return $this->color=$color;
+    }
+    public function set_size($size)
+    {
+      return $this->size=$size;
     }
     public function getProd_id()
     {
@@ -149,11 +167,11 @@ if (isset($_SESSION['product_description'])) {
 
 return $product;
 }
-public function addToCart($user_id, $prod_id, $quantity)
+public function addToCart($user_id, $prod_id,$color,$size, $quantity)
     {
-        $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id, quantity) VALUES (?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id,color,size, quantity) VALUES (?, ?, ?,?,?)");
 
-        $stmt->bind_param("iii", $user_id, $prod_id, $quantity);
+        $stmt->bind_param("iissi", $user_id, $prod_id,$color,$size, $quantity);
 
         if ($stmt->execute() === true) {
           
@@ -176,6 +194,15 @@ public function addToCart($user_id, $prod_id, $quantity)
         }
 
         $stmt->close();
+    }
+    public function addToreview($user_id, $prod_id, $review)
+    {
+        $stmt = $this->db->prepare("INSERT INTO reviews (user_id, prod_id, review) VALUES (?, ?, ?)");
+        $stmt->bind_param("iis", $user_id, $prod_id, $review);
+        $result = $stmt->execute();
+        $stmt->close();
+    
+        return $result;
     }
 
 

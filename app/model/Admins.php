@@ -32,20 +32,25 @@ class Admins extends Model {
 		}
 	}
 
-    function insertAdmin($name, $email, $phone, $password, $gender) {
-        $stmt = $this->db->prepare("INSERT INTO admins (Username, Email, Phone, Password, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-        $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $stmt->bind_param("ssssss", $name, $email, $phone, $hashed_password, $gender);
+    function insertAdmin($name, $phone, $email, $password, $gender) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO admins (Username, Phone, Email, Password, Gender) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $phone, $email, $hashed_password, $gender);
     
         if ($stmt->execute() === true) {
-            header("Location: login.php");
+            // Successful insertion
             $this->fillArray();
+            return true;
         } else {
+            // Error occurred
             echo "ERROR: Could not able to execute $stmt->error";
+            return false;
         }
-    
         $stmt->close();
     }
+    
+    
+    
     
     function getAllAdmins() {
         $sql = "SELECT * FROM admins";
@@ -76,7 +81,7 @@ class Admins extends Model {
             if (password_verify($password, $row["Password"])) {
                 $_SESSION["ID"] = $row["ID"];
                 $_SESSION["Email"] = $row["Email"];
-                header("Location: allAdmins.admins.php");
+                header("Location: viewAdmin.admin.php");
             }
         } else {
             echo "error";

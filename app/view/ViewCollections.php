@@ -3,21 +3,25 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
+require_once(__ROOT__ . "controller/ReviewsController.php");
 
-class ViewCollections extends View{
-  public function output(){
+class ViewCollections extends View
+{
+    public function output()
+    {
 
-  }
-  public function collectionsSummer() {
-    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    }
+    public function collectionsSummer()
+    {
+        $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
-    $summerProducts = $this->model->collectionsSummer(); // Assuming this retrieves products
+        $summerProducts = $this->model->collectionsSummer(); // Assuming this retrieves products
 
-    foreach ($summerProducts as $summerCollection) {
-        
-        $str .= '
+        foreach ($summerProducts as $summerCollection) {
+
+            $str .= '
         <div class="prod">
             <div class="product-card">
                 <div class="product-tumb">
@@ -42,21 +46,22 @@ class ViewCollections extends View{
                 </div>
             </div>
         </div>';
+        }
+
+        return $str;
     }
 
-    return $str;
-}
-
-public function collectionsWinter() {
-  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    public function collectionsWinter()
+    {
+        $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
                
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
-  $WinterProducts = $this->model->collectionsWinter(); // Assuming this retrieves products
+        $WinterProducts = $this->model->collectionsWinter(); // Assuming this retrieves products
 
-  foreach ($WinterProducts as $WinterCollection) {
-      $str .= ' <div class="prod">
+        foreach ($WinterProducts as $WinterCollection) {
+            $str .= ' <div class="prod">
       <div class="product-card">
 
       
@@ -82,19 +87,20 @@ public function collectionsWinter() {
                           
                       </div>
                               </div>';
-  }
+        }
 
-  return $str;
-}
-public function collectionsBundleAndSave() {
-  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+        return $str;
+    }
+    public function collectionsBundleAndSave()
+    {
+        $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
-  $BundleProducts = $this->model->collectionsBundleAndSave(); // Assuming this retrieves products
+        $BundleProducts = $this->model->collectionsBundleAndSave(); // Assuming this retrieves products
 
-  foreach ($BundleProducts as $BundleCollection) {
-      $str .= '<div class="prod">
+        foreach ($BundleProducts as $BundleCollection) {
+            $str .= '<div class="prod">
       <div class="product-card">
 
       
@@ -120,13 +126,14 @@ public function collectionsBundleAndSave() {
                           
                       </div>
                               </div>';
-  }
+        }
 
-  return $str;
-}
+        return $str;
+    }
 
-public function footer(){
-    $str='
+    public function footer()
+    {
+        $str = '
   <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">
 
   <footer class="pageFooter">
@@ -180,14 +187,16 @@ public function footer(){
     <p>© 2023, Sweet dreams - E-Commerce</p>
   </div>
   ';
-  return $str;
-}
-public function nav()
-{
+        return $str;
+    }
+    public function nav()
+    {
 
-  $profile = $_SESSION['name'];
+        $profile = $_SESSION['name'];
 
-      echo "
+        echo "
+      <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+      <script src='../public/script/search.js'></script>
       <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
       <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
@@ -195,43 +204,37 @@ public function nav()
     <li><a href='wishlist.php'>Wishlist</a></li>
     <li><a href='cart.php'>Cart</a></li>
 		<a href='nav.php?action=logout'>Logout </a><br><br>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
+    <div>
+    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+    </div>
+    </div>
+    <div id='result'></div>
   </div>
     ";
-  
-  
-}
-public function nav1()
-{
- echo"
+
+
+    }
+    public function nav1()
+    {
+        echo "
+ <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+ <script src='../public/script/search.js'></script>
   <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
   <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
     <li><a href='login.php'>Login</a></li>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
+    <div>
+    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+    </div>
+    </div>
+    <div id='result'></div>
   </div>
     ";
-   
-  }
-  public function side()
-{
-  $str='
+
+    }
+    public function side()
+    {
+        $str = '
   <link rel="stylesheet type="text/css" href="../public/css/User/nav.css">
 
   <input type="checkbox" id="active">
@@ -251,30 +254,32 @@ public function nav1()
         </div>
         ';
         return $str;
-}
+    }
 
-public function getDesc()
-{
+    public function getDesc()
+    {
 
-  $prodDesc=$this->model->readDesc();
+        $prodDesc = $this->model->readDesc();
 
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
-    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
-  }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
+            $this->model->addToCart($_SESSION['id'], $prodDesc['id'], $_POST['color'], $_POST['size'], $_POST['quantity']);
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
 
-      $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
-  
-  }
-    
+            $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
 
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitreview'])) {
 
-        $str='
+            $this->model->addToreview($_SESSION['id'], $prodDesc['id'], $_POST['review']);
+
+        }
+        $str = '
         <link rel="stylesheet" href="../public/css/User/prod.css">
      <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-        <h1>'. $prodDesc['title'] . '</h1>
+        <h1>' . $prodDesc['title'] . '</h1>
         <div class="container">
             <div class="single-product">
                 <div class="row">
@@ -289,57 +294,54 @@ public function getDesc()
                     <div class="col-6">
                         <div class="breadcrumb">
                             <span><a href="index.php">Home</a></span>
-                            <span class="active">'. $prodDesc['title'] . '</span>
+                            <span class="active">' . $prodDesc['title'] . '</span>
                         </div>
     
                         <div class="product">
                             <div class="product-title">
-                                <h2>'. $prodDesc['title'] .'</h2>
+                                <h2>' . $prodDesc['title'] . '</h2>
                             </div>
     
                             <div class="product-price">
-                                <span class="offer-price">'. $prodDesc['price'] .'</span>
+                                <span class="offer-price">' . $prodDesc['price'] . '</span>
                             </div>
     
                             <div class="product-details">
                                 <h3>Description</h3>
-                                <p>'.$prodDesc['description'] .'</p>
+                                <p>' . $prodDesc['description'] . '</p>
                             </div>
+                            <form method="post" >
                             <div class="product-size">
-                                <h4>Size</h4>
-                                <div class="size-layout">
-                                    <input type="radio" name="size" value="S" id="1" class="size-input">
-                                    <label for="1" class="size">0-3</label>
-    
-                                    <input type="radio" name="size" value="M" id="2" class="size-input">
-                                    <label for="2" class="size">3-6</label>
-    
-                                    <input type="radio" name="size" value="L" id="3" class="size-input">
-                                    <label for="3" class="size">6-12</label>
-    
-                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
-                            <label for="4" class="size">12-24</label>
-                            
+                            <h4>Size</h4>
+                            <div class="size-layout">
+                            <input type="radio" name="size" value="0-3" id="1" class="size-input">
+                            <label for="1" class="size">0-3</label><br>
+                            <input type="radio" name="size" value="3-6" id="2" class="size-input">
+                            <label for="2" class="size">3-6</label><br>
+                            <input type="radio" name="size" value="6-12" id="3" class="size-input">
+                            <label for="3" class="size">6-12</label><br>
+                            <input type="radio" name="size" value="12-24" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label><br>
                             <a href="../public/images/size-chart.jpg">Size chart</a>
                         
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-color">
+                        <div class="product-color">
                         <h4>Color</h4>
-                        <div class="color-layout">
-                            <input type="radio" name="color"  value="black" class="color-input">
-                            <label for="black" class="black"></label>
-                            <input type="radio" name="color"  value="red" class="color-input">
-                            <label for="red" class="red"></label>
+                
+                        <input type="radio" id="orane" name="color" value="orange">
+                        <label for="orange">Orange</label><br>
 
-                            <input type="radio" name="color"  value="blue" class="color-input">
-                            <label for="blue" class="blue"></label>
+                        <input type="radio" id="blue" name="color" value="blue">
+                        <label for="blue">Blue</label><br>
                         </div>
                     </div>
+                    <h4>Quantity</h4>
+                    <input type="number" name="quantity" value="1" min="1">
                     <span class="divider"></span>
 
                     <div class="product-btn-group">
-                    <form method="post" >
+                    
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
@@ -364,37 +366,41 @@ public function getDesc()
 </div>
 <div class="rev">
 <h2>Customer Reviews</h2>
-<form action="" class="form" method="post">
+<form action="prod.php?review" class="form" method="post">
     <div class="text-field">
         <label for="name">Write your review</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Write your name">
         <input type="text" id="review" name="review" placeholder="Write your review">
-        <button type="submit" class="btn" name="submit">Submit</button>
+        <button type="submit" class="btn" name="submitreview">Submit</button>
     </div>
 </form>
 </div>';
-return $str;
+        return $str;
 
-}
-public function getSearchDesc($id)
-{
+    }
+    public function getSearchDesc($id)
+    {
 
-  $prodDesc=$this->model->readSearchDesc($id);
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+        $prodDesc = $this->model->readSearchDesc($id);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
-    $this->model->addToCart($_SESSION['id'], $prodDesc['id'], 1);
-  }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
+            $this->model->addToCart($_SESSION['id'], $prodDesc['id'], $_POST['color'], $_POST['size'], $_POST['quantity']);
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitadd'])) {
 
-      $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
-  
-  }
+            $this->model->addToWishlist($_SESSION['id'], $prodDesc['id']);
 
-      $str='
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitreview'])) {
+
+            $this->model->addToreview($_SESSION['id'], $prodDesc['id'], $_POST['review']);
+
+        }
+
+        $str = '
         <link rel="stylesheet" href="../public/css/User/prod.css">
      <link rel="icon" href="imgs/sweet dreams logo-01.png" type="image/icon type" />
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-        <h1>'. $prodDesc['title'] . '</h1>
+        <h1>' . $prodDesc['title'] . '</h1>
         <div class="container">
             <div class="single-product">
                 <div class="row">
@@ -408,61 +414,59 @@ public function getSearchDesc($id)
                     <div class="col-6">
                         <div class="breadcrumb">
                             <span><a href="index.php">Home</a></span>
-                            <span class="active">'. $prodDesc['title'] . '</span>
+                            <span class="active">' . $prodDesc['title'] . '</span>
                         </div>
     
                         <div class="product">
                             <div class="product-title">
-                                <h2>'. $prodDesc['title'] .'</h2>
+                                <h2>' . $prodDesc['title'] . '</h2>
                             </div>
     
                             <div class="product-price">
-                                <span class="offer-price">'. $prodDesc['price'] .'</span>
+                                <span class="offer-price">' . $prodDesc['price'] . '</span>
                             </div>
     
                             <div class="product-details">
                                 <h3>Description</h3>
-                                <p>'.$prodDesc['description'] .'</p>
+                                <p>' . $prodDesc['description'] . '</p>
                             </div>
+                            <form method="post" >
                             <div class="product-size">
-                                <h4>Size</h4>
-                                <div class="size-layout">
-                                    <input type="radio" name="size" value="S" id="1" class="size-input">
-                                    <label for="1" class="size">0-3</label>
-    
-                                    <input type="radio" name="size" value="M" id="2" class="size-input">
-                                    <label for="2" class="size">3-6</label>
-    
-                                    <input type="radio" name="size" value="L" id="3" class="size-input">
-                                    <label for="3" class="size">6-12</label>
-    
-                                    <input type="radio" name="size" value="XL" id="4" class="size-input">
-                            <label for="4" class="size">12-24</label>
-                            
+                            <h4>Size</h4>
+                            <div class="size-layout">
+                            <input type="radio" name="size" value="0-3" id="1" class="size-input">
+                            <label for="1" class="size">0-3</label><br>
+                            <input type="radio" name="size" value="3-6" id="2" class="size-input">
+                            <label for="2" class="size">3-6</label><br>
+                            <input type="radio" name="size" value="6-12" id="3" class="size-input">
+                            <label for="3" class="size">6-12</label><br>
+                            <input type="radio" name="size" value="12-24" id="4" class="size-input">
+                            <label for="4" class="size">12-24</label><br>
                             <a href="../public/images/size-chart.jpg">Size chart</a>
                         
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-color">
+                        <div class="product-color">
                         <h4>Color</h4>
-                        <div class="color-layout">
-                            <input type="radio" name="color"  value="black" class="color-input">
-                            <label for="black" class="black"></label>
-                            <input type="radio" name="color"  value="red" class="color-input">
-                            <label for="red" class="red"></label>
+                
+                        <input type="radio" id="orane" name="color" value="orange">
+                        <label for="orange">Orange</label><br>
 
-                            <input type="radio" name="color"  value="blue" class="color-input">
-                            <label for="blue" class="blue"></label>
+                        <input type="radio" id="blue" name="color" value="blue">
+                        <label for="blue">Blue</label><br>
                         </div>
                     </div>
-                    <span class="divider"></span>
+                    <h4>Quantity</h4>
+                    <input type="number" name="quantity" value="1" min="1">
+                           
 
                     <div class="product-btn-group">
-                           <form method="post" >
+                          
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
                         <button type="submit" name="submit"> Buy now</button>
-                        </div> </form>
+                        </div> 
+                        </form>
                         <form method="post">
                         <div class="button heart no-style">
                            <i class="bx bxs-heart"></i> 
@@ -480,18 +484,17 @@ public function getSearchDesc($id)
 </div>
 <div class="rev">
 <h2>Customer Reviews</h2>
-<form action="" class="form" method="post">
+<form action="prod.php?review" class="form" method="post">
     <div class="text-field">
         <label for="name">Write your review</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Write your name">
         <input type="text" id="review" name="review" placeholder="Write your review">
-        <button type="submit" class="btn" name="submit">Submit</button>
+        <button type="submit" class="btn" name="submitreview">Submit</button>
     </div>
 </form>
 </div>';
-return $str;
-
-}
+        return $str;
 
     }
+
+}
 

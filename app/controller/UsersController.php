@@ -69,7 +69,8 @@ function isDateValid($date)
     $sql = "SELECT * FROM reg WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
-    $this->emailErr = "Email exists in the database";
+    // $this->emailErr = "Email exists in the database";
+    return false;
   }
   
   
@@ -186,6 +187,11 @@ function isDateValid($date)
 	}
   public function getAllU() {
     return $this->model->getAllUsers();
+}
+public function readMyOrders()
+{
+    $user_id=$_SESSION['id'];
+    $this->model->showUserHistory($user_id);
 }
 }
 ?>

@@ -3,7 +3,6 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/UsersController.php");
-require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 ?>
 
@@ -158,6 +157,8 @@ public function nav()
     $profile= $this->model->getName();
 
       echo "
+      <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+      <script src='../public/script/search.js'></script>
       <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
       <div class='wrapper1'>
     <div class='logo'><a href='index.php'><img src='../public/images/sweet dreams logo-01.png' alt='logo'></a></div>
@@ -165,23 +166,16 @@ public function nav()
     <li><a href='#'>Wishlist</a></li>
     <li><a href='cart.php'>Cart</a></li>
 		<a href='nav.php?action=logout'>Logout </a><br><br>
-    <div class='wrap'>
-    <div class='search'>
-    <input type='text' class='searchTerm' placeholder='What are you looking for?'>
-     <button type='submit' class='searchButton'>
-   <i class='fa fa-search'></i>
-     </button>
-   </div>
-  </div>
-    </ul>
+    <div>
+    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+    </div>
+    </div>
+    <div id='result'></div>
   </div>
     ";
   
   
 }
-
-
-
 
 public function side()
 {
@@ -215,7 +209,7 @@ public function home()
   <section class="hero-header">
       <h1>Shop and explore our new collection to get the chance to earn gifts</h1>
       <h2>Hurry up!!!</h2>
-      <a href="#"><button class="img_btn">Explore</button></a>
+      <a href="summer.php"><button class="img_btn">Explore</button></a>
     </section>
   </header>
   
@@ -259,7 +253,7 @@ public function home()
   <section id="banner" class="section-banner">
 
     <h2>Explore our <span>Bundle and save </span>products</h2>
-    <button><a href="#"><strong>Explore more</strong></a></button>
+    <button><a href="bundle.php"><strong>Explore more</strong></a></button>
   </section>
   <br><br>
   <div class="h_products">
@@ -355,7 +349,8 @@ public function profile()
       '.$email.'
     </div>
     <button><a href="edit.php" class="button">Update info</a></button>
-		<button><a href="nav.php?action=delete">Delete account</a></button>
+    <button><a href="myOrders.php">My Orders</a></button>
+    <button><a href="nav.php?action=delete">Delete account</a></button>
 
   </form>
   ';
@@ -420,6 +415,39 @@ public function displayAllUsers()
 
     $str .= '</tbody></table></div></div>';
     return $str;
+}
+public function showUserProducts()
+{
+  $user_id=$_SESSION['id'];
+
+  $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
+
+    // Assuming the user ID is stored in a session variable
+    $user_id = $_SESSION['id'];
+    $User_items=$this->model->showUserHistory($user_id);
+
+    foreach ($User_items as $item) {
+        $str .= '
+        <div class="prod">
+        <div class="product-card">
+                <div class="product-tumb">
+                    <input type="hidden" name="cart_id" value="' . $item['id'] . '">
+                    <img src="../public/' . $item['prod_image'] . '">
+                    </div>
+                  <div class="product-details">
+                    <h6>Title : ' . $item['title'] . '</h6>
+                    
+                    </div>
+                    </div>
+            
+                    
+                </div>';
+
+}
+return $str;
+
 }
 }
 

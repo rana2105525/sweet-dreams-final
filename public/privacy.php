@@ -16,12 +16,8 @@ if($isLogged)
     $controller = new UsersController($model);
     $view = new ViewUser($controller, $model);
     ?>
-
-    
    <?php echo $view->nav();?>
    <?php echo $view->side();?>
-   
-  
 </body>
 <?php
 }
@@ -33,11 +29,8 @@ else{
         $view = new ViewUser($controller, $model);
         ?>
         <body>
-        
        <?php echo $view->nav1();?>
        <?php echo $view->side();?>
-       
-
     <?php
     }
 ?>
@@ -141,6 +134,7 @@ else{
 
     </div>
 </section>
+<?php include '../app/api/chatbot.php'; ?>
 </body>
 
 </html>

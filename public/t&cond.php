@@ -92,6 +92,7 @@ At Sweet Dreams by HK, customer satisfaction is of utmost importance to us. We s
                  <p>Copyright: All information, text, images, photographs, graphics, videos, music, user interface and other content and materials contained on the sites are the copyrighted property of Company or its third-party licensors to the full extent provided under the United States Copyright Act and all international copyright laws. Under applicable copyright laws, you are prohibited from copying, reproducing, modifying, distributing, displaying, performing, or transmitting any of the contents of the sites for any purposes. Nothing stated or implied on the sites confers on you any license or right under any copyright of Company or any third party. The sites and the information contained in reference herein are for your personal, non-commercial use only. Except as otherwise specifically permitted herein, you shall not broadcast, duplicate, copy, reproduce, edit, manipulate, modify, publish, rent, sell, publicly display, perform, distribute, transmit, or circulate to anyone the contents of the sites, or use the contents of the sites in litigation, or for any commercial or promotional purposes, without the express written consent of Company or its lawful successors and assigns. </p>
             </div>
         </section>
+  <?php include '../app/api/chatbot.php'; ?>
     </body>
 </html>
 <?php echo $view->footer();?>
