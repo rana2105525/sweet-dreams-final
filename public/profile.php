@@ -9,10 +9,6 @@ require_once(__ROOT__ . "view/ViewUser.php");
 $model = new User($_SESSION["id"]);
 $controller = new UsersController($model);
 $view = new ViewUser($controller, $model);
-
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-	$controller->{$_GET['action']}();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +24,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 <?php echo $view->profile(); ?>
 </section>
 <?php echo $view->footer(); ?>
-
+<?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

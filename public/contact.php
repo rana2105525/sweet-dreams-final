@@ -32,8 +32,7 @@ echo "<h1>Contact us</h1>";
 
 <?php echo $view->contact(); ?>
 <?php echo $view->footer();?>
-
-
+<?php include '../app/api/chatbot.php'; ?>
 
 </body>
 </html>

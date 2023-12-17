@@ -30,6 +30,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <?php echo $view->footer();?>
     </section>
     
-
+    <?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

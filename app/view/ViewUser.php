@@ -209,7 +209,7 @@ public function home()
   <section class="hero-header">
       <h1>Shop and explore our new collection to get the chance to earn gifts</h1>
       <h2>Hurry up!!!</h2>
-      <a href="#"><button class="img_btn">Explore</button></a>
+      <a href="summer.php"><button class="img_btn">Explore</button></a>
     </section>
   </header>
   
@@ -253,7 +253,7 @@ public function home()
   <section id="banner" class="section-banner">
 
     <h2>Explore our <span>Bundle and save </span>products</h2>
-    <button><a href="#"><strong>Explore more</strong></a></button>
+    <button><a href="bundle.php"><strong>Explore more</strong></a></button>
   </section>
   <br><br>
   <div class="h_products">

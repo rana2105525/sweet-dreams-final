@@ -42,6 +42,6 @@ echo "sorry you can't access this page please login";
 <body>
 
 </div>
-
+<?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

@@ -23,6 +23,7 @@ $view = new CheckoutView($controller, $model);
     <?php echo $view->output(); ?>
     <?php echo $view->footer();?>
     
+    <?php include '../app/api/chatbot.php'; ?>
 
 </body>
 </html>

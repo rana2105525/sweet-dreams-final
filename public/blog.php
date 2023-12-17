@@ -32,6 +32,6 @@ echo "<h1>Blog</h1>";
 <?php echo $view->footer();?>
 
 
-
+<?php include '../app/api/chatbot.php'; ?>
 </body>
 </html>

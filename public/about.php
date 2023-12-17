@@ -17,12 +17,8 @@ if($isLogged)
     $controller = new UsersController($model);
     $view = new ViewUser($controller, $model);
     ?>
-
-    
    <?php echo $view->nav();?>
    <?php echo $view->side();?>
-   
-  
 </body>
 <?php
 }
@@ -59,10 +55,6 @@ else{
 <body>
 
 <nav>
-<?php include '../partials/nav.php'; ?>
-
-
-    <?php include '../partials/side.php'; ?>
   </nav>
 
     <section id="aboutUs">
@@ -88,10 +80,7 @@ else{
             </p>
             
     </section>
-    <?php include '../partials/footer.php'; ?>
-
-
-
+    <?php include '../app/api/chatbot.php'; ?>
 
 </body>
 
