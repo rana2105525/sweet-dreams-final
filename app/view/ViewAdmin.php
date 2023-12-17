@@ -227,9 +227,11 @@ class ViewAdmin extends View
  ';
  return $str;
   }
-    function addAdminForm()
+    function addAdminForm() 
     {
-        $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/addAdmin.css">
+	    echo sidebar();
+            
+            $str = '<div class="content"> <section class="container rows">
         <form action="addAdmin.php?action=insert" method="post" class="form">
             <div id="title">
                 <h2>Add a new admin</h2>
@@ -271,7 +273,7 @@ class ViewAdmin extends View
             </div>
     
             <button type="submit" name="submit" id="submit-button" value="submit">Add Admin</button>
-        </form>';
+        </form></section></div>';
         return $str;
     }
     function editAdminform()
