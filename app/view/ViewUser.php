@@ -204,73 +204,91 @@ public function side()
 
 public function home()
 {
-  $str='
-  <link rel="stylesheet type="text/css" href="../public/css/User/index.css">
-<header>
-  <section class="hero-header">
-      <h1>Shop and explore our new collection to get the chance to earn gifts</h1>
-      <h2>Hurry up!!!</h2>
-      <a href="summer.php"><button class="img_btn">Explore</button></a>
-    </section>
-  </header>
-  
-  <br>
-  <div class="h_products">
-    <h2>Our products</h2>
-  </div><br>
-  <div class="Contain">
-    <div class="box" id="col1">
-      <a href="summer.php">
-        <button type="button" class="b">
-          <img
-            src="../public/images/long-sleeved-t-shirt-children-s-clothing-top-cool-summer-boy-8c83e609f4319973d698e96068482e7a.png"
-            alt="">
-          <p>Summer collection</p>
-        </button>
-      </a>
-    </div>
-    <div class="box" id="col2">
-      <a href="winter.php">
-        <button type="button" class="b">
-          <img
-            src="../public/images/t-shirt-pajamas-carters-boy-clothing-little-monster-baby-home-pajamas-f14325570f638347c4aa1cccd0ca5e3f.png"
-            alt="">
-          <p>Winter collection</p>
-        </button>
-      </a>
-    </div>
-    <div class="box" id="col3">
-      <a href="bundle.php">
-        <button type="button" class="b">
-          <img src="../public/images/pngegg.png" alt="">
-          <p>Bundle and save</p>
-        </button>
-      </a>
+    $products = $this->model->ShowProducts(); // Fetch products using the ShowProducts() function
+    
+    // Display fetched products
+
+    $str = '
+    <link rel="stylesheet" type="text/css" href="../public/css/User/index.css">
+    <header>
+        <section class="hero-header">
+            <h1>Shop and explore our new collection to get the chance to earn gifts</h1>
+            <h2>Hurry up!!!</h2>
+            <a href="summer.php"><button class="img_btn">Explore</button></a>
+        </section>
+    </header>
+    
+    <br>
+    <div class="h_products">
+        <h2>Our products</h2>
+    </div><br>
+    <div class="Contain">
+        <div class="box" id="col1">
+            <a href="summer.php">
+                <button type="button" class="b">
+                    <img
+                        src="../public/images/long-sleeved-t-shirt-children-s-clothing-top-cool-summer-boy-8c83e609f4319973d698e96068482e7a.png"
+                        alt="">
+                    <p>Summer collection</p>
+                </button>
+            </a>
+        </div>
+        <div class="box" id="col2">
+            <a href="winter.php">
+                <button type="button" class="b">
+                    <img
+                        src="../public/images/t-shirt-pajamas-carters-boy-clothing-little-monster-baby-home-pajamas-f14325570f638347c4aa1cccd0ca5e3f.png"
+                        alt="">
+                    <p>Winter collection</p>
+                </button>
+            </a>
+        </div>
+        <div class="box" id="col3">
+            <a href="bundle.php">
+                <button type="button" class="b">
+                    <img src="../public/images/pngegg.png" alt="">
+                    <p>Bundle and save</p>
+                </button>
+            </a>
+        </div>
+        <br>
     </div>
     <br>
-  </div>
-  <br>
-  <br>
-  <section id="banner" class="section-banner">
+    <br>
+    <section id="banner" class="section-banner">
+        <h2>Explore our <span>Bundle and save </span>products</h2>
+        <button><a href="bundle.php"><strong>Explore more</strong></a></button>
+    </section>
+    <br><br>
+    <div class="h_products">
+        <h2>New arrivals</h2>
+    </div><br>
+    <div class="Contain">';
 
-    <h2>Explore our <span>Bundle and save </span>products</h2>
-    <button><a href="bundle.php"><strong>Explore more</strong></a></button>
-  </section>
-  <br><br>
-  <div class="h_products">
-    <h2>New arrivals</h2>
-  </div><br>
-  <div class="Contain">
-      <div class="box" id="col1">
-        <form method="post" action="prod_desc.php">
-          <input type="hidden" name="product_id" value="">
-          <button type="submit" name="add_to_description"><img style= "width:300px;height:250px;padding-top:20px;padding-left:20px;padding-right:20px;"src=""</button>                      
-        </form>
-      </div> 
-  </div>
-  ';
-  return $str;
+    foreach ($products as $row) {
+        $id = $row["id"];
+        $title = $row["title"];
+        $price = $row["price"];
+        $prod_image = $row["prod_image"];
+
+        $str .= '
+        <div class="box" id="col' . $id . '">
+            <form method="post" action="prod_desc.php">
+                <input type="hidden" name="product_id" value="' . $id . '">
+                <button type="submit" name="add_to_description">
+                    <img style="width:300px;height:250px;padding-top:20px;padding-left:20px;padding-right:20px;"
+                         src="../public/' . $prod_image . '" alt="' . $title . '">
+                    <p>' . $title . '</p>
+                </button>
+            </form>
+        </div>';
+    }
+
+    $str .= '</div>';
+
+    return $str;
 }
+
 
 public function footer()
 {
