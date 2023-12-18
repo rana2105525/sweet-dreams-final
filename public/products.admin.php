@@ -22,6 +22,7 @@
       if (isset($_GET['action']) && !empty($_GET['action'])) {
         switch($_GET['action']){
             case 'insert':
+              echo "public";
               $controller->insert();
               break;
             case 'delete':

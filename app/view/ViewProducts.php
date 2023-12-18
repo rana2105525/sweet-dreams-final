@@ -178,8 +178,8 @@ class ViewProducts extends View{
 				$str.='</div>';
 
 				$str.='<div class="input-box">';
-				$str.='<label for="price" >Product price</label>';
-				$str.='<input type="number" step="any" id ="price" name ="price" value="'. $Product->getQuantity().'" />';
+				$str.='<label for="price" >Product quantity</label>';
+				$str.='<input type="number" step="any" id ="quantity" name ="quantity" value="'. $Product->getQuantity().'" />';
 				$str.='</div>';
 
 				$str.='<button name="edit" class = "buttons"><a href="products.admin.php?action=edit&id='.$this->editId .'">Update Product</a></button>';
@@ -277,7 +277,7 @@ class ViewProducts extends View{
 		$str.='<input type="number" step="any" id ="quantity" name ="quantity"/>';
 		$str.='</div>';
 
-		$str.='<button name="edit" class = "buttons"><a href="products.admin.php?action=insert">Add Product</a></button>';
+		$str.='<button name="edit" class = "buttons" type="submit"><a href="products.admin.php?action=insert">Add Product</a></button>';
 		$str.='</form>';
 		$str.='</section>';
 		$str.='</div>';

@@ -45,6 +45,7 @@ class Products extends Model{
 		$sql = "INSERT INTO products (title, description, price,category,size,color,prod_imag)
 		 VALUES ('$title', '$description', '$price','$category','$size','$color','$prod_image')";
 		if($this->db->query($sql) === true){
+			echo "Records inserted successfully.";
 			$this->fillArray();
 		} 
 		else{

@@ -51,40 +51,39 @@ function isStrongPassword($password) {
 		$password = $_REQUEST['password'];
         $gender = isset($_REQUEST["gender"]) ? $_REQUEST["gender"] : '';
 
-		
-		  if (empty($name)) {
+		if (empty($name)) {
 			$this->nameErr = "Name is required";
-		  } else {
-			if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-			  $this->nameErr = "Only letters and white space allowed";
-			}
-		  }
-		  $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
-    $sql = "SELECT * FROM admins WHERE Email = '$email'";
-  $result = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($result) > 0) {
-    $this->emailErr = "Email exists in the database";
-  }
-		
-		  if (empty($email)) {
-			$this->emailErr = "Email is required";
-		  } else {
-			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			  $this->emailErr = "Invalid email format";
-			}
-		  }
-		  if (empty($phone)) {
-			$this->phoneErr = "Phone number is required";
-		  } else {
-			$desiredLength = 11; 
+		} else {
+		if (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+		  $this->nameErr = "Only letters and white space allowed";
+		}
+		}
+		$conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+		$sql = "SELECT * FROM admins WHERE Email = '$email'";
+		$result = mysqli_query($conn, $sql);
+		if (mysqli_num_rows($result) > 0) {
+			$this->emailErr = "Email exists in the database";
+		}
+	
+		if (empty($email)) {
+		$this->emailErr = "Email is required";
+		} else {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		  $this->emailErr = "Invalid email format";
+		}
+		}
+		if (empty($phone)) {
+		$this->phoneErr = "Phone number is required";
+		} else {
+		$desiredLength = 11; 
 	  
-			if (!$this->isValidPhoneNumber($phone, $desiredLength)) {
-				$this->phoneErr = "Invalid phone number format or length"; 
-			}
-		  }
-		  if (empty($password)) {
-			$this->passwordErr = "Password is required";
-		  }
+		if (!$this->isValidPhoneNumber($phone, $desiredLength)) {
+			$this->phoneErr = "Invalid phone number format or length"; 
+		}
+		}
+		if (empty($password)) {
+		$this->passwordErr = "Password is required";
+		}
 		  // } elseif (!$this->isStrongPassword($_POST["password"])) {
 		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
 		  // }
