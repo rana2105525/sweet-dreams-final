@@ -169,9 +169,12 @@ function isStrongPassword($password) {
 		];
 		return $errors;
 	  }
-	public function deleteA(){
-		$this->model->deleteAdmin();
+	  public function deleteA(){
+		if (isset($_GET['delete']) && !empty($_GET['delete'])) {
+			$this->model->deleteAdmin();
+		}
 	}
+	
 
 	public function getAllA() {
         return $this->model->getAllAdmins();

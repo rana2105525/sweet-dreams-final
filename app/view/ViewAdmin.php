@@ -27,7 +27,8 @@ class ViewAdmin extends View
         <label for="gender">Gender: &nbsp;</label>'.$gender.'</div>
 
         <button id ="edit"><a href="editAdmin.admin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.admin.php?delete='.$this->model->getID().'">Delete Account</button>
+        <button id="delete"><a href="viewAdmin.admin.php?action=delete&delete='.$this->model->getID().'">Delete Account</button>
+
 
 </div>
     </section>
