@@ -19,7 +19,8 @@ $model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $controller->insertA(); // Handle the form submission for adding a new admin
+  $controller->insertA();
+  header("location: login.php");  // Handle the form submission for adding a new admin
 }
 // if (isset($_GET['action']) && !empty($_GET['action'])) {
 // 	$controller->{$_GET['action']}();
