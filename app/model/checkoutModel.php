@@ -140,16 +140,7 @@ class checkoutModel extends Model
     }
   
 
-    public function deleteALL()
-    {
-        $sql="delete from cart2 where user_id=$this->user_id;";
-        if($this->db->query($sql) === true){
-            return true;
-        } else{
-            echo "ERROR: Could not able to execute $sql. ";
-        }
-
-    }
+  
    
 }
 ?>

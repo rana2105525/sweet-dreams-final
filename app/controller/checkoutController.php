@@ -86,17 +86,7 @@ class checkoutController extends Controller {
       
     
     
-    public function deleteALL()
-    {
-        $this->model->id = $_GET['id'];
-        if($this->model->deleteALL() === true){
-            header("Location:checkout.php");
-            echo"Your cart is empty";
-        } else{
-            echo "ERROR: Could not able to delete the item. ";
-        }
-
-    }
+  
 
 
 }

@@ -63,19 +63,25 @@ class CartView extends View {
 }
 
 
+  
     public function check_btn()
     {
-      $str='
-      <form method="post" >
-          <div class="button heart no-style">
-              <i class="bx bxs-zap"></i>
-              <button type=submit ><a href="checkout.php">Proceed to checkout</a></button>
-              </div> 
-      </form>
-      ';
-      return $str;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitdelete'])) {
+            $this->model->deleteALL();
+        }
+    
+        $str = '
+        <form method="POST" action="checkout.php">
+            <div class="button heart no-style">
+                <i class="bx bxs-zap"></i>
+                <button type="submit" name="submitdelete">Proceed to checkout</button>
+            </div>
+        </form>
+        ';
+    
+        return $str;
     }
-
+    
 
     
     public function footer(){

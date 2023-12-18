@@ -36,6 +36,13 @@ class CartController extends Controller {
             echo "ERROR: Could not able to delete the item. ";
         }
     }
+    public function deleteALL()
+    {
+      
+      $this->model->deleteALL();
+
+    }
+    
 
 
         }
