@@ -284,7 +284,7 @@ class ViewAdmin extends View
         </form></section></div>';
         return $str;
     }
-    function editAdminform()
+    function editAdminform($errors=[])
     {
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
@@ -292,28 +292,32 @@ class ViewAdmin extends View
       $password = $this->model->getPassword();
       $gender = $this->model->getGender();
       
-      $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
-        <form action="editAdmin.php?action=edit" method="post" class="form">
+      $str = '
+        <form action="editAdmin.admin.php?action=edit" method="post" class="form">
             <div id="title"><h2>Edit admin</h2></div>
     
             <div class="input-box">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="' . $username . '" placeholder="Enter admin\'s name" />
+                <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="number">Phone Number</label>
                 <input type="number" id="number" name="number" value="' . $phone . '" placeholder="Enter admin\'s number" />
+                <span class="error">' . ($errors['phoneErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="' . $email . '" placeholder="Enter admin\'s email" />
+                <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
             </div> 
     
             <div class="input-box">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" value="' . $password . '" placeholder="Enter your password" />
+                <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
             </div>
             
             <div class="input-box">
@@ -328,6 +332,7 @@ class ViewAdmin extends View
                     <input type="radio" name="gender" id="female" value="'. $gender .'">
                     <label for="female">Female</label>
                 </span>
+                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
             </div>
     
             <button type="submit" name="submit">Edit Admin</button>

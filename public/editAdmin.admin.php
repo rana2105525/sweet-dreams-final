@@ -15,10 +15,15 @@ $isLogged = isset($_SESSION["ID"]);
   
 //  $_SESSION['ID'] = $adminDetails['ID'];
 
-$model = new Admin();
+$model = new Admin($_SESSION["ID"]);
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
 
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+	if ($_GET['action'] === 'edit') {
+    $controller->editA(); 
+}
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +33,7 @@ $view = new ViewAdmin($controller, $model);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
   </head> 
@@ -49,7 +55,7 @@ $view = new ViewAdmin($controller, $model);
       
 
               <?php 
-                        echo $view->editAdminForm();
+                        echo $view->editAdminForm($controller->getErrors());
                         //}
                     ?>  
   </div>
