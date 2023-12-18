@@ -13,7 +13,7 @@ class Reviews extends Model{
 		$this->db = $this->connect();
 		$result = $this->readReviews();
 		while ($row = $result->fetch_assoc()) {
-			array_push($this->reviews, new Review($row['id']));
+			array_push($this->reviews, new Review($row['review_id']));
 		}
 	} 
 
@@ -31,7 +31,10 @@ class Reviews extends Model{
 	}
 
 	function readReviews(){
-		$sql = "SELECT * FROM reviews";
+		$sql = "SELECT review_id, review,user_id,name,prod_id,title
+		 FROM reviews r, reg u, products p 
+		 where u.id= r.user_id and p.id=r.prod_id;";
+
 		$result = $this->db->query($sql);
 		if ($result->num_rows > 0){
 			return $result;

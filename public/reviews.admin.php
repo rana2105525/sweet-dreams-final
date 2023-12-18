@@ -23,10 +23,10 @@
       if (isset($_GET['action']) && !empty($_GET['action'])) {
         if($_GET['action']=='delete'){
               $controller->delete($_GET['id']);
-			        echo $view->output();
+			        echo $view->displayInAdmin();
         }
       }
-      else echo $view->output();
+      else echo $view->displayInAdmin();
   ?>
   </body>
 </html>
