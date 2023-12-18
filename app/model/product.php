@@ -52,12 +52,26 @@ class Product extends Model {
 
     public function deleteProduct(){
         $sql="delete from products where id=$this->id;";
-		if($this->db->query($sql) === true){
-            header('Location:products.admin.php');
-			
-		} else{
+		if($this->db->query($sql) === false){
 			echo "ERROR: " . $this->db->error;
 		}
+    }
+
+    public function editProduct(){
+        $this->readProduct($_GET['id']);
+        echo $this->title;
+        $this->title = $_GET['title'];
+        echo $this->title;
+        $this->price = $_POST['price'];
+        $this->description = $_POST['description'];
+        $this->prod_image =$_FILES['prod_image'];
+        $this->category = $_POST['category'];
+        echo"hiii";
+        $sql="UPDATE products SET title = '$this->title',price='$this->price',
+        description='$this->description',category='$this->category' WHERE id='$this->id';";
+        if($this->db->query($sql) === false){
+            echo "ERROR: " . $this->db->error;
+        }
     }
 
 
