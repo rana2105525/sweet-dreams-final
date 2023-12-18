@@ -3,58 +3,68 @@
 
 	class Review extends Model{
     private $id;
-    private $fullname;
-    private $review; 
+    private $user_id;
+    private $product_id;
+    private $review;
 
-    public function __construct(){
-      $this->readReview();
+
+    function __construct($id,$user_id="",$product_id="",$review="") {
+      $this->id = $id;
+      $this->db = $this->connect();
+      if(""===$user_id){
+        $this->readReview($id);
+      }
+      else{
+        $this->user_id = $user_id;
+        $this->product_id = $product_id;
+        $this->review = $review;
+      }
     }
-      
-	    function readReview(){
-        $sql = "SELECT * FROM reviews";
-        $db = $this->connect();
-        $result = $db->query($sql);
-        if ($result->num_rows == 1){
-            $row = $db->fetchRow();
-            $this->fullname = $row["fullname"];
-            $_SESSION["fullname"]=$row["fullname"];
-            $this->review=$row["review"];
-        }
-        else {
-            $this->fullname = "";
-            $this->review="";
+  
+    public function readReview($id){
+          $result = $this->db->query('SELECT * FROM reviews where id='.$id);
+          if (!$result) {
+              die("Error in query: " . $this->db->error);
+          }
+  
+      if ($result->num_rows == 1){
+        $row = $this->db->fetchRow();
+        $this->user_id = $row["user_id"];
+        $this->product_id = $row["prod_id"];
+        $this->review = $row["review"];
+      }
+      else {
+        $this->user_id = "";
+        $this->product_id="";
+        $this->review = "";
+      }
+    }
+  
+      public function deleteReview(){
+          $sql="delete from reviews where id=$this->id;";
+        if($this->db->query($sql) === false){
+          echo "ERROR: " . $this->db->error;
         }
       }
-      function review(){
-        $sql = "SELECT * FROM reviews";
-        $result = $this->db->query($sql); 
-        
-        if($result !== false){
-            return $result->fetch_all(MYSQLI_ASSOC); 
-        } else {
-            return []; 
-        }
-    }
-    
-    public function getId(){
-      return $this->id;
-    }
-    public function getFullname()
-    {
-        return $this->fullname;
-    }
-    public function getReview()
-    {
+      // Getters
+      public function getId(){
+          return $this->id;
+      }
+      public function getUserId(){
+          return $this->user_id;
+      }
+      public function getProductId(){
+          return $this->product_id;
+      }
+      public function getReview(){
         return $this->review;
     }
-    
-    function setName($fullname) {
-        return $this->fullname = $fullname;
-      }
-      function setReview($review) {
-        return $this->review = $review;
-      }
 
-
+      // Setters
+      public function setReview($review){
+          $this->review = $review;
+      }
   }
+   
+  
 ?>

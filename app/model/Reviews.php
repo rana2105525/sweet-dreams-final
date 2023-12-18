@@ -5,7 +5,7 @@ require_once(__ROOT__ . "model/Review.php");
 class Reviews extends Model{ 
 	private $reviews; 
 	function __construct() {
-		$this->fillArray();
+		$this->fillArray(); 
 	}
   
 	function fillArray() {
@@ -13,7 +13,7 @@ class Reviews extends Model{
 		$this->db = $this->connect();
 		$result = $this->readReviews();
 		while ($row = $result->fetch_assoc()) {
-			array_push($this->reviews, new Review());
+			array_push($this->reviews, new Review($row['id']));
 		}
 	} 
 

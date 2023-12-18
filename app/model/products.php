@@ -41,7 +41,6 @@ class Products extends Model{
 		}
 	}
 
-
 	function insertProduct($title,$description,$prod_image,$category,$price,$color,$size){
 		$sql = "INSERT INTO products (title, description, price,category,size,color,prod_imag)
 		 VALUES ('$title', '$description', '$price','$category','$size','$color','$prod_image')";

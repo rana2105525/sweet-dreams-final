@@ -12,15 +12,21 @@
   <body>
   <?php
       define('__ROOT__', "../app/");
-      require_once(__ROOT__ . "model/Review.php");
+      require_once(__ROOT__ . "model/Reviews.php");
       require_once(__ROOT__ . "controller/ReviewsController.php");
       require_once(__ROOT__ . "view/ViewReview.php");
-      $model = new Review();
+
+      $model = new Reviews();
       $controller = new ReviewsController($model);
       $view = new ViewReview($controller, $model);
-
-      echo $view->output();
-
+      
+      if (isset($_GET['action']) && !empty($_GET['action'])) {
+        if($_GET['action']=='delete'){
+              $controller->delete($_GET['id']);
+			        echo $view->output();
+        }
+      }
+      else echo $view->output();
   ?>
   </body>
 </html>

@@ -10,8 +10,9 @@ class Product extends Model {
     private $color;
     private $size;
     private $price;
+    private $quantity;
 
-    function __construct($id,$title="",$description="",$prod_image="",$added_at="",$category="",$price="",$color="",$size="") {
+    function __construct($id,$title="",$description="",$prod_image="",$added_at="",$category="",$price="",$color="",$size="",$quantity="") {
 		$this->id = $id;
 		$this->db = $this->connect();
 		if(""===$title){
@@ -26,6 +27,7 @@ class Product extends Model {
 			$this->price = $price;
 			$this->color = $color;
 			$this->size = $size;
+            $this->quantity=$quantity;
 		}
 	}
 
@@ -45,6 +47,7 @@ class Product extends Model {
             $this->category = $row["category"];
             $this->color = $row["color"];
             $this->size = $row["size"];
+            $this->quantity = $row["quantity"];
 		}
 		else {
 			$this->title = "";
@@ -55,6 +58,7 @@ class Product extends Model {
 			$this->category = "";
 			$this->color = "";
 			$this->size = "";
+			$this->quantity = "";
 		}
 	}
 
@@ -74,9 +78,9 @@ class Product extends Model {
         $this->description = $_POST['description'];
         $this->prod_image =$_FILES['prod_image'];
         $this->category = $_POST['category'];
-        echo"hiii";
+        $this->category = $_POST['quantity'];
         $sql="UPDATE products SET title = '$this->title',price='$this->price',
-        description='$this->description',category='$this->category' WHERE id='$this->id';";
+        description='$this->description',category='$this->category',quantity='$this->quantity' WHERE id='$this->id';";
         if($this->db->query($sql) === false){
             echo "ERROR: " . $this->db->error;
         }
@@ -111,7 +115,9 @@ class Product extends Model {
     public function getSize(){
         return $this->size;
     }
-
+    public function getQuantity(){
+        return $this->quantity;
+    }
     // Setters
     public function setTitle($title){
         $this->title = $title;
@@ -136,6 +142,9 @@ class Product extends Model {
     }    
     public function setSize($size){
         $this->size = $size;
+    }    
+    public function setQuantity($quantity){
+        $this->size = $quantity;
     }
 }
  

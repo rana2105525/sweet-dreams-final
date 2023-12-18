@@ -4,7 +4,7 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
-  
+
     
 body {
     background-color: #E8E0D7;
@@ -51,12 +51,13 @@ div.content {
 }
 
 .tablecont{
-    margin: 2% 10% 10% 20%;
+    margin-top: 2%;
+    margin-left: 20%;
 }
 
 table{
     border-collapse: collapse;
-    width: 100%;
+    width: 80%;
     margin-bottom: 100px;
 }
 
@@ -71,9 +72,6 @@ td, th {
     text-align: center;
     padding: 8px;
 }
-.cell{
-    white-space: nowrap;
-}
 .tableHeader{
     border-bottom: 3px solid #000000 ;
 }
@@ -82,39 +80,25 @@ tbody tr:nth-child(odd) {
     background-color: #ffffff;
 }
 
-.buttons{
+button{
     padding:5px;
     border-radius: 5px;
     width:60%;
     margin: 2px;
     border:none;
-}
-#delete{
-
     background-color: rgb(246, 3, 3);
+    color: #ffffff;
 }
 button a{
     color: #ffffff;
     text-decoration: none;
 }
 
-#delete:hover{
+button:hover{
     cursor:pointer;
     background-color: rgb(195, 6, 6);
 }
-#edit{
-    background-color: #F27144;
-    color: #ffffff;
-}
 
-#edit:hover{
-    cursor:pointer;
-    background-color:#3AB9C0;
-}
-
-.table_img{
-    width:50%;
-}
 /*responsive*/
 /* On screens that are less than 2000px wide, make the sidebar into a topbar */
 @media screen and (max-width: 1500px) {

@@ -1,77 +1,46 @@
 <?php
-
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 
 class ViewReview extends View{
-    public function output(){
-      $str="<div class='component'>";
-      echo sidebar();
-      $str.= "<div class='content'>
-      <div id='header'><h2>All Products</h2></div>";
-      $str.="<div class='tablecont'>";
-      $str.="<table>";
-          $str.="<thead class='tablehead'>";
-      $str.="<tr>";
-          $str.="<th class = 'tableHeader'>#ID</th>";
-          $str.="<th class = 'tableHeader'>Title</th>";
-          $str.="<th class = 'tableHeader'>Price</th>";
-          $str.="<th class = 'tableHeader'>Description</th>";
-          $str.="<th class = 'tableHeader'>Product &nbsp; Image</th>";
-          $str.="<th class = 'tableHeader'>Category</th>";
-          $str.="<th class = 'tableHeader'>Added &nbsp; at</th>";
-          $str.="<th class = 'tableHeader'>Operation</th>";
-          $str.="</tr>";
-          $str.="</thead>";
-          $str.="<tbody>";
-  
-  
-      foreach($this->model->getReviews() as $review){
+  public function output(){
+    $str='<div class="component">';
+		echo sidebar();
+      $str.='<div class="content">';
+      $str.='<div id="header"><h2>Customers Reviews</h2></div>';
+      $str.='<div class="tablecont">';
+      $str.='<table>';
+      $str.='<thead class="tablehead">';
+      $str.='<tr>';
+      $str.='<th class = "tableHeader">#ID</th>';
+      $str.='<th class = "tableHeader">User ID</th>';
+      $str.='<th class = "tableHeader">Product ID</th>';
+      $str.='<th class = "tableHeader">Reveiw</th>';
+      $str.='<th class = "tableHeader">Operation</th>';
+      $str.='</tr>';
+      $str.='</thead>';
+      $str.='<tbody>';
+		  foreach($this->model->getReviews() as $Review){
         $str.="<tr>";
-        $str.="<td class = 'cell'>" . $review->getId() ."</td> ";
-        $str.="<td class = 'cell'>" . $review->getFullname() ."</td> ";
-        $str.="<td class = 'cell'>" . $review->getReview() ."</td> ";
+        $str.="<td class = 'cell'>" . $Review->getId() ."</td> ";
+        $str.="<td class = 'cell'>" . $Review->getUserId() ."</td> ";
+        $str.="<td class = 'cell'>" . $Review->getProductId() ."</td> ";
+        $str.="<td class = 'cell'>" . $Review->getReview() ."</td> ";
         $str.="<td>
-          <button class = 'buttons' id ='delete'><a href='products.admin.php?action=delete&id=".$review->getId()."'>Delete</a></button>
+          <button class = 'buttons' id ='delete'><a href='reviews.admin.php?action=delete&id=".$Review->getId()."'>Delete</a></button>
         </td> "; 
-        $str.="</tr>"; 
+        $str.="</tr>";
       }
-          $str.="</tbody>";
-      $str.="</table>";
-          $str.="</div>";
-          $str.="</div>";
-          $str.="</div>";
+
+      $str.='</tbody>';
+      $str.='</table>';
+      $str.='</div>';
+      $str.='</div>';
+      $str.='</div>';
       return $str;
-    }
+  }
 
-
-    public function review(){
-    $str = '
-    <link rel="stylesheet" href="../public/css/User/reviews.css">
-        <div class="review">';
-    
-    $reviews = $this->model->review(); // Fetch reviews using the review() function
-    
-    // Display fetched reviews
-    foreach ($reviews as $review) {
-        $fullname = $review['fullname']; // Assuming 'fullname' is a column in your database
-        $reviewText = $review['review']; // Assuming 'review_text' is a column in your database
-    
-        $str .= '
-            <div class="container">
-                <label><strong>' . $fullname . '</strong></label>
-                <p>' . $reviewText . '</p>  
-                </div>
-            ';
-    }
-    
-    $str .= '
-      
-    </div>';
-
-    return $str;
-}
 
 
 public function footer()

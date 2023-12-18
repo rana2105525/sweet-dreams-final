@@ -23,6 +23,7 @@ class ViewProducts extends View{
         $str.="<th class = 'tableHeader'>Category</th>";
         $str.="<th class = 'tableHeader'>Color</th>";
         $str.="<th class = 'tableHeader'>Size</th>";
+        $str.="<th class = 'tableHeader'>Quantity</th>";
         $str.="<th class = 'tableHeader'>Added &nbsp; at</th>";
         $str.="<th class = 'tableHeader'>Operation</th>";
         $str.="</tr>";
@@ -40,6 +41,7 @@ class ViewProducts extends View{
 			$str.="<td class = 'cell'>" . $Product->getCategory() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getColor() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getSize() ."</td> ";
+			$str.="<td class = 'cell'>" . $Product->getQuantity() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getAddedAt() ."</td> ";
 			$str.="<td>
 			  <button class = 'buttons' id ='edit'><a href='editProduct.admin.php?update_id=".$Product->getId()."'>Edit</a></button>
@@ -175,6 +177,11 @@ class ViewProducts extends View{
 				$str.='<label for ="12-24" >12-24</label>';
 				$str.='</div>';
 
+				$str.='<div class="input-box">';
+				$str.='<label for="price" >Product price</label>';
+				$str.='<input type="number" step="any" id ="price" name ="price" value="'. $Product->getQuantity().'" />';
+				$str.='</div>';
+
 				$str.='<button name="edit" class = "buttons"><a href="products.admin.php?action=edit&id='.$this->editId .'">Update Product</a></button>';
 				$str.='</form>';
 				$str.='</section>';
@@ -265,6 +272,11 @@ class ViewProducts extends View{
 		$str.='<label for ="12-24" >12-24</label>';
 		$str.='</div>';
 	
+		$str.='<div class="input-box">';
+		$str.='<label for="quantity" >Product quantity</label>';
+		$str.='<input type="number" step="any" id ="quantity" name ="quantity"/>';
+		$str.='</div>';
+
 		$str.='<button name="edit" class = "buttons"><a href="products.admin.php?action=insert">Add Product</a></button>';
 		$str.='</form>';
 		$str.='</section>';
