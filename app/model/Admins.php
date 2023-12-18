@@ -71,22 +71,6 @@ class Admins extends Model {
     
         return $admins;
     }
-    public function adminLogin($email, $password) {
-        $sql = "SELECT * FROM admins WHERE Email='$email'";
-        $dbh = new Dbh();
-        $result = $dbh->query($sql);
-    
-        if ($result->num_rows == 1) {
-            $row = $dbh->fetchRow();
-            if (password_verify($password, $row["Password"])) {
-                $_SESSION["ID"] = $row["ID"];
-                $_SESSION["Email"] = $row["Email"];
-                header("Location: viewAdmin.admin.php");
-            }
-        } else {
-            echo "error";
-        }
-    }
-    
+
     
 }

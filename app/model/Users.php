@@ -64,9 +64,23 @@ class Users extends Model {
           }
       }
       else{
-        echo "error";
-      }
+        $sql = "SELECT * FROM admins WHERE Email='$email'";
+        $dbh = new Dbh();
+        $result = $dbh->query($sql);
+    
+        if ($result->num_rows == 1) {
+            $row = $dbh->fetchRow();
+            if (password_verify($password, $row["Password"])) {
+                $_SESSION["ID"] = $row["ID"];
+                $_SESSION["Email"] = $row["Email"];
+                header("Location: viewAdmin.admin.php");
+            }
+        } else {
+            echo "error";
+        }
     }
+      }
+    
 
     function getAllUsers() {
         $sql = "SELECT * FROM reg";
@@ -86,6 +100,16 @@ class Users extends Model {
         }
     
         return $users;
+    }
+    public function ShowProducts(){
+      $sql = "SELECT id, title, price, prod_image FROM products ORDER BY id DESC LIMIT 3;";
+      $result = $this->db->query($sql); 
+            
+      if($result !== false){
+          return $result->fetch_all(MYSQLI_ASSOC); 
+      } else {
+          return []; 
+      }
     }
 
 }

@@ -5,7 +5,7 @@ require_once(__ROOT__ . "controller/checkoutController.php");
 
 class CheckoutView extends View
 {
-    public function output()
+    public function output($errors = [])
     {
         $str = '
         <link rel="stylesheet" href="../public/css/User/checkout.css" />
@@ -15,30 +15,33 @@ class CheckoutView extends View
             margin-top:20px;">Checkout</h1>
         <section class="container">
        
-    <form   action="checkout.php?action=checkout" method="post" >
+    <form   action="index.php?action=checkout" method="post" >
 
                 <div class="input-box">
                 <label>Name</label>
                 <input type="text" name="name"  required />  
-                
+                <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
 
             </div>
 
             <div class="input-box">
             <label>Email</label>
             <input type="text" name="email"  required />  
-            <span class="error"><?php echo $addressErr; ?></span>
+            <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
+
 
             </div>
             <div class="input-box">
             <label>Phone</label>
-            <input type="text" name="phone"  required />  
+            <input type="text" name="phone"  required /> 
+            <span class="error">' . ($errors['phoneErr'] ?? '') . '</span> 
             
 
             </div>
             <div class="input-box">
                 <label>Address</label>
-                <input type="text" name="address"  required />  
+                <input type="text" name="address"  required /> 
+                <span class="error">' . ($errors['addressErr'] ?? '') . '</span> 
       
 
             </div>
@@ -47,8 +50,9 @@ class CheckoutView extends View
             </div>
 
 
-            <button input type="submit" name="submit" value="Submit">Checkout</button>
-        </form>
+            <button type="submit" name="submit" value="Submit">Checkout</button>
+ 
+             </form>
         </section>
 
 
