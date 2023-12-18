@@ -16,7 +16,7 @@ class Products extends Model{
 			array_push($this->products, new Product($row["id"]));
 		}
 	} 
-
+ 
 	function getProducts() {
 		$this->fillArray();  
 		return $this->products;
@@ -38,6 +38,18 @@ class Products extends Model{
 		}
 		else {
 			return false;
+		}
+	}
+
+
+	function insertProduct($title,$description,$prod_image,$category,$price,$color,$size){
+		$sql = "INSERT INTO products (title, description, price,category,size,color,prod_imag)
+		 VALUES ('$title', '$description', '$price','$category','$size','$color','$prod_image')";
+		if($this->db->query($sql) === true){
+			$this->fillArray();
+		} 
+		else{
+            die("Error in query: " . $this->db->error);
 		}
 	}
 }

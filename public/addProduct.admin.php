@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/admin/allProducts.css" />
+    <link rel="stylesheet" href="css/admin/editProduct.css" />
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
   </head>  
 
@@ -18,23 +18,7 @@
       $model = new Products();
       $controller = new ProductsController($model);
       $view = new ViewProducts($controller, $model);
-
-      if (isset($_GET['action']) && !empty($_GET['action'])) {
-        switch($_GET['action']){
-            case 'insert':
-              $controller->insert();
-              break;
-            case 'delete':
-              $controller->delete($_GET['id']);
-			        echo $view->output();
-              break;
-            case'edit':
-             $controller->edit($_GET['id']);
-              break;
-        }
-    }
-    else
-        echo $view->output(); 
-    ?>
+      echo $view->addProductForm();
+      ?>
   </body>
 </html>
