@@ -24,7 +24,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
 	</head>
 <body>
 
-    <?php echo $view->output(); ?>
+    <?php echo $view->output($controller->getErrors()); ?>
     <?php echo $view->footer();?>
     
     <?php include '../app/api/chatbot.php'; ?>
