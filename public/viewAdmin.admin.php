@@ -27,7 +27,7 @@
       
     //  $_SESSION['ID'] = $adminDetails['ID'];
 
-    $model = new Admin();
+    $model = new Admin($_SESSION["ID"]);
     $controller = new AdminController($model);
     $view = new ViewAdmin($controller, $model);
     if (isset($_GET['action']) && !empty($_GET['action'])) {

@@ -286,6 +286,8 @@ class ViewAdmin extends View
     }
     function editAdminform($errors=[])
     {
+        //echo sidebar();
+        
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
       $email = $this->model->getEmail();
