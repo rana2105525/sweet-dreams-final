@@ -107,8 +107,7 @@ function isStrongPassword($password) {
         $name = $_REQUEST['name'];
 		$phone = $_REQUEST['number'];
 		$email = $_REQUEST['email'];
-		$password = $_REQUEST['password'];
-        $gender = isset($_REQUEST["gender"]) ? $_REQUEST["gender"] : '';
+
         
 		
 		  if (empty($name)) {
@@ -137,23 +136,15 @@ function isStrongPassword($password) {
 				$this->phoneErr = "Invalid phone number format or length"; 
 			}
 		  }
-		  if (empty($password)) {
-			$this->passwordErr = "Password is required";
-		  }
-		  // } elseif (!$this->isStrongPassword($_POST["password"])) {
-		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
-		  // }
-		
-		  if (empty($gender)) {
-			$this->genderErr = "Gender must be one of the following";
-		  }
 		
 		
 		
 		
-		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr) && empty($this->passwordErr)&&empty($this->genderErr)) {
+		
+		
+		  if (empty($this->nameErr) && empty($this->emailErr) && empty($this->phoneErr)) {
 			
-			$this->model->editAdmin($name, $phone, $email, $password, $gender);
+			$this->model->editAdmin($name, $phone, $email);
 			
 		  }
 		
@@ -164,8 +155,6 @@ function isStrongPassword($password) {
 		  'nameErr' => $this->nameErr,
 		  'emailErr' => $this->emailErr,
 		  'phoneErr' => $this->phoneErr,
-		  'passwordErr' => $this->passwordErr,
-		  'genderErr'=>$this->genderErr
 		];
 		return $errors;
 	  }

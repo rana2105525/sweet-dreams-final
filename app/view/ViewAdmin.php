@@ -292,8 +292,7 @@ class ViewAdmin extends View
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
       $email = $this->model->getEmail();
-      $password = $this->model->getPassword();
-      $gender = $this->model->getGender();
+      
       
       $str = '
         <form action="editAdmin.admin.php?action=edit" method="post" class="form">
@@ -316,28 +315,6 @@ class ViewAdmin extends View
                 <input type="email" id="email" name="email" value="' . $email . '" placeholder="Enter admin\'s email" />
                 <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
             </div> 
-    
-            <div class="input-box">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" value="' . $password . '" placeholder="Enter your password" />
-                <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
-            </div>
-            
-            <div class="input-box">
-                <label for="gender">Gender</label>
-            </div> 
-            <div class="row">
-                <span class="column">
-                    <input type="radio" name="gender" id="male" value="'. $gender .' ">
-                    <label for="male">Male</label>
-                </span>
-                <span class="column">
-                    <input type="radio" name="gender" id="female" value="'. $gender .'">
-                    <label for="female">Female</label>
-                </span>
-                <span class="error">' . ($errors['genderErr'] ?? '') . '</span>
-            </div>
-    
             <button type="submit" name="submit">Edit Admin</button>
         </form>';
     

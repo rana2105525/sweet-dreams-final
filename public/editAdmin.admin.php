@@ -22,7 +22,7 @@ $view = new ViewAdmin($controller, $model);
 if (isset($_GET['action']) && !empty($_GET['action'])) {
 	if ($_GET['action'] === 'edit') {
     $controller->editA(); 
-    header("location: login.php"); 
+    header("location: viewAdmin.admin.php"); 
 }
 }
 ?>
