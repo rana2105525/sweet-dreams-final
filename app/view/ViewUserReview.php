@@ -19,25 +19,24 @@ class ViewUserReview extends View {
       $str .= '<thead class="tablehead">';
       $str .= '<tr>';
       $str .= '<th class="tableHeader">#ID</th>';
-      $str .= '<th class="tableHeader">User ID</th>';
       $str .= '<th class="tableHeader">User Name</th>';
-      $str .= '<th class="tableHeader">Product ID</th>';
       $str .= '<th class="tableHeader">Product Title</th>';
+      $str .= '<th class="tableHeader">Image</th>';
       $str .= '<th class="tableHeader">Review</th>';
       $str .= '</tr>';
       $str .= '</thead>';
       $str .= '<tbody>';
       
       foreach ($this->model->getReviews() as $Review) {
-          $str .= "<tr>";
-          $str .= "<td class='cell'>" . $Review->getId() . "</td> ";
-          $str .= "<td class='cell'>" . $Review->getUserId() . "</td> ";
-          $str .= "<td class='cell'>" . $Review->getUserName() . "</td> ";
-          $str .= "<td class='cell'>" . $Review->getProductId() . "</td> ";
-          $str .= "<td class='cell'>" . $Review->getProductTitle() . "</td> ";
-          $str .= "<td class='cell'>" . $Review->getReview() . "</td> ";
-          $str .= "</tr>";
-      }
+        $str .= "<tr>";
+        $str .= "<td class='cell'>" . $Review->getId() . "</td> ";
+        $str .= "<td class='cell'>" . $Review->getUserName() . "</td> ";
+        $str .= "<td class='cell'>" . $Review->getProductTitle() . "</td> ";
+         $str .= "<td class='cell'><img src='../public/" . $Review-> getImage(). "'></td>";
+        $str .= "<td class='cell'>" . $Review->getReview() . "</td> ";
+        $str .= "</tr>";
+    }
+    
       
       $str .= '</tbody>';
       $str .= '</table>';

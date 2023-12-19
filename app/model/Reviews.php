@@ -31,7 +31,7 @@ class Reviews extends Model{
 	}
 
 	function readReviews(){
-		$sql = "SELECT review_id, review,user_id,name,prod_id,title
+		$sql = "SELECT review_id, review,user_id,name,prod_id,title,p.prod_image
 		 FROM reviews r, reg u, products p 
 		 where u.id= r.user_id and p.id=r.prod_id;";
 

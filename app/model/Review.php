@@ -7,49 +7,53 @@
     private $user_name;
     private $product_id;
     private $product_title;
+    private $image;
     private $review;
 
 
-    function __construct($id,$user_id="",$user_name="",$product_title="",$product_id="",$review="") {
-      $this->id = $id;
-      $this->db = $this->connect();
-      if(""===$user_name){
-        $this->readReview($id);
-      }
-      else{
-        $this->user_id = $user_id;
-        $this->user_name = $user_name;
-        $this->product_id = $product_id;
-        $this->product_title = $product_title;
-        $this->review = $review;
-      }
-    }
-  
-    public function readReview($id){
-      $result = $this->db->query('SELECT review_id, review,user_id,name,prod_id,title
-       FROM reviews r, reg u, products p 
-       WHERE r.review_id='.$id.' AND u.id= r.user_id AND p.id=r.prod_id;');
-
-      if (!$result) {
-          die("Error in query: " . $this->db->error);
+    function __construct($id, $user_id = "", $user_name = "", $product_title = "", $product_id = "", $review = "", $image = "")
+    {
+        $this->id = $id;
+        $this->db = $this->connect();
+        if ("" === $user_name) {
+            $this->readReview($id);
+        } else {
+            $this->user_id = $user_id;
+            $this->user_name = $user_name;
+            $this->product_id = $product_id;
+            $this->product_title = $product_title;
+            $this->review = $review;
+            $this->image = $image; // Initialize the image property
+        }
       }
   
-      if ($result->num_rows == 1){
-        $row = $this->db->fetchRow();
-        $this->user_id = $row["user_id"];
-        $this->user_name = $row["name"];
-        $this->product_id = $row["prod_id"];
-        $this->product_title = $row["title"];
-        $this->review = $row["review"];
+      public function readReview($id)
+      {
+          $result = $this->db->query('SELECT review_id, review,user_id,name,prod_id,title,p.prod_image
+                FROM reviews r, reg u, products p 
+                WHERE r.review_id=' . $id . ' AND u.id= r.user_id AND p.id=r.prod_id;');
+  
+          if (!$result) {
+              die("Error in query: " . $this->db->error);
+          }
+  
+          if ($result->num_rows == 1) {
+              $row = $result->fetch_assoc();
+              $this->user_id = $row["user_id"];
+              $this->user_name = $row["name"];
+              $this->image = $row["prod_image"]; // Assign the value to the image property
+              $this->product_id = $row["prod_id"];
+              $this->product_title = $row["title"];
+              $this->review = $row["review"];
+          } else {
+              $this->user_id = "";
+              $this->user_name = "";
+              $this->product_id = "";
+              $this->product_title = "";
+              $this->review = "";
+              $this->image = ""; // Set the image property to an empty string
+          }
       }
-      else {
-        $this->user_id = "";
-        $this->user_name = "";
-        $this->product_id="";
-        $this->product_title="";
-        $this->review = "";
-      }
-    }
   
       public function deleteReview(){
         $sql="DELETE from reviews where review_id=$this->id;";
@@ -83,6 +87,10 @@
       public function setReview($review){
           $this->review = $review;
       }
+      public function getImage()
+    {
+        return $this->image;
+    }
   }
    
   
