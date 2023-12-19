@@ -20,16 +20,17 @@ class WishlistView extends View {
     $user_id = $_SESSION['id'];
     $WishlistProducts = $this->model->showInWishlist($user_id);
 
-    // Check if the Wishlist is empty
-    if (empty($WishlistProducts)) {
-        return 'Wishlist is empty.';
-    }
+    
+   
 
-    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    $str = '<link rel="stylesheet" href="../public/css/User/cart.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
             <button><a href="wish_options.php?action=deleteALL&id=' . $user_id . '">delete all</a></button>';
-
+ if (empty($WishlistProducts)) {
+      $str .= '<div class="empty-cart">Wishlist is empty.</div>';
+      return $str;
+  }
     foreach ($WishlistProducts as $WishProduct) {
         $str .= '
         <div class="prod">
