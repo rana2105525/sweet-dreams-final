@@ -41,6 +41,6 @@ class Reviews extends Model{
 		}
 		else {
 			return false;
-		}
+		}	
 	}
 }
