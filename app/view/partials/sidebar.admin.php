@@ -11,7 +11,7 @@ $str ='<div class="sidebar rows">
   <a href="../public/products.admin.php">Products</a>
   <a href="../public/reviews.admin.php">Reviews</a>
   <a href="../public/viewUsers.admin.php">Users</a>
-  <a href="../public/orders.admin.php">Users orders</a>
+  <a href="../public/orders.php">Users orders</a>
   <a href="../public/viewAdmin.admin.php?action=logout">Logout</a>
 </div>';
 return $str;
