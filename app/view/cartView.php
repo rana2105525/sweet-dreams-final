@@ -17,7 +17,7 @@ class CartView extends View {
   }
   
   public function showCart() {
-    $str = '<link rel="stylesheet" href="../public/css/User/summer.css" />
+    $str = '<link rel="stylesheet" href="../public/css/User/cart.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
 
@@ -28,10 +28,9 @@ class CartView extends View {
 
     // Check if the cart is empty
     if (empty($cartProducts)) {
-        $str .= '<div class="empty-cart">Cart is empty.</div>';
-        return $str;
-    }
-
+      $str .= '<div class="empty-cart">Cart is empty.</div>';
+      return $str;
+  }
     $totalPrice = 0; // Initialize total price
 
     foreach ($cartProducts as $cartProduct) {
