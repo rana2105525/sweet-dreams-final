@@ -5,7 +5,10 @@ require_once(__ROOT__ . "model/checkoutModel.php");
 require_once(__ROOT__ . "controller/checkoutController.php");
 require_once(__ROOT__ . "view/CheckoutView.php");
 
-
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
 $model = new checkoutModel();
 $controller = new checkoutController($model);
 $view = new CheckoutView($controller, $model);

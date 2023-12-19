@@ -3,7 +3,10 @@ define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/wishlistModel.php");
 require_once(__ROOT__ . "controller/wishlistController.php");
 require_once(__ROOT__ . "view/wishlistView.php");
-
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
 $model = new wishlistModel();
 $controller = new wishlistController($model);
 $view = new WishlistView($controller, $model);

@@ -7,18 +7,15 @@ require_once(__ROOT__ . "view/ViewAdmin.php");
 
 if (!isAdmin()) {
   // Redirect the user to the login page if not logged in as an admin
+  header("Location: index.php");
+  exit();
+}
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
   header("Location: login.php");
   exit();
 }
 $isLogged = isset($_SESSION["ID"]);
-// if (!$isLogged) {
 
-//     header("Location: login.php");
-//     exit();
-//     //echo"lol";
-// } else {
-  
-//  $_SESSION['ID'] = $adminDetails['ID'];
 
 $model = new Admin($_SESSION["ID"]);
 $controller = new AdminController($model);

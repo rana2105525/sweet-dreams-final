@@ -5,20 +5,16 @@ require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
-if (!isAdmin()) {
-  // Redirect the user to the login page if not logged in as an admin
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
   header("Location: login.php");
   exit();
 }
+if (!isAdmin()) {
+  header("Location: index.php");
+  exit();
+}
 $isLogged = isset($_SESSION["ID"]);
-// if (!$isLogged) {
 
-//     header("Location: login.php");
-//     exit();
-//     //echo"lol";
-// } else {
-  
-//  $_SESSION['ID'] = $adminDetails['ID'];
  
 $model = new Admins();
 $controller = new AdminController($model);
@@ -50,14 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="component">
     
       <?php 
-      //session_start();
-
-      // // Check if the user is logged in as an admin
-      // if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
-      //     // Redirect the user to the login page if not logged in as an admin
-      //     header("Location: /sweet-dreams/views/pages/login.php");
-      //     exit();
-      // }
+  
      
       ?>
       

@@ -8,7 +8,10 @@ require_once(__ROOT__ . "model/cartModel.php");
 require_once(__ROOT__ . "controller/cartController.php");
 require_once(__ROOT__ . "view/cartView.php");
 
-
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
 
 $model = new cartModel();
 $controller = new cartController($model);

@@ -4,7 +4,10 @@ define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/products_orderdModel.php");
 require_once(__ROOT__ . "controller/CollectionController.php");
 require_once(__ROOT__ . "view/ViewOrderedProducts.php");
-
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
 $model = new Product_orderedModel();
 $controller = new CollectionController($model);
 $view = new ViewOrderedProducts($controller, $model);

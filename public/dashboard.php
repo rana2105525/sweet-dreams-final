@@ -13,10 +13,14 @@ require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 require_once(__ROOT__ . "model/admin.php");
 
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
 
 if (!isAdmin()) {
   // Redirect the user to the login page if not logged in as an admin
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 
@@ -24,7 +28,7 @@ $model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
 echo $view->dashboard();
-echo $view->sideBar();
+//echo $view->sideBar();
 
 
 ?>

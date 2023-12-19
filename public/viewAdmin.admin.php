@@ -24,6 +24,10 @@
       header("Location: index.php");
       exit();
     }
+    if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+      header("Location: login.php");
+      exit();
+    }
     //-session_start();
 
     $isLogged = isset($_SESSION["ID"]);

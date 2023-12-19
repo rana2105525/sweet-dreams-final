@@ -11,7 +11,15 @@
 
   <body>
     <?php
-    
+      if (!isAdmin()) {
+        // Redirect the user to the login page if not logged in as an admin
+        header("Location: index.php");
+        exit();
+      }
+      if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+        header("Location: login.php");
+        exit();
+      }
       define('__ROOT__', "../app/");
       require_once(__ROOT__ . "model/products.php");
       require_once(__ROOT__ . "controller/ProductsController.php");
@@ -23,11 +31,7 @@ require_once(__ROOT__ . "view/ViewAdmin.php");
       $model = new Products();
       $controller = new ProductsController($model);
       $view = new ViewProducts($controller, $model);
-      if (!isAdmin()) {
-        // Redirect the user to the login page if not logged in as an admin
-        header("Location: login.php");
-        exit();
-      }
+    
       if (isset($_GET['action']) && !empty($_GET['action'])) {
         switch($_GET['action']){
             case 'insert':

@@ -4,34 +4,19 @@ require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
-
-if (!isAdmin()) {
-  // Redirect the user to the login page if not logged in as an admin
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  // Redirect the user to index.php if the session ID is null
   header("Location: login.php");
   exit();
 }
-// Check if the session ID is set before creating an admins object
-// $adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
+if (!isAdmin()) {  
+  header("Location:index.php");
+  exit();
+}
 
-// if ($adminId !== null) {
-//     $model = new admins($adminId);
-//     $controller = new AdminController($model);
-//     $view = new ViewAdmin($controller, $model);
-// } else {
-//     header("Location: login.php");
-//     exit();
-// }
-// or  ↓ ↓ ↓ ↓ ↓
 
 $isLogged = isset($_SESSION["ID"]);
-// if (!$isLogged) {
-
-//     header("Location: login.php");
-//     exit();
-//     //echo"lol";
-// } else {
-  
-//  $_SESSION['ID'] = $adminDetails['ID'];
+;
 
 $model = new Admins();
 $controller = new AdminController($model);
@@ -53,14 +38,7 @@ $view = new ViewAdmin($controller, $model);
   <div class="component">
     
       <?php 
-      //session_start();
-
-      // // Check if the user is logged in as an admin
-      // if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
-      //     // Redirect the user to the login page if not logged in as an admin
-      //     header("Location: /sweet-dreams/views/pages/login.php");
-      //     exit();
-      // } 
+  
       echo $view->displayAllAdmins();
       ?> 
   </div>

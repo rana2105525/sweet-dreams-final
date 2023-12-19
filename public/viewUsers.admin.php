@@ -16,18 +16,15 @@ require_once(__ROOT__ . "model/Users.php");
 require_once(__ROOT__ . "controller/UsersController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
 
-// Check if the session ID is set before creating an admins object
-// $adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
-
-// if ($adminId !== null) {
-//     $model = new admins($adminId);
-//     $controller = new AdminController($model);
-//     $view = new ViewAdmin($controller, $model);
-// } else {
-//     header("Location: login.php");
-//     exit();
-// }
-// or  ↓ ↓ ↓ ↓ ↓
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: login.php");
+  exit();
+}
+if (!isAdmin()) {
+  // Redirect the user to the login page if not logged in as an admin
+  header("Location: index.php");
+  exit();
+}
 
 $isLogged = isset($_SESSION["id"]);
 // if (!$isLogged) {
