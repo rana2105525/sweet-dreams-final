@@ -93,11 +93,16 @@ class CartModel extends Model
     public function addToCart($user_id, $prod_id,$color,$size, $quantity)
     {
         $stmt = $this->db->prepare("INSERT INTO cart2 (user_id, prod_id,color,size, quantity) VALUES (?, ?, ?,?,?)");
-        $stmt->bind_param("iissi", $user_id, $prod_id,$color,$size, $quantity);
-        $result = $stmt->execute();
-        $stmt->close();
 
-        return $result;
+        $stmt->bind_param("iissi", $user_id, $prod_id,$color,$size, $quantity);
+
+        if ($stmt->execute() === true) {
+          
+        } else {
+            echo "Error adding product to cart: " . $stmt->error;
+        }
+
+        $stmt->close();
     }
 
     public function order_item( $user_id, $prod_id, $added_at)

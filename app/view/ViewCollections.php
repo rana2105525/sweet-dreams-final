@@ -407,7 +407,7 @@ class ViewCollections extends View
                           
                     <div class="button heart no-style">
                         <i class="bx bxs-zap"></i>
-                        <button type="submit" name="submit"> Buy now</button>
+                        <button type="submit" name="submit_cart"> Buy now</button>
                         </div> 
                         </form>
                         <form method="post">
