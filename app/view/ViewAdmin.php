@@ -284,17 +284,18 @@ class ViewAdmin extends View
         return $str;
     }
     function editAdminform($errors=[])
-    {
-        //echo sidebar();
-        
+    {        
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
       $email = $this->model->getEmail();
       
-      
-      $str = '
+      $str='<div class ="component">';
+      echo sidebar();
+      $str.='<div class ="content rows">';
+      $str.='<section class="container">';
+      $str.=' 
         <form action="editAdmin.admin.php?action=edit" method="post" class="form">
-            <div id="title"><h2>Edit admin</h2></div>
+            <div id="header"><h2>Edit admin</h2></div>
     
             <div class="input-box">
                 <label for="name">Name</label>
@@ -315,6 +316,9 @@ class ViewAdmin extends View
             </div> 
             <button type="submit" name="submit">Edit Admin</button>
         </form>';
+        $str.='</section>';
+		$str.='</div>';
+		$str.='</div>';
     
       return $str;
     } 
