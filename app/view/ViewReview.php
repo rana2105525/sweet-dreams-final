@@ -13,7 +13,7 @@ class ViewReview extends View {
         $reviews = $this->model->getReviews();
 
         $str = ''; // Initialize $str here
-
+        echo sidebar();
         if (empty($reviews)) {
             // No reviews available
             $str .= '<div class="content">';
@@ -22,7 +22,7 @@ class ViewReview extends View {
             $str .= '</div>';
         } else {
             $str .= '<div class="component">';
-            echo sidebar();
+            
             $str .= '<div class="content">';
             $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
             $str .= '<div class="tablecont">';
