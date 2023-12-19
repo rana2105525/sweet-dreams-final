@@ -18,7 +18,7 @@ class ProductsController extends Controller{
         $upload_image='../public/images/'.$image_name; 
         move_uploaded_file($image_filetemp,$upload_image);
         
-        
+         
 
         $this->model->insertProduct($title,$description,$category,$upload_image,$price,$color,$size,$quantity);
       

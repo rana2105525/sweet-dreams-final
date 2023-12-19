@@ -9,11 +9,11 @@ class BlogController extends Controller
         $text = $_REQUEST['blog_text'];
         $this->model->blog($image,$text);
     }
-
+ 
     public function insert(){
         $blogText=$_REQUEST["btext"];
         
-        $blog_image=$_FILES['blog_img'];
+        $blog_image=$_FILES['blog_image'];
         $image_name=$blog_image['name'];
         $image_filetemp=$blog_image['tmp_name'];
         $upload_image='../public/images/'.$image_name; 
