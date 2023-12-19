@@ -86,22 +86,23 @@ class editproducts extends Model {
         return []; 
     }
   }
-  public function editProduct($title, $price, $description) {
-    $query = "UPDATE products SET title = '?', price = ?, description = '?' WHERE id = '$this->id'";
+  public function editProduct($id, $title, $price, $description) {
+    $query = "UPDATE products SET title = ?, price = ?, description = ? WHERE id = ?";
   
     $db = $this->connect();
     $stmt = $this->db->prepare($query);
   
     // Bind parameters
-    $stmt->bind_param('sis', $title, $price, $description);
+    $stmt->bind_param('sssi', $title, $price, $description, $id);
   
     // Execute the query
     if ($stmt->execute()) {
-      return true;
+        return true;
     } else {
-      return false;
+        return false;
     }
-  }
+}
+
   
 
 }

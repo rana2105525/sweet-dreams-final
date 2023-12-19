@@ -6,9 +6,12 @@ class editproductController extends Controller
   
 {
   public function edit(){
+    $id=$_GET["id"];
     $title = $_REQUEST['title'];
     $description = $_REQUEST['description'];
     $price=$_REQUEST['price'];
-    $this->model->editProduct($title,$price,$description);
+
+    $this->model->editProduct($id, $title, $price, $description);
+
   }
 }
