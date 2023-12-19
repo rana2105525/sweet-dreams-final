@@ -3,67 +3,68 @@ require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 require_once(__ROOT__ . "view/partials/footer.php");
 
-
-class ViewReview extends View{
-  public function output(){
-
-  }
-
-
-  public function displayInAdmin(){
-    $reviews = $this->model->getReviews();
-    
-    if (empty($reviews)) {
-        // No reviews available
-        $str .= '<div class="content">';
-        $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
-        $str .= '<div class="empty-reviews">No reviews available.</div>';
-        $str .= '</div>';
-    }else{
-    $str='<div class="component">';
-		echo sidebar();
-    $str.='<div class="content">';
-    $str.='<div id="header"><h2>Customers Reviews</h2></div>';
-    $str.='<div class="tablecont">';
-    $str.='<table>';
-    $str.='<thead class="tablehead">';
-    $str.='<tr>';
-    $str.='<th class = "tableHeader">#ID</th>';
-    $str.='<th class = "tableHeader">User ID</th>';
-    $str.='<th class = "tableHeader">User Name</th>';
-    $str.='<th class = "tableHeader">Product ID</th>';
-    $str.='<th class = "tableHeader">Product Title</th>';
-    $str.='<th class = "tableHeader">Reveiw</th>';
-    $str.='<th class = "tableHeader">Operation</th>';
-    $str.='</tr>';
-    $str.='</thead>';
-    $str.='<tbody>';
-		foreach( $reviews as $Review){
-      $str.="<tr>";
-      $str.="<td class = 'cell'>" . $Review->getId() ."</td> ";
-      $str.="<td class = 'cell'>" . $Review->getUserId() ."</td> ";
-      $str.="<td class = 'cell'>" . $Review->getUserName() ."</td> ";
-      $str.="<td class = 'cell'>" . $Review->getProductId() ."</td> ";
-      $str.="<td class = 'cell'>" . $Review->getProductTitle() ."</td> ";
-      $str.="<td class = 'cell'>" . $Review->getReview() ."</td> ";
-      $str.="<td>
-        <button class = 'buttons' id ='delete'><a href='reviews.admin.php?action=delete&id=".$Review->getId()."'>Delete</a></button>
-      </td> "; 
-      $str.="</tr>";
+class ViewReview extends View {
+    public function output()
+    {
     }
 
-    $str.='</tbody>';
-    $str.='</table>';
-    $str.='</div>';
-    $str.='</div>';
-    $str.='</div>';
-  }
-    return $str;
-  }
-  public function footer()
-  {
-    echo footer();
-  }
+    public function displayInAdmin()
+    {
+        $reviews = $this->model->getReviews();
 
+        $str = ''; // Initialize $str here
+
+        if (empty($reviews)) {
+            // No reviews available
+            $str .= '<div class="content">';
+            $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
+            $str .= '<div class="empty-reviews">No reviews available.</div>';
+            $str .= '</div>';
+        } else {
+            $str .= '<div class="component">';
+            echo sidebar();
+            $str .= '<div class="content">';
+            $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
+            $str .= '<div class="tablecont">';
+            $str .= '<table>';
+            $str .= '<thead class="tablehead">';
+            $str .= '<tr>';
+            $str .= '<th class="tableHeader">#ID</th>';
+            $str .= '<th class="tableHeader">User ID</th>';
+            $str .= '<th class="tableHeader">User Name</th>';
+            $str .= '<th class="tableHeader">Product ID</th>';
+            $str .= '<th class="tableHeader">Product Title</th>';
+            $str .= '<th class="tableHeader">Review</th>';
+            $str .= '<th class="tableHeader">Operation</th>';
+            $str .= '</tr>';
+            $str .= '</thead>';
+            $str .= '<tbody>';
+            foreach ($reviews as $Review) {
+                $str .= "<tr>";
+                $str .= "<td class='cell'>" . $Review->getId() . "</td> ";
+                $str .= "<td class='cell'>" . $Review->getUserId() . "</td> ";
+                $str .= "<td class='cell'>" . $Review->getUserName() . "</td> ";
+                $str .= "<td class='cell'>" . $Review->getProductId() . "</td> ";
+                $str .= "<td class='cell'>" . $Review->getProductTitle() . "</td> ";
+                $str .= "<td class='cell'>" . $Review->getReview() . "</td> ";
+                $str .= "<td>
+                    <button class='buttons' id='delete'><a href='reviews.admin.php?action=delete&id=" . $Review->getId() . "'>Delete</a></button>
+                </td> ";
+                $str .= "</tr>";
+            }
+
+            $str .= '</tbody>';
+            $str .= '</table>';
+            $str .= '</div>';
+            $str .= '</div>';
+            $str .= '</div>';
+        }
+        return $str;
+    }
+
+    public function footer()
+    {
+        echo footer();
+    }
 }
 ?>
