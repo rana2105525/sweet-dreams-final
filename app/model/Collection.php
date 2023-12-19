@@ -104,7 +104,7 @@ class Collection extends Model
         $this->description = "";
         $this->image="";
       }
-    }
+    } 
     function collectionsSummer(){
       $sql = "SELECT * FROM products where category='Summer_Collection'";
       $result = $this->db->query($sql); 
