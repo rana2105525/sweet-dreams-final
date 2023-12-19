@@ -1,6 +1,7 @@
 <?php
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/ProductsController.php");
+
 require_once(__ROOT__ . "view/partials/sidebar.admin.php");
 
 class ViewProducts extends View{
@@ -58,140 +59,8 @@ class ViewProducts extends View{
 	}
 
 
-	public function editProductForm(){
-		$this->editId =$_GET['update_id'];
-		foreach($this->model->getProducts() as $Product){
-			if($Product->getId() == $this->editId){
-				$str='<div class ="component">';
-				echo sidebar();
-				$str.='<div class ="content rows">';
-				$str.='<section class="container">';
-				$str.='<form action="" class="form" method="post" enctype= "multipart/form-data">';
-				$str.='<div id="header"><h2>Edit product</h2></div>';
-				
-				$str.='<div class="input-box">';
-				$str.='<label for ="title">Product Title</label>';
-				$str.='<input type="text" id="title" name="title" value="'. $Product->getTitle().'" >';
-				$str.='</div>';
+  
 
-				$str.='<div class="input-box">';
-				$str.='<label for="price" >Product price</label>';
-				$str.='<input type="number" step="any" id ="price" name ="price" value="'. $Product->getPrice().'" />';
-				$str.='</div>';
-
-				$str.='<div class="input-box">';
-				$str.='<label for ="description">Product description</label>';
-				$str.='<textarea id="description" name="description" rows="4" cols="85">'. $Product->getTitle().'</textarea>';
-				$str.='</div>';
-
-				$str.='<div class="input-box">';
-				$str.='<label for="prod_image">Product image</label>';
-				$str.='<input type="file" id="prod_image" name="prod_image" accept =".png,.jpg,.jpeg"/>';
-				$str.='</div>';
-
-				$str.='<div class="input-box">';
-				$str.='<label for ="category">Category</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str.='<div>';
-				$str .= '<input type="radio" name="category" id="Winter_Collection" value="Winter_Collection"';
-				if ($Product->getCategory() == "Winter_Collection") {
-				 	$str.='checked="checked"';
-				}
-				$str.= '>';
-				$str.='<label for ="Winter_Collection" >Winter Collection</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= ' <input type="radio" name="category" id="Summer_Collection" value="Summer_Collection"';
-				if ($Product->getCategory() == "Summer_Collection") {
-				  $str.='checked="checked"';
-				}
-				$str .= '>';
-				$str.='<label for ="Summer_Collection" >Summer Collection</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= ' <input type="radio" name="category" id="Bundle" value="Bundle"';
-				if ($Product->getCategory() == "Bundle") {
-				  $str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="Bundle" >Bundle</label>';
-				$str.='</div>';
-				$str.='</div>';
-
-				$str.='<div class="input-box">';
-				$str.='<label for ="color">Color</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str.='<div>';
-				$str .= '<input type="radio" name="color" id="Orange" value="Orange"';
-				if ($Product->getColor() == "Orange") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="Orange" >Orange</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= ' <input type="radio" name="color" id="Blue" value="Blue"';
-				if ($Product->getColor() == "Blue") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="Blue" >Blue</label>';
-				$str.='</div>';
-		
-				$str.='<div class="input-box">';
-				$str.='<label for ="size">Size</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str.='<div>';
-				$str .='<input type="radio" name="size" id="0-3" value="0-3"';
-				if ($Product->getSize() == "0-3") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="0-3" >0-3</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= '<input type="radio" name="size" id="3-6" value="3-6"';
-				if ($Product->getSize() == "3-6") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="3-6" >3-6</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= '<input type="radio" name="size" id="6-12" value="6-12"';
-				if ($Product->getSize() == "6-12") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="6-12" >6-12</label>';
-				$str.='</div>';
-				$str.='<div>';
-				$str .= '<input type="radio" name="size" id="12-24" value="12-24"';
-				if ($Product->getSize() == "12-24") {
-					$str.= 'checked="checked"'; 
-				}
-				$str .= '>';
-				$str.='<label for ="12-24" >12-24</label>';
-				$str.='</div>';
-
-				$str.='<div class="input-box">';
-				$str.='<label for="price" >Product quantity</label>';
-				$str.='<input type="number" step="any" id ="quantity" name ="quantity" value="'. $Product->getQuantity().'" />';
-				$str.='</div>';
-
-				$str.='<button name="edit" class = "buttons"><a href="products.admin.php?action=edit&id='.$this->editId .'">Update Product</a></button>';
-				$str.='</form>';
-				$str.='</section>';
-				$str.='</div>';
-				$str.='</div>';
-				return $str;
-			}
-			else continue;
-		}
-	}
 	public function addProductForm(){
 		$str='<div class ="component">';
 		echo sidebar();

@@ -11,24 +11,33 @@
 
   <body>
     <?php 
-      define('__ROOT__', "../app/");
-      require_once(__ROOT__ . "model/products.php");
-      require_once(__ROOT__ . "controller/ProductsController.php");
-      require_once(__ROOT__ . "view/ViewProducts.php");
-      require_once(__ROOT__ . "model/admin.php");
-require_once(__ROOT__ . "model/Admins.php");
-require_once(__ROOT__ . "controller/AdminController.php");
-require_once(__ROOT__ . "view/ViewAdmin.php");
+    define('__ROOT__', "../app/");
+          require_once(__ROOT__ . "model/admin.php");
+          require_once(__ROOT__ . "model/Admins.php");
+          require_once(__ROOT__ . "controller/AdminController.php");
+          require_once(__ROOT__ . "view/ViewAdmin.php");
+          
+          if (!isAdmin()) {
+            // Redirect the user to the login page if not logged in as an admin
+            header("Location: login.php");
+          }
+          
+    require_once(__ROOT__ . "model/editproduct.php");
+      require_once(__ROOT__ . "controller/editproductController.php");
+      require_once(__ROOT__ . "view/editproduct.php");
 
-if (!isAdmin()) {
-  // Redirect the user to the login page if not logged in as an admin
-  header("Location: login.php");
-  exit();
-}
-      $model = new Products();
-      $controller = new ProductsController($model);
-      $view = new ViewProducts($controller, $model);
-      echo $view->editProductForm();
+      $model = new editproducts();
+      $controller = new editproductController($model);
+      $view = new editproduct($controller, $model);
+
+      if (isset($_GET['action']) && !empty($_GET['action'])) {
+        $controller->{$_GET['action']}();
+      }
+
+$model = new editproducts();
+$controller = new editproductController($model);
+$view = new editproduct($controller, $model);
+    echo $view->editProductForm();
       ?>
   </body>
 </html>

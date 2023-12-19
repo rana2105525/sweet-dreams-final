@@ -25,9 +25,6 @@ class ProductsController extends Controller{
 	} 
  
 
-  public function edit($id) {
-		$this->model->getProduct($id)->editProduct();
-	}
 
 
 	public function delete($id){

@@ -40,9 +40,6 @@ require_once(__ROOT__ . "view/ViewAdmin.php");
               $controller->delete($_GET['id']);
               header('Location: products.admin.php');
               break;
-            case'edit':
-             $controller->edit($_GET['id']);
-              break;
         }
     } 
     else
