@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/admin/editProduct.css" />
+    <link rel="stylesheet" href="css/admin/form.css" />
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
   </head>  
 
   <body>
-    <?php
+    <?php 
       define('__ROOT__', "../app/");
       require_once(__ROOT__ . "model/products.php");
       require_once(__ROOT__ . "controller/ProductsController.php");

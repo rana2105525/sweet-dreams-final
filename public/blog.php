@@ -10,9 +10,6 @@ $model = new Blog();
 $controller = new BlogController($model);
 $view = new ViewBlog($controller, $model);
 
-if (isset($_GET['action']) && !empty($_GET['action'])) {
-	$controller->{$_GET['action']}();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

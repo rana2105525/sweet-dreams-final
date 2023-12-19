@@ -213,7 +213,7 @@ class ViewProducts extends View{
 		$str.='<div class="input-box">';
 		$str.='<label for ="description">Product description</label>';
 		$str.='<textarea id="description" name="description" rows="4" cols="85"></textarea>';
-		$str.='</div>';
+		$str.='</div>'; 
 
 		$str.='<div class="input-box">';
 		$str.='<label for="prod_image">Product image</label>';

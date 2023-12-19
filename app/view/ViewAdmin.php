@@ -230,16 +230,14 @@ class ViewAdmin extends View
   }
     function addAdminForm($errors=[]) 
     {
-	    echo sidebar();
+	    echo sidebar(); 
             
             $str = '
             <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
             <script src="../public/script/email.js"></script>
             <div class="content"> <section class="container rows">
         <form action="addAdmin.admin.php?action=insert" method="post" class="form">
-            <div id="title">
-                <h2>Add a new admin</h2>
-            </div>
+            <div id="header"><h2>Add a new admin</h2></div>
     
             <div class="input-box">
                 <label for="name">Name</label>

@@ -85,7 +85,7 @@ class Product extends Model {
             echo "ERROR: " . $this->db->error;
         }
     }
-
+ 
 
     // Getters
     public function getId(){

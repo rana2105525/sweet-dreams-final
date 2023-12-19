@@ -34,7 +34,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
+    <link rel="stylesheet" type="text/css" href="css/Admin/form.css">
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
 
   </head> 

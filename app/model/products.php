@@ -39,7 +39,7 @@ class Products extends Model{
 		else {
 			return false;
 		}
-	}
+	} 
  
 	function insertProduct($title,$description,$category,$prod_image,$price,$color,$size,$quantity){
         $stmt = $this->db->prepare("INSERT INTO products

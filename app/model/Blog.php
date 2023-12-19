@@ -7,8 +7,9 @@ class Blog extends Model{
     private $image;
     private $text;
 
+
     public function __construct()
-    {
+    { 
 
       $this->readBlog();
    
@@ -60,7 +61,21 @@ class Blog extends Model{
             return []; 
         }
     }
-    
+
+
+    public function insertBlog($blogText,$blog_image){
+      $stmt = $this->db->prepare("INSERT INTO blog (blog_text, blog_img) VALUES (?, ?)");
+      $stmt->bind_param("ss",$blogText,$blog_image);
+    if ($stmt->execute() === true) {
+        //$this->fillArray();
+        return true;
+    } else {
+        echo "ERROR: Could not able to execute $stmt->error";
+        return false;
       }
+      $stmt->close();
+}
+    
+  }
 
 ?>
