@@ -26,6 +26,12 @@ class CartView extends View {
 
     $cartProducts = $this->model->showInCart($user_id);
 
+    // Check if the cart is empty
+    if (empty($cartProducts)) {
+        $str .= '<div class="empty-cart">Cart is empty.</div>';
+        return $str;
+    }
+
     $totalPrice = 0; // Initialize total price
 
     foreach ($cartProducts as $cartProduct) {
@@ -55,32 +61,45 @@ class CartView extends View {
         // Update total price for each item
         $totalPrice += ($cartProduct['price'] * $cartProduct['quantity']);
     }
-    $_SESSION['total_price'] = $totalPrice;
+
     // Display total price
     $str .= '<div>Total Price: ' . $totalPrice . 'LE</div>';
+
 
     return $str;
 }
 
 
+
   
-    public function check_btn()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitdelete'])) {
-            $this->model->deleteALL();
-        }
-    
-        $str = '
-        <form method="POST" action="checkout.php">
-            <div class="button heart no-style">
-                <i class="bx bxs-zap"></i>
-                <button type="submit" name="submitdelete">Proceed to checkout</button>
-            </div>
-        </form>
-        ';
-    
-        return $str;
+public function check_btn()
+{
+    // Check if the cart is empty
+    $user_id = $_SESSION['id'];
+    $cartProducts = $this->model->showInCart($user_id);
+
+    if (empty($cartProducts)) {
+        // Cart is empty, so return an empty string
+        return '';
     }
+
+    // Cart is not empty, display the checkout button
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitdelete'])) {
+        $this->model->deleteALL();
+    }
+
+    $str = '
+    <form method="POST" action="checkout.php">
+        <div class="button heart no-style">
+            <i class="bx bxs-zap"></i>
+            <button type="submit" name="submitdelete">Proceed to checkout</button>
+        </div>
+    </form>
+    ';
+
+    return $str;
+}
+
     
 
     
