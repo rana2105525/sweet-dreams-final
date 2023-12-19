@@ -15,7 +15,16 @@
       require_once(__ROOT__ . "model/Reviews.php");
       require_once(__ROOT__ . "controller/ReviewsController.php");
       require_once(__ROOT__ . "view/ViewReview.php");
-
+      require_once(__ROOT__ . "model/admin.php");
+      require_once(__ROOT__ . "model/Admins.php");
+      require_once(__ROOT__ . "controller/AdminController.php");
+      require_once(__ROOT__ . "view/ViewAdmin.php");
+      
+      if (!isAdmin()) {
+        // Redirect the user to the login page if not logged in as an admin
+        header("Location: login.php");
+        exit();
+      }
       $model = new Reviews();
       $controller = new ReviewsController($model);
       $view = new ViewReview($controller, $model);
