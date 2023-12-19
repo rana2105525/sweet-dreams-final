@@ -40,16 +40,23 @@ class Products extends Model{
 			return false;
 		}
 	}
+ 
+	function insertProduct($title,$description,$category,$prod_image,$price,$color,$size,$quantity){
+        $stmt = $this->db->prepare("INSERT INTO products
+		 (title, description, category,prod_image, price,color,size,quantity)
+		  VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssdssi",$title, $description, $category,$prod_image, $price,$color,$size,$quantity);
 
-	function insertProduct($title,$description,$prod_image,$category,$price,$color,$size){
-		$sql = "INSERT INTO products (title, description, price,category,size,color,prod_imag)
-		 VALUES ('$title', '$description', '$price','$category','$size','$color','$prod_image')";
-		if($this->db->query($sql) === true){
-			echo "Records inserted successfully.";
-			$this->fillArray();
-		} 
-		else{
-            die("Error in query: " . $this->db->error);
-		}
+
+		if ($stmt->execute() === true) {
+            // Successful insertion
+            $this->fillArray();
+            return true;
+        } else {
+            // Error occurred
+            echo "ERROR: Could not able to execute $stmt->error";
+            return false;
+        }
+        $stmt->close();
 	}
 }

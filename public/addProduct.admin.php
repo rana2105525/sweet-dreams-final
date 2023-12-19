@@ -9,7 +9,7 @@
     <link rel="icon" href="images/Sweet Dreams logo-01.png"type="image/icon type" />
   </head>  
 
-  <body>
+  <body> 
     <?php
       define('__ROOT__', "../app/");
       require_once(__ROOT__ . "model/products.php");

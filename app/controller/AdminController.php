@@ -98,7 +98,7 @@ function isStrongPassword($password) {
             $this->model->insertAdmin($name, $phone,$email ,$password, $gender);
             
             
-        }
+        } 
 		
 	}
 

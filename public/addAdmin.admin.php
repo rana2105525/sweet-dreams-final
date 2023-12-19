@@ -14,7 +14,7 @@ $isLogged = isset($_SESSION["ID"]);
 // } else {
   
 //  $_SESSION['ID'] = $adminDetails['ID'];
-
+ 
 $model = new Admins();
 $controller = new AdminController($model);
 $view = new ViewAdmin($controller, $model);
@@ -39,6 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </head> 
 
   <body>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="../public/script/email.js"></script>
   <div class="component">
     
       <?php 

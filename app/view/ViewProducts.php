@@ -197,7 +197,7 @@ class ViewProducts extends View{
 		echo sidebar();
 		$str.='<div class ="content rows">';
 		$str.='<section class="container">';
-		$str.='<form action="" class="form" method="post" enctype= "multipart/form-data">';
+		$str.='<form action="products.admin.php?action=insert" class="form" method="post" enctype= "multipart/form-data">';
 		$str.='<div id="header"><h2>Add product</h2></div>';
 		
 		$str.='<div class="input-box">';
@@ -277,7 +277,7 @@ class ViewProducts extends View{
 		$str.='<input type="number" step="any" id ="quantity" name ="quantity"/>';
 		$str.='</div>';
 
-		$str.='<button name="edit" class = "buttons" type="submit"><a href="products.admin.php?action=insert">Add Product</a></button>';
+		$str.='<button type="submit" name="submit" id="submit-button" value="submit">Add product</button>';
 		$str.='</form>';
 		$str.='</section>';
 		$str.='</div>';

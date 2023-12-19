@@ -22,8 +22,9 @@
       if (isset($_GET['action']) && !empty($_GET['action'])) {
         switch($_GET['action']){
             case 'insert':
-              echo "public";
-              $controller->insert();
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $controller->insert(); // Handle the form submission for adding a new admin
+              }
               break;
             case 'delete':
               $controller->delete($_GET['id']);
