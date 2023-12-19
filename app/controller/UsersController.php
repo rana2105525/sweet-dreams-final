@@ -181,7 +181,9 @@ function isDateValid($date)
 		$this->model->editUser($name,$email);
 	}
   }
-  
+  public function deleteMyAccount(){
+		$this->model->deleteMyAccount();
+  }
 	public function delete($id){
 		$this->model->getUser($id)->deleteUser(); 
 	}

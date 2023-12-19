@@ -108,6 +108,14 @@ function deleteUser(){
       echo "ERROR: Could not able to execute $sql. ";
   }
 } 
+function deleteMyAccount(){
+  $sql="delete from reg where id=$this->id;";
+  if($this->db->query($sql) === true){
+          return true;
+      } else{
+          echo "ERROR: Could not able to execute $sql. ";
+      }
+    }
 public function showUserHistory($user_id)
 {
     $sql = "SELECT products.id,products.title,products.prod_image FROM products
