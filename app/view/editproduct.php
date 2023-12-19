@@ -48,12 +48,12 @@ class editproduct extends View{
         $str .= '<textarea id="description" name="description" rows="4" cols="85">'. $product["description"].'</textarea>';
         $str .= '</div>';
 
-        $str .= '<a href="<button name="edit" type="submit">Update Product</button>';
+        $str .= '<button name="edit" type="submit">Update Product</button>';
         $str .= '</form>';
         $str .= '</section>';
         $str .= '</div>';
         $str .= '</div>';
-        shy
+        return $str;
     }
 
     // Move return statement outside the loop
