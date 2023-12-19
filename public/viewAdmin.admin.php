@@ -21,7 +21,7 @@
     
     if (!isAdmin()) {
       // Redirect the user to the login page if not logged in as an admin
-      header("Location: login.php");
+      header("Location: index.php");
       exit();
     }
     //-session_start();
