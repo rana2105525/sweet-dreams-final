@@ -81,12 +81,12 @@ function isStrongPassword($password) {
 			$this->phoneErr = "Invalid phone number format or length"; 
 		}
 		}
-		if (empty($password)) {
-		$this->passwordErr = "Password is required";
-		}
-		  // } elseif (!$this->isStrongPassword($_POST["password"])) {
-		  //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
-		  // }
+    if (empty($password)) {
+      $this->passwordErr = "Password is required";
+    }
+    
+  
+  
 		
 		  if (empty($gender)) {
 			$this->genderErr = "Gender must be one of the following";
@@ -155,6 +155,7 @@ function isStrongPassword($password) {
 		  'nameErr' => $this->nameErr,
 		  'emailErr' => $this->emailErr,
 		  'phoneErr' => $this->phoneErr,
+      'passwordErr' => $this->passwordErr,
 		];
 		return $errors;
 	  }

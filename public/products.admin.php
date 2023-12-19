@@ -12,10 +12,7 @@
   <body>
     <?php
     
-      if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
-        header("Location: index.php");
-        exit();
-      }
+      
       define('__ROOT__', "../app/");
       require_once(__ROOT__ . "model/products.php");
       require_once(__ROOT__ . "controller/ProductsController.php");
@@ -24,6 +21,10 @@
 require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
+if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+  header("Location: index.php");
+  exit();
+}
       $model = new Products();
       $controller = new ProductsController($model);
       $view = new ViewProducts($controller, $model);

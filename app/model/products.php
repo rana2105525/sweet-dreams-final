@@ -57,6 +57,6 @@ class Products extends Model{
             echo "ERROR: Could not able to execute $stmt->error";
             return false;
         }
-        $stmt->close();
+      //  $stmt->close();
 	}
 }
