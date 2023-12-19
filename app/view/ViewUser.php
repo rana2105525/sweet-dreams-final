@@ -36,6 +36,31 @@ class ViewUser extends View{
 		// $str.="<a href='profile.php?action=delete'>Delete Account </a>";
 		return $str;
 	}
+    public function profile()
+{
+  $name = $this->model->getName();
+  $email = $this->model->getEmail();
+
+  $str='
+  <link rel="stylesheet" type="text/css" href="../public/css/User/profile.css">
+
+  <form class="form" method="post">
+    <div class="input-box">
+      <label>Fullname: </label>
+    '.$name.'
+    </div>
+    <div class="input-box">
+      <label>Email: </label>
+      '.$email.'
+    </div>
+    <button><a href="edit.php" class="button">Update info</a></button>
+    <button><a href="myOrders.php">My Orders</a></button>
+    <button><a href="nav.php?action=delete">Delete account</a></button>
+
+  </form>
+  ';
+  return $str;
+}
 	function signupForm($errors = []) {
 
     $str = '

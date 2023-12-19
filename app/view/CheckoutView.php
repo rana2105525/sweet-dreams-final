@@ -2,6 +2,7 @@
 require_once(__ROOT__ . "view/View.php");
 require_once(__ROOT__ . "controller/Controller.php");
 require_once(__ROOT__ . "controller/checkoutController.php");
+require_once(__ROOT__ . "view/partials/footer.php");
 
 class CheckoutView extends View
 {
