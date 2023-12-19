@@ -6,7 +6,7 @@ require_once(__ROOT__ . "model/Users.php");
 require_once(__ROOT__ . "controller/UsersController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
 
-if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
   header("Location: login.php");
   exit();
 }
