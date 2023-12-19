@@ -11,6 +11,15 @@ class ViewReview extends View{
 
 
   public function displayInAdmin(){
+    $reviews = $this->model->getReviews();
+    
+    if (empty($reviews)) {
+        // No reviews available
+        $str .= '<div class="content">';
+        $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
+        $str .= '<div class="empty-reviews">No reviews available.</div>';
+        $str .= '</div>';
+    }else{
     $str='<div class="component">';
 		echo sidebar();
     $str.='<div class="content">';
@@ -29,7 +38,7 @@ class ViewReview extends View{
     $str.='</tr>';
     $str.='</thead>';
     $str.='<tbody>';
-		foreach($this->model->getReviews() as $Review){
+		foreach( $reviews as $Review){
       $str.="<tr>";
       $str.="<td class = 'cell'>" . $Review->getId() ."</td> ";
       $str.="<td class = 'cell'>" . $Review->getUserId() ."</td> ";
@@ -48,6 +57,7 @@ class ViewReview extends View{
     $str.='</div>';
     $str.='</div>';
     $str.='</div>';
+  }
     return $str;
   }
   public function footer()
