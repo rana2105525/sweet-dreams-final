@@ -6,13 +6,10 @@ require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
 if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
-  header("Location: login.php");
-  exit();
-}
-if (!isAdmin()) {
   header("Location: index.php");
   exit();
 }
+
 $isLogged = isset($_SESSION["ID"]);
 
  

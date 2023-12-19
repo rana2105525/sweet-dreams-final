@@ -6,13 +6,10 @@ require_once(__ROOT__ . "view/ViewAdmin.php");
 
 if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
   // Redirect the user to index.php if the session ID is null
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
-if (!isAdmin()) {  
-  header("Location:index.php");
-  exit();
-}
+
 
 
 $isLogged = isset($_SESSION["ID"]);

@@ -72,7 +72,7 @@ class Users extends Model {
                 $_SESSION["id"] = $row["id"];
                 $_SESSION["email"] = $row["email"];
                 header("Location:index.php");
-                exit(); // Make sure to exit after redirection
+                exit(); 
             } else {
                 return "Invalid password";
             }
@@ -87,7 +87,7 @@ class Users extends Model {
                     $_SESSION["ID"] = $row["ID"];
                     $_SESSION["Email"] = $row["Email"];
                     header("Location: viewAdmin.admin.php");
-                    exit(); // Make sure to exit after redirection
+                    exit(); 
                 } else {
                     return "Invalid password for admin";
                 }
@@ -97,7 +97,7 @@ class Users extends Model {
         }
     }
     
-    // Example usage:
+    
   
     
     

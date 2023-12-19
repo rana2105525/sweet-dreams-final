@@ -148,20 +148,5 @@ function deleteAdmin()
 
 
 
-function isAdmin()
-{
-    // Check if the user is logged in
-    if (isset($_SESSION["ID"])) {
-        $adminId = $_SESSION["ID"];
-        $dbh = new Dbh();
-        
-        // Assuming 'type' is the column in the 'admins' table that specifies the user type
-        $result = $dbh->query("SELECT * FROM admins WHERE ID='$adminId' AND type='admin'");
-
-        return $result->num_rows == 1;
-    }
-
-    return false;
-}
 
 ?>

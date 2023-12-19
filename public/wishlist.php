@@ -4,7 +4,7 @@ require_once(__ROOT__ . "model/wishlistModel.php");
 require_once(__ROOT__ . "controller/wishlistController.php");
 require_once(__ROOT__ . "view/wishlistView.php");
 if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 $model = new wishlistModel();
@@ -23,10 +23,7 @@ if($isLogged)
     echo $view->showWishlist();
     echo $view->footer();
 }
-else
-{
-echo "sorry you can't access this page please login";
-}
+
 
 ?>
 <!DOCTYPE html>
