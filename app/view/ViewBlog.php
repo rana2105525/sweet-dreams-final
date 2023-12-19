@@ -45,12 +45,13 @@ class ViewBlog extends View{
             $escapedText = htmlspecialchars($blog["blog_text"]);
     
             if ($imageURL) {
-                $str .= '<img src="../public/images/' . $imageURL . '">';
+              $str .= '<img src="' . $imageURL . '">';
+
             } else {
                 $str .= '<img src="placeholder-image.png">';
             }
     
-            $str .= '<p>' . $escapedText . '</p>';
+            $str .= '<p style="font-size: 20px;">' . $escapedText . '</p>';
         }
     
         $str .= '</div>';
