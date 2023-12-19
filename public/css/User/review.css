@@ -9,6 +9,14 @@
         text-align: center;
     }
 
+    .empty-reviews  {
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #F27144;
+        margin-top: 40px; 
+    }
+
     .tablecont {
         margin-top: 20px;
     }
