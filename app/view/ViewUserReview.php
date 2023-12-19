@@ -7,7 +7,10 @@ class ViewUserReview extends View {
     public function output() {}
 
     public function displayInUser() {
-      $str = '';  
+      $str = '<link rel="stylesheet" href="../public/css/User/review.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
+      
       $str .= '<div class="content">';
       $str .= '<div id="header"><h2>Customers Reviews</h2></div>';
       $str .= '<div class="tablecont">';
@@ -23,7 +26,7 @@ class ViewUserReview extends View {
       $str .= '</tr>';
       $str .= '</thead>';
       $str .= '<tbody>';
-  
+      
       foreach ($this->model->getReviews() as $Review) {
           $str .= "<tr>";
           $str .= "<td class='cell'>" . $Review->getId() . "</td> ";
@@ -34,13 +37,15 @@ class ViewUserReview extends View {
           $str .= "<td class='cell'>" . $Review->getReview() . "</td> ";
           $str .= "</tr>";
       }
-  
+      
       $str .= '</tbody>';
       $str .= '</table>';
       $str .= '</div>';
       $str .= '</div>';
       $str .= '</div>';
+      
       return $str;
+      
   }
   
   public function footer(){
