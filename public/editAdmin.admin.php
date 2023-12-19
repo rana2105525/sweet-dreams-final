@@ -5,13 +5,9 @@ require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
-if (!isAdmin()) {
-  // Redirect the user to the login page if not logged in as an admin
-  header("Location: index.php");
-  exit();
-}
+
 if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 $isLogged = isset($_SESSION["ID"]);

@@ -9,7 +9,7 @@ require_once(__ROOT__ . "controller/cartController.php");
 require_once(__ROOT__ . "view/cartView.php");
 
 if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 

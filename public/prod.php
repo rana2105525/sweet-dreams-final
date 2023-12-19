@@ -5,7 +5,7 @@ require_once(__ROOT__ . "model/Collection.php");
 require_once(__ROOT__ . "controller/CollectionController.php");
 require_once(__ROOT__ . "view/ViewCollections.php");
 if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 $model = new Collection();

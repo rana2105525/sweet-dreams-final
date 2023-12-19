@@ -11,13 +11,9 @@
 
   <body>
     <?php
-      if (!isAdmin()) {
-        // Redirect the user to the login page if not logged in as an admin
-        header("Location: index.php");
-        exit();
-      }
+    
       if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
       }
       define('__ROOT__', "../app/");

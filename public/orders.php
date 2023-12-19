@@ -5,7 +5,7 @@ require_once(__ROOT__ . "model/products_orderdModel.php");
 require_once(__ROOT__ . "controller/CollectionController.php");
 require_once(__ROOT__ . "view/ViewOrderedProducts.php");
 if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 $model = new Product_orderedModel();
