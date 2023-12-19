@@ -9,6 +9,6 @@ class editproductController extends Controller
     $title = $_REQUEST['title'];
     $description = $_REQUEST['description'];
     $price=$_REQUEST['price'];
-    $this->model->editProduct($title,$description,$price);
+    $this->model->editProduct($title,$price,$description);
   }
 }

@@ -1,6 +1,7 @@
 <?php
 require_once(__ROOT__ . "view/View.php");
-
+require_once(__ROOT__ ."db/config.php");
+require_once(__ROOT__ ."db/Dbh.php");
 
 
 class editproduct extends View{
@@ -21,7 +22,7 @@ public function editProductForm(){
         
 
         // Call the editProduct method with the retrieved values and the specific product ID
-        $this->model->editProduct( $title, $description, $price);
+        $this->model->editProduct( $title, $price, $description);
     }
     $products=$this->model->showProducts();
 
@@ -32,7 +33,7 @@ public function editProductForm(){
         $str .= '<section class="container">';
         $str .= '<form action="editProduct.admin.php" class="form" method="post" enctype="multipart/form-data">';
         $str .= '<div id="header"><h2>Edit product</h2></div>';
-        
+        $str .= '<input type="hidden" name="id" value="'. $Product["id"].'" />';
         $str .= '<div class="input-box">';
         $str .= '<label for ="title">Product Title</label>';
         $str .= '<input type="text" id="title" name="title" value="'. $Product["title"].'" >';
@@ -53,12 +54,11 @@ public function editProductForm(){
 
         $str .= '<button name="edit" type="submit">Update Product</button>';
         $str .= '</form>';
-        $str .= '</section>';
-        $str .= '</div>';
-        $str .= '</div>';
-    }
-
+     
+ return $str;
+    }  
+   
     // Move return statement outside the loop
-    return $str;
+   
 }
 }

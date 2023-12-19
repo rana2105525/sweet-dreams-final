@@ -86,23 +86,22 @@ class editproducts extends Model {
         return []; 
     }
   }
-  public function editProduct($title, $description, $price) {
-    // Check if the database connection is valid
+  public function editProduct($title, $price, $description) {
+    $query = "UPDATE products SET title = '?', price = ?, description = '?' WHERE id = '$this->id'";
   
-
-    $query = "UPDATE products SET description = ?, price = ? title=? where ";
     $db = $this->connect();
     $stmt = $this->db->prepare($query);
-
+  
     // Bind parameters
-    $stmt->bind_param('sss', $description, $price, $title);
-
+    $stmt->bind_param('sis', $title, $price, $description);
+  
     // Execute the query
     if ($stmt->execute()) {
-        return true;
+      return true;
     } else {
-        return false;
+      return false;
     }
-}
+  }
+  
 
 }
