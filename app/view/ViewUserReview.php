@@ -1,5 +1,7 @@
 <?php
 require_once(__ROOT__ . "view/View.php");
+require_once(__ROOT__ . "controller/Controller.php");
+
 
 class ViewUserReview extends View {
     public function output() {}
@@ -41,9 +43,8 @@ class ViewUserReview extends View {
       return $str;
   }
   
-  public function footer()
-    {
-        $str = '
+  public function footer(){
+    $str='
   <link rel="stylesheet type="text/css" href="../public/css/User/footer.css">
 
   <footer class="pageFooter">
@@ -66,10 +67,10 @@ class ViewUserReview extends View {
     </div>
     <div class="col">
       <h4>About</h4>
-      <a href="about.php">About us</a>
+      <a href="#">About us</a>
       <a href="index.php">Home</a>
-      <a href="privacy.php">Privacy policy</a>
-      <a href="t&cond.php">Terms & conditions</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms & conditions</a>
 
     </div>
 
@@ -97,14 +98,14 @@ class ViewUserReview extends View {
     <p>© 2023, Sweet dreams - E-Commerce</p>
   </div>
   ';
-        return $str;
-    }
-    public function nav()
-    {
+  return $str;
+}
+public function nav()
+{
 
-        $profile = $_SESSION['name'];
+  $profile = $_SESSION['name'];
 
-        echo "
+      echo "
       <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
       <script src='../public/script/search.js'></script>
       <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
@@ -113,20 +114,20 @@ class ViewUserReview extends View {
     <li><a href='profile.php'>$profile</a></li>
     <li><a href='wishlist.php'>Wishlist</a></li>
     <li><a href='cart.php'>Cart</a></li>
-		<a href='nav.php?action=logout'>Logout </a><br><br>
-    <div>
-    <input type='text' name='search_text' id='search_text' placeholder='Search...' />
-    </div>
-    </div>
-    <div id='result'></div>
-  </div>
+        <a href='nav.php?action=logout'>Logout </a><br><br>
+        <div>
+        <input type='text' name='search_text' id='search_text' placeholder='Search...' />
+        </div>
+        </div>
+        <div id='result'></div>
+      </div>
     ";
-
-
-    }
-    public function nav1()
-    {
-        echo "
+  
+  
+}
+public function nav1()
+{
+ echo"
  <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
  <script src='../public/script/search.js'></script>
   <link rel='stylesheet' type='text/css' href='../public/css/User/nav.css'>
@@ -140,11 +141,11 @@ class ViewUserReview extends View {
     <div id='result'></div>
   </div>
     ";
-
-    }
-    public function side()
-    {
-        $str = '
+   
+  }
+  public function side()
+{
+  $str='
   <link rel="stylesheet type="text/css" href="../public/css/User/nav.css">
 
   <input type="checkbox" id="active">
@@ -164,5 +165,7 @@ class ViewUserReview extends View {
         </div>
         ';
         return $str;
-    }
+}
+
+
 }

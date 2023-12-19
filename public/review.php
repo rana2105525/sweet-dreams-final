@@ -34,15 +34,13 @@ error_reporting(E_ALL);
       $view = new ViewUserReview($controller, $model);
       
       
-    ?>
-      <div class="title">
-          <?php
-          echo "<h1>Customers reviews</h1>";
-          ?>
-      </div>
-  
-      <?php echo $view->displayInUser(); ?>
-      <?php echo $view->footer();?>
+    
+    
+     echo $view->nav();
+     echo $view->side();
+       echo $view->displayInUser(); 
+       echo $view->footer();
+      ?>
   
   </body>
   </html>
