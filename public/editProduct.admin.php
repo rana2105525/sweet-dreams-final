@@ -17,9 +17,10 @@
           require_once(__ROOT__ . "controller/AdminController.php");
           require_once(__ROOT__ . "view/ViewAdmin.php");
           
-          if (!isAdmin()) {
-            // Redirect the user to the login page if not logged in as an admin
-            header("Location: login.php");
+          
+          if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+            header("Location: index.php");
+            exit();
           }
           
     require_once(__ROOT__ . "model/editproduct.php");

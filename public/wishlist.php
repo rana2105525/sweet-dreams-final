@@ -3,7 +3,10 @@ define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/wishlistModel.php");
 require_once(__ROOT__ . "controller/wishlistController.php");
 require_once(__ROOT__ . "view/wishlistView.php");
-
+if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
+  header("Location: index.php");
+  exit();
+}
 $model = new wishlistModel();
 $controller = new wishlistController($model);
 $view = new WishlistView($controller, $model);
@@ -15,15 +18,13 @@ if($isLogged)
     <div class=title>
 <?php
     echo $view->nav();
-    echo "<h1>Wishlist</h1>";
+    echo "<h1 style='color:F27144;justify-content: center;
+        text-align: center;margin-top:20px;'>Wishlist</h1>";
     echo $view->side();
     echo $view->showWishlist();
     echo $view->footer();
 }
-else
-{
-echo "sorry you can't access this page please login";
-}
+
 
 ?>
 <!DOCTYPE html>

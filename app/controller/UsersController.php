@@ -104,10 +104,11 @@ function isDateValid($date)
     if (empty($password)) {
       $this->passwordErr = "Password is required";
     }
-    // } elseif (!isStrongPassword($_POST["password"])) {
-    //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
-    // }
-    
+     else{
+     if (!isStrongPassword($_POST["password"])) {
+      $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
+    }
+  }
     if (empty($birth)) {
       $this->birthErr = "Enter your birth date";
     } else {

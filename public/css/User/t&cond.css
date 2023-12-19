@@ -265,7 +265,6 @@ nav .wrapper1 .nav-items{
     align-items: start;
     text-align: start;
     padding:30px;
-    margin-top:110px;
 }
 #Terms_cond h1{
     justify-content: center;
@@ -273,6 +272,9 @@ nav .wrapper1 .nav-items{
     text-align: center;
     font-size:30;
     color:#F27144;
+    margin-top:20px;
+
+
 }
 
 

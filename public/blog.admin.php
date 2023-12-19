@@ -11,6 +11,11 @@
 
   <body> 
     <?php
+      if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+        header("Location: index.php");
+        exit();
+      }
+      
       define('__ROOT__', "../app/");
       require_once(__ROOT__ . "model/Blog.php");
       require_once(__ROOT__ . "controller/BlogController.php");

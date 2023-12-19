@@ -5,7 +5,7 @@ require_once(__ROOT__ . "controller/Controller.php");
 class CartController extends Controller {
 
     public function addToCart() {
-        if (isset($_POST['buy_now'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_cart'])) {
             // Sample data from a hypothetical form or request
             $user_id = $_SESSION['id'];
             $prod_id = $_POST['prod_id'];

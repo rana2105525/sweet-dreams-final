@@ -5,7 +5,10 @@ require_once(__ROOT__ . "model/checkoutModel.php");
 require_once(__ROOT__ . "controller/checkoutController.php");
 require_once(__ROOT__ . "view/CheckoutView.php");
 
-
+if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
+  header("Location: index.php");
+  exit();
+}
 $model = new checkoutModel();
 $controller = new checkoutController($model);
 $view = new CheckoutView($controller, $model);
@@ -29,6 +32,6 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     <?php echo $view->footer();?>
     
     <?php include '../app/api/chatbot.php'; ?>
-
+    <?php echo $view->footer()?>
 </body>
 </html>
