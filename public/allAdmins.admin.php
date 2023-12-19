@@ -4,6 +4,12 @@ require_once(__ROOT__ . "model/Admins.php");
 require_once(__ROOT__ . "controller/AdminController.php");
 require_once(__ROOT__ . "view/ViewAdmin.php");
 
+
+if (!isAdmin()) {
+  // Redirect the user to the login page if not logged in as an admin
+  header("Location: login.php");
+  exit();
+}
 // Check if the session ID is set before creating an admins object
 // $adminId = isset($_SESSION["ID"]) ? $_SESSION["ID"] : null;
 

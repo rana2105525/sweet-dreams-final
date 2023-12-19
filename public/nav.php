@@ -21,7 +21,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
             header("location:index.php");
 			break;
         case 'delete':
-            $controller->delete();
+            $controller->deleteMyAccount();
             echo $view->nav1();
             echo $view->side();
             echo $view->home();
