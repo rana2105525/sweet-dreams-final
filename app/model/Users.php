@@ -23,6 +23,14 @@ class Users extends Model {
 		return $this->users;
 	}
 
+    function getUser($id) {
+		foreach($this->users as $user) {
+			if ($id == $user->getID()) {
+				return $user;
+			}
+		}
+	}
+
 	function readUsers(){
 		$sql = "SELECT * FROM reg";
 

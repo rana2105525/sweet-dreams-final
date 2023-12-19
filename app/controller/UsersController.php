@@ -138,7 +138,7 @@ function isDateValid($date)
   
     public function login(){
       
-      $email=$_REQUEST['email'];
+    $email=$_REQUEST['email'];
     $password=$_REQUEST['password'];
 
     if (empty($email)) {
@@ -182,8 +182,8 @@ function isDateValid($date)
 	}
   }
   
-	public function delete(){
-		$this->model->deleteUser();
+	public function delete($id){
+		$this->model->getUser($id)->deleteUser(); 
 	}
   public function getAllU() {
     return $this->model->getAllUsers();

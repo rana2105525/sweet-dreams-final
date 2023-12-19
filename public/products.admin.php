@@ -23,18 +23,19 @@
         switch($_GET['action']){
             case 'insert':
               if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $controller->insert(); // Handle the form submission for adding a new admin
+                $controller->insert();
               }
+              header('Location: products.admin.php');
               break;
             case 'delete':
               $controller->delete($_GET['id']);
-			        echo $view->output();
+              header('Location: products.admin.php');
               break;
             case'edit':
              $controller->edit($_GET['id']);
               break;
         }
-    }
+    } 
     else
         echo $view->output(); 
     ?>

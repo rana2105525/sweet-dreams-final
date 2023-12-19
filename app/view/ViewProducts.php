@@ -46,7 +46,7 @@ class ViewProducts extends View{
 			$str.="<td>
 			  <button class = 'buttons' id ='edit'><a href='editProduct.admin.php?update_id=".$Product->getId()."'>Edit</a></button>
 			  <button class = 'buttons' id ='delete'><a href='products.admin.php?action=delete&id=".$Product->getId()."'>Delete</a></button>
-			</td> "; 
+			</td> ";  
 			$str.="</tr>"; 
 		}
         $str.="</tbody>";

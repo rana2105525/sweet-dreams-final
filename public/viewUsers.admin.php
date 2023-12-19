@@ -56,13 +56,22 @@ $view = new ViewUser($controller, $model);
       //     exit();
       // }
      
-      ?>
+      ?> 
       
-              <?php 
+    <?php 
 
-                        echo $view->displayAllUsers();
+    if (isset($_GET['action']) && !empty($_GET['action'])) {
+      switch($_GET['action']){
+          case 'delete':
+            $controller->delete($_GET['id']);
+            header('Location: viewUsers.admin.php');
+            break;
+      }
+    }
+
+    else echo $view->displayAllUsers();
                         //}
-              ?>  
+    ?>  
           
   </div>
   </body>

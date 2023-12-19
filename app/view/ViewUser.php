@@ -435,13 +435,13 @@ public function displayAllUsers()
 
     foreach ($users as $user) {
         if (isset($user['id'])){
-            $str .= '<tr>';
+            $str .= '<tr>'; 
             $str .= '<td class="cell">' . $user['id'] . '</td>';
             $str .= '<td class="cell">' . $user['name'] . '</td>';
             $str .= '<td class="cell">' . $user['email'] . '</td>';
             $str .= '<td class="cell">' . $user['birth'] . '</td>';
             $str .= '<td class="cell">' . $user['gender'] . '</td>';
-            $str.=' <td><button class="buttons" id="delete"> <a href="deleteUser.admin.php?delete_id=' . $user['id'] . '">Delete</a>
+            $str.=' <td><button class="buttons" id="delete"> <a href="viewUsers.admin.php?action=delete&id=' . $user['id'] . '">Delete</a>
         </button></td>';
             $str .= '</tr>';
         }
@@ -480,7 +480,7 @@ public function showUserProducts()
                 </div>';
 
 }
-return $str;
+return $str; 
 
 }
 
