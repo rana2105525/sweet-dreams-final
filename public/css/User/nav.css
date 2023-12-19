@@ -9,12 +9,7 @@ body{
     background-color: white;
 
 }
-nav{
-  position:fixed;
-  z-index: 99;
-  width: 100%;
-  
-}
+
 body .wrapper1{
   position: relative;
   max-width: 1350px;
@@ -175,83 +170,55 @@ body input[type="checkbox"]{
     transform: translateX(-100px);
   }
   
-  
-@media screen and (max-width: 970px) {
+ /* Existing code remains the same */
 
-  .wrapper1 .nav-links{
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    max-width: 350px;
-    top: 0;
-    left: -100%;
-    background: #242526;
-    display: block;
-    padding: 50px 10px;
-    line-height: 50px;
-    overflow-y: auto;
-    box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
-    transition: all 0.3s ease;
-  }
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #242526;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #3A3B3C;
-  }
-  #menu-btn:checked ~ .nav-links{
-    left: 0%;
+/* Updated CSS for responsiveness */
+@media screen and (max-width: 768px) {
+  body .wrapper1 {
+    max-width: 90%; /* Adjust maximum width for smaller screens */
+    padding: 0 15px; /* Adjust padding for smaller screens */
+    height: auto; /* Let the height adjust dynamically */
+    line-height: 1.5; /* Modify line height for better readability */
   }
 
-  .nav-links li{
-    margin: 15px 10px;
-  }
-  .nav-links li a{
-    padding: 0 20px;
+  body .wrapper1 .logo img {
+    width: 50px; /* Decrease logo width for smaller screens */
+    height: 30px; /* Decrease logo height for smaller screens */
   }
 
-      
+  body .wrapper1 .nav-links {
+    display: none; /* Hide navigation links initially */
+  }
+
+  body .menu-btn {
+    display: block; /* Show the menu button for smaller screens */
+  }
+
+  body #active:checked ~ .wrapper {
+    width: 100%; /* Adjust width of the menu for smaller screens */
+    right: 0;
+  }
+
+  body .wrapper ul {
+    /* Update styles for the menu items */
+    /* ... (existing styles remain unchanged) */
+    top: 50%; /* Adjust position of menu items for smaller screens */
+    transform: translateY(-50%);
+  }
+
+  body .wrapper ul li {
+    /* Update styles for individual menu items */
+    /* ... (existing styles remain unchanged) */
+    height: auto; /* Let menu items adjust their height */
+  }
+
+  body .wrapper ul li a {
+    /* Update styles for links inside the menu */
+    /* ... (existing styles remain unchanged) */
+    font-size: 11px; /* Decrease font size for smaller screens */
+  }
+
+ 
+
+  /* Additional adjustments as needed */
 }
-
-   body .search {
-     width: 100%;
-     position: relative;
-     display: flex;
-   }
-   
-   body .searchTerm {
-     border: none;
-     padding: 5px;
-     height: 30px;
-     border-radius: 5px 0 0 5px;
-     outline: none;
-     margin-left: 80%;
-     color: #9DBFAF;
-   }
-   
-   body .searchTerm:focus{
-     color:#3AB9C0;
-   }
-   
-   body .searchButton {
-     height: 36px;
-    border: none;     
-    background: #F27144;
-     text-align: center;
-     color: #fff;
-     border-radius: 0 5px 5px 0;
-     cursor: pointer;
-     font-size: 20px;
-   }
-   
-   /*Resize the wrap to see the search bar change!*/
-    body .wrap{
-     width: 30%;
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-   }

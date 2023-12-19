@@ -18,7 +18,8 @@ if($isLogged)
     <div class=title>
 <?php
     echo $view->nav();
-    echo "<h1>Wishlist</h1>";
+    echo "<h1 style='color:F27144;justify-content: center;
+        text-align: center;margin-top:20px;'>Wishlist</h1>";
     echo $view->side();
     echo $view->showWishlist();
     echo $view->footer();
