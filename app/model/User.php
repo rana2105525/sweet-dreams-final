@@ -123,16 +123,16 @@ public function showUserHistory($user_id)
     INNER JOIN reg ON reg.id = order_items.user_id
     WHERE order_items.user_id = ?;"; // Use placeholder for parameter
 
-$stmt = $this->db->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
+    $stmt = $this->db->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
 
-$result = $stmt->get_result();
-$user_items = $result->fetch_all(MYSQLI_ASSOC);
+    $result = $stmt->get_result();
+    $user_items = $result->fetch_all(MYSQLI_ASSOC);
 
-$stmt->close();
+    $stmt->close();
 
-return $user_items;
+    return $user_items;
 
 }
 public function ShowProducts(){

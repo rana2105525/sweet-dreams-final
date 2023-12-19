@@ -6,7 +6,7 @@ class checkoutController extends Controller {
   public $nameErr ="";
   public $emailErr = "";
   public $phoneErr = "";
- public $addressErr = "";
+  public $addressErr = "";
     public function checkout() {
         
             // Sample data from a hypothetical form or request
