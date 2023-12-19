@@ -7,7 +7,7 @@ require_once(__ROOT__ . "controller/UsersController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
 
 if (!isset($_SESSION["id"]) || $_SESSION["id"] === null) {
-  header("Location: index.php");
+  header("Location:index.php");
   exit();
 }
 $model = new Users();

@@ -18,14 +18,15 @@
           require_once(__ROOT__ . "view/ViewAdmin.php");
           
           
-          if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
-            header("Location: index.php");
-            exit();
-          }
+        
           
     require_once(__ROOT__ . "model/editproduct.php");
       require_once(__ROOT__ . "controller/editproductController.php");
       require_once(__ROOT__ . "view/editproduct.php");
+      if (!isset($_SESSION["ID"]) || $_SESSION["ID"] === null) {
+        header("Location: index.php");
+        exit();
+      }
 
       $model = new editproducts();
       $controller = new editproductController($model);

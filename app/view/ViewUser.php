@@ -78,6 +78,7 @@ class ViewUser extends View{
             <label>Email Address</label>
             <input type="text" name="email" id="email" placeholder="username@email.com" required />
             <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
+            </br>
             <span class="error" id="result"></span>
         </div>
 

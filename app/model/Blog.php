@@ -63,18 +63,31 @@ class Blog extends Model{
     }
 
 
-    public function insertBlog($blogText,$blog_image){
-      $stmt = $this->db->prepare("INSERT INTO blog (blog_text, blog_img) VALUES (?, ?)");
-      $stmt->bind_param("ss",$blogText,$blog_image);
-    if ($stmt->execute() === true) {
-        //$this->fillArray();
-        return true;
-    } else {
-        echo "ERROR: Could not able to execute $stmt->error";
-        return false;
-      }
-      $stmt->close();
-}
+    public function insertBlog($blogText, $blog_image)
+    {
+        $stmt = $this->db->prepare("INSERT INTO blog (blog_text, blog_img) VALUES (?, ?)");
+    
+        // Check if the prepare statement succeeded
+        if (!$stmt) {
+            echo "ERROR: Could not prepare the statement.";
+            return false;
+        }
+    
+        // Bind parameters using "sb" (string and blob) format
+        $stmt->bind_param("ss", $blogText, $blog_image);
+    
+        if ($stmt->execute() === true) {
+            //$this->fillArray();
+            return true;
+        } else {
+            echo "ERROR: Could not able to execute $stmt->error";
+            return false;
+        }
+    
+        // Close the statement
+        $stmt->close();
+    }
+    
     
   }
 

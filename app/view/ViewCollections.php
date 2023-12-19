@@ -350,7 +350,7 @@ class ViewCollections extends View
                     <div class="col-6">
                         <div class="product-image">
                             <div class="product-image-main">
-                            <img src="../public/' . $prodDesc['prod_image'] . '">
+                            <img src="../public/images' . $prodDesc['prod_image'] . '">
                             </div>
                         </div>
                     </div>
