@@ -27,17 +27,33 @@
       
     //  $_SESSION['ID'] = $adminDetails['ID'];
 
-    $model = new Admin();
+    $model = new Admin($_SESSION["ID"]);
     $controller = new AdminController($model);
     $view = new ViewAdmin($controller, $model);
+
+    // if (isset($_GET['action']) && !empty($_GET['action'])) {
+    //   $controller->{$_GET['action']}();
+    // }
+    
     if (isset($_GET['action']) && !empty($_GET['action'])) {
-      $controller->{$_GET['action']}();
-    }
+
+      switch($_GET['action'])
+        {
+        case 'logout':
+          session_destroy();
+                header("location: login.php");
+          break;
+        case 'delete':
+          $controller->deleteA();
+        
+          header("location: login.php"); 
+        }
+        }
     ?>
 
 <body>
 <?php 
-      //session_start();
+      
       
     //   // Check if the user is logged in as an admin
     //   if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
@@ -50,7 +66,8 @@
 <div class="component">
 
           <?php
-            echo $view->output();
+            echo $view->output();  
+           
           //}
           ?>
         

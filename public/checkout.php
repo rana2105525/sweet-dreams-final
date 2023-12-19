@@ -12,6 +12,7 @@ $view = new CheckoutView($controller, $model);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
 	$controller->{$_GET['action']}();
+    header("Location:index.php");
 }
 
 ?>

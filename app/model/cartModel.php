@@ -129,6 +129,34 @@ class CartModel extends Model
             echo "ERROR: Could not able to execute $sql. ";
         }
     }
+    public function deleteALL()
+    {
+        // Assuming you have started the session elsewhere in your code
+        $user_id = $_SESSION["id"];
+    
+        // Prepare the SQL statement
+        $sql = "DELETE FROM cart2 WHERE user_id = ?";
+    
+        // Prepare the statement
+        $stmt = $this->db->prepare($sql);
+    
+        // Bind parameters
+        $stmt->bind_param("i", $user_id);
+    
+        // Execute the statement
+        if ($stmt->execute()) {
+            // Query executed successfully
+            $stmt->close();
+            return true;
+        } else {
+            // Error handling
+            echo "ERROR: Could not able to execute $sql. " . $stmt->error;
+        }
+    
+        // Close the statement
+        $stmt->close();
+    }
+    
 
  
 }

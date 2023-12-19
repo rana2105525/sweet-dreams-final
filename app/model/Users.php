@@ -51,35 +51,47 @@ class Users extends Model {
     }
     
   
-    function loginUser($email,$password){
-      $sql = "SELECT * FROM reg where email='$email'";
-      $dbh = new Dbh();
-      $result = $dbh->query($sql);
-      if ($result->num_rows == 1){
-          $row = $dbh->fetchRow();
-          if(password_verify($password, $row["password"])){
-              $_SESSION["id"]=$row["id"];
-              $_SESSION["email"]=$row["email"];
-              header("Location:index.php");
-          }
-      }
-      else{
-        $sql = "SELECT * FROM admins WHERE Email='$email'";
+    function loginUser($email, $password)
+    {
+        $sql = "SELECT * FROM reg WHERE email='$email'";
         $dbh = new Dbh();
         $result = $dbh->query($sql);
     
         if ($result->num_rows == 1) {
             $row = $dbh->fetchRow();
-            if (password_verify($password, $row["Password"])) {
-                $_SESSION["ID"] = $row["ID"];
-                $_SESSION["Email"] = $row["Email"];
-                header("Location: viewAdmin.admin.php");
+    
+            if (password_verify($password, $row["password"])) {
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                header("Location:index.php");
+                exit(); // Make sure to exit after redirection
+            } else {
+                return "Invalid password";
             }
         } else {
-            echo "error";
+            $sql = "SELECT * FROM admins WHERE Email='$email'";
+            $result = $dbh->query($sql);
+    
+            if ($result->num_rows == 1) {
+                $row = $dbh->fetchRow();
+    
+                if (password_verify($password, $row["Password"])) {
+                    $_SESSION["ID"] = $row["ID"];
+                    $_SESSION["Email"] = $row["Email"];
+                    header("Location: viewAdmin.admin.php");
+                    exit(); // Make sure to exit after redirection
+                } else {
+                    return "Invalid password for admin";
+                }
+            } else {
+                return "User not found";
+            }
         }
     }
-      }
+    
+    // Example usage:
+  
+    
     
 
     function getAllUsers() {

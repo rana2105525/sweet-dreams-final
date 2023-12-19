@@ -17,6 +17,8 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
             $controller->deleteCartItem();
             echo "item deleted successfully";
             break;
+            case 'deleteALL':
+            $controller->deleteALL();
        
 	}
 }

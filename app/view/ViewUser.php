@@ -103,33 +103,48 @@ class ViewUser extends View{
     return $str;
 }
 
-  public function loginForm($errors = []) {
-    
-    $str='
-    <link rel="stylesheet" type="text/css" href="../public/css/User/login.css">
+public function loginForm($errors = []) {
+  $str = '<link rel="stylesheet" type="text/css" href="../public/css/User/login.css">
+      <form action="login.php?action=login" method="post">
+          <div class="input-box">
+              <label>Email</label>
+              <input type="text" name="email" placeholder="username@email.com" required />
+              <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
+              <br>
+              <span>If you do not have an account please <a href="reg.php">SignUp</a></span>
+          </div>
 
-        <form action="login.php?action=login" method="post">
-        <div class="input-box">
-        <label>Email</label>
-        <input type="text" name="email" placeholder="username@email.com" required />
-        <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
-        <br>
-        <span>If you do not have an account please <a href="reg.php">SignUp</a><span>
-    </div>
+          <div class="input-box">
+              <label>Password</label>
+              <input type="password" name="password" placeholder="Enter your password" required />
+              <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
+          </div>
 
-    <div class="input-box">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Enter your password" required />
-        <span class="error">' . ($errors['passwordErr'] ?? '') . '</span>
-        
-    </div>
+          <div>';
 
-            <button type="submit" name="login" value="Submit">Login</button>
-        </form>';
-        return $str;    
+  // Check if there's a login error message
+  if (isset($_POST['login'])) {
+      // If form is submitted, capture email and password
+      $email = $_POST['email'];
+      $password = $_POST['password'];
 
+      // Call loginUser function with email and password
+      $loginMessage = $this->model->loginUser($email, $password);
 
+      // Display the login error message
+      if ($loginMessage) {
+          $str .= '<p class="error">' . $loginMessage . '</p>';
+      }
+  }
+
+  $str .= '</div>
+          <button type="submit" name="login" value="Submit">Login</button>
+      </form>';
+
+  return $str;
 }
+
+
 public function editForm($errors = []) {
   $name = $this->model->getName();
   $email = $this->model->getEmail();

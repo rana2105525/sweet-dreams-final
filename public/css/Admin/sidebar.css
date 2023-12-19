@@ -1,0 +1,29 @@
+.sidebar {
+    margin-right:100px;
+    padding: 0;
+    width: 200px;
+    background-color: #ffffff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+  
+.sidebar a {
+    display: block;
+    color: #3AB9C0;
+    padding: 10px;
+    text-decoration: none;
+    margin-left:15px;
+}
+  
+.sidebar a:hover{
+    color: #F27144;
+}
+
+.logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    position: relative;
+}

@@ -27,7 +27,8 @@ class ViewAdmin extends View
         <label for="gender">Gender: &nbsp;</label>'.$gender.'</div>
 
         <button id ="edit"><a href="editAdmin.admin.php?edit='.$this->model->getID().'">Edit Profile</a></button>
-        <button id ="delete"><a href="deleteAdmin.admin.php?delete='.$this->model->getID().'">Delete Account</button>
+        <button id="delete"><a href="viewAdmin.admin.php?action=delete&delete='.$this->model->getID().'">Delete Account</button>
+
 
 </div>
     </section>
@@ -284,52 +285,36 @@ class ViewAdmin extends View
         </form></section></div>';
         return $str;
     }
-    function editAdminform()
+    function editAdminform($errors=[])
     {
+        //echo sidebar();
+        
       $username = $this->model->getUserName();
       $phone = $this->model->getPhone();
       $email = $this->model->getEmail();
-      $password = $this->model->getPassword();
-      $gender = $this->model->getGender();
       
-      $str = '<link rel="stylesheet" type="text/css" href="../public/css/Admin/editAdmin.css">
-        <form action="editAdmin.php?action=edit" method="post" class="form">
+      
+      $str = '
+        <form action="editAdmin.admin.php?action=edit" method="post" class="form">
             <div id="title"><h2>Edit admin</h2></div>
     
             <div class="input-box">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" value="' . $username . '" placeholder="Enter admin\'s name" />
+                <span class="error">' . ($errors['nameErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="number">Phone Number</label>
                 <input type="number" id="number" name="number" value="' . $phone . '" placeholder="Enter admin\'s number" />
+                <span class="error">' . ($errors['phoneErr'] ?? '') . '</span>
             </div>
     
             <div class="input-box">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="' . $email . '" placeholder="Enter admin\'s email" />
+                <span class="error">' . ($errors['emailErr'] ?? '') . '</span>
             </div> 
-    
-            <div class="input-box">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" value="' . $password . '" placeholder="Enter your password" />
-            </div>
-            
-            <div class="input-box">
-                <label for="gender">Gender</label>
-            </div> 
-            <div class="row">
-                <span class="column">
-                    <input type="radio" name="gender" id="male" value="'. $gender .' ">
-                    <label for="male">Male</label>
-                </span>
-                <span class="column">
-                    <input type="radio" name="gender" id="female" value="'. $gender .'">
-                    <label for="female">Female</label>
-                </span>
-            </div>
-    
             <button type="submit" name="submit">Edit Admin</button>
         </form>';
     

@@ -110,46 +110,40 @@ class checkoutModel extends Model
 
       return $cartItems;
   }
-    public function order($user_id, $name, $email, $phone, $address,$total_price)
-    {
-      // Get today's date
-      $orderd_at = date('Y-m-d');
-    
-      // Prepare the statement
-      $stmt = $this->db->prepare("INSERT INTO orders (user_id, name,email,phone,address,total_price,orderd_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    
-      // Bind parameters including $orderd_at
-      $stmt->bind_param("issssss", $user_id, $name,$email,$phone,$address,$total_price,$orderd_at);
-        $result = $stmt->execute();
-        $stmt->close();
-        $sql = "SELECT ID FROM orders
-        ORDER BY ID DESC
-        LIMIT 1;";
-        $result = $this->db->query($sql);
-        $row = $result->fetch_assoc()["ID"];
-        return $row;
-    }
-    public function order_item( $user_id,$order_id, $prod_id)
-    {
-        
-        $stmt = $this->db->prepare("INSERT INTO order_items(user_id,order_id,prod_id) VALUES (?,?,?)");
-        $stmt->bind_param("iii",$user_id, $order_id, $prod_id);
-        $result = $stmt->execute();
-        $stmt->close();
-        return $result;
-    }
+  public function order($user_id, $name, $email, $phone, $address,$total_price)
+  {
+    // Get today's date
+    $orderd_at = date('Y-m-d');
+  
+    // Prepare the statement
+    $stmt = $this->db->prepare("INSERT INTO orders (user_id, name,email,phone,address,total_price,orderd_at) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  
+    // Bind parameters including $orderd_at
+    $stmt->bind_param("issssss", $user_id, $name,$email,$phone,$address,$total_price,$orderd_at);
+      $result = $stmt->execute();
+      $stmt->close();
+  
+      $sql = "SELECT ID FROM orders
+      ORDER BY ID DESC
+      LIMIT 1;";
+      $result = $this->db->query($sql);
+      $row = $result->fetch_assoc()["ID"];
+      return $row;
+  }
+ 
+  public function order_item( $user_id,$order_id, $prod_id)
+  {
+      
+      $stmt = $this->db->prepare("INSERT INTO order_items(user_id,order_id,prod_id) VALUES (?,?,?)");
+      $stmt->bind_param("iii",$user_id, $order_id, $prod_id);
+      $result = $stmt->execute();
+      $stmt->close();
+      return $result;
+  }
+  
   
 
-    public function deleteALL()
-    {
-        $sql="delete from cart2 where user_id=$this->user_id;";
-        if($this->db->query($sql) === true){
-            return true;
-        } else{
-            echo "ERROR: Could not able to execute $sql. ";
-        }
-
-    }
+  
    
 }
 ?>

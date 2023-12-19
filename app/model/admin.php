@@ -95,46 +95,12 @@ function readAdmin($id) {
     }
 }
 
-// function adminLogin($email, $password)
-// {
-//     $sql = "SELECT * FROM admins WHERE Email='$email'";
-//     $result = $this->db->query($sql);
 
-//     if ($result && $result->num_rows === 1) {
-//         $row = $result->fetch_assoc();
-//         $storedPassword = $row['Password'];
-
-//         if (password_verify($password, $storedPassword)) {
-//             $_SESSION["UserName"] = $row['UserName'];
-//             $_SESSION["ID"] = $row['ID']; // Set the ID in session
-//             header("Location: sweet-dreams-final/public/allAdmins.admins.php"); // Redirect to allAdmins.admins.php
-//             exit();
-//         } else {
-//             return null;
-//         }
-//     } else {
-//         return null;
-//     }
-// }
-
-  
-
-// function addAdmin($Username,$Phone,$Email,$Password,$Gender)
-// {
-//     $sql = "INSERT INTO admins (Username, Phone, Email, Password, Gender) VALUES ('$Username', '$Phone', '$Email', '$Password', '$Gender')";
-//     if(mysqli_query($GLOBALS['conn'],$sql))
-//     return true;
-//     else
-//     return false;
-// }
-
-function editAdmin($name, $phoneNumber, $email, $password, $gender)
+function editAdmin($name, $phoneNumber, $email)
 {
-    
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "UPDATE admins SET Username='$name', Phone='$phoneNumber', Email='$email', Password='$hashedPassword', Gender='$gender' WHERE ID='$this->ID'";
+  
+    $sql = "UPDATE admins SET Username='$name', Phone='$phoneNumber', Email='$email' WHERE ID='$this->ID'";
     if($this->db->query($sql) === true){
-        echo "updated successfully.";
         $this->readAdmin($this->ID);
     } else{
         echo "ERROR: Could not able to execute";
