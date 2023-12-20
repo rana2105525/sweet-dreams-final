@@ -2,7 +2,7 @@
 
     if(isset($_POST["query"]))
     {
-        $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+        $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams_final");
         $output = '';
         $query = "SELECT * FROM products WHERE title LIKE '%".mysqli_real_escape_string($connect, $_POST["query"])."%'";
         $result = mysqli_query($connect, $query);
