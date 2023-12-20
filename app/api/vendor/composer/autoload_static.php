@@ -72,6 +72,10 @@ class ComposerStaticInitb1d700c4614c24013a24f9dbb524ef72
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
         ),
+        'C' => 
+        array (
+            'Cowsayphp\\' => 10,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -201,6 +205,10 @@ class ComposerStaticInitb1d700c4614c24013a24f9dbb524ef72
         'Doctrine\\Common\\Annotations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
+        'Cowsayphp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/alrik11es/cowsayphp/src',
         ),
     );
 

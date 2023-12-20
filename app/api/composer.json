@@ -1,7 +1,8 @@
 {
     "require": {
         "infobip/infobip-api-php-client": "^5.1",
-        "php": "8.2.4"
+        "php": "8.2.4",
+        "alrik11es/cowsayphp": "^1.2"
 
 
     }
