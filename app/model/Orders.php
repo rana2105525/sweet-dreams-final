@@ -6,7 +6,7 @@ class Orders extends Model{
     private $orders;
     function __construct() {
 		$this->fillArray();
-	}
+	} 
 
     function fillArray(){
         $this->orders = array();

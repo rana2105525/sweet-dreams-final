@@ -6,7 +6,7 @@ require_once(__ROOT__ ."db/Dbh.php");
 require_once(__ROOT__ ."model/Collection.php");
 
 class Product_orderedModel extends Model
-{
+{ 
     private $id;
     private $user_id;
     private $prod_id;
