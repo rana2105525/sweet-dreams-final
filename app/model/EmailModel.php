@@ -4,7 +4,7 @@
 
     if(isset($_POST["query"]))
     {
-      $connect = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+      $connect = mysqli_connect("localhost", "root", "", "sweetdreams");
         $email = $_POST["query"];
         $query = "SELECT * FROM reg WHERE email = '$email'";
         $result = mysqli_query($connect, $query);

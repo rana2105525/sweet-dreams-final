@@ -12,10 +12,15 @@ class Products extends Model{
 		$this->products = array();
 		$this->db = $this->connect();
 		$result = $this->readProducts();
-		while ($row = $result->fetch_assoc()) {
-			array_push($this->products, new Product($row["id"]));
+		
+		if($result !== false) { // Check if result is valid
+			while ($row = $result->fetch_assoc()) {
+				array_push($this->products, new Product($row["id"]));
+			}
+		} else {
+			echo "Failed to retrieve products from the database.";
 		}
-	} 
+	}
  
 	function getProducts() {
 		$this->fillArray();  
