@@ -14,61 +14,59 @@ error_reporting(E_ALL);
 class CartView extends View {
 
   public  function output(){
+    $str = '<link rel="stylesheet" href="../public/css/User/cart.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
+
+// Assuming the user ID is stored in a session variable
+$user_id = $_SESSION['id'];
+
+$cartProducts = $this->model->showInCart($user_id);
+
+// Check if the cart is empty
+if (empty($cartProducts)) {
+$str .= '<div class="empty-cart">Cart is empty.</div>';
+return $str;
+}
+$totalPrice = 0; // Initialize total price
+
+foreach ($cartProducts as $cartProduct) {
+$str .= '
+<div class="prod">
+    <div class="product-card">
+        <div class="product-tumb">
+            <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
+            <img src="../public/' . $cartProduct['image'] . '">
+        </div>
+        <div class="product-details">
+            <h4>Title : ' . $cartProduct['name'] . '</h4>
+            <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
+            <div class="product-bottom-details">
+                <div class="product-price">Price : ' .( $cartProduct['price'] * $cartProduct['quantity'] ). 'LE</div>
+
+                <!-- Delete form -->
+                <form method="post" action="cart.php">
+                    <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
+                    <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
+
+// Update total price for each item
+$totalPrice += ($cartProduct['price'] * $cartProduct['quantity']);
+}
+$_SESSION['total_price'] = $totalPrice;
+
+// Display total price
+$str .= '<div>Total Price: ' . $totalPrice . 'LE</div>';
+
+
+return $str;
 
   }
   
-  public function showCart() {
-    $str = '<link rel="stylesheet" href="../public/css/User/cart.css" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />';
-
-    // Assuming the user ID is stored in a session variable
-    $user_id = $_SESSION['id'];
-
-    $cartProducts = $this->model->showInCart($user_id);
-
-    // Check if the cart is empty
-    if (empty($cartProducts)) {
-      $str .= '<div class="empty-cart">Cart is empty.</div>';
-      return $str;
-  }
-    $totalPrice = 0; // Initialize total price
-
-    foreach ($cartProducts as $cartProduct) {
-        $str .= '
-        <div class="prod">
-            <div class="product-card">
-                <div class="product-tumb">
-                    <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                    <img src="../public/' . $cartProduct['image'] . '">
-                </div>
-                <div class="product-details">
-                    <h4>Title : ' . $cartProduct['name'] . '</h4>
-                    <h4>Quantity : ' . $cartProduct['quantity'] . '</h4>
-                    <div class="product-bottom-details">
-                        <div class="product-price">Price : ' .( $cartProduct['price'] * $cartProduct['quantity'] ). 'LE</div>
-
-                        <!-- Delete form -->
-                        <form method="post" action="cart.php">
-                            <input type="hidden" name="cart_id" value="' . $cartProduct['id'] . '">
-                            <button><a href="cart_options.php?action=delete&id=' . $cartProduct['id'] . '">Delete item</a></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>';
-
-        // Update total price for each item
-        $totalPrice += ($cartProduct['price'] * $cartProduct['quantity']);
-    }
-    $_SESSION['total_price'] = $totalPrice;
-
-    // Display total price
-    $str .= '<div>Total Price: ' . $totalPrice . 'LE</div>';
-
-
-    return $str;
-}
 
 
 public function check_btn()

@@ -58,7 +58,7 @@ function isStrongPassword($password) {
 		  $this->nameErr = "Only letters and white space allowed";
 		}
 		}
-		$conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
+		$conn = mysqli_connect("localhost", "root", "", "sweetdreams");
 		$sql = "SELECT * FROM admins WHERE Email = '$email'";
 		$result = mysqli_query($conn, $sql);
 		if (mysqli_num_rows($result) > 0) {

@@ -83,16 +83,16 @@ class Users extends Model {
             if ($result->num_rows == 1) {
                 $row = $dbh->fetchRow();
     
-                // if (password_verify($password, $row["Password"])) {
+                if (password_verify($password, $row["Password"])) {
                     $_SESSION["ID"] = $row["ID"];
                     $_SESSION["Email"] = $row["Email"];
                     header("Location: viewAdmin.admin.php");
                     exit(); 
-            //     } else {
-            //         return "Invalid password for admin";
-            //     }
-            // } else {
-                // return "User not found";
+                } else {
+                    return "Invalid password for admin";
+                }
+            } else {
+                return "User not found";
             }
         }
     }
