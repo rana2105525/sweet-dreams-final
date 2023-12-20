@@ -65,7 +65,7 @@ function isDateValid($date)
         $this->nameErr = "Only letters and white space allowed";
       }
     }
-    $conn = mysqli_connect("localhost", "root", "", "sweetdreams");
+    $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams");
     $sql = "SELECT * FROM reg WHERE email = '$email'";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
