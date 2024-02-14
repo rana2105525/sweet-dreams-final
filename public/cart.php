@@ -26,7 +26,7 @@ if ($isLogged) {
         echo "<h1 style='color:F27144;justify-content: center;
         text-align: center;margin-top:20px;'>cart</h1>";
         echo $view->side();
-        echo $view->showcart();
+        echo $view->output();
         echo $view->check_btn();
         echo $view->footer();
         ?>
