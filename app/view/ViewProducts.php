@@ -25,7 +25,6 @@ class ViewProducts extends View{
         $str.="<th class = 'tableHeader'>Color</th>";
         $str.="<th class = 'tableHeader'>Size</th>";
         $str.="<th class = 'tableHeader'>Quantity</th>";
-        $str.="<th class = 'tableHeader'>Added &nbsp; at</th>";
         $str.="<th class = 'tableHeader'>Operation</th>";
         $str.="</tr>";
         $str.="</thead>";
@@ -44,7 +43,6 @@ class ViewProducts extends View{
 			$str.="<td class = 'cell'>" . $Product->getColor() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getSize() ."</td> ";
 			$str.="<td class = 'cell'>" . $Product->getQuantity() ."</td> ";
-			$str.="<td class = 'cell'>" . $Product->getAddedAt() ."</td> ";
 			$str.="<td>
 			  <button class = 'buttons' id ='delete'><a href='products.admin.php?action=delete&id=".$Product->getId()."'>Delete</a></button>
 			</td> ";  

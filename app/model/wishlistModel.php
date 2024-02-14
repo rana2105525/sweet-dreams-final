@@ -8,6 +8,11 @@ class wishlistModel extends Model
     public $id;
     public $prod_id;
     public $user_id;
+
+    public $title;
+
+    public $price;
+
     public function __construct() {
         $this->db = new Dbh();
 
@@ -32,12 +37,12 @@ class wishlistModel extends Model
 
     public function setTitle($title)
     {
-        $this->title = $title;
+      //  $this->title = $title;
     }
 
     public function setPrice($price)
     {
-        $this->price = $price;
+       // $this->price = $price;
     }
     public function getprodId()
     {

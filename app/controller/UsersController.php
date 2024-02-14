@@ -65,13 +65,7 @@ function isDateValid($date)
         $this->nameErr = "Only letters and white space allowed";
       }
     }
-    $conn = mysqli_connect("localhost", "root", "", "sweetdreams");
-    $sql = "SELECT * FROM reg WHERE email = '$email'";
-  $result = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($result) > 0) {
-    // $this->emailErr = "Email exists in the database";
-    return false;
-  }
+  
   
   
     if (empty($email)) {
@@ -104,11 +98,11 @@ function isDateValid($date)
     if (empty($password)) {
       $this->passwordErr = "Password is required";
     }
-     else{
-     if (!isStrongPassword($_POST["password"])) {
-      $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
-    }
-  }
+    //  else{
+    //  if (!isStrongPassword($_POST["password"])) {
+    //   $this->passwordErr = "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character";
+    // }
+  
     if (empty($birth)) {
       $this->birthErr = "Enter your birth date";
     } else {
