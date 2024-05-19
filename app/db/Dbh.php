@@ -9,7 +9,7 @@ class DBh{
 	private $conn;
 	private $result;
 	public $sql;
-
+ 
 	function __construct() {
 		$this->servername = DB_SERVER;
 		$this->username = DB_USER;
@@ -19,7 +19,7 @@ class DBh{
 	}
 
 	public function connect(){
-		$this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+		$this->conn = new mysqli($this->servername, $this->username,$this->password, $this->dbname );
 		if ($this->conn->connect_error) {
 			die("Connection failed: " . $this->conn->connect_error);
 		}
@@ -55,4 +55,3 @@ class DBh{
 		$this->conn->close();
 	}
 }
-?>

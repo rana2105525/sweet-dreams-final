@@ -8,6 +8,8 @@ class CartModel extends Model
     public $id;
     public $prod_id;
     public $quantity;
+    public $title;
+    public $price;
     public $color;
     public $size;
     public $user_id;

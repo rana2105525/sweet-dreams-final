@@ -4,10 +4,10 @@
 
     if(isset($_POST["query"]))
     {
-        $conn = mysqli_connect("172.232.217.28", "root", "SweetDreams123", "sweetdreams_final");
+        $conn = mysqli_connect("localhost", "root", "", "sweetdreams");
         $email = $_POST["query"];
         $query = "SELECT * FROM reg WHERE email = '$email'";
-        $result = mysqli_query($connect, $query);
+        $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)
         {
             echo "Email exists in the database";
